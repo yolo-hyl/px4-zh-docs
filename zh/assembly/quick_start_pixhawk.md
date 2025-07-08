@@ -22,7 +22,7 @@ PX4 不生产此（或任何）自动驾驶仪。
 ![Pixhawk 接线概览](../../assets/flight_controller/pixhawk1/pixhawk_wiring_overview.jpg)
 
 ::: info
-更详细的接线信息请[参见下方](#detailed-wiring-infographic-copter)。
+更详细的接线信息请[参见下方](#详细接线信息)。
 :::
 
 ## 安装并定位控制器
@@ -109,7 +109,7 @@ GPS/电子罗盘应尽可能远离其他电子设备安装在机架上，方向�
 :::
 
 ::: info
-输出轨道必须单独供电，如上文[电源](#power)部分所述。
+输出轨道必须单独供电，如上文[电源](#电源)部分所述。
 :::
 
 <!-- 插入电机 AUX/MAIN 端口的图片？ -->
@@ -126,4 +126,10 @@ GPS/电子罗盘应尽可能远离其他电子设备安装在机架上，方向�
 
 ## 详细接线信息
 
-![多旋翼详细接线图](../../assets/flight_controller/pixhawk1/pixhawk_connectivity_quadrotor.png)
+![多旋翼详细接线图](../../assets/flight_controller/pixhawk1/pixhawk_infographic2.jpg)
+
+
+## 更多信息
+
+- [Pixhawk Series](../flight_controller/pixhawk_series.md)
+- [3DR Pixhawk](../flight_controller/pixhawk.md)

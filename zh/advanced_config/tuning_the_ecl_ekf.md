@@ -62,7 +62,9 @@ IMU相对于机体坐标系的位置由`EKF2_IMU_POS_X,Y,Z`参数设置。
 - [EKF2_MULTI_IMU](../advanced_config/parameter_reference.md#EKF2_MULTI_IMU) = 0
 - [EKF2_MULTI_MAG](../advanced_config/parameter_reference.md#EKF2_MULTI_MAG) = 0
 - [SENS_IMU_MODE](../advanced_config/parameter_reference.md#SENS_IMU_MODE) = 1
-- [SENS_MAG_MODE](../advanced_config/parameter_reference.md#SENS_MAG_MODE) = 1## 运行多个EKF实例
+- [SENS_MAG_MODE](../advanced_config/parameter_reference.md#SENS_MAG_MODE) = 1
+
+## 运行多个EKF实例
 
 根据惯性测量单元（IMU）和磁强计的数量以及自动驾驶仪的CPU容量，可以运行多个EKF实例。  
 这提供了更广泛的传感器错误保护，其实现方式是每个EKF实例使用不同的传感器组合。  
@@ -289,7 +291,8 @@ EKF输出、状态和状态数据会发布到多个uORB主题，并在飞行期�
 消息字段相同是因为它们来自相同的字段定义。`# TOPICS`行（在[文件末尾](https://github.com/PX4/PX4-Autopilot/blob/main/msg/EstimatorInnovations.msg)）列出了要创建的消息集名称）：
 
 ```
-```# 主题 estimator_innovations estimator_innovation_variances estimator_innovation_test_ratios
+
+# 主题 estimator_innovations estimator_innovation_variances estimator_innovation_test_ratios
 
 ```
 
@@ -309,21 +312,30 @@ EKF输出、状态和状态数据会发布到多个uORB主题，并在飞行期�
 此外，每个传感器都有其自身的水平和/或垂直位置和/或速度值的字段（如适用）。  
 这些字段大多具有自描述性，如下所示：  
 
-```# GPS
+```
+# GPS
 float32[2] gps_hvel	# 水平GPS速度创新值 (m/sec) 和创新方差 ((m/sec)**2)
 float32    gps_vvel	# 垂直GPS速度创新值 (m/sec) 和创新方差 ((m/sec)**2)
 float32[2] gps_hpos	# 水平GPS位置创新值 (m) 和创新方差 (m**2)
-float32    gps_vpos	# 垂直GPS位置创新值 (m) 和创新方差 (m**2)# 外部视觉
+float32    gps_vpos	# 垂直GPS位置创新值 (m) 和创新方差 (m**2)
+
+# 外部视觉
 float32[2] ev_hvel	# 水平外部视觉速度创新（米/秒）和创新方差（（米/秒）²）
 float32    ev_vvel	# 垂直外部视觉速度创新（米/秒）和创新方差（（米/秒）²）
 float32[2] ev_hpos	# 水平外部视觉位置创新（米）和创新方差（米²）
-float32    ev_vpos	# 垂直外部视觉位置创新（米）和创新方差（米²）# 虚拟位置和速度
+float32    ev_vpos	# 垂直外部视觉位置创新（米）和创新方差（米²）
+
+# 虚拟位置和速度
 float32[2] fake_hvel	# 虚拟水平速度创新 (m/s) 和创新方差 ((m/s)**2)
 float32    fake_vvel	# 虚拟垂直速度创新 (m/s) 和创新方差 ((m/s)**2)
 float32[2] fake_hpos	# 虚拟水平位置创新 (m) 和创新方差 (m**2)
-float32    fake_vpos	# 虚拟垂直位置创新 (m) 和创新方差 (m**2)# 高度传感器
+float32    fake_vpos	# 虚拟垂直位置创新 (m) 和创新方差 (m**2)
+
+# 高度传感器
 float32 rng_vpos	# 测距传感器高度创新值 (m) 和创新值方差 (m**2)
-float32 baro_vpos	# 气压计高度创新值 (m) 和创新值方差 (m**2)# 辅助速度
+float32 baro_vpos	# 气压计高度创新值 (m) 和创新值方差 (m**2)
+
+# 辅助速度
 float32[2] aux_hvel	# 水平辅助速度创新，来自着陆目标测量（m/sec）和创新方差 ((m/sec)**2)
 float32    aux_vvel	# 垂直辅助速度创新，来自着陆目标测量（m/sec）和创新方差 ((m/sec)**2)
 

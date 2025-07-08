@@ -22,7 +22,7 @@ _WFB-ng_ 的主要优势包括：
 - MAVLink 数据包聚合（在发送前将小数据包打包成批次）。
 - 增强型 [OSD](https://github.com/svpcom/wfb-ng-osd) 适用于 Raspberry PI 或基于 gstreamer 的通用 Linux 桌面。
 
-更多信息请参阅下文的 [FAQ](#faq)。
+更多信息请参阅下文的 [常见问题](#常见问题)。
 
 ## 硬件
 

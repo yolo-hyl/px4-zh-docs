@@ -1,6 +1,14 @@
-# PX4 User Guide
-
-This repo contains the source code for the [PX4 User Guide](https://docs.px4.io/main/en/).
-
-> [!NOTE]
-> [Contributions](https://docs.px4.io/main/en/contribute/docs.html) and [Translations](https://docs.px4.io/main/en/contribute/translation.html) to this guide are very welcome!
+# PX4 中文文档
+## 本地构建
+### 下载依赖
+```bash
+npm install
+```
+### 构建
+```bash
+npx vitepress build . 
+```
+构建失败则添加debug选项
+```bash
+npx vitepress build . --debug
+```
