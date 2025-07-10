@@ -1,137 +1,139 @@
-# Visual Studio Code IDE (VSCode)
 
-[Visual Studio Code](https://code.visualstudio.com/) is a powerful cross-platform source code editor/IDE that can be used for PX4 development on Ubuntu, Windows, and macOS.
 
-There are a number of reasons to use VSCode for PX4 development:
+# Visual Studio Code 集成开发环境 (VSCode)
 
-- Getting setup _really_ only takes a few minutes.
-- A rich extension ecosystem that enables a huge range of tools needed for PX4 development: C/C++ (with solid _cmake_ integration), _Python_, _Jinja2_, ROS messages, and even DroneCAN DSDL.
-- Excellent Github integration.
+[Visual Studio Code](https://code.visualstudio.com/) 是一个功能强大的跨平台源代码编辑器/集成开发环境，可用于 Ubuntu、Windows 和 macOS 上的 PX4 开发。
 
-This topic explains how to setup the IDE and start developing.
+使用 VSCode 进行 PX4 开发有以下优势：
+
+- 设置工作环境真的只需几分钟。
+- 丰富的扩展生态系统，支持 PX4 开发所需的各种工具：C/C++（具备完善的 _cmake_ 集成）、_Python_、_Jinja2_、ROS 消息，甚至 DroneCAN DSDL。
+- 优秀的 GitHub 集成。
+
+本主题将介绍如何设置开发环境并开始开发。
 
 ::: info
-There are other powerful IDEs, but they typically take more effort to integrate with PX4.
-With _VScode_, configuration is stored in the PX4/PX4-Autopilot tree ([PX4-Autopilot/.vscode](https://github.com/PX4/PX4-Autopilot/tree/main/.vscode)) so the setup process is as simple as adding the project folder.
+虽然还有其他功能强大的集成开发环境，但它们通常需要更多工作量才能与 PX4 集成。
+使用 _VScode_ 时，配置信息存储在 PX4/PX4-Autopilot 树形结构中（[PX4-Autopilot/.vscode](https://github.com/PX4/PX4-Autopilot/tree/main/.vscode)），因此设置过程只需添加项目文件夹即可完成。
 :::
 
-## Preconditions
+## 前置条件
 
-You must already have installed the command line [PX4 developer environment](../dev_setup/dev_env.md) for your platform and downloaded the _Firmware_ source code repo.
+您必须已经为您的平台安装了命令行[ PX4 开发者环境 ]( ../dev_setup/dev_env.md )，并下载了 _固件_ 源代码仓库。
 
-## Installation & Setup
+## 安装与设置
 
-1. [Download and install VSCode](https://code.visualstudio.com/) (you will be offered the correct version for your OS).
-1. Open VSCode and add the PX4 source code:
+1. [下载并安装 VSCode](https://code.visualstudio.com/)（系统会根据您的操作系统提供正确的版本）。
+1. 打开 VSCode 并添加 PX4 源代码：
 
-   - Select _Open folder ..._ option on the welcome page (or using the menu: **File > Open Folder**):
+   - 在欢迎页面选择 _Open folder ..._ 选项（或通过菜单：**File > Open Folder**）：
 
      ![Open Folder](../../assets/toolchain/vscode/welcome_open_folder.jpg)
 
-   - A file selection dialog will appear.
-     Select the **PX4-Autopilot** directory and then press **OK**.
+   - 将弹出文件选择对话框。
+     选择 **PX4-Autopilot** 目录然后点击 **OK**。
 
-   The project files and configuration will then load into _VSCode_.
+   项目文件和配置将加载到 _VSCode_ 中。
 
-1. Press **Install All** on the _This workspace has extension recommendations_ prompt (this will appear on the bottom right of the IDE).
+1. 在 _This workspace has extension recommendations_ 提示上点击 **Install All**（此提示会出现在 IDE 右下角）。
    ![Install extensions](../../assets/toolchain/vscode/prompt_install_extensions.jpg)
 
-   VSCode will open the _Extensions_ panel on the left hand side so you can watch the progress of installation.
+   VSCode 将在左侧打开 _Extensions_ 面板，您可查看安装进度。
 
    ![PX4 loaded into VSCode Explorer](../../assets/toolchain/vscode/installing_extensions.jpg)
 
-1. A number of notifications/prompts may appear in the bottom right corner
+1. 可能会在右下角出现多个通知/提示
 
    :::tip
-   If the prompts disappear, click the little "alarm" icon on the right of the bottom blue bar.
+   如果提示消失，点击底部蓝色条右侧的"alarm"图标。
    :::
 
-   - If prompted to install a new version of _cmake_:
-     - Say **No** (the right version is installed with the [PX4 developer environment](../dev_setup/dev_env.md)).
-   - If prompted to sign into _github.com_ and add your credentials:
-     - This is up to you! It provides a deep integration between Github and the IDE, which may simplify your workflow.
-   - Other prompts are optional, and may be installed if they seem useful. <!-- perhaps add screenshot of these prompts -->
+   - 如果提示安装新版本 _cmake_：
+     - 选择 **No**（正确版本已随 [PX4 开发环境](../dev_setup/dev_env.md) 安装）。
+   - 如果提示登录 _github.com_ 并添加凭据：
+     - 这由您决定！这将提供 GitHub 与 IDE 的深度集成，可能会简化您的工作流程。
+   - 其他提示为可选，如果看起来有用可以安装。 <!-- perhaps add screenshot of these prompts -->
 
 <a id="building"></a>
 
-## Building PX4
+## 构建 PX4
 
-To build:
+要构建:
 
-1. Select your build target ("cmake build config"):
+1. 选择你的构建目标("cmake构建配置"):
 
-   - The current _cmake build target_ is shown on the blue _config_ bar at the bottom (if this is already your desired target, skip to next step).
-     ![Select Cmake build target](../../assets/toolchain/vscode/cmake_build_config.jpg)
+   - 当前的_cmake构建目标_显示在底部蓝色的_配置_栏中(如果这已经是你的目标配置，可跳到下一步)。
+     ![选择Cmake构建目标](../../assets/toolchain/vscode/cmake_build_config.jpg)
 
      ::: info
-     The cmake target you select affects the targets offered for when [building/debugging](#debugging) (i.e. for hardware debugging you must select a hardware target like `px4_fmu-v6`).
+     选择的cmake目标会影响[构建/调试](#debugging)时提供的目标选项(例如进行硬件调试时必须选择类似`px4_fmu-v6`的硬件目标)。
      :::
 
-   - Click the target on the config bar to display other options, and select the one you want (this will replace any selected target).
-   - _Cmake_ will then configure your project (see notification in bottom right).
-     ![Cmake config project](../../assets/toolchain/vscode/cmake_configuring_project.jpg)
-   - Wait until configuration completes.
-     When this is done the notification will disappear and you'll be shown the build location:
-     ![Cmake config project](../../assets/toolchain/vscode/cmake_configuring_project_done.jpg).
+   - 点击配置栏中的目标以显示其他选项，然后选择你需要的配置(这会替换当前选中的目标)。
+   - _Cmake_ 会随后配置你的项目(右下角会显示通知)。
+     ![Cmake配置项目](../../assets/toolchain/vscode/cmake_configuring_project.jpg)
+   - 等待配置完成。
+     完成后通知会消失，并显示构建位置：
+     ![Cmake配置项目](../../assets/toolchain/vscode/cmake_configuring_project_done.jpg)。
 
-1. You can then kick off a build from the config bar (select either **Build** or **Debug**).
-   ![Run debug or build](../../assets/toolchain/vscode/run_debug_build.jpg)
+1. 你可以在配置栏中启动构建(选择**Build**或**Debug**)。
+   ![运行调试或构建](../../assets/toolchain/vscode/run_debug_build.jpg)
 
-After building at least once you can now use [code completion](#code completion) and other _VSCode_ features.
+完成至少一次构建后，你现在可以使用[代码补全](#code completion)和其它_VSCode_功能。
 
-## Debugging
+## 调试
 
 <a id="debugging_sitl"></a>
 
-### SITL Debugging
+### SITL调试
 
-To debug PX4 on SITL:
+在SITL上调试PX4：
 
-1. Select the debug icon on the sidebar (marked in red) to display the debug panel.
-   ![Run debug](../../assets/toolchain/vscode/vscode_debug.jpg)
+1. 在侧边栏选择调试图标（用红色标记）以显示调试面板。  
+   ![运行调试](../../assets/toolchain/vscode/vscode_debug.jpg)
 
-1. Then choose your debug target (e.g. _Debug SITL (Gazebo Iris)_) from the top bar debug dropdown (purple box).
+1. 然后从顶部栏的调试下拉菜单（紫色框）中选择你的调试目标（例如 _Debug SITL (Gazebo Iris)_）。
 
    ::: info
-   The debug targets that are offered (purple box) match your build target (yellow box on the bottom bar).
-   For example, to debug SITL targets, your build target must include SITL.
+   提供的调试目标（紫色框）与你的构建目标（底部栏的黄色框）匹配。  
+   例如，要调试SITL目标，你的构建目标必须包含SITL。
    :::
 
-1. Start debugging by clicking the debug "play" arrow (next to the debug target in the top bar - pink box).
+1. 点击调试顶部栏的“播放”箭头（调试目标旁边，粉色框）开始调试。
 
-While debugging you can set breakpoints, step over code, and otherwise develop as normal.
+调试过程中可以设置断点、逐步执行代码，并以正常方式开发。
 
-### Hardware Debugging
+### 硬件调试
 
-The instructions in [SWD Debug Port](../debug/swd_debug.md) explain how to connect to the SWD interface on common flight controllers (for example, using the Dronecode or Blackmagic probes).
+[SWD调试端口](../debug/swd_debug.md)中的说明解释了如何连接到常见飞控的SWD接口（例如使用Dronecode或Blackmagic探针）。
 
-After connecting to the SWD interface, hardware debugging in VSCode is then the same as for [SITL Debugging](#debugging_sitl) except that you select a debug target appropriate for your debugger type (and firmware) - e.g. `jlink (px4_fmu-v5)`.
+连接到SWD接口后，VSCode中的硬件调试与[SITL调试](#debugging_sitl)相同，区别在于你需要选择适合自己调试器类型（和固件）的调试目标 - 例如 `jlink (px4_fmu-v5)`。
 
 :::tip
-To see the `jlink` option you must have selected a [cmake target for building firmware](#building-px4).
+要查看 `jlink` 选项，您必须已选择了 [cmake构建固件的目标](#building-px4)。
 :::
 
-![Image showing hardware targets with options for the different probes](../../assets/toolchain/vscode/vscode_hardware_debugging_options.png)
+![显示不同探测器选项的硬件目标图像](../../assets/toolchain/vscode/vscode_hardware_debugging_options.png)
 
 <a id="code completion"></a>
 
-## Code Completion
+## 代码补全
 
-In order for the code completion to work (and other IntelliSense magic) you need an active configuration and to have [built the code](#building).
+为了使代码补全功能正常工作（以及其它IntelliSense相关功能），您需要一个有效的配置，并且已经[构建代码](#building)。
 
-Once that is done you don't need to do anything else; the toolchain will automatically offer you symbols as you type.
+完成上述操作后，无需执行其他任何操作；工具链将在您输入时自动提供符号提示。
 
 ![IntelliSense](../../assets/toolchain/vscode/vscode_intellisense.jpg)
 
-## Troubleshooting
+## 故障排除
 
-This section includes guidance on setup and build errors.
+本节包含有关设置和构建错误的指导。
 
-### Ubuntu 18.04: "Visual Studio Code is unable to watch for file changes in this large workspace"
+### Ubuntu 18.04: "Visual Studio Code 无法监视此大型工作区中的文件更改"
 
-This error surfaces on startup.
-On some systems, there is an upper-limit of 8192 file handles imposed on applications, which means that VSCode might not be able to detect file modifications in `/PX4-Autopilot`.
+该错误在启动时出现。
+某些系统会对应用程序施加最多 8192 个文件句柄的上限，这意味着 VSCode 可能无法检测到 `/PX4-Autopilot` 中的文件修改。
 
-You can increase this limit to avoid the error, at the expense of memory consumption.
-Follow the [instructions here](https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc).
-A value of 65536 should be more than sufficient.
+您可以增加此限制以避免该错误，但会以增加内存消耗为代价。
+请按照 [此处的说明](https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc) 操作。
+设置值为 65536 即可足够。

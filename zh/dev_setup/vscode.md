@@ -105,7 +105,7 @@
 
 [SWD 调试端口](../debug/swd_debug.md) 中的说明解释了如何连接到常见飞控器的 SWD 调试端口。
 
-![Hardware Debug](../../assets/toolchain/vscode/hardware_debug.png)
+![Hardware Debug](../../assets/toolchain/vscode/vscode_intellisense.jpg)
 
 <a id="code-completion"></a>
 
