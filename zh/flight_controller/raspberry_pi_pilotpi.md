@@ -1,3 +1,5 @@
+
+
 # RPi PilotPi Shield
 
 <LinkedBadge type="warning" text="Experimental" url="../flight_controller/autopilot_experimental.html"/>
@@ -7,21 +9,21 @@ PX4 不生产此（或任何）自动驾驶仪。
 有关硬件支持或合规性问题，请联系[制造商](mailto:lhf2613@gmail.com)。
 :::
 
-_PilotPi_ 盾板是直接在 Raspberry Pi 上运行 PX4 自动驾驶仪的完整解决方案。  
-它被设计为低成本但高度可扩展的平台，Linux 和 PX4 方面持续更新。  
-所有组件均无需专有驱动程序，因 RPi 和 PX4 社区均提供上游支持。  
-PCB 和原理图也是开源的。
+_PilotPi_ shield 是一个完整功能方案，可在 Raspberry Pi 上直接运行 PX4 自动驾驶仪。  
+它被设计为一个低成本但高度可扩展的平台，Linux 和 PX4 双方会持续更新维护。  
+无需专有驱动程序，所有组件均获得 RPi 和 PX4 社区的上游支持。  
+PCB 和原理图也均为开源。
 
-![PilotPi 与 RPi 4B](../../assets/flight_controller/pilotpi/hardware-pilotpi4b.png)
+![PilotPi with RPi 4B](../../assets/flight_controller/pilotpi/hardware-pilotpi4b.png)
 
 ## 快速概览
 
-- 支持的 RPi 板：
+- 支持的RPi板：
   - Raspberry Pi 2B/3B/3B+/4B
-- 支持的操作系统：
+- 支持的系统：
   - Raspberry Pi OS
   - Ubuntu Server (armhf/arm64)
-- 加速度计 / 陀螺仪：
+- 加速度计/陀螺仪：
   - ICM42688P
 - 磁力计：
   - IST8310
@@ -32,44 +34,44 @@ PCB 和原理图也是开源的。
 - ADC：
   - ADS1115
 - 电源：
-  - 3~6S 电池，内置电压检测。
-  - 通过 USB 线为 Pi 供电
-- 可用性：_准备发货_
+  - 3~6S电池（带内置电压检测）
+  - 通过USB线缆为Pi供电
+- 可用性: _准备发货_
 
 ## 连接性
 
-盾板提供：
+Shield提供以下功能：
 
-- 16 通道 PWM 输出
-- GPS 接口
-- 通信接口
-- 外部 I2C 总线接口（**注意：** 与 CSI 摄像头冲突）
-- RC 输入端口（SBUS）
-- 3 个 0~5V 范围的 ADC 通道
-- 2\*8 2.54mm 未使用 GPIO 接口
+- 16路PWM输出通道  
+- GPS连接器  
+- 遥测连接器  
+- 外部I2C总线连接器（**注意**：与CSI摄像头冲突）  
+- RC输入端口（SBUS）  
+- 3路ADC通道（范围0~5V）  
+- 2\*8 2.54mm未使用GPIO连接器  
 
-可直接从 RPi 访问：
+可直接从RPi访问：  
 
-- 4 个 USB 接口
-- CSI 接口（**注意：** 与外部 I2C 总线冲突）
+- 4路USB连接器  
+- CSI连接器（**注意**：与外部I2C总线冲突）  
 - 等等
 
 ## 推荐接线
 
-![PilotPi 电源部分接线](../../assets/flight_controller/pilotpi/pilotpi_pwr_wiring.png)
+![PilotPi PowerPart接线](../../assets/flight_controller/pilotpi/pilotpi_pwr_wiring.png)
 
-![PilotPi 传感器部分接线](../../assets/flight_controller/pilotpi/pilotpi_sens_wiring.png)
+![PilotPi SensorPart接线](../../assets/flight_controller/pilotpi/pilotpi_sens_wiring.png)
 
 ## 引脚分配
 
 :::warning
-仍使用旧版 GH1.25 接口。
-接线与 Pixhawk 2.4.8 兼容。
+仍使用旧版的GH1.25连接器。
+接线与Pixhawk 2.4.8兼容
 :::
 
-### 接口
+### 连接器
 
-#### GPS 接口
+#### GPS连接器
 
 映射到 `/dev/ttySC0`
 
@@ -82,7 +84,7 @@ PCB 和原理图也是开源的。
 | 5   | NC     | +3v3 |
 | 6   | GND    | GND  |
 
-#### 通信接口
+#### 遥测连接器
 
 映射到 `/dev/ttySC1`
 
@@ -95,31 +97,31 @@ PCB 和原理图也是开源的。
 | 5   | RTS    | +3v3 |
 | 6   | GND    | GND  |
 
-#### 外部 I2C 接口
+#### 外部I2C连接器
 
 映射到 `/dev/i2c-0`
 
 | 引脚 | 信号 | 电压          |
 | --- | ------ | ------------- |
 | 1   | VCC    | +5V           |
-| 2   | SCL    | +3v3(pullups) |
-| 3   | SDA    | +3v3(pullups) |
+| 2   | SCL    | +3v3(上拉)    |
+| 3   | SDA    | +3v3(上拉)    |
 | 4   | GND    | GND           |
 
-#### RC & ADC2/3/4
+#### 遥控&ADC2/3/4
 
-RC 映射到 `/dev/ttyAMA0`，通过 RX 线的信号反相器开关。
+遥控信号映射到 `/dev/ttyAMA0`，并在RX线上配置信号反相开关。
 
-| 引脚 | 信号 | 电压     |
-| --- | ------ | -------- |
-| 1   | RC     | +3V3~+5V |
-| 2   | VCC    | +5V      |
-| 3   | GND    | GND      |
+| 引脚 | 信号 | 电压         |
+| --- | ------ | ------------ |
+| 1   | RC     | +3V3~+5V     |
+| 2   | VCC    | +5V          |
+| 3   | GND    | GND          |
 
-- ADC1 内部连接到分压器，用于电池电压监测。
+- ADC1 内部连接到电压分压器，用于监测电池电压。
 - ADC2 未使用。
 - ADC3 可连接模拟空速传感器。
-- ADC4 在 ADC 和 VCC 之间有跳线帽，用于监测系统电压水平。
+- ADC4 通过跳帽连接至ADC和VCC，用于监测系统电压。
 
 | 引脚 | 信号 | 电压   |
 | --- | ------ | ------ |
@@ -128,12 +130,13 @@ RC 映射到 `/dev/ttyAMA0`，通过 RX 线的信号反相器开关。
 | 3   | GND    | GND    |
 
 ::: info
-当 'Vref' 开关开启时，ADC3 & 4 的 VCC 由 REF5050 提供。
+ADC3 & 4 具有替代的 VCC 电源
+当 'Vref' 开关开启时，'VCC' 引脚由 REF5050 驱动。
 :::
 
-#### 板载未使用 GPIO
+#### 板载未使用GPIO引脚
 
-| 盾板引脚 | BCM | WiringPi | RPi 引脚 |
+| 屏蔽引脚 | BCM编号 | WiringPi编号 | RPi引脚 |
 | ---------- | --- | -------- | ------- |
 | 1          | 3V3 | 3v3      | 3V3     |
 | 2          | 5V  | 5V       | 5V      |
@@ -149,37 +152,36 @@ RC 映射到 `/dev/ttyAMA0`，通过 RX 线的信号反相器开关。
 | 12         | 12  | 26       | 32      |
 | 13         | 13  | 23       | 33      |
 | 14         | 16  | 27       | 36      |
-| 15         | 26  | 10       | 37      |
-| 16         | 19  | 9        | 35      |
+| 15         | 26  | 25       | 37      |
+| 16         | GND | GND      | GND     |
 
 ### 开关
 
-#### RC 反相器
+#### RC反相器
 
-控制 `/dev/ttyAMA0` 的 RX 信号反相。
+该开关将决定接收机线路的信号极性：`UART_RX = SW xor RC_INPUT`
+
+- 开启：适用于SBUS（信号反相）
+- 关闭：保持原极性
 
 #### Vref
 
-控制 ADC3 & 4 的参考电压源。
+ADC 3 & 4 的电压由以下来源驱动：
 
-#### 电源选择
+- 若开启：来自 REF5050 的 Vref 输出
+- 若关闭：直接来自 RPi 的 5V 引脚
 
-选择使用 USB 或电池供电。
+#### 启动模式
 
-## 开发者
+此开关连接到 Pin22(BCM25)。
+系统 rc 脚本将检查其值并决定 PX4 是否应随系统启动而自动启动。
 
-[RPi PilotPi Shield](https://github.com/ArduPilot/ArduPilot/tree/master/Tools/Frame-Files/PilotPi) 是由 [ArduPilot](https://ardupilot.org/) 社区开发的开源项目。
+- 开启：自动启动 PX4
+- 关闭：不启动 PX4
 
-## 附录
+## 开发者快速入门
 
-### 接线图
+请参考针对运行在你的树莓派上的操作系统的具体说明：
 
-![PilotPi 接线图](../../assets/flight_controller/pilotpi/pilotpi_schematics.png)
-
-### 3D 模型
-
-[PilotPi 3D 模型](https://github.com/ArduPilot/ArduPilot/tree/master/Tools/Frame-Files/PilotPi) 可在 GitHub 上找到。
-
-## 开发者
-
-[RPi PilotPi Shield](https://github.com/ArduPilot/ArduPilot/tree/master/Tools/Frame-Files/PilotPi) 是由 [ArduPilot](https://ardupilot.org/) 社区开发的开源项目。
+- [树莓派操作系统精简版 (armhf)](raspberry_pi_pilotpi_rpios.md)
+- [Ubuntu 服务器 (arm64 & armhf)](raspberry_pi_pilotpi_ubuntu_server.md)
