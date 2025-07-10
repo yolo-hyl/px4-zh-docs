@@ -28,6 +28,8 @@
     - eMMC：16GB
     - 无线：有## 连接与端口
 
+## 连接和端口
+
 ::: info  
 [Holybro 文档](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-rpi-cm4-baseboard/connections-and-ports) 提供了更详细（且可能更新）的端口和连接信息。  
 :::  
@@ -117,7 +119,7 @@ RPi CM4 和飞控必须分别供电：
 
 1. 将计算机连接到用于供电和刷写RPi的USB-C _CM4从机_ 端口。
 
-   ![](../../assets/companion.computer/holybro_pixhawk_rpi_cm4_baseboard/cm4_usbc_slave_port.png)
+   ![](../../assets/companion_computer/holybro_pixhawk_rpi_cm4_baseboard/cm4_usbc_slave_port.png)
 
 1. 获取 `usbboot`，构建并运行。
 
