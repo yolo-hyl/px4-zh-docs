@@ -64,7 +64,7 @@
 
    [![Assembly11](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly11.png)](https://youtu.be/iDxzWeyCN54)
 
-   [![Assembly12](../../20assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly12.png)](https://youtu.be/3fNJQraCJx0)
+   [![Assembly12](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly12.png)](https://youtu.be/3fNJQraCJx0)
 
 
 由于在顶板组装完成后插入线缆会比较费劲，建议提前完成布线工作。  
@@ -131,12 +131,12 @@ Pixhawk 6C通过电源模块PM02供电(在此情况下)。
 
 1. 按照视频组装GPS。
 
-   [![装配20](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly20.png)](https://youtu.be/aiFxVJFjlos)
+   [![Assembly20](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly20.png)](https://youtu.be/aiFxVJFjlos)
 
    本指南使用了Holybro指南中建议的GPS安装位置。
 1. 使用锁紧螺母 M3 和螺丝 M3*10 将GPS支架的底部固定在载荷固定架的一侧
 
-   [![装配21](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly21.png)](https://youtu.be/uG5UKy3FrIc)
+   [![Assembly21](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly21.png)](https://youtu.be/uG5UKy3FrIc)
 
 ### Pixhawk 6C
 
