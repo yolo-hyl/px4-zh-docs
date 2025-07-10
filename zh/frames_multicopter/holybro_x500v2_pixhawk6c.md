@@ -1,140 +1,216 @@
-# Holybro X500 V2 + Pixhawk 6C (PX4开发套件)
+# Holybro X500 V2 + Pixhawk 6C (PX4 Dev Kit)
 
-本主题提供完整的[Holybro X500 V2 ARF套件](https://holybro.com/collections/x500-kits)组装说明，该套件也被称为Holybro PX4开发套件。
+This topic provides full instructions for building the [Holybro X500 V2 ARF Kit](https://holybro.com/collections/x500-kits), also known as the Holybro PX4 Dev Kit.
 
-![组装完成的机体（已移除螺旋桨）](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/kit_no_props.jpg)
+![The fully built vehicle with props removed](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/kit_no_props.jpg)
 
-## 机体组装
+
+## Assembly
 
 ::: info
-- 本文档中的图片可点击查看对应步骤的YouTube视频。
-- 每个章节顶部会列出所需螺丝。
-
+- The images in this document can be selected to see a youtube video of the step.
+- Each section lists any required screws at the top.
 :::
 
-### 载荷与电池支架
+### Payload and Battery Holder
 
-**螺丝**- 沉头螺丝M2.5*6 12个
+**Screw**-  Sunk Screw M2.5*6 12pcs
 
-1. 将每个支架上的橡胶环密封圈插入对应位置。
-   不要使用尖锐物体将橡胶压入内部。
+1. Insert the hanger rubber ring gasket in each of their respective hangers.
+   Do not use sharp objects to press the rubbers inside.
 
    [![Assembly1](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly1.png)](https://www.youtube.com/watch?v=4Tid-FCP_aI)
 
-1. 取出电池安装板，使用沉头螺丝M2.5*6将其与滑动杆夹固定。
+1. Take the battery mounting board and screw it with the slide bar clip using the Sunk Screw M2.5*6.
 
    [![Assembly2](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly2.png)](https://youtu.be/9E-rld6tPWQ)
 
-1. 使用沉头螺丝M2.5*6将4个支架安装到平台板上。
+1. Screw 4 hangers to the Platform Board using Sunk Screw M2.5*6.
 
    [![Assembly3](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly3.png)](https://youtu.be/4qIBABc9KsY))
 
-1. 取出滑动杆并将4个支架插入后，再将其固定到底板上。
+1. Take the slide bar and insert 4 hangers to screw to the bottom plate later.
 
    [![Assembly4](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly4.png)](https://youtu.be/CFx6Ct7FCIc))
 
-1. 现在插入第2步和第3步组装的电池支架和载荷支架。
+1. Now insert the battery holder and payload holders assembled in step 2 & 3
 
-### 动力模块
 
-**螺丝**- 内六角螺钉M2.5*6 8个 | M3锁紧螺母 4个 | M3*5尼龙垫柱 4个 | M3*14螺丝 4个
+### Power Module
+
+**Screw**- Socket Cap Screw M2.5*6 8pcs | Locknut M3 4pcs |Nylon Standoff M3*5 4pcs | Screw M3*14 4pcs
 
    [![Assembly5](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly5.png)](https://youtu.be/0knU3Q_opEo))
 
-1. 取出底板，插入4个M3*14螺丝并在其上安装尼龙垫柱。
+1. Take the bottom plate and insert 4 M3*14 screws and fasten the nylon standoffs on the same.
 
    [![Assembly6](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly6.png)](https://youtu.be/IfsMXTr3Uy4)
 
-1. 放置电源分配板，使用锁紧螺母进行组装。电源模块PM02（用于Pixhawk 6C）将为该板供电。
+1. Place the Power distribution board and use the locknuts to assemble them. The power module PM02 (for Pixhawk 6C) would power this board
 
    [![Assembly7](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly7.png)](https://youtu.be/Qjs6pqarRIY)
 
-1. 使用内六角螺钉M2.5*6将底板安装到4个支架上（这些支架已在载荷支架组装的第3步中安装到2个滑动杆上）
+1. Use Socket Cap Screws M2.5*6 and screw the bottom plate on the 4 hangers (that we inserted in the 2 bars on the 3rd step of the payload holder assembly)
 
-### 起落架
+### Landing Gear
 
-1. 组装起落架时，松开起落架-横梁预装螺丝，插入起落架-立柱并拧紧。
+1. To assemble the landing gear, loosen the pre-assembled screws of the Landing Gear-Cross Bar and insert the Landing Gear-Vertical Pole and fasten the same.
 
-   [![Assembly8](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly8.png)](https://youtu.be/aiFxVJFjlos)
+   [![Assembly8](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly8.png)](https://youtu.be/mU4vm4zyjcY)
 
-1. 按照视频操作组装GPS。
+   [![Assembly9](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly9.png)](https://youtu.be/7REaF3YAqLg)
 
-   [![Assembly9](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly9.png)](https://youtu.be/aiFxVJFjlos)
+1. Use the Socket Cap Screw M3*8 to screw the landing gears to the bottom plate
 
-   本指南使用Holybro指南建议的GPS安装位置。
-1. 使用M3锁紧螺母和M3*10螺丝将GPS安装座底部固定在载荷支架侧
+   [![Assembly11](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly11.png)](https://youtu.be/iDxzWeyCN54)
 
-   [![Assembly10](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly10.png)](https://youtu.be/uG5UKy3FrIc)
+   [![Assembly12](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly12.png)](https://youtu.be/3fNJQraCJx0)
+
+
+Because it’s cumbersome to insert the wires once the top plate is assembled, do the wiring beforehand.
+Although the design is well built such that you can do this later as well.
+
+[![Assembly13](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly13.png)](https://youtu.be/3en4DlQF4XU)
+
+### Power
+
+The Pixhawk 6C gets powered by a power module PM02 (in this case).
+This power module is supplied by a battery (4S 16.8V 5200 mAh)
+
+The motors are powered through the power distribution board, as shown in the diagram below.
+
+![motors_pdb_pixhawk6c](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/motors_pdb_pixhawk6c.png)
+
+Note that the ESC connectors are color-coded and must be inserted in the PWM out such that the white cable faces up.
+
+![esc_connector_pixhawk6c](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/esc_connector.jpg)
+
+
+### Arms
+
+**Screw-** Socket Cap Screw M3*38 16pcs | Flange Locknut M3 16pcs
+
+[![Assembly14](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly14.png)](https://youtu.be/66Hfy6ysOpg)
+
+1. Putting the arms is quite simple as the motors come pre-assembled.
+   - Ensure that you have the right numbered arm with its motor on the respective side.
+
+   [![Assembly15](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly15.png)](https://youtu.be/45KCey3WiJ4)
+
+   :::tip
+   Use your allen keys/ any elongated item and insert it on the opposite side of the bolt that you're trying to fasten.
+   :::
+
+1. Take one arm and insert the rectangle extrusion inside the rectangular hollow on the bottom plate.
+
+   [![Assembly16](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly16.png)](https://youtu.be/GOTqmjq9_3s)
+
+1. While inserting the top plate on top of this the 3 piece assembly (bottom plate, top plate & arms) have to screwed using Socket Cap Screw M3*38 and Flange Locknut M3.
+1. Hold one side using the mini cross wrench provided in the developer kit.
+
+   [![Assembly17](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly17.png)](https://youtu.be/2rcNVekJQd0)
+
+1. Do not fasten any screws before all 3 motors are in place as this might make it difficult while you’re assembling the 3rd and 4th motor.
+
+   [![Assembly18](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly18.png)](https://youtu.be/SlKRuNoE_AY)
+
+### Propellers
+
+[![Assembly19](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly19.png)](https://youtu.be/yu75VkMaIyc)
+
+- The bottom plate indicates the direction of the motor.
+- The propellers that have a white/silver coating go on that respective motor with the similar coat.
+- The unlocking and locking of the propeller is indicated on the propeller itself.
+- Use the 4 propellers and insert them on the motors keeping the above 3 points in mind.
+
+The following parts can be placed as per usual.
+
+### GPS
+
+**Screw-** Locknut M3 4 pcs | Screw M3*10 4pcs
+
+
+1. Assemble the GPS by following the video.
+
+   [![Assembly20](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly20.png)](https://youtu.be/aiFxVJFjlos)
+
+   This guide uses the GPS mount location suggested in Holybro’s guide.
+1. Screw the GPS mount’s bottom end on the payload holder side using Locknut M3 & Screw M3*10
+
+   [![Assembly21](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly21.png)](https://youtu.be/uG5UKy3FrIc)
 
 ### Pixhawk 6C
 
-- PM02的线缆连接到Pixhawk的POWER1端口
-- 通信链路连接到TELEM1端口
-- GPS连接到GPS1端口
+- The wire from the PM02 goes to POWER1 in Pixhawk
+- The telemetry goes to TELEM1
+- The GPS to GPS1
 
-[![Assembly11](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly11.png)](https://youtu.be/wFlr_I3jERQ)
+[![Assembly22](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/assembly22.png)](https://youtu.be/wFlr_I3jERQ)
 
-### 伴飞计算机（可选）
+### Companion Computer (Optional)
 
-**螺丝**- 内六角螺钉M2.5*12 4个 | M2.5*5尼龙垫柱 4个 | M2.5锁紧螺母 4个
+**Screw-** Socket Cap Screw M2.5*12 4pcs | Nylon Standoff M2.5*5 4pcs Locknut M2.5 4pcs
 
-X500套件为伴飞计算机（如树莓派或Jetson nano）预留了安装空间[TBD]。
-- 插入4个内六角螺钉M2.5*12并安装垫柱
-- 将伴飞计算机放置到位后，使用M2.5锁紧螺母进行组装
+The X500 kit is provides space for a companion computer, such as Raspberry Pi or Jetson nano can be placed here [TBD].
+- Insert 4 Socket Cap Screw M2.5*12 and put the standoffs on the same.
+- Now place the companion computer and assemble it using Locknut M2.5
 
-### 摄像头
+### Camera
 
-- 可使用深度相机支架安装Intel RealSense深度/跟踪相机或Structure Core等设备
-- 将支架插入2个滑动杆内，并根据所用相机类型使用对应螺丝固定
+- Cameras such as Intel Realsense depth/ tracking camera or Structure Core can be mounted using the Depth Camera Mount
+- Simply insert the mount inside the 2 bars and use the screws according to the camera you’re using.
 
 ![payloads_x500v2](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk6c/payloads_x500v2.png)
 
-## 安装/配置 PX4
+
+## Install/Configure PX4
 
 :::tip
-完整的安装和配置 PX4 的说明请参见 [基本配置](../config/index.md)。
+Full instructions for installing and configuring PX4 can be found in [Basic Configuration](../config/index.md).
 :::
 
-*QGroundControl* 用于安装 PX4 自动驾驶仪，并针对 X500 机型进行配置/调试。
-[下载并安装](http://qgroundcontrol.com/downloads/) *QGroundControl*（适用于您的平台）。
+*QGroundControl* is used to install the PX4 autopilot and configure/tune it for the X500 frame.
+[Download and install](http://qgroundcontrol.com/downloads/) *QGroundControl* for your platform.
 
-首先更新固件、机型和执行器映射：
+First update the firmware, airframe, and actuator mappings:
 
-- [固件](../config/firmware.md)
-- [机型](../config/airframe.md)
+- [Firmware](../config/firmware.md)
+- [Airframe](../config/airframe.md)
 
-  您需要选择 *Holybro X500 V2* 机型（**四旋翼 x > Holybro 500 V2**）
+  You will need to select the *Holybro X500 V2* airframe (**Quadrotor x > Holybro 500 V2**)
 
-  ![QGroundControl - 选择HolyBro 500机型](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk5x/x500v2_airframe_qgc.png)
+  ![QGroundControl - Select HolyBro 500 airframe](../../assets/airframes/multicopter/x500_v2_holybro_pixhawk5x/x500v2_airframe_qgc.png)
 
-- [执行器](../config/actuators.md)
-  - 您无需更新机体几何参数（因为这是预配置的机型）。
-  - 根据接线情况将执行器功能分配到输出端口。
-    机型已预配置为电机连接在 **FMU PWM Out** 上。
-  - 使用滑动条测试配置。
+- [Actuators](../config/actuators.md)
+  - You should not need to update the vehicle geometry (as this is a preconfigured airframe).
+  - Assign actuator functions to outputs to match your wiring.
+    The airframe is preconfigured with the motors on the **FMU PWM Out**.
+  - Test the configuration using the sliders.
 
-然后执行强制性的设置/校准：
+Then perform the mandatory setup/calibration:
 
-- [传感器方向](../config/flight_controller_orientation.md)
-- [指南针](../config/compass.md)
-- [加速度计](../config/accelerometer.md)
-- [水平地平线校准](../config/level_horizon_calibration.md)
-- [遥控器设置](../config/radio.md)
-- [飞行模式](../config/flight_mode.md)
+- [Sensor Orientation](../config/flight_controller_orientation.md)
+- [Compass](../config/compass.md)
+- [Accelerometer](../config/accelerometer.md)
+- [Level Horizon Calibration](../config/level_horizon_calibration.md)
+- [Radio Setup](../config/radio.md)
+- [Flight Modes](../config/flight_mode.md)
 
-理想情况下您还应完成：
+Ideally you should also do:
 
-- [电调校准](../advanced_config/esc_calibration.md)
-- [电池估算调试](../config/battery.md)
-- [安全设置](../config/safety.md)
+- [ESC Calibration](../advanced_config/esc_calibration.md)
+- [Battery Estimation Tuning](../config/battery.md)
+- [Safety](../config/safety.md)
 
-## 调校
 
-机体选择会为该机体设置 *默认* 自动驾驶参数。
-这些参数足够用于飞行，但为特定机体结构调校参数是很有必要的。
+## Tuning
 
-操作指南请从 [自动调校](../config/autotune_mc.md) 开始。
+Airframe selection sets *default* autopilot parameters for the frame.
+These are good enough to fly with, but it is a good idea to tune the parameters for a specific frame build.
 
-## 致谢
+For instructions on how, start from [Auto-tune](../config/autotune_mc.md).
 
-本构建日志由 Akshata 和 Hamish Willee 提供，特别感谢 Holybro 和 Dronecode 提供的硬件与技术支持。
+
+## Acknowledgements
+
+This build log was contributed by Akshata and Hamish Willee with many thanks to Holybro and Dronecode for Hardware and technical support.
