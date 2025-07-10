@@ -79,7 +79,7 @@
      记得在启动调试会话前通过命令行构建目标
      :::
 
-   ![Eclipse: GDB Segger 调试配置](../../assets/debug/eclipse_settings_debug_config_gdb_seg_gdb_segger_build_config.png)
+   ![Eclipse: GDB Segger 调试配置](../../assets/debug/eclipse_settings_debug_config_gdb_segger_build_config.png)
 
 1. _Debugger_ 和 _Startup_ 选项卡通常无需修改（请通过截图核对设置）
 
