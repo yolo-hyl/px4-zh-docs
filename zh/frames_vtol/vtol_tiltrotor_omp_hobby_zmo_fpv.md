@@ -121,7 +121,7 @@ ZMO FPV在原始状态下的示意图。
 
 连接器粘接到机身。确保连接器正确对齐。
 
-![机翼连接器 02](../../assets/airframes/vtot/omp_hobby_zmo_fpv/wing-connector-02.jpg)
+![机翼连接器 02](../../assets/airframes/vtol/omp_hobby_zmo_fpv/wing-connector-02.jpg)
 
 ### Pixhawk适配板和BEC
 
