@@ -22,7 +22,7 @@
    当前仅在 Helicopter 分组中提供 _通用直升机（尾部电调）_ 选项。
    这将配置为机械解耦尾部的直升机机身 ([CA_AIRFRAME](../advanced_config/parameter_reference.md#CA_AIRFRAME): `10: Helicopter (tail ESC)`).
 
-   ![QGC - 直升机机身](../../assets/config/airframe/airframe_helicopter_generic.png)
+   ![QGC - 直升机机身](../../assets/config/airframe/airframe_heli_generic.png)
 
    ::: info
    没有为带有尾舵的直升机单独设计机身。

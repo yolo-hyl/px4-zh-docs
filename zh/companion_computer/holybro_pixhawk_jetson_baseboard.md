@@ -330,7 +330,7 @@ Jetson 部分的输入电压范围为 7V-21V，对应 3S 或 4S 电池。若使�
 
 此配置展示如何使用外部 UBEC（随板提供）为 Jetson 提供合适电压，当使用高压电池（>21V）时。根据电源需求，也可使用该 UBEC（或其他 UBEC）为舵机等控制部件提供稳压电源。
 
-![电源接线 - 大容量电池和 UBEC](../../assets/companion.computer/holybro_pixhawk_jetson_baseboard/power2_one_big_battery_external_ubec.png)
+![电源接线 - 大容量电池和 UBEC](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/power2_one_big_battery_external_ubec.png)
 
 #### 双电池（无 UBEC）
 
