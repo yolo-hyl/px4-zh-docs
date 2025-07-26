@@ -96,7 +96,9 @@ _QGroundControl_ 会在地面站计算机连接到 "Pixracer" WiFi 接入点时�
 1. 前往 [应用设置 > 通信链接](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/settings_view/settings_view.html)  
 2. 添加新连接并设置相应参数。  
 3. 选择新连接，然后点击 **连接**。  
-4. 此时机体应已连接## 验证
+4. 此时机体应已连接
+
+## 验证
 
 此时您应该能通过无线链路在QGC电脑上看到HUD移动，并且可以查看ESP8266 WiFi Bridge的摘要面板（如下所示）。
 

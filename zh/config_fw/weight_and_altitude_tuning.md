@@ -1,6 +1,6 @@
 # 高级 TECS 调参（重量与高度）
 
-本主题介绍了如何对[机体重量补偿](#vehicle-weight-compensation)和[空气密度补偿](#air-density-compensation)进行调整，并提供了有关[补偿算法](#weight-and-density-compensation-algorithms)的说明。
+本主题介绍了如何对[机体重量补偿](#机体重量补偿)和[空气密度补偿](#空气密度补偿)进行调整，并提供了有关[补偿算法](#重量和密度补偿算法)的说明。
 
 :::warning
 本主题要求您已执行过[基础 TECS 调参](../config_fw/position_tuning_guide_fixedwing.md#tecs-tuning-altitude-and-airspeed)。
@@ -20,7 +20,7 @@
 您可以通过在调参配置下使用电子秤测量机体重量，以及携带载荷飞行时测量的重量来确定这些值。
 
 当 `WEIGHT_BASE` 和 `WEIGHT_GROSS` 均大于 `0` 时会执行缩放操作，若两者数值相同则不会生效。
-详见下文的[算法](#weight-and-density-compensation-algorithms)部分获取更多信息。
+详见下文的[算法](#重量和密度补偿算法)部分获取更多信息。
 
 ## 空气密度补偿
 
@@ -40,7 +40,7 @@
 
 $$P = \sqrt{\rho\over{\rho_{sealevel}}}$$
 
-更多信息请参阅[密度对最小下沉率的影响](#effect-of-density-on-minimum-sink-rate)。
+更多信息请参阅[密度对最小下沉率的影响](#密度对最小下沉率的影响)。
 
 ### 应用密度校正到油门校正
 
@@ -50,7 +50,7 @@ $$P = \sqrt{\rho\over{\rho_{sealevel}}}$$
 
 $$P = \sqrt{\rho\over{\rho_{sealevel}}}$$
 
-更多信息请参阅[密度对油门校正的影响](#effect-of-density-on-trim-throttle)
+更多信息请参阅[密度对油门校正的影响](#密度对配平油门的影响)
 
 ## 重量和密度补偿算法
 

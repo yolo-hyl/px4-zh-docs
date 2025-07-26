@@ -44,7 +44,9 @@ _3DR Pixhawk<sup>&reg;</sup> 1_ 自动驾驶仪是基于 [Pixhawk-project](https
 - 8x PWM 带手动覆盖  
 - 6x PWM / GPIO / PWM 输入  
 - S.BUS / PPM / Spektrum 输入  
-- S.BUS 输出# 购买渠道
+- S.BUS 输出
+
+# 购买渠道
 
 该电路板最初由 3DR&reg; 原厂制造，是 PX4&reg; 的原始标准微控制器平台。虽然 3DR 已不再生产该板，但可以使用 [mRo Pixhawk](../flight_controller/mro_pixhawk.md) 作为即插即用的替代品。
 
@@ -52,7 +54,9 @@ _3DR Pixhawk<sup>&reg;</sup> 1_ 自动驾驶仪是基于 [Pixhawk-project](https
 
 - [Bare Bones](https://store.mrobotics.io/Genuine-PixHawk-1-Barebones-p/mro-pixhawk1-bb-mr.htm) - 仅包含电路板（可作为 3DR Pixhawk 的替代品）
 - [mRo Pixhawk 2.4.6 Essential Kit](https://store.mrobotics.io/Genuine-PixHawk-Flight-Controller-p/mro-pixhawk1-minkit-mr.htm) - 包含除遥测无线电外的所有组件
-- [mRo Pixhawk 2.4.6 Cool Kit! (Limited edition)](https://store.mrobotics.io/product-p/mro-pixhawk1-fullkit-mr.htm) - 包含所有必要组件（包括遥测无线电）## 规格
+- [mRo Pixhawk 2.4.6 Cool Kit! (Limited edition)](https://store.mrobotics.io/product-p/mro-pixhawk1-fullkit-mr.htm) - 包含所有必要组件（包括遥测无线电）
+
+## 规格
 
 ### 处理器
 
@@ -88,7 +92,9 @@ _3DR Pixhawk<sup>&reg;</sup> 1_ 自动驾驶仪是基于 [Pixhawk-project](https
 
 - 带自动切换的理想二极管控制器
 - 伺服电源轨支持高功率（最大10V）和大电流（10A+）
-- 所有外设输出均有过流保护，所有输入均防静电保护## 电压规格
+- 所有外设输出均有过流保护，所有输入均防静电保护
+
+## 电压规格
 
 Pixhawk 若提供三个电源输入则可实现电源三重冗余。三条电源通道分别为：电源模块输入、舵机电源输入、USB输入。
 
@@ -106,7 +112,9 @@ Pixhawk 若提供三个电源输入则可实现电源三重冗余。三条电源
 
 - 电源模块输入（4.1V至5.7V，0V至20V无损）  
 - 舵机电源输入（4.1V至5.7V，0V至20V）  
-- USB电源输入（4.1V至5.7V，0V至6V）## 原理图
+- USB电源输入（4.1V至5.7V，0V至6V）
+
+## 原理图
 
 [FMUv2 + IOv2 原理图](https://raw.githubusercontent.com/PX4/Hardware/master/FMUv2/PX4FMUv2.4.5.pdf) -- 原理图和布局
 
@@ -233,7 +241,9 @@ Pixhawk端口如下所示。
 | ------- | ---------------- | ----- |
 | 1 (红色) | VCC              | +3.3V |
 | 2 (黑色) | !IO_LED_SAFETY   | GND   |
-| 3 (黑色) | SAFETY           | GND   |## 串口映射
+| 3 (黑色) | SAFETY           | GND   |
+
+## 串口映射
 
 | UART   | 设备       | 端口                  |
 | ------ | ---------- | --------------------- |
@@ -244,7 +254,9 @@ Pixhawk端口如下所示。
 | UART7  | CONSOLE    |
 | UART8  | SERIAL4    |
 
-<!-- Note: Got ports using https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 -->## 调试端口
+<!-- Note: Got ports using https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 -->
+
+## 调试端口
 
 ### 控制台端口
 

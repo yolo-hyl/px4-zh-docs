@@ -25,7 +25,7 @@ PWM 电调通过周期性脉冲进行通信，其中脉冲的 _宽度_ 表示目
 
 ![PWM 占空比](../../assets/peripherals/esc_pwm_duty_cycle.png)
 
-除了相对较低的协议速度外，PWM 电调还需要 [校准](../advanced_config/esc_calibration.md)，因为表示低高值的范围可能差异较大。与 [DShot](#dshot) 和 [DroneCAN 电调](#dronecan) 不同，它们无法提供电调（或舵机）状态的遥测和反馈。
+除了相对较低的协议速度外，PWM 电调还需要 [校准](../advanced_config/esc_calibration.md)，因为表示低高值的范围可能差异较大。与 [DShot](#DShot) 和 [DroneCAN 电调](#DroneCAN) 不同，它们无法提供电调（或舵机）状态的遥测和反馈。
 
 配置：
 
@@ -35,7 +35,7 @@ PWM 电调通过周期性脉冲进行通信，其中脉冲的 _宽度_ 表示目
 
 ### OneShot 125
 
-[OneShot 125 电调](../peripherals/oneshot.md) 通常比 PWM 电调快得多，因此响应更灵敏且更易于调参。它们比 PWM 更适合多旋翼机体（但不如 [DShot 电调](#dshot) 优越，后者无需校准且可能提供遥测反馈）。OneShot 协议有多种变体，支持不同的频率。PX4 仅支持 OneShot 125。
+[OneShot 125 电调](../peripherals/oneshot.md) 通常比 PWM 电调快得多，因此响应更灵敏且更易于调参。它们比 PWM 更适合多旋翼机体（但不如 [DShot 电调](#DShot) 优越，后者无需校准且可能提供遥测反馈）。OneShot 协议有多种变体，支持不同的频率。PX4 仅支持 OneShot 125。
 
 OneShot 125 与 PWM 相同，但脉冲宽度缩短为原来的 1/8（从 125us 到 250us 表示零功率到全功率）。这使得 OneShot 125 电调具有更短的占空比/更高频率。PWM 理论最大值接近 500Hz，而 OneShot 可达 4kHz。实际支持频率取决于电调型号。
 
@@ -49,7 +49,7 @@ OneShot 125 与 PWM 相同，但脉冲宽度缩短为原来的 1/8（从 125us �
 
 [DShot](../peripherals/dshot.md) 是一种数字电调协议，特别推荐用于需要降低延迟的机体，例如竞速多旋翼、垂直起降（VTOL）等。
 
-其延迟低于 [PWM](#pwm) 和 [OneShot](#oneshot-125)，且更稳定。此外，它无需电调校准，部分电调可提供遥测反馈，还可反转电机旋转方向。
+其延迟低于 [PWM](#PWM) 和 [OneShot](#OneShot 125)，且更稳定。此外，它无需电调校准，部分电调可提供遥测反馈，还可反转电机旋转方向。
 
 PX4 配置在 [执行器配置](../config/actuators.md) 中完成。通过 UI 选择更高频率的 DShot 电调可降低延迟，但低频率更稳定（更适合长线缆的大机体）；部分电调仅支持低频率（详见数据手册）。
 
@@ -62,6 +62,6 @@ PX4 配置在 [执行器配置](../config/actuators.md) 中完成。通过 UI �
 
 [DroneCAN 电调](../dronecan/escs.md) 推荐用于以 DroneCAN 为主总线的机体。PX4 实现目前限制更新频率为 200Hz。
 
-DroneCAN 与 [DShot](#dshot) 具有相似优势，包括高数据率、长线缆稳定连接、遥测反馈以及无需电调校准。
+DroneCAN 与 [DShot](#DShot) 具有相似优势，包括高数据率、长线缆稳定连接、遥测反馈以及无需电调校准。
 
 [DroneCAN 电调](../dronecan/escs.md) 通过 DroneCAN 总线连接（设置和配置详见该链接）。

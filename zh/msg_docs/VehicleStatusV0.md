@@ -5,14 +5,14 @@
 [source file](https://github.com/PX4/PX4-Autopilot/blob/main/msg/px4_msgs_old/msg/VehicleStatusV0.msg)
 
 ```c
-# 编码由commander发布的机体系统状态
+# Encodes the system state of the vehicle published by commander
 
 uint32 MESSAGE_VERSION = 0
 
-uint64 timestamp # 系统启动后经过的时间（微秒）
+uint64 timestamp # time since system start (microseconds)
 
-uint64 armed_time # 解锁时间戳（微秒）
-uint64 takeoff_time # 起飞时间戳（微秒）
+uint64 armed_time # Arming timestamp (microseconds)
+uint64 takeoff_time # Takeoff timestamp (microseconds)
 
 uint8 arming_state
 uint8 ARMING_STATE_DISARMED = 1
@@ -35,34 +35,34 @@ uint8 ARM_DISARM_REASON_FAILURE_DETECTOR = 11
 uint8 ARM_DISARM_REASON_SHUTDOWN = 12
 uint8 ARM_DISARM_REASON_UNIT_TEST = 13
 
-uint64 nav_state_timestamp # 当前nav_state激活的时间
+uint64 nav_state_timestamp # time when current nav_state activated
 
-uint8 nav_state_user_intention                  # 用户选择的模式（在安全保护情况下可能与nav_state不同）
+uint8 nav_state_user_intention                  # Mode that the user selected (might be different from nav_state in a failsafe situation)
 
-uint8 nav_state                                 # 当前激活的模式
-uint8 NAVIGATION_STATE_MANUAL = 0               # 手动模式
-uint8 NAVIGATION_STATE_ALTCTL = 1               # 高度控制模式
-uint8 NAVIGATION_STATE_POSCTL = 2               # 位置控制模式
-uint8 NAVIGATION_STATE_AUTO_MISSION = 3         # 自动任务模式
-uint8 NAVIGATION_STATE_AUTO_LOITER = 4          # 自动盘旋模式
-uint8 NAVIGATION_STATE_AUTO_RTL = 5             # 自动返航模式
+uint8 nav_state                                 # Currently active mode
+uint8 NAVIGATION_STATE_MANUAL = 0               # Manual mode
+uint8 NAVIGATION_STATE_ALTCTL = 1               # Altitude control mode
+uint8 NAVIGATION_STATE_POSCTL = 2               # Position control mode
+uint8 NAVIGATION_STATE_AUTO_MISSION = 3         # Auto mission mode
+uint8 NAVIGATION_STATE_AUTO_LOITER = 4          # Auto loiter mode
+uint8 NAVIGATION_STATE_AUTO_RTL = 5             # Auto return to launch mode
 uint8 NAVIGATION_STATE_POSITION_SLOW = 6
 uint8 NAVIGATION_STATE_FREE5 = 7
 uint8 NAVIGATION_STATE_FREE4 = 8
 uint8 NAVIGATION_STATE_FREE3 = 9
-uint8 NAVIGATION_STATE_ACRO = 10                # 特技飞行模式
+uint8 NAVIGATION_STATE_ACRO = 10                # Acro mode
 uint8 NAVIGATION_STATE_FREE2 = 11
-uint8 NAVIGATION_STATE_DESCEND = 12             # 下降模式（无位置控制）
-uint8 NAVIGATION_STATE_TERMINATION = 13         # 终止模式
+uint8 NAVIGATION_STATE_DESCEND = 12             # Descend mode (no position control)
+uint8 NAVIGATION_STATE_TERMINATION = 13         # Termination mode
 uint8 NAVIGATION_STATE_OFFBOARD = 14
-uint8 NAVIGATION_STATE_STAB = 15                # 稳定模式
+uint8 NAVIGATION_STATE_STAB = 15                # Stabilized mode
 uint8 NAVIGATION_STATE_FREE1 = 16
-uint8 NAVIGATION_STATE_AUTO_TAKEOFF = 17        # 起飞
-uint8 NAVIGATION_STATE_AUTO_LAND = 18           # 着陆
-uint8 NAVIGATION_STATE_AUTO_FOLLOW_TARGET = 19  # 自动跟随
-uint8 NAVIGATION_STATE_AUTO_PRECLAND = 20       # 精准着陆（使用着陆目标）
-uint8 NAVIGATION_STATE_ORBIT = 21               # 绕圈飞行
-uint8 NAVIGATION_STATE_AUTO_VTOL_TAKEOFF = 22   # 起飞、转换、建立盘旋
+uint8 NAVIGATION_STATE_AUTO_TAKEOFF = 17        # Takeoff
+uint8 NAVIGATION_STATE_AUTO_LAND = 18           # Land
+uint8 NAVIGATION_STATE_AUTO_FOLLOW_TARGET = 19  # Auto Follow
+uint8 NAVIGATION_STATE_AUTO_PRECLAND = 20       # Precision land with landing target
+uint8 NAVIGATION_STATE_ORBIT = 21               # Orbit in a circle
+uint8 NAVIGATION_STATE_AUTO_VTOL_TAKEOFF = 22   # Takeoff, transition, establish loiter
 uint8 NAVIGATION_STATE_EXTERNAL1 = 23
 uint8 NAVIGATION_STATE_EXTERNAL2 = 24
 uint8 NAVIGATION_STATE_EXTERNAL3 = 25
@@ -73,12 +73,12 @@ uint8 NAVIGATION_STATE_EXTERNAL7 = 29
 uint8 NAVIGATION_STATE_EXTERNAL8 = 30
 uint8 NAVIGATION_STATE_MAX = 31
 
-uint8 executor_in_charge                        # 当前模式执行负责人（0=自动驾驶仪）
+uint8 executor_in_charge                        # Current mode executor in charge (0=Autopilot)
 
-uint32 valid_nav_states_mask                    # 所有有效nav_state值的位掩码
-uint32 can_set_nav_states_mask                  # 用户可选择模式的位掩码
+uint32 valid_nav_states_mask                    # Bitmask for all valid nav_state values
+uint32 can_set_nav_states_mask                  # Bitmask for all modes that a user can select
 
-# 检测到的故障位掩码
+# Bitmask of detected failures
 uint16 failure_detector_status
 uint16 FAILURE_NONE = 0
 uint16 FAILURE_ROLL = 1              # (1 << 0)
@@ -94,7 +94,7 @@ uint8 hil_state
 uint8 HIL_STATE_OFF = 0
 uint8 HIL_STATE_ON = 1
 
-# 如果是VTOL，当以多旋翼飞行时值为VEHICLE_TYPE_ROTARY_WING，当以固定翼飞行时值为VEHICLE_TYPE_FIXED_WING
+# If it's a VTOL, then the value will be VEHICLE_TYPE_ROTARY_WING while flying as a multicopter, and VEHICLE_TYPE_FIXED_WING when flying as a fixed-wing
 uint8 vehicle_type
 uint8 VEHICLE_TYPE_UNKNOWN = 0
 uint8 VEHICLE_TYPE_ROTARY_WING = 1
@@ -104,69 +104,46 @@ uint8 VEHICLE_TYPE_AIRSHIP = 4
 
 uint8 FAILSAFE_DEFER_STATE_DISABLED = 0
 uint8 FAILSAFE_DEFER_STATE_ENABLED = 1
-uint8 FAILSAFE_DEFER_STATE_WOULD_FAILSAFE = 2 # 延迟安全保护，但会触发安全保护
+uint8 FAILSAFE_DEFER_STATE_WOULD_FAILSAFE = 2 # Failsafes deferred, but would trigger a failsafe
 
-bool failsafe # 如果系统处于安全保护状态（如：RTL、悬停、终止等）则为true
-bool failsafe_and_user_took_over # 如果系统处于安全保护状态但用户已接管控制则为true
-uint8 failsafe_defer_state # 取值为FAILSAFE_DEFER_STATE_*中的一个
+bool failsafe # true if system is in failsafe state (e.g.:RTL, Hover, Terminate, ...)
+bool failsafe_and_user_took_over # true if system is in failsafe state but the user took over control
+uint8 failsafe_defer_state # one of FAILSAFE_DEFER_STATE_*
 
-# 链路丢失
-bool gcs_connection_lost              # 与GCS的数据链路丢失
-uint8 gcs_connection_lost_counter     # 记录GCS连接丢失事件次数
-bool high_latency_data_link_lost # 如果高延迟数据链（如RockBlock Iridium 9603遥测模块）丢失则为true
+# Link loss
+bool gcs_connection_lost              # datalink to GCS lost
+uint8 gcs_connection_lost_counter     # counts unique GCS connection lost events
+bool high_latency_data_link_lost # Set to true if the high latency data link (eg. RockBlock Iridium 9603 telemetry module) is lost
 
-# VTOL标志
-bool is_vtol             # 如果系统具备VTOL能力则为true
-bool is_vtol_tailsitter  # 如果系统在从多旋翼转换到固定翼时执行90°俯冲旋转则为true
-bool in_transition_mode  # 如果VTOL正在执行转换则为true
-bool in_transition_to_fw # 如果VTOL正在从多旋翼转换到固定翼则为true
+# VTOL flags
+bool is_vtol             # True if the system is VTOL capable
+bool is_vtol_tailsitter  # True if the system performs a 90° pitch down rotation during transition from MC to FW
+bool in_transition_mode  # True if VTOL is doing a transition
+bool in_transition_to_fw # True if VTOL is doing a transition from MC to FW
 
-# MAVLink识别
-uint8 system_type  # 系统类型，包含mavlink的MAV_TYPE
-uint8 system_id	   # 系统ID，包含MAVLink的系统ID字段
-uint8 component_id # 子系统/组件ID，包含MAVLink的组件ID字段
+# MAVLink identification
+uint8 system_type  # system type, contains mavlink MAV_TYPE
+uint8 system_id	   # system id, contains MAVLink's system ID field
+uint8 component_id # subsystem / component id, contains MAVLink's component ID field
 
-bool safety_button_available # 如果连接了安全按钮则为true
-bool safety_off # 如果安全开关关闭则为true
+bool safety_button_available # Set to true if a safety button is connected
+bool safety_off # Set to true if safety is off
 
-bool power_input_valid                            # 如果输入电源有效则设置为true
-bool usb_connected                                # 当从USB链接接收到遥测数据时设置为true（永不清除）
-
-bool open_drone_id_system_present
-bool open_drone_id_system_healthy
-
-bool parachute_system_present
-bool parachute_system_healthy
-
-bool failsafe # 如果系统处于安全保护状态（如：RTL、悬停、终止等）则为true
-bool failsafe_and_user_took_over # 如果系统处于安全保护状态但用户已接管控制则为true
-uint8 failsafe_defer_state # 取值为FAILSAFE_DEFER_STATE_*中的一个
-
-# 链路丢失
-bool gcs_connection_lost              # 与GCS的数据链路丢失
-uint8 gcs_connection_lost_counter     # 记录GCS连接丢失事件次数
-bool high_latency_data_link_lost # 如果高延迟数据链（如RockBlock Iridium 9603遥测模块）丢失则为true
-
-# VTOL标志
-bool is_vtol             # 如果系统具备VTOL能力则为true
-bool is_vtol_tailsitter  # 如果系统在从多旋翼转换到固定翼时执行90°俯冲旋转则为true
-bool in_transition_mode  # 如果VTOL正在执行转换则为true
-bool in_transition_to_fw # 如果VTOL正在从多旋翼转换到固定翼则为true
-
-# MAVLink识别
-uint8 system_type  # 系统类型，包含mavlink的MAV_TYPE
-uint8 system_id	   # 系统ID，包含MAVLink的系统ID字段
-uint8 component_id # 子系统/组件ID，包含MAVLink的组件ID字段
-
-bool safety_button_available # 如果连接了安全按钮则为true
-bool safety_off # 如果安全开关关闭则为true
-
-bool power_input_valid                            # 如果输入电源有效则设置为true
-bool usb_connected                                # 当从USB链接接收到遥测数据时设置为true（永不清除）
+bool power_input_valid                            # set if input power is valid
+bool usb_connected                                # set to true (never cleared) once telemetry received from usb link
 
 bool open_drone_id_system_present
 bool open_drone_id_system_healthy
 
 bool parachute_system_present
 bool parachute_system_healthy
+
+bool avoidance_system_required                    # Set to true if avoidance system is enabled via COM_OBS_AVOID parameter
+bool avoidance_system_valid                       # Status of the obstacle avoidance system
+
+bool rc_calibration_in_progress
+bool calibration_enabled
+
+bool pre_flight_checks_pass		# true if all checks necessary to arm pass
+
 ```

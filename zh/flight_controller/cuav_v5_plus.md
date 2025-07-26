@@ -58,7 +58,9 @@ _V5+_<sup>&reg;</sup> 是由 CUAV<sup>&reg;</sup> 生产的先进自主飞控器
   - 尺寸：85.5\*42\*33mm
 - 其他特性：
 
-  - 工作温度：-20 ~ 80°c（实测值）## 购买渠道
+  - 工作温度：-20 ~ 80°c（实测值）
+  
+## 购买渠道
 
 [CUAV Aliexpress](https://www.aliexpress.com/item/32890380056.html?spm=a2g0o.detail.1000060.1.7a7233e7mLTlVl&gps-id=pcDetailBottomMoreThisSeller&scm=1007.13339.90158.0&scm_id=1007.13339.90158.0&scm-url=1007.13339.90158.0&pvid=d899bfab-a7ca-46e1-adf2-72ad1d649822)（国际用户）
 
@@ -68,7 +70,9 @@ _V5+_<sup>&reg;</sup> 是由 CUAV<sup>&reg;</sup> 生产的先进自主飞控器
 飞控可能附带 Neo GPS 模块出售
 :::
 
-<a id="connection"></a>## 连接（接线）
+<a id="connection"></a>
+
+## 连接（接线）
 
 [CUAV V5+ Wiring Quickstart](../assembly/quick_start_cuav_v5_plus.md)
 
@@ -89,7 +93,9 @@ _V5+ AutoPilot_ 支持冗余电源 - 最多可使用三个电源：`Power1`、`P
 在以下条件下，系统将按此顺序使用所有电源供电：
 
 1. `Power1` 和 `Power2` 输入（4.3V 至 5.4V）
-1. `USB` 输入（4.75V 至 5.25V）## 过流保护
+1. `USB` 输入（4.75V 至 5.25V）
+
+## 过流保护
 
 _V5+_ 具备 5 伏外设和 5 伏高压的过流保护，可将电流限制在 2.5A。
 _V5+_ 具备短路保护。
@@ -141,7 +147,7 @@ SWD Vref引脚（1）使用5V作为参考电压，但CPU工作在3.3V！
 某些JTAG适配器（SEGGER J-Link）会使用Vref电压来设置SWD线路的电压。  
 对于直接连接到_Segger Jlink_的情况，我们建议使用标记为`DSM`/`SBUS`/`RSSI`的连接器第4引脚提供的3.3V，为JTAG提供`Vtref`（即提供3.3V而非5V）。
 
-更多信息请参见[使用JTAG进行硬件调试](#using-jtag-for-hardware-debugging)。
+更多信息请参见[使用JTAG进行硬件调试](#使用JTAG进行硬件调试)。
 :::
 
 ## 串口映射
@@ -158,7 +164,9 @@ SWD Vref引脚（1）使用5V作为参考电压，但CPU工作在3.3V！
 
 <!-- Note: Got ports using https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 -->
 
-<a id="optional-hardware"></a>## 外设
+<a id="optional-hardware"></a>
+
+## 外设
 
 - [数字空速传感器](https://item.taobao.com/item.htm?spm=a1z10.3-c-s.w4002-16371268452.37.6d9f48afsFgGZI&id=9512463037)
 - [遥测无线电模块](https://cuav.taobao.com/category-158480951.htm?spm=2013.1.w5002-16371268426.4.410b7a821qYbBq&search=y&catName=%CA%FD%B4%AB%B5%E7%CC%A8)
@@ -216,7 +224,9 @@ UAVCAN [NEO V2 PRO GNSS接收器](http://doc.cuav.net/gps/neo-series-gnss/en/neo
 请勿在SBUS / DSM / RSSI接口上连接其他设备（除遥控接收机外）- 这可能导致设备损坏。
 
 - _发现于:_ Batches V01190904xxxx
-- _修复于:_ Batches later than V01190904xxxx## 进一步信息
+- _修复于:_ Batches later than V01190904xxxx
+
+## 进一步信息
 
 - [CUAV V5+ 手册](http://manual.cuav.net/V5-Plus.pdf)
 - [CUAV V5+ 文档](http://doc.cuav.net/flight-controller/v5-autopilot/en/v5+.html)

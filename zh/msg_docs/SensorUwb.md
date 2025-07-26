@@ -5,39 +5,39 @@ UWB距离包含由超宽带定位系统（如Pozyx或NXP Rddrone）测量的距�
 [source file](https://github.com/PX4/PX4-Autopilot/blob/main/msg/SensorUwb.msg)
 
 ```c
-# UWB距离包含由超宽带定位系统测量的距离信息
-# 例如Pozyx或NXP Rddrone
+# UWB distance contains the distance information measured by an ultra-wideband positioning system,
+# such as Pozyx or NXP Rddrone.
 
-uint64 	timestamp		# 系统启动后时间（微秒）
+uint64 	timestamp		# time since system start (microseconds)
 
-uint32 	sessionid		# UWB会话ID
-uint32 	time_offset		# 测距轮次之间的时间间隔（毫秒）
-uint32 	counter			# 自上次测距开始的测距次数
-uint16 	mac			# 发起者（控制器）的MAC地址
+uint32 	sessionid		# UWB SessionID
+uint32 	time_offset		# Time between Ranging Rounds in ms
+uint32 	counter			# Number of Ranges since last Start of Ranging
+uint16 	mac			# MAC adress of Initiator (controller)
 
-uint16 	mac_dest		# 响应者（被控端）的MAC地址
-uint16 	status			# 状态反馈 #
-uint8 	nlos			# 非视距条件（是/否）
-float32 distance		# 到UWB接收器的距离（米）
+uint16 	mac_dest		# MAC adress of Responder (Controlee)
+uint16 	status			# status feedback #
+uint8 	nlos			# None line of site condition y/n
+float32 distance		# distance in m to the UWB receiver
 
 
-# 到达角，角度范围-60..+60度；两个轴的视场角均为120度
-float32 aoa_azimuth_dev	# 首条接收消息的方位角到达角
-float32 aoa_elevation_dev	# 首条接收消息的仰角到达角
-float32 aoa_azimuth_resp	# 响应者处首条接收消息的方位角到达角
-float32 aoa_elevation_resp	# 响应者处首条接收消息的仰角到达角
+#Angle of arrival, Angle in Degree -60..+60; FOV in both axis is 120 degrees
+float32 aoa_azimuth_dev	# Angle of arrival of first incomming RX msg
+float32 aoa_elevation_dev	# Angle of arrival of first incomming RX msg
+float32 aoa_azimuth_resp	# Angle of arrival of first incomming RX msg at the responder
+float32 aoa_elevation_resp	# Angle of arrival of first incomming RX msg at the responder
 
-# 角度测量的优度量
-uint8 aoa_azimuth_fom		# AOA方位角优度量
-uint8 aoa_elevation_fom		# AOA仰角优度量
-uint8 aoa_dest_azimuth_fom	# AOA方位角优度量
-uint8 aoa_dest_elevation_fom	# AOA仰角优度量
+# Figure of merit for the angle measurements
+uint8 aoa_azimuth_fom		# AOA Azimuth FOM
+uint8 aoa_elevation_fom		# AOA Elevation FOM
+uint8 aoa_dest_azimuth_fom	# AOA Azimuth FOM
+uint8 aoa_dest_elevation_fom	# AOA Elevation FOM
 
-# 发起者物理配置
-uint8 orientation		# 传感器朝向（来自MAV_SENSOR_ORIENTATION枚举）
-				# 标准配置为天线朝下，方位角对齐前向方向
-float32 offset_x		# UWB发起者在X轴的偏移量（NED无人机坐标系）
-float32 offset_y		# UWB发起者在Y轴的偏移量（NED无人机坐标系）
-float32 offset_z		# UWB发起者在Z轴的偏移量（NED无人机坐标系）
+# Initiator physical configuration
+uint8 orientation		# Direction the sensor faces from MAV_SENSOR_ORIENTATION enum
+				# Standard configuration is Antennas facing down and azimuth aligened in forward direction
+float32 offset_x		# UWB initiator offset in X axis (NED drone frame)
+float32 offset_y		# UWB initiator offset in Y axis (NED drone frame)
+float32 offset_z		# UWB initiator offset in Z axis (NED drone frame)
 
 ```

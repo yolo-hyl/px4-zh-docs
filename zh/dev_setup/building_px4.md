@@ -7,7 +7,7 @@ PX4 固件可以从源代码在控制台或 IDE 中进行编译，适用于模�
 
 ::: 信息
 在遵循这些说明之前，您必须首先为您的主机操作系统和目标硬件安装 [开发者工具链](../dev_setup/dev_env.md)。
-如果您在完成这些步骤后遇到任何问题，请参阅下面的 [故障排除](#troubleshooting) 部分。
+如果您在完成这些步骤后遇到任何问题，请参阅下面的 [故障排除](#故障排除) 部分。
 :::
 
 ## 下载 PX4 源代码
@@ -333,7 +333,9 @@ make px4_sitl list_vmd_make_targets
 其他make目标将在相关章节讨论：
 
 - `bloaty_compare_master`: [Binary Size Profiling](../debug/binary_size_profiling.md)
-- ...## 固件版本与 Git 标签
+- ...
+
+## 固件版本与 Git 标签
 
 _PX4 固件版本_ 和 _自定义固件版本_ 通过 MAVLink [AUTOPILOT_VERSION](https://mavlink.io/en/messages/common.html#AUTOPILOT_VERSION) 消息发布，并在 _QGroundControl_ **设置 > 概要** 机体面板中显示：
 

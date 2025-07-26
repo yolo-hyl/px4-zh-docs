@@ -187,7 +187,9 @@ sudo ./bin/px4 -s px4.config
 目前 _librobotcontrol_ 需要 root 权限。
 :::
 
-<a id="native_builds"></a>## 本地构建（可选）
+<a id="native_builds"></a>
+
+## 本地构建（可选）
 
 您也可以在 BeagleBone Blue 上直接进行 PX4 的本地构建。
 
@@ -224,10 +226,17 @@ sudo ./bin/px4 -s px4.config
 ```sh
 #!/bin/sh -e
 #
+# rc.local
+# 该脚本在每个multiuser runlevel结束时执行。
+# 确保脚本在成功时或任何其他情况下都会 "exit 0"
+# 错误时的值
+#
+# 为了启用或禁用此脚本只需修改执行权限
+# 位
+#
+# 默认情况下，此脚本不执行任何操作。
 
-```# rc.local# 该脚本在每个multiuser runlevel结束时执行。# 确保脚本在成功时或任何其他情况下都会 "exit 0"# 错误时的值
-## 为了启用或禁用此脚本只需修改执行权限# 位
-## 默认情况下，此脚本不执行任何操作。# 等待服务启动
+# 等待服务启动
 /bin/sleep 25
 
 cd /home/debian/px4

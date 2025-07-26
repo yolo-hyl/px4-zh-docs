@@ -14,7 +14,7 @@
 所有与着陆检测器相关的参数在参数参考中以[LNDMC](../advanced_config/parameter_reference.md#land-detector)为前缀列出（这些参数可通过QGroundControl的[参数编辑器](../advanced_config/parameters.md)进行编辑）。
 
 :::tip
-关于参数如何影响着陆的详细信息，请参见下方的[陆地检测器状态](#mc-land-detector-states)。
+关于参数如何影响着陆的详细信息，请参见下方的[陆地检测器状态](#多旋翼陆地检测器状态)。
 :::
 
 为改善特定机体的着陆行为，可能需要调整的其他关键参数包括：
@@ -60,7 +60,7 @@
 
 该状态的条件：
 
-- [地面接触](#ground-contact)状态的所有条件为真
+- [地面接触](#地面接触)状态的所有条件为真
 - 无旋转（[LNDMC_ROT_MAX](../advanced_config/parameter_reference.md#LNDMC_ROT_MAX)）
 - 推力为低值`MPC_THR_MIN + (MPC_THR_HOVER - MPC_THR_MIN) * 0.1`
 - 未检测到自由下落
@@ -75,7 +75,7 @@
 
 该状态的条件：
 
-- [可能着陆](#maybe-landed)状态的所有条件为真
+- [可能着陆](#可能着陆)状态的所有条件为真
 
 ## 固定翼配置
 

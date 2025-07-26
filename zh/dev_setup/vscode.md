@@ -66,7 +66,7 @@
      ![选择Cmake构建目标](../../assets/toolchain/vscode/cmake_build_config.jpg)
 
      ::: info
-     选择的cmake目标会影响[构建/调试](#debugging)时提供的目标选项(例如进行硬件调试时必须选择类似`px4_fmu-v6`的硬件目标)。
+     选择的cmake目标会影响[构建/调试](#调试)时提供的目标选项(例如进行硬件调试时必须选择类似`px4_fmu-v6`的硬件目标)。
      :::
 
    - 点击配置栏中的目标以显示其他选项，然后选择你需要的配置(这会替换当前选中的目标)。
@@ -110,7 +110,7 @@
 连接到SWD接口后，VSCode中的硬件调试与[SITL调试](#debugging_sitl)相同，区别在于你需要选择适合自己调试器类型（和固件）的调试目标 - 例如 `jlink (px4_fmu-v5)`。
 
 :::tip
-要查看 `jlink` 选项，您必须已选择了 [cmake构建固件的目标](#building-px4)。
+要查看 `jlink` 选项，您必须已选择了 [cmake构建固件的目标](#构建 PX4)。
 :::
 
 ![显示不同探测器选项的硬件目标图像](../../assets/toolchain/vscode/vscode_hardware_debugging_options.png)

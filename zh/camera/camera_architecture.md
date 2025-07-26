@@ -35,7 +35,7 @@ PX4 对支持 [Camera Protocol v2](https://mavlink.io/en/services/camera.html) �
 
 该工作由三个PX4组件完成：[`camera_trigger`驱动](https://github.com/PX4/PX4-Autopilot/tree/main/src/drivers/camera_trigger)，[`camera_capture`驱动](https://github.com/PX4/PX4-Autopilot/tree/main/src/drivers/camera_capture)，[`camera-feedback`模块](../modules/modules_system.md#camera-feedback)。
 
-`camera_trigger`订阅[VehicleCommand](../msg_docs/VehicleCommand.md)主题并监控其[支持的命令](../camera/fc_connected_camera.md#mavlink-command-interface)的更新。这些更新发生在通过MAVLink接收到命令时，或当[任务中达到相机项](#camera-commands-in-missions)时。
+`camera_trigger`订阅[VehicleCommand](../msg_docs/VehicleCommand.md)主题并监控其[支持的命令](../camera/fc_connected_camera.md#mavlink-command-interface)的更新。这些更新发生在通过MAVLink接收到命令时，或当[任务中达到相机项](#任务中的相机命令)时。
 
 这些命令用于启用/禁用触发，并配置按时间/距离间隔的触发。驱动器跟踪这些间隔，并在需要时触发输出。驱动器发布一个[CameraTrigger](../msg_docs/CameraTrigger.md)主题（`feedback`字段设为`false`），这会触发一个[CAMERA_TRIGGER](https://mavlink.io/en/messages/common.html#CAMERA_TRIGGER) MAVLink消息的发送。
 
@@ -45,10 +45,10 @@ PX4 对支持 [Camera Protocol v2](https://mavlink.io/en/services/camera.html) �
 
 ## MAVLink 相机（Camera Protocol v1）
 
-[支持旧版 Camera Protocol v1 协议的 MAVLink 相机](../camera/mavlink_v1_camera.md)的集成方式与[FC连接相机](#fc-connected-cameras)类似。
+[支持旧版 Camera Protocol v1 协议的 MAVLink 相机](../camera/mavlink_v1_camera.md)的集成方式与[FC连接相机](#连接到飞控的相机)类似。
 
 `camera_trigger` 订阅 [VehicleCommand](../msg_docs/VehicleCommand.md) 主题并监控[其支持的命令](../camera/fc_connected_camera.md#mavlink-command-interface)的更新。
-当通过 MAVLink 接收到命令，或[在任务中找到相机指令](#camera-commands-in-missions)时，这一过程就会触发。
+当通过 MAVLink 接收到命令，或[在任务中找到相机指令](#任务中的相机命令)时，这一过程就会触发。
 
 这些命令用于启用/禁用触发，并配置在时间与距离间隔内的触发。
 驱动程序会跟踪这些间隔，但使用 "MAVLink backend" 时不需要实际触发任何输出（因为命令会转发给相机）。

@@ -1,25 +1,33 @@
-<div v-if="$frontmatter.frame === 'Multicopter'"># 组装多旋翼飞行器
+<div v-if="$frontmatter.frame === 'Multicopter'">
+
+# 组装多旋翼飞行器
 
 本主题提供基本的指导说明和链接，展示如何连接和组装运行PX4的典型多旋翼飞行器（UAV）核心组件。
 
 这些包括飞控、GPS、外部指南针、遥控器和/或数传电台系统、电机和/或其他控制执行器、载荷以及电源系统。
 
 </div>
-<div v-else-if="$frontmatter.frame === 'Plane'"># 组装固定翼飞机
+<div v-else-if="$frontmatter.frame === 'Plane'">
+
+# 组装固定翼飞机
 
 本主题提供基础说明和链接，展示如何连接和组装运行PX4的典型固定翼机体（Plane）的核心组件。
 
 这些组件包括飞控、GPS、外部指南针、空速传感器、遥控器和/或遥测无线电系统、电机和/或其他控制执行器、载荷以及电源系统。
 
 </div>
-<div v-else-if="$frontmatter.frame === 'VTOL'"># 组装VTOL
+<div v-else-if="$frontmatter.frame === 'VTOL'">
+
+# 组装VTOL
 
 本主题提供基本操作指南和链接，展示如何连接和组装运行PX4的典型VTOL无人机的核心组件。
 
 这些组件包括飞控、GPS、外部指南针、空速传感器、遥控器和/或遥测无线电系统、电机和/或其他控制执行器、载荷以及供电系统。
 
 </div>
-<div v-else># 组装无人系统
+<div v-else>
+
+# 组装无人系统
 
 <!-- 这是非特定机体的简介 -->
 
@@ -42,7 +50,7 @@
 ::: info 如果您的FC未使用连接器标准...
 不遵循连接器标准的Pixhawk系列飞控通常会提供与Pixhawk标准组件连接的线缆。对于其他控制器，您可能需要手动制作线缆和连接器。
 
-[飞控专用指南](#fc-specific-assembly-guides)包含飞控特定的布线和配置信息，制造商网站上的指南也包含类似内容。
+[飞控专用指南](#与飞控相关的组装指南)包含飞控特定的布线和配置信息，制造商网站上的指南也包含类似内容。
 :::
 
 ## 飞行控制器概述
@@ -130,7 +138,9 @@ DroneCAN GNSS/Compass模块连接到CAN总线端口，通常标记为`CAN1`和`C
 
 <!-- https://discord.com/channels/1022170275984457759/1022185721450213396/threads/1245295551784681512 -->
 
-<div v-if="(($frontmatter.frame === 'Plane') || ($frontmatter.frame === 'VTOL'))">## 空速传感器
+<div v-if="(($frontmatter.frame === 'Plane') || ($frontmatter.frame === 'VTOL'))">
+
+## 空速传感器
 
 [空速传感器](../sensor/airspeed.md)强烈推荐用于固定翼和垂直起降(VTOL)机型。
 它们非常重要，因为自动驾驶仪没有其他手段来检测失速。
@@ -147,7 +157,9 @@ DroneCAN GNSS/Compass模块连接到CAN总线端口，通常标记为`CAN1`和`C
 您可以使用I2C电平转换器将这些设备连接到Pixhawk飞控。
 :::
 
-</div>## 距离传感器
+</div>
+
+## 距离传感器
 
 <div v-if="(($frontmatter.frame === 'Multicopter') || ($frontmatter.frame === 'VTOL'))">
 
@@ -158,7 +170,7 @@ DroneCAN GNSS/Compass模块连接到CAN总线端口，通常标记为`CAN1`和`C
   - 由于传感器可帮助检测减速点，降落过程更平稳。
   - 降低因高度估计错误或着陆点高度设置不当导致的硬着陆风险。
 - 支持地形跟随。
-- 在GNSS拒止导航时（需配合[光流传感器](#optical-flow-sensor)），能提高状态估计的可靠性。
+- 在GNSS拒止导航时（需配合[光流传感器](#光流传感器)），能提高状态估计的可靠性。
 
 </div>
 <div v-if="$frontmatter.frame === 'VTOL'">
@@ -180,7 +192,9 @@ DroneCAN GNSS/Compass模块连接到CAN总线端口，通常标记为`CAN1`和`C
 <div v-if="(($frontmatter.frame === 'Multicopter') || ($frontmatter.frame === 'VTOL'))">
 
 
-</div>## 光流传感器
+</div>
+
+## 光流传感器
 
 [光流](../sensor/optical_flow.md) 是一种计算机视觉技术，通过向下摄像头和向下距离传感器估算相对于地面的速度。  
 它可以在没有GNSS信号的环境中（如建筑内部、地下或任何GNSS信号被阻断的场景）精确估算飞行速度。
@@ -378,7 +392,9 @@ PWM舵机具有三线连接器，提供电源和PWM控制信号（中间引脚�
 
 - 检查您的组装：[机体组装](../airframes/index.md) 以查看不同机体框架的完整组装示例。
 
-</div>## 与飞控相关的组装指南
+</div>
+
+## 与飞控相关的组装指南
 
 ::: tip
 您的[飞行控制器](../flight_controller/index.md)制造商文档中可能包含以下未列出的控制器指南，或比下方指南更新的版本。

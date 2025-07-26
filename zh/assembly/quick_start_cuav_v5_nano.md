@@ -107,7 +107,9 @@ _v5 nano_ 套件包含 _HV_PM_ 模块，支持 2~14S 锂聚合物电池。
 
 ![quickstart](../../assets/flight_controller/cuav_v5_nano/connection/v5_nano_quickstart_07.png)
 
-<a id="sd_card"></a>## SD卡（可选）
+<a id="sd_card"></a>
+
+## SD卡（可选）
 
 [SD卡](../getting_started/px4_basic_concepts.md#sd-cards-removable-memory)出厂时已预装（您无需进行任何操作）。
 

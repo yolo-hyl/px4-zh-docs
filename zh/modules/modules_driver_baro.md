@@ -1,4 +1,6 @@
-# 模块参考：气压计（驱动程序）## bmp280
+# 模块参考：气压计（驱动程序）
+
+## bmp280
 
 源代码: [drivers/barometer/bmp280](https://github.com/PX4/PX4-Autopilot/tree/main/src/drivers/barometer/bmp280)
 

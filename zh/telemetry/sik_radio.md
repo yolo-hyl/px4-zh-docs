@@ -27,7 +27,7 @@ SiK 无线电硬件可从不同制造商/商店获取，支持不同范围和外
 
 ## 固件更新
 
-从大多数 [供应商](#vendors) 购买的硬件应预装最新固件。
+从大多数 [供应商](#供应商) 购买的硬件应预装最新固件。
 可能需要更新旧硬件的固件，例如以支持 MAVLink 2。
 
 可通过 _QGroundControl_ 更新无线电固件：[QGroundControl 用户指南 > 加载固件](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/setup_view/firmware.html)。

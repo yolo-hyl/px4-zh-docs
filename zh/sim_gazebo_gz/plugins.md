@@ -72,7 +72,7 @@ GZ_ADD_PLUGIN_ALIAS(YourCustomSystem, "custom::YourCustomSystem")
 
 ## 启用插件
 
-对于世界插件，只需 [注册插件](#plugin-registration) (将其添加到 `server.config`)。
+对于世界插件，只需 [注册插件](#插件注册) (将其添加到 `server.config`)。
 之后它将对所有世界和机体可用。
 
 添加机体模型/传感器插件的流程尚未文档化。

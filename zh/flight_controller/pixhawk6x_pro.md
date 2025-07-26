@@ -12,7 +12,9 @@ PX4 并不制造此（或任何）自动驾驶仪。
 - 高性能 ADIS16470 工业 IMU（±40 g 动态加速度范围），适用于苛刻无人机应用中的高精度运动感知
 - 全新先进耐用减振材料（共振频率位于高频段），适用于工业级和商用无人机应用
 - 高性能 STM32H753 处理器
-- 以太网接口，支持高速任务计算机集成## 基板
+- 以太网接口，支持高速任务计算机集成
+
+## 基板
 
 Pixhawk 6X Pro 可根据不同的使用场景和机体类型选择多种基板（或不带基板），包括 [Standard v2A](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-baseboard-v2-ports)、[Standard v2B](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-baseboard-v2-ports) 和 [Mini](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-mini-baseboard-ports)，如下所示。
 它也可以与其他符合Pixhawk Autopilot Bus (PAB) 规格的基板配合使用，例如 [Holybro Pixhawk Jetson Baseboard](../companion_computer/holybro_pixhawk_jetson_baseboard.md) 和 [Holybro Pixhawk RPi CM4 Baseboard](../companion_computer/holybro_pixhawk_rpi_cm4_baseboard.md)。
@@ -158,7 +160,9 @@ Pixhawk 6X Pro 可根据不同的使用场景和机体类型选择多种基板�
 | UART5  | /dev/ttyS4 | TELEM2        |
 | USART6 | /dev/ttyS5 | PX4IO/RC      |
 | UART7  | /dev/ttyS6 | TELEM1        |
-| UART8  | /dev/ttyS7 | GPS2          |## 尺寸
+| UART8  | /dev/ttyS7 | GPS2          |
+
+## 尺寸
 
 [Pixhawk 6X Pro Dimensions](https://docs.holybro.com/autopilot/pixhawk-6x-pro/dimensions)
 
@@ -226,7 +230,9 @@ make px4_fmu-v6x_default
 关于使用该端口的信息请参见：
 
 - [SWD 调试端口](../debug/swd_debug.md)
-- [PX4 系统控制台](../debug/system_console.md)（注意，FMU 控制台映射到 USART3）## 外设
+- [PX4 系统控制台](../debug/system_console.md)（注意，FMU 控制台映射到 USART3）
+
+## 外设
 
 - [遥测无线电模块](https://holybro.com/collections/telemetry-radios?orderby=date)
 - [测距仪/距离传感器](../sensor/rangefinders.md)

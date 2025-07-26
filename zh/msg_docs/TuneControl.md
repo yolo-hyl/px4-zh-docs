@@ -5,7 +5,8 @@
 [source file](https://github.com/PX4/PX4-Autopilot/blob/main/msg/TuneControl.msg)
 
 ```c
-# 该消息用于控制音调，当 tune_id 设置为 CUSTOM 时，会使用 frequency 和 duration 参数，否则这些值将被忽略。
+# 该消息用于控制音调，当 tune_id 设置为 CUSTOM 时，
+# 会使用 frequency 和 duration 参数，否则这些值将被忽略。
 
 uint64 timestamp     # 系统启动后时间戳（微秒）
 

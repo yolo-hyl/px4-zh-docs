@@ -94,7 +94,9 @@ _PIXhawk 6X_电源接口的引脚分配如下所示。电源接口从PM02D电源
 | 3(黑色)   | SCL  | +3.3V |
 | 4(黑色)   | SDA  | +3.3V |
 | 5(黑色)   | GND  | GND   |
-| 6(黑色)   | GND  | GND   |## 遥控
+| 6(黑色)   | GND  | GND   |
+
+## 遥控
 
 如果需要_手动_控制机体(PX4在自主飞行模式下不需要遥控系统)，则必须使用遥控(远程控制)无线电系统。
 
@@ -162,7 +164,9 @@ _PIXhawk 6X_电源接口的引脚分配如下所示。电源接口从PM02D电源
 
 QuadPlane 特定配置请参考此处：[QuadPlane 垂直起降配置](../config_vtol/vtol_quad_configuration.md)
 
-<!-- Nice to have detailed wiring infographic and instructions for different vehicle types. -->## 进一步信息
+<!-- Nice to have detailed wiring infographic and instructions for different vehicle types. -->
+
+## 进一步信息
 
 - [Holybro Docs](https://docs.holybro.com/) (Holybro)
 - [Pixhawk 6X](../flight_controller/pixhawk6x.md) (PX4 Doc Overview page)

@@ -29,15 +29,15 @@ PX4 不再支持本文档中描述的避障软件：
 
 ## Px4 Vision 指南内容
 
-- [警告与通知](#warnings-and-notifications)
-- [内部组成](#what-is-inside)
-- [您还需要什么](#what-else-do-you-need)
-- [首次设置](#first-time-setup)
-- [带避障功能的飞行](#fly-the-drone-with-avoidance)
-- [使用套件进行开发](#development-using-the-kit)
-- [PX4 Vision载板引脚图](#px4-vision-carrier-board-pinouts)
-- [其他开发资源](#other-development-resources)
-- [如何获取技术支持](#how-to-get-technical-support)
+- [警告与通知](#警告与通知)
+- [内部组成](#什么是内部结构)
+- [您还需要什么](#你需要什么其他配件)
+- [首次设置](#首次设置)
+- [带避障功能的飞行](#使用避障功能飞行无人机)
+- [使用套件进行开发](#使用套件进行开发)
+- [PX4 Vision载板引脚图](#PX4 Vision 1.15 载板引脚)
+- [其他开发资源](#其他开发资源)
+- [如何获取技术支持](#如何获取技术支持)
 
 ## 警告与通知
 
@@ -111,7 +111,9 @@ PX4 Vision DevKit包含以下组件：
   - MAVROS
   - [PX4避障](https://github.com/PX4/PX4-Avoidance)
 
-- 各类数据线、8个桨叶、2个已安装电池绑带及其他配件（可用于附加外围设备）## 你需要什么其他配件
+- 各类数据线、8个桨叶、2个已安装电池绑带及其他配件（可用于附加外围设备）
+
+## 你需要什么其他配件
 
 该套件包含除电池和无线电控制系统外的所有必要无人机硬件，这些组件需另行购买：
 
@@ -125,7 +127,9 @@ PX4 Vision DevKit包含以下组件：
 
 此外，用户还需要地面站硬件/软件：
 
-- 运行 [QGroundControl](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/getting_started/download_and_install.html)（QGC）的笔记本电脑或平板设备## 首次设置
+- 运行 [QGroundControl](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/getting_started/download_and_install.html)（QGC）的笔记本电脑或平板设备
+
+## 首次设置
 
 1. 将[兼容的遥控接收机](../getting_started/rc_transmitter_receiver.md#connecting-receivers)连接到机体（套件不含）：
 
@@ -285,7 +289,7 @@ PX4和伴飞计算机通过[MAVLink](https://mavlink.io/en/)使用以下接口�
 避障系统应在大约1分钟内启动（具体时间取决于提供的USB闪存盘）。
 
 :::tip
-[Fly the Drone with Avoidance](#fly-the-drone-with-avoidance) 还说明了如何验证避障系统是否处于活动状态。
+[Fly the Drone with Avoidance](#使用避障功能飞行无人机) 还说明了如何验证避障系统是否处于活动状态。
 :::
 
 如果您已经[在伴飞计算机上安装了镜像](#install_image_mission_computer)，只需为机体供电（即不需要USB闪存盘）。

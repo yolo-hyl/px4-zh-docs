@@ -40,7 +40,9 @@
 - 供电需求
   - 5V
   - 平均170mA
-  - 最大180mA## 硬件设置
+  - 最大180mA
+  
+## 硬件设置
 
 ### 接线
 
@@ -50,7 +52,7 @@ ARK RTK GPS通过Pixhawk标准的4针JST GH电缆连接到CAN总线。更多信�
 
 推荐安装方向为使电路板的连接器朝向**机体尾部**。
 
-该传感器可以安装在机体框架的任何位置，但需要在[PX4配置](#px4-configuration)时指定其相对于机体重心的位置。
+该传感器可以安装在机体框架的任何位置，但需要在[PX4配置](#PX4配置)时指定其相对于机体重心的位置。
 
 ## 固件设置
 
@@ -59,7 +61,9 @@ ARK RTK GPS 运行 [PX4 cannode 固件](px4_cannode_fw.md)。因此，它支持�
 ARK RTK GPS 板出厂时预装了最新的固件，但如果您希望自行构建和烧录最新固件，请参考 [cannode 固件构建说明](px4_cannode_fw.md#building-the-firmware)。
 
 固件目标: `ark_can-rtk-gps_default`  
-Bootloader目标: `ark_can-rtk-gps_canbootloader`## 飞行控制器设置
+Bootloader目标: `ark_can-rtk-gps_canbootloader`
+
+## 飞行控制器设置
 
 ### 启用DroneCAN
 
@@ -129,7 +133,9 @@ GPS数据将以10Hz频率接收。
     - `180`（_Rover_在_Moving Base_后方）
     - `270`（_Rover_在_Moving Base_左侧）
 - 在_Moving Base_上设置：
-  - [GPS_UBX_MODE](../advanced_config/parameter_reference.md#GPS_UBX_MODE)设置为`2`## LED指示灯
+  - [GPS_UBX_MODE](../advanced_config/parameter_reference.md#GPS_UBX_MODE)设置为`2`
+  
+  ## LED指示灯
 
 - GPS状态指示灯位于连接器右侧
 

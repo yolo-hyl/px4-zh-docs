@@ -86,7 +86,9 @@ PX4 支持以下标准飞行模式，这意味着你可以通过调用 [MAV_CMD_
 [MAV_STANDARD_MODE_SAFE_RECOVERY]: https://mavlink.io/en/messages/common.html#MAV_STANDARD_MODE_SAFE_RECOVERY
 [MAV_STANDARD_MODE_MISSION]: https://mavlink.io/en/messages/common.html#MAV_STANDARD_MODE_MISSION
 [MAV_STANDARD_MODE_LAND]: https://mavlink.io/en/messages/common.html#MAV_STANDARD_MODE_LAND
-[MAV_STANDARD_MODE_TAKEOFF]: https://mavlink.io/en/messages/common.html#MAV_STANDARD_MODE_TAKEOFF## 标准模式实现
+[MAV_STANDARD_MODE_TAKEOFF]: https://mavlink.io/en/messages/common.html#MAV_STANDARD_MODE_TAKEOFF
+
+## 标准模式实现
 
 PX4会在适当情况下将其自定义模式以标准模式形式呈现。
 
@@ -101,7 +103,9 @@ PX4会在适当情况下将其自定义模式以标准模式形式呈现。
 
 - [PX4-Autopilot#24011: standard_modes: add vehicle-type specific standard modes](https://github.com/PX4/PX4-Autopilot/pull/24011)
 
--->## 其他 MAVLink 模式更改命令
+-->
+
+## 其他 MAVLink 模式更改命令
 
 部分模式（包括标准模式和自定义模式）也可以通过特定命令和消息进行设置。  
 这种方式比直接启动模式更便捷，尤其是在消息允许配置额外设置时。

@@ -96,7 +96,9 @@ ROS节点的具体实现取决于使用的相机类型，需要开发适配相�
 
 通过调整参数值，找到在动态操作期间产生最低EKF创新值的数值，可以进一步优化该参数。
 
-<a id="verify_estimate"></a>## 检查/验证VIO估计
+<a id="verify_estimate"></a>
+
+## 检查/验证VIO估计
 
 ::: info
 下面提到的 [MAV_ODOM_LP](../advanced_config/parameter_reference.md#MAV_ODOM_LP) 参数在 PX4 v1.14 中已被移除。

@@ -1,4 +1,6 @@
-# uORB 消息传递## 简介
+# uORB 消息传递
+
+## 简介
 
 uORB 是一个用于线程间/进程间通信的异步 `publish()` / `subscribe()` 消息 API。
 
@@ -16,12 +18,12 @@ uORB 实现于 [`uorb` 模块](../modules/modules_communication.md#uorb)。
 要添加新主题，需要创建一个遵循 CamelCase 命名规范的 **.msg** "消息定义文件"。文件应添加到 [msg/](https://github.com/PX4/PX4-Autopilot/tree/main/msg/) 目录（如果需要版本化则添加到 [msg/versioned](https://github.com/PX4/PX4-Autopilot/tree/main/msg/versioned)）并列在 `msg/CMakeLists.txt` 文件中。
 
 ::: tip
-当消息需要暴露给 ROS 2 并需要在多个 ROS 和 PX4 版本间保持兼容时，消息需要进行版本化。更多信息请参见[消息版本化](#message-versioning)。
+当消息需要暴露给 ROS 2 并需要在多个 ROS 和 PX4 版本间保持兼容时，消息需要进行版本化。更多信息请参见[消息版本化](#消息版本机制)。
 :::
 
-消息定义文件可以定义一个或多个_主题_，它们共享相同的字段和结构。默认情况下，定义会映射到单个主题，其名称为消息定义文件名的 snake_case 版本（例如，`TopicName.msg` 会定义一个名为 `topic_name` 的主题）。你也可以在消息定义中指定多个主题，这在需要多个具有相同字段和结构的主题时很有用（见下文的[多主题消息](#multi-topic-messages)）。
+消息定义文件可以定义一个或多个_主题_，它们共享相同的字段和结构。默认情况下，定义会映射到单个主题，其名称为消息定义文件名的 snake_case 版本（例如，`TopicName.msg` 会定义一个名为 `topic_name` 的主题）。你也可以在消息定义中指定多个主题，这在需要多个具有相同字段和结构的主题时很有用（见下文的[多主题消息](#多话题消息)）。
 
-下文的[消息定义](#message-definitions)部分描述了消息格式。
+下文的[消息定义](#消息定义)部分描述了消息格式。
 
 从消息定义中，所需的 C/C++ 代码会自动生成。
 
@@ -46,18 +48,22 @@ uORB 实现于 [`uorb` 模块](../modules/modules_communication.md#uorb)。
 
 ::: 信息
 所有_版本化_的消息定义必须包含`uint32 MESSAGE_VERSION`字段。
-更多信息请参考[消息版本控制](#message-versioning)章节。
+更多信息请参考[消息版本控制](#消息版本机制)章节。
 :::
 
-例如，下面展示的[VelocityLimits](../msg_docs/VelocityLimits.md)消息定义包含描述性注释，后接多个带有注释的字段。# 多旋翼位置慢速模式下的速度和偏航率限制
+例如，下面展示的[VelocityLimits](../msg_docs/VelocityLimits.md)消息定义包含描述性注释，后接多个带有注释的字段。
 
-uint64 timestamp # [us] 系统启动以来的时间# 绝对速度，NAN 表示使用默认限制
+```text
+# 多旋翼位置慢速模式下的速度和偏航率限制
+
+uint64 timestamp # [us] 系统启动以来的时间
+
+# 绝对速度，NAN 表示使用默认限制
 float32 horizontal_velocity # [m/s] 水平速度。
 float32 vertical_velocity # [m/s] 垂直速度。
 float32 yaw_rate # [rad/s] 偏航速率。
 
 ```
-
 默认情况下，此消息定义将编译为一个主题，其 id 为 `velocity_limits`，这是从驼峰命名法直接转换为蛇形命名法的版本。
 
 这是消息的最简单形式。
@@ -69,7 +75,9 @@ float32 yaw_rate # [rad/s] 偏航速率。
 这可以通过在消息末尾添加一行以 `# TOPICS ` 开头的行来指定，后接空格分隔的话题 id。
 例如，[ActuatorOutputs](../msg_docs/ActuatorOutputs.md) 消息定义中的话题 id 定义如下：
 
-```text# TOPICS actuator_outputs actuator_outputs_sim actuator_outputs_debug
+```text
+# TOPICS actuator_outputs actuator_outputs_sim actuator_outputs_debug
+```
 
 ### 嵌套消息
 
@@ -77,9 +85,20 @@ float32 yaw_rate # [rad/s] 偏航速率。
 
 要嵌套消息，只需在父消息定义中包含嵌套的消息类型。例如，[`PositionSetpoint.msg`](../msg_docs/PositionSetpoint.md) 被用作 [`PositionSetpointTriplet.msg`](../msg_docs/PositionSetpointTriplet.md) 主题消息定义中的嵌套消息。
 
+
 ```text
-```# 全局位置设定点三元组（WGS84坐标）
-#### uORB 缓冲区长度 (ORB_QUEUE_LENGTH)
+# Global position setpoint triplet in WGS84 coordinates.
+#
+# This are the three next waypoints (or just the next two or one).
+
+uint64 timestamp # [us] Time since system start.
+
+PositionSetpoint previous
+PositionSetpoint current
+PositionSetpoint next
+```
+
+### uORB 缓冲区长度 (ORB_QUEUE_LENGTH)
 
 uORB 消息默认使用单消息缓冲区，如果消息发布率过高可能会被覆盖。  
 在大多数情况下这并不重要：我们通常只关心某个主题的最新样本（如传感器值或设定点），或者丢失几个样本也不是大问题。  
@@ -153,7 +172,7 @@ uORB 提供了一种机制，用于发布相同主题的多个独立实例。
 例如，当系统包含多个相同类型的传感器时，这种情况非常有用。
 
 ::: info
-这与[多主题消息](#multi-topic-messages)不同，后者创建的是结构相同但主题不同的消息。
+这与[多主题消息](#多话题消息)不同，后者创建的是结构相同但主题不同的消息。
 :::
 
 发布者可以通过调用 `orb_advertise_multi` 创建新主题实例并获取其实例索引。  
@@ -250,7 +269,9 @@ sensor_combined                      0    6  242   636 1
 
 更多信息请参见：[使用 PlotJuggler 实时绘制 uORB 主题数据](../debug/plotting_realtime_uorb_data.md)
 
-<video src="../../assets/debug/realtime_debugging/realtime_debugging.mp4" width="720" controls></video>## 另请参见
+<video src="../../assets/debug/realtime_debugging/realtime_debugging.mp4" width="720" controls></video>
+
+## 另请参见
 
 - _PX4 uORB 解释_ 博客系列
   - [第1部分](https://px4.io/px4-uorb-explained-part-1/)

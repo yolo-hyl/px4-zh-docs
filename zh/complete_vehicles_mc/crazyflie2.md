@@ -30,7 +30,9 @@ Crazyflie 2.0 的概述[可在此处找到](https://www.bitcraze.io/crazyflie-2/
   - RAM：192 KB SRAM  
 - nRF51822 无线电与电源管理MCU  
 - MPU9250 加速度计/陀螺仪/磁力计  
-- LPS25H 气压计## 购买渠道
+- LPS25H 气压计
+
+## 购买渠道
 
 - [Crazyflie 2.0](https://store.bitcraze.io/collections/kits/products/crazyflie-2-0)。
 - [Crazyradio PA 2.4 GHz USB 接收器](https://store.bitcraze.io/collections/kits/products/crazyradio-pa)：用于_QGroundControl_与Crazyflie 2.0之间的无线通信。

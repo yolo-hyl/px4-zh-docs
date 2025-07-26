@@ -26,7 +26,9 @@ VTOL支持其他 [PX4返回类型](../flight_modes/return.md#return-types-rtl-ty
 - 任何机体均可通过遥控器模式切换开关更改飞行模式。
 - 遥控器摇杆输入将被忽略。
 
-<!-- https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/commander/ModeUtil/mode_requirements.cpp -->## 技术总结
+<!-- https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/commander/ModeUtil/mode_requirements.cpp -->
+
+## 技术总结
 
 VTOL机体默认使用[Mission Landing/Rally Point](../flight_modes/return.md#mission-landing-rally-point-return-type-rtl-type-1)返回类型，当触发返回模式时，会使用当前飞行模式（MC或FW）进行返回。
 
@@ -73,7 +75,9 @@ RTL 参数详见 [参数参考 > 返回模式](../advanced_config/parameter_refe
 | <a id="RTL_DESCEND_ALT"></a>[RTL_DESCEND_ALT](../advanced_config/parameter_reference.md#RTL_DESCEND_ALT) | 最小返回高度及从更高返回高度开始减速或停止下降的高度（缺省值：30米）                                                                                                                                                                                                                                                                                       |
 | <a id="RTL_LAND_DELAY"></a>[RTL_LAND_DELAY](../advanced_config/parameter_reference.md#RTL_LAND_DELAY) | 在`RTL_DESCEND_ALT`悬停时间（缺省值：0.5秒）- 默认设置较短以便机体减速后立即降落。若设为-1，系统将在`RTL_DESCEND_ALT`盘旋而非降落。该延迟用于配置起落架展开时间（自动触发）。                                                                                                                                                                                   |
 | <a id="RTL_LOITER_RAD"></a>[RTL_LOITER_RAD](../advanced_config/parameter_reference.md#RTL_LOITER_RAD) | [固定翼专用] 盘旋圆半径（在[RTL_LAND_DELAY](#RTL_LAND_DELAY)）                                                                                                                                                                                                                                                                                           |
-| <a id="MIS_TKO_LAND_REQ"></a>[MIS_TKO_LAND_REQ](../advanced_config/parameter_reference.md#MIS_TKO_LAND_REQ) | 指定任务降落或起飞模式是否为_必须_。通常固定翼设置为需要降落模式，但垂直起降(VTOL)则不需要。                                                                                                                                                                                                                                                             |## 参见
+| <a id="MIS_TKO_LAND_REQ"></a>[MIS_TKO_LAND_REQ](../advanced_config/parameter_reference.md#MIS_TKO_LAND_REQ) | 指定任务降落或起飞模式是否为_必须_。通常固定翼设置为需要降落模式，但垂直起降(VTOL)则不需要。                                                                                                                                                                                                                                                             |
+
+## 参见
 
 - [返回模式（通用）](../flight_modes/return.md)
 - [返回模式（多旋翼）](../flight_modes_mc/return.md)

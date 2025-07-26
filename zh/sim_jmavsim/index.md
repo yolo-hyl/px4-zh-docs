@@ -96,7 +96,7 @@ pxh>
 pxh> commander takeoff
 ```
 
-您可以使用 _QGroundControl_ 执行任务，或通过 [joystick](#using-a-joystick) 连接飞行。
+您可以使用 _QGroundControl_ 执行任务，或通过 [joystick](#使用游戏手柄) 连接飞行。
 
 ## 使用/配置选项
 
@@ -181,7 +181,7 @@ JMAVSim 可用于多机体仿真：[Multi-Vehicle Sim with JMAVSim](../sim_jmavs
 
 ## Lockstep
 
-PX4 SITL 和 jMAVSim 被配置为以 _lockstep_ 模式运行。这意味着 PX4 和模拟器以相同速度运行，因此可以对传感器和执行器消息做出适当响应。Lockstep 机制使得[更改模拟速度](#change-simulation-speed)成为可能，并且可以暂停以逐步执行代码。
+PX4 SITL 和 jMAVSim 被配置为以 _lockstep_ 模式运行。这意味着 PX4 和模拟器以相同速度运行，因此可以对传感器和执行器消息做出适当响应。Lockstep 机制使得[更改模拟速度](#调整仿真速度)成为可能，并且可以暂停以逐步执行代码。
 
 #### Lockstep 序列
 
@@ -204,7 +204,9 @@ Lockstep 的步骤顺序为：
 
 <!-- sitl_run.sh 中的相关行是： -->
 <!-- # 启动 Java 模拟器 -->
-<!-- "$src_path"/Tools/simulation/jmavsim/jmavsim_run.sh -r 250 -l & SIM_PID=$!  -->## 扩展和自定义
+<!-- "$src_path"/Tools/simulation/jmavsim/jmavsim_run.sh -r 250 -l & SIM_PID=$!  -->
+
+## 扩展和自定义
 
 要扩展或自定义模拟接口，请编辑 **Tools/jMAVSim** 文件夹中的文件。代码可以通过GitHub上的[jMAVSim仓库](https://github.com/px4/jMAVSim)获取。
 

@@ -7,7 +7,9 @@ PX4 并不生产此（或任何）自动驾驶仪。
 
 本快速入门指南展示了如何为 [Pixhawk 4](../flight_controller/pixhawk4.md)<sup>&reg;</sup> 飞控供电并连接其最重要的外设。
 
-<img src="../../assets/flight_controller/pixhawk4/pixhawk4_logo_view.jpg" width="420px" title="Pixhawk4 图像" />## 接线图概览
+<img src="../../assets/flight_controller/pixhawk4/pixhawk4_logo_view.jpg" width="420px" title="Pixhawk4 图像" />
+
+## 接线图概览
 
 下图展示了如何连接最重要的传感器和外设（除了电机和舵机的输出）。我们将在接下来的章节中逐一详细说明这些内容。
 
@@ -144,7 +146,9 @@ VCC线路必须至少提供3A持续电流，且默认为5.1V。
 
 ![Pixhawk 4/Telemetry Radio](../../assets/flight_controller/pixhawk4/pixhawk4_telemetry_radio.jpg)
 
-<a id="sd_card"></a>## SD卡（可选）
+<a id="sd_card"></a>
+
+## SD卡（可选）
 
 强烈建议使用SD卡，因为需要它来[记录和分析飞行细节](../getting_started/flight_reporting.md)，运行任务，以及使用UAVCAN-bus硬件。
 将卡（包含在Pixhawk 4套件中）插入_Pixhawk 4_，如下图所示。
@@ -181,7 +185,9 @@ VCC线路必须至少提供3A持续电流，且默认为5.1V。
 
 QuadPlane 特定配置请参考：[QuadPlane VTOL配置](../config_vtol/vtol_quad_configuration.md)
 
-<!-- Nice to have detailed wiring infographic and instructions for different vehicle types. -->## 更多信息
+<!-- Nice to have detailed wiring infographic and instructions for different vehicle types. -->
+
+## 更多信息
 
 - [Pixhawk 4](../flight_controller/pixhawk4.md) (概览页面)
 - [Pixhawk 4技术数据表](https://github.com/PX4/PX4-user_guide/raw/main/assets/flight_controller/pixhawk4/pixhawk4_technical_data_sheet.pdf)

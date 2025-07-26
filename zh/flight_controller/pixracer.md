@@ -28,7 +28,9 @@ Pixhawk<sup>&reg;</sup> XRacer 板系列专为小型竞速四轴和飞机优化�
 - Futaba S.BUS 和 S.BUS2 / Spektrum DSM2 和 DSMX / Graupner SUMD / PPM 输入 / Yuneec ST24  
 - FrSky<sup>&reg;</sup> 遥测端口  
 - OneShot PWM输出（可配置）  
-- 可选：安全开关和蜂鸣器## 购买渠道
+- 可选：安全开关和蜂鸣器
+
+## 购买渠道
 
 Pixracer 可通过 [mRobotics.io](https://store.mrobotics.io/mRo-PixRacer-R15-Official-p/m10023a.htm) 购买。
 
@@ -43,7 +45,9 @@ Pixracer 设计为使用独立的航电电源供电。这是为了避免电机�
 
 - 电源模块（带电压和电流检测）
 - I2C 分线器（支持 AUAV、Hobbyking 和 3DR® 外设）
-- 所有常见外设的线缆套件## WiFi（无需 USB）
+- 所有常见外设的线缆套件
+
+## WiFi（无需 USB）
 
 该开发板的主要功能之一是能够通过 WiFi 进行固件刷新、系统设置和飞行遥测。这使其摆脱了对任何桌面系统的依赖。
 
@@ -190,14 +194,18 @@ Pixracer 设计为使用独立的航电电源供电。这是为了避免电机�
 | UART7  | CONSOLE    |
 | UART8  | SERIAL4    |
 
-<!-- Note: Got ports using https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 -->## 原理图
+<!-- Note: Got ports using https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 -->
+
+## 原理图
 
 参考文件为：[Altium Design Files](https://github.com/AUAV-OpenSource/FMUv4-PixRacer)
 
 以下PDF文件仅用于方便提供：
 
 - [pixracer-rc12-12-06-2015-1330.pdf](https://github.com/PX4/PX4-user_guide/raw/main/assets/flight_controller/pixracer/pixracer-rc12-12-06-2015-1330.pdf)
-- [pixracer-r14.pdf](https://github.com/PX4/PX4-user_guide/raw/main/assets/flight_controller/pixracer/pixracer-r14.pdf) - R14 或 RC14 印在SD卡插槽旁边## 构建固件
+- [pixracer-r14.pdf](https://github.com/PX4/PX4-user_guide/raw/main/assets/flight_controller/pixracer/pixracer-r14.pdf) - R14 或 RC14 印在SD卡插槽旁边
+
+## 构建固件
 
 :::tip
 大多数用户无需构建此固件！

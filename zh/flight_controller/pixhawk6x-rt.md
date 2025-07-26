@@ -115,7 +115,9 @@ Pixhawk® 6X-RT非常适用于企业研发实验室、初创公司、学术机�
   - 2 条专用调试和 GPIO 线
 
 - 其他特性：
-  - 工作/存储温度：-40 ~ 85℃## 购买地点
+  - 工作/存储温度：-40 ~ 85℃
+  
+  ## 购买地点
 
 从 [Holybro](https://holybro.com/products/fmuv6x-rt-developer-edition) 下单购买。
 
@@ -149,7 +151,9 @@ Pixhawk® 6X-RT非常适用于企业研发实验室、初创公司、学术机�
 | UART6  | /dev/ttyS4 | PX4IO    |
 | UART8  | /dev/ttyS5 | TELEM2   |
 | UART10 | /dev/ttyS6 | TELEM3   |
-| UART11 | /dev/ttyS7 | 外部     |## 尺寸
+| UART11 | /dev/ttyS7 | 外部     |
+
+## 尺寸
 
 [Pixhawk 6X 尺寸](https://docs.holybro.com/autopilot/pixhawk-6x/dimensions)
 
@@ -194,7 +198,9 @@ Pixhawk 6X 上的 **POWER1** 与 **POWER2** 接口采用 6 电路 [2.00mm 间距
 make px4_fmu-v6xrt_default
 ```
 
-<a id="debug_port"></a>## 调试端口
+<a id="debug_port"></a>
+
+## 调试端口
 
 [PX4系统控制台](../debug/system_console.md) 和 [SWD接口](../debug/swd_debug.md) 运行在 **FMU调试** 端口。
 
@@ -216,7 +222,9 @@ make px4_fmu-v6xrt_default
 关于使用此端口的更多信息请参见：
 
 - [SWD调试端口](../debug/swd_debug.md)
-- [PX4系统控制台](../debug/system_console.md)（注意：FMU控制台映射到USART3）## 外设
+- [PX4系统控制台](../debug/system_console.md)（注意：FMU控制台映射到USART3）
+
+## 外设
 
 - [数字空速传感器](https://holybro.com/products/digital-air-speed-sensor)
 - [遥测无线电模块](https://holybro.com/collections/telemetry-radios?orderby=date)

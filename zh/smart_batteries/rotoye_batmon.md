@@ -4,7 +4,7 @@
 该产品可作为独立单元购买，也可作为工厂组装的智能电池组件。
 
 ::: info
-撰写本文时，您只能通过[构建PX4的自定义分支](#build-px4-firmware)来使用Batmon。
+撰写本文时，您只能通过[构建PX4的自定义分支](#构建PX4固件)来使用Batmon。
 代码行中的支持正在等待[PR审批](https://github.com/PX4/PX4-Autopilot/pull/16723)。
 :::
 

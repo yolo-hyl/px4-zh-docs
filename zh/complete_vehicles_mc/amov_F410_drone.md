@@ -100,7 +100,9 @@
 |          通道            |                                    8                                     |
 |        发射功率           |                                 ＜ 10mW                                  |
 |          重量            |                                   310g                                   |
-|      尺寸(L×W×H)         |                 长179mm × 宽81mm × 高161mm                 |## 教程
+|      尺寸(L×W×H)         |                 长179mm × 宽81mm × 高161mm                 |
+
+## 教程
 
 - 教程 [English](https://docs.amovlab.com/f450-v6c-wiki/#/en/)/[Chinese](https://docs.amovlab.com/F450-V6C-wiki/#/src/%E8%A7%84%E6%A0%BC%E5%8F%82%E6%95%B0/%E8%A7%84%E6%A0%BC%E5%8F%82%E6%95%B0) (docs.amovlab.com/)
 

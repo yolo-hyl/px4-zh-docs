@@ -29,7 +29,7 @@ _任务模式_ 会令机体执行预设的自主[任务](../flying/missions.md)�
 
 当启用 MISSION 模式时，所有机体类型在高层面上的行为一致：
 
-1. 如果未存储任务，或 PX4 已完成所有任务指令的执行，或 [任务不可行](#mission-feasibility-checks)：
+1. 如果未存储任务，或 PX4 已完成所有任务指令的执行，或 [任务不可行](#任务可行性检查)：
 
    - 如果正在飞行，机体将悬停。
    - 如果已着陆，机体将"等待"。
@@ -114,13 +114,15 @@ _QGroundControl_ 提供了额外的地面控制站级别任务处理支持（除
 | <a id="COM_RC_OVERRIDE"></a>[COM_RC_OVERRIDE](../advanced_config/parameter_reference.md#COM_RC_OVERRIDE)  | 控制多旋翼机（或垂直起降在多旋翼模式下）的手动杆动作是否在[位置模式](../flight_modes_mc/position.md)中将控制权交还给飞行员。此功能可分别针对自动模式和外部模式启用，默认在自动模式中启用。                                                                                          |
 | <a id="COM_RC_STICK_OV"></a>[COM_RC_STICK_OV](../advanced_config/parameter_reference.md#COM_RC_STICK_OV)  | 触发切换到[位置模式](../flight_modes_mc/position.md)的摇杆移动量（如果[COM_RC_OVERRIDE](#COM_RC_OVERRIDE)已启用）。                                                                                                                                     |
 
-与[任务可行性检查](#mission-feasibility-checks)相关的参数：
+与[任务可行性检查](#任务可行性检查)相关的参数：
 
 | 参数                                                                                                           | 描述                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | <a id="MIS_DIST_1WP"></a>[MIS_DIST_1WP](../advanced_config/parameter_reference.md#MIS_DIST_1WP)               | 如果第一个航点与Home点的距离超过此值，将发出警告信息。如果值为0或更小，则禁用。                                                  |
 | <a id="FW_LND_ANG"></a>[FW_LND_ANG](../advanced_config/parameter_reference.md#FW_LND_ANG)                     | 最大降落坡度角。                                                                                                              |
-| <a id="MIS_TKO_LAND_REQ"></a>[MIS_TKO_LAND_REQ](../advanced_config/parameter_reference.md#MIS_TKO_LAND_REQ) | 设置任务是否需要起飞和/或降落项。默认情况下多旋翼机无此要求。                                                                 |## 任务命令 {#mission_commands}
+| <a id="MIS_TKO_LAND_REQ"></a>[MIS_TKO_LAND_REQ](../advanced_config/parameter_reference.md#MIS_TKO_LAND_REQ) | 设置任务是否需要起飞和/或降落项。默认情况下多旋翼机无此要求。                                                                 |
+
+## 任务命令 {#mission_commands}
 
 PX4 在任务模式下"接受"以下 MAVLink 任务命令（部分命令有特殊说明，在列表后给出）。  
 除非另有说明，其具体实现均遵循 MAVLink 规范定义。

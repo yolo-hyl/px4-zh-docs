@@ -26,9 +26,11 @@ SWO引脚可以输出低开销、实时的性能分析数据，并带有纳秒�
 
 TRACE引脚需要专用调试探针来处理高带宽和后续的数据流解码。通常这些引脚不可访问，通常只用于调试特定的时序问题。
 
-<a id="debug-ports"></a>## 自动驾驶仪调试端口
+<a id="debug-ports"></a>
 
-飞控通常提供一个调试端口，该端口同时暴露了 [SWD Interface](#debug-signals) 和 [System Console](system_console) 接口。
+## 自动驾驶仪调试端口
+
+飞控通常提供一个调试端口，该端口同时暴露了 [SWD Interface](#调试信号) 和 [System Console](system_console) 接口。
 
 [Pixhawk Connector Standards](#pixhawk-standard-debug-ports) 规范了每个FMU版本必须使用的端口。  
 但由于仍有许多板卡采用不同的引脚分布或连接器，我们建议您查阅 [自动驾驶仪文档](../flight_controller/index.md) 以确认端口位置和引脚定义。
@@ -39,19 +41,21 @@ TRACE引脚需要专用调试探针来处理高带宽和后续的数据流解码
 
 | 自动驾驶仪                                                                                     | 调试端口                                                                                                                                                        |
 | :--------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Holybro Pixhawk 6X-RT (FMUv6X-RT)                                                              | [Pixhawk Debug Full](#pixhawk-debug-full)                                                                                                                         |
-| Holybro Pixhawk 6X (FMUv6x)                                                                    | [Pixhawk Debug Full](#pixhawk-debug-full)                                                                                                                         |
-| Holybro Pixhawk 5X (FMUv5x)                                                                    | [Pixhawk Debug Full](#pixhawk-debug-full)                                                                                                                         |
-| [Holybro Durandal](../flight_controller/durandal.md#debug-port)                                | [Pixhawk Debug Mini](#pixhawk-debug-mini)                                                                                                                         |
+| Holybro Pixhawk 6X-RT (FMUv6X-RT)                                                              | [Pixhawk Debug Full](#Pixhawk Debug Full)                                                                                                                         |
+| Holybro Pixhawk 6X (FMUv6x)                                                                    | [Pixhawk Debug Full](#Pixhawk Debug Full)                                                                                                                         |
+| Holybro Pixhawk 5X (FMUv5x)                                                                    | [Pixhawk Debug Full](#Pixhawk Debug Full)                                                                                                                         |
+| [Holybro Durandal](../flight_controller/durandal.md#debug-port)                                | [Pixhawk Debug Mini](#Pixhawk Debug Mini)                                                                                                                         |
 | [Holybro Kakute F7](../flight_controller/kakutef7.md#debug-port)                               | 焊盘                                                                                                                                                       |
-| [Holybro Pixhawk 4 Mini](../flight_controller/pixhawk4_mini.md#debug-port) (FMUv5)            | [Pixhawk Debug Mini](#pixhawk-debug-mini)                                                                                                                         |
-| [Holybro Pixhawk 4](../flight_controller/pixhawk4.md#debug_port) (FMUv5)                       | [Pixhawk Debug Mini](#pixhawk-debug-mini)                                                                                                                         |
-| [Drotek Pixhawk 3 Pro](../flight_controller/pixhawk3_pro.md#debug-port) (FMU-v4pro)           | [Pixhawk Debug Mini](#pixhawk-debug-mini)                                                                                                                         |
+| [Holybro Pixhawk 4 Mini](../flight_controller/pixhawk4_mini.md#debug-port) (FMUv5)            | [Pixhawk Debug Mini](#Pixhawk Debug Mini)                                                                                                                         |
+| [Holybro Pixhawk 4](../flight_controller/pixhawk4.md#debug_port) (FMUv5)                       | [Pixhawk Debug Mini](#Pixhawk Debug Mini)                                                                                                                         |
+| [Drotek Pixhawk 3 Pro](../flight_controller/pixhawk3_pro.md#debug-port) (FMU-v4pro)           | [Pixhawk Debug Mini](#Pixhawk Debug Mini)                                                                                                                         |
 | [CUAV V5+](../flight_controller/cuav_v5_plus.md#debug-port)                                    | 6-pin JST GH<br>Digikey: [BM06B-GHS-TBT(LF)(SN)(N)][bm06b-ghs-tbt(lf)(sn)(n)] (vertical mount), [SM06B-GHS-TBT(LF)(SN)(N)][sm06b-ghs-tbt(lf)(sn)(n)] (side mount) |
 | [CUAV V5nano](../flight_controller/cuav_v5_nano.md#debug_port)                                 | 6-pin JST GH<br>Digikey: [BM06B-GHS-TBT(LF)(SN)(N)][bm06b-ghs-tbt(lf)(sn)(n)] (vertical mount), [SM06B-GHS-TBT(LF)(SN)(N)][sm06b-ghs-tbt(lf)(sn)(n)] (side mount) |
 | [3DR Pixhawk](../flight_controller/pixhawk.md#swd-port)                                        | ARM 10-pin JTAG Connector (也用于FMUv2板卡，包括：_mRo Pixhawk_, _HobbyKing HKPilot32_)                                                             |
 
-<a id="pixhawk-standard-debug-ports"></a>## Pixhawk 连接器标准调试端口
+<a id="pixhawk-standard-debug-ports"></a>
+
+## Pixhawk 连接器标准调试端口
 
 Pixhawk 项目为不同版本的 Pixhawk FMU 定义了标准引脚排列和连接器类型：
 
@@ -63,12 +67,12 @@ Pixhawk 项目为不同版本的 Pixhawk FMU 定义了标准引脚排列和连�
 | :---------- | :-------------------------------------------------------------- | :---------------------------------------- |
 | FMUv2       | [Pixhawk / Pixhawk 1](../flight_controller/pixhawk.md#swd-port) | 10针ARM调试                          |
 | FMUv3       | Pixhawk 2                                                       | 6针SUR调试                           |
-| FMUv4       | Pixhawk 3                                                       | [Pixhawk Debug Mini](#pixhawk-debug-mini) |
-| FMUv5       | Pixhawk 4 FMUv5                                                 | [Pixhawk Debug Mini](#pixhawk-debug-mini) |
-| FMUv5X      | Pixhawk 5X                                                      | [Pixhawk Debug Full](#pixhawk-debug-full) |
-| FMUv6       | Pixhawk 6                                                       | [Pixhawk Debug Full](#pixhawk-debug-full) |
-| FMUv6X      | Pixhawk 6X                                                      | [Pixhawk Debug Full](#pixhawk-debug-full) |
-| FMUv6X-RT   | Pixhawk 6X-RT                                                   | [Pixhawk Debug Full](#pixhawk-debug-full) |
+| FMUv4       | Pixhawk 3                                                       | [Pixhawk Debug Mini](#Pixhawk Debug Mini) |
+| FMUv5       | Pixhawk 4 FMUv5                                                 | [Pixhawk Debug Mini](#Pixhawk Debug Mini) |
+| FMUv5X      | Pixhawk 5X                                                      | [Pixhawk Debug Full](#Pixhawk Debug Full) |
+| FMUv6       | Pixhawk 6                                                       | [Pixhawk Debug Full](#Pixhawk Debug Full) |
+| FMUv6X      | Pixhawk 6X                                                      | [Pixhawk Debug Full](#Pixhawk Debug Full) |
+| FMUv6X-RT   | Pixhawk 6X-RT                                                   | [Pixhawk Debug Full](#Pixhawk Debug Full) |
 
 ::: info
 FMU与Pixhawk版本的对应关系（仅）在FMUv5X之后保持一致。
@@ -107,7 +111,7 @@ FMU与Pixhawk版本的对应关系（仅）在FMUv5X之后保持一致。
 
 ### Pixhawk Debug Full
 
-[Pixhawk 连接器标准](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf)定义了 _Pixhawk Debug Full_，这是一个 _10针SH调试端口_，提供对SWD引脚和[系统控制台](system_console)的访问。这实质上将[Pixhawk Debug Mini](#pixhawk-debug-mini)旁的焊盘移入连接器，并新增了一个SWO引脚。
+[Pixhawk 连接器标准](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf)定义了 _Pixhawk Debug Full_，这是一个 _10针SH调试端口_，提供对SWD引脚和[系统控制台](system_console)的访问。这实质上将[Pixhawk Debug Mini](#Pixhawk Debug Mini)旁的焊盘移入连接器，并新增了一个SWO引脚。
 
 该端口规范用于FMUv5x、FMUv6和FMUv6x。
 
@@ -136,9 +140,11 @@ GPIO1/2引脚为自由引脚，可用于生成软件信号，配合逻辑分析�
 
 ![10针JST SH电缆](../../assets/debug/cable_10pin_jst_sh.jpg)
 
-<a id="debug-probes"></a>## PX4硬件的调试探针
+<a id="debug-probes"></a>
 
-飞控通常提供一个[单调试端口](#autopilot-debug-ports)，该端口同时暴露了[SWD接口](#debug-signals)和[系统控制台](system_console)。
+## PX4硬件的调试探针
+
+飞控通常提供一个[单调试端口](#自动驾驶仪调试端口)，该端口同时暴露了[SWD接口](#调试信号)和[系统控制台](system_console)。
 
 目前有几种经过测试并支持的调试探针可用于连接这两个接口之一或全部：
 
@@ -157,7 +163,7 @@ GPIO1/2引脚为自由引脚，可用于生成软件信号，配合逻辑分析�
 
 这是连接的最简便方式：
 
-- 使用 [Pixhawk Debug Full](#pixhawk-debug-full) (10针SH) 或 [Pixhawk Debug Mini](#pixhawk-debug-mini) (6针SH) 调试端口的飞控器
+- 使用 [Pixhawk Debug Full](#Pixhawk Debug Full) (10针SH) 或 [Pixhawk Debug Mini](#Pixhawk Debug Mini) (6针SH) 调试端口的飞控器
 - 支持 10针 ARM 兼容接口标准的 SWD 调试探针，如 [Segger JLink EDU mini](../debug/probe_jlink.md) 或 20针兼容的 Segger JLink 和 STLink
 
 ![Holybro Pixhawk Debug Adapter](../../assets/debug/holybro_pixhawk_debug_adapter.png)
@@ -168,7 +174,7 @@ GPIO1/2引脚为自由引脚，可用于生成软件信号，配合逻辑分析�
 
 该适配器提供以下接口：
 
-- 连接到 [Pixhawk Debug Full](#pixhawk-debug-full) (10针SH) 和 CUAV 标准 DSU 接口（不包括 [Pixhawk Debug Mini](../debug/swd_debug.md#pixhawk-debug-mini) (6针SH)）
+- 连接到 [Pixhawk Debug Full](#Pixhawk Debug Full) (10针SH) 和 CUAV 标准 DSU 接口（不包括 [Pixhawk Debug Mini](../debug/swd_debug.md#pixhawk-debug-mini) (6针SH)）
 
 适配器上的 M2 接口是 14针 CN4 STDC14（更多信息请参阅 [STLinkv3-MINIE 用户手册](https://www.st.com/resource/en/user_manual/um2910-stlinkv3minie-debuggerprogrammer-tiny-probe-for-stm32-microcontrollers-stmicroelectronics.pdf)）
 连接 M2 和 STLinkv3-MINIE 的线缆随适配器提供
@@ -180,7 +186,7 @@ GPIO1/2引脚为自由引脚，可用于生成软件信号，配合逻辑分析�
 一些 SWD [调试探针](#debug-probes) 附带适配器/线缆以连接常见的 Pixhawk [调试端口](#debug-ports)
 已知提供连接器的探针如下：
 
-- [DroneCode Probe](../debug/probe_bmp.md#dronecode-probe): 配备连接 [Pixhawk Debug Mini](#pixhawk-debug-mini) 的接口
+- [DroneCode Probe](../debug/probe_bmp.md#dronecode-probe): 配备连接 [Pixhawk Debug Mini](#Pixhawk Debug Mini) 的接口
 
 ### 板级特定适配器
 

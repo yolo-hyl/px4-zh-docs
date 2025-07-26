@@ -141,7 +141,9 @@ HobbyKing 叶片的重心位置不同，因此需要正确平衡。
 
 ## 视频
 
-<lite-youtube videoid="YhXXSWz5wWs" title="[ThunderFly] 3D打印的自转旋翼转子"/>## 照片变更图集
+<lite-youtube videoid="YhXXSWz5wWs" title="[ThunderFly] 3D打印的自转旋翼转子"/>
+
+## 照片变更图集
 
 ![Auto-G2 1](../../assets/airframes/autogyro/auto-g2/autog2_1.jpg)
 ![Auto-G2 2](../../assets/airframes/autogyro/auto-g2/autog2_2.jpg)

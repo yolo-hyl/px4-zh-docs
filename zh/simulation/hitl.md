@@ -11,7 +11,9 @@ HITL 是 [社区支持和维护的](../simulation/community_supported_simulators
 
 PX4 支持多旋翼（使用 [jMAVSim](../sim_jmavsim/index.md) 或 [Gazebo Classic](../sim_gazebo_classic/index.md)）和垂直起降飞行器（使用 Gazebo Classic）的 HITL。
 
-<a id="compatible_airframe"></a>## HITL兼容的机体
+<a id="compatible_airframe"></a>
+
+## HITL兼容的机体
 
 兼容的机体与模拟器对应关系如下：
 
@@ -20,7 +22,9 @@ PX4 支持多旋翼（使用 [jMAVSim](../sim_jmavsim/index.md) 或 [Gazebo Clas
 | [HIL四旋翼X](../airframes/airframe_reference.md#copter_simulation_hil_quadcopter_x)                        | 1001            | Y              | Y       |
 | [HIL标准垂直起降四旋翼](../airframes/airframe_reference.md#vtol_standard_vtol_hil_standard_vtol_quadplane) | 1002            | Y              |         |
 
-<a id="simulation_environment"></a>## HITL 模拟环境
+<a id="simulation_environment"></a>
+
+## HITL 模拟环境
 
 在硬件在环（HITL）模拟中，标准的 PX4 固件会在真实硬件上运行。
 JMAVSim 或 Gazebo Classic（运行在开发计算机上）通过 USB/UART 连接到飞控硬件。
@@ -49,7 +53,9 @@ SITL在开发计算机的模拟环境中运行，并使用为此环境专门生�
 
 总结来说，HITL在实际硬件上使用标准固件运行PX4，但SITL实际上执行了更多的标准系统代码。
 
-## 设置HITL## 检查 HITL 是否在固件中
+## 设置HITL
+
+## 检查 HITL 是否在固件中
 
 HITL 所需的模块 ([`pwm_out_sim`](../modules/modules_driver.md#pwm-out-sim)) 并未默认包含在所有 PX4 固件中。
 

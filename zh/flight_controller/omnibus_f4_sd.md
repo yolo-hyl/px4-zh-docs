@@ -18,7 +18,7 @@ _**Omnibus F4 SD**_ 是一款专为竞速飞行器设计的控制器板。
 
 - 价格更低  
 - I/O 端口更少（尽管仍然可以连接 GPS 或 Flow 传感器等外设）  
-- 外部 GPS 需在 I²C 总线外接上拉电阻，详见下文 [I²C](#i2c)  
+- 外部 GPS 需在 I²C 总线外接上拉电阻，详见下文 [I²C](#I2C)  
 - RAM 更少（192 KB 对比 256 KB）和 FLASH 容量更小（1 MB 对比 2 MB）  
 - 与 _Pixracer_ 尺寸相同，但外形更紧凑（因其连接器更少）  
 - 集成 OSD（尚未在软件中实现）
@@ -44,7 +44,9 @@ _**Omnibus F4 SD**_ 是一款专为竞速飞行器设计的控制器板。
 - Futaba S.BUS 和 S.BUS2 / Spektrum DSM2 和 DSMX / Graupner SUMD / PPM 输入 / Yuneec ST24  
 - OneShot PWM 输出（可配置）  
 - 内置电流传感器  
-- 内置OSD芯片（通过SPI的AB7456）## 购买地点
+- 内置OSD芯片（通过SPI的AB7456）
+
+## 购买地点
 
 该开发板由不同供应商生产，存在一些变种（例如是否带气压计）。
 
@@ -165,7 +167,9 @@ RC通过以下端口之一连接：
 | USART4 | /dev/ttyS1 | TELEM1     |
 | USART6 | /dev/ttyS2 | GPS        |
 
-<!-- Note: Got ports using https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 -->## 遥控遥测
+<!-- Note: Got ports using https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 -->
+
+## 遥控遥测
 
 Omnibus支持通过[FrSky 遥测](../peripherals/frsky_telemetry.md)或[CRSF Crossfire 遥测](#crsf_telemetry)将遥测数据发送到遥控器。
 
@@ -217,7 +221,9 @@ Omnibus支持通过[FrSky 遥测](../peripherals/frsky_telemetry.md)或[CRSF Cro
 
 电路图由 [Airbot](https://myairbot.com/) 提供：[OmnibusF4-Pro-Sch.pdf](http://bit.ly/obf4pro)。
 
-<a id="bootloader"></a>## PX4 引导加载程序更新
+<a id="bootloader"></a>
+
+## PX4 引导加载程序更新
 
 开发板预装了 [Betaflight](https://github.com/betaflight/betaflight/wiki)。
 在安装 PX4 固件之前，必须烧录 _PX4 引导加载程序_。
@@ -256,6 +262,8 @@ make omnibus_f4sd_default
 | 参数                                                              | 设置                                                                                                                 |
 | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | [SYS_HAS_MAG](../advanced_config/parameter_reference.md#SYS_HAS_MAG)   | 由于该板没有内部磁力计，因此应将其禁用。如果连接了外部磁力计，可以启用它。 |
-| [SYS_HAS_BARO](../advanced_config/parameter_reference.md#SYS_HAS_BARO) | 如果您的板没有气压计，请禁用此参数。                                                                   |## 更多信息
+| [SYS_HAS_BARO](../advanced_config/parameter_reference.md#SYS_HAS_BARO) | 如果您的板没有气压计，请禁用此参数。                                                                   |
+
+## 更多信息
 
 [This page](https://blog.dronetrest.com/omnibus-f4-flight-controller-guide/) 提供了引脚分配和设置说明的详细概述。

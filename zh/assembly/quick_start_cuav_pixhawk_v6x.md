@@ -26,7 +26,9 @@
 | DSM/SUB/RSSI  | 包含DSM、SBUS、RSSI信号输入接口，DSM接口可连接DSM卫星接收机，SBUS接口可连接SBUS遥控接收机，RSSI用于信号强度返回模块                                                                                                              |
 | PPM           | 连接PPM遥控接收机                                                                                                                                                                                                             |
 | ETH           | 以太网接口。连接任务计算机等以太网设备                                                                                                                                                                                        |
-| AD&IO         | 包含两个模拟输入（ADC3.3/ADC6.6）；通常不使用                                                                                                                                                                                  |## 机体前部
+| AD&IO         | 包含两个模拟输入（ADC3.3/ADC6.6）；通常不使用                                                                                                                                                                                  |
+
+## 机体前部
 
 ::: info
 如果由于空间限制等原因无法将控制器安装在推荐/默认方向上，则需要根据实际安装方向配置自动驾驶软件：[Flight Controller Orientation](../config/flight_controller_orientation.md)。

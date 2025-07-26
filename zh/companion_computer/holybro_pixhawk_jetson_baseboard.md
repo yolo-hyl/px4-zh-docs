@@ -1,27 +1,29 @@
-# Holybro Pixhawk Jetson 载板
 
-[Holybro Pixhawk Jetson 载板](https://holybro.com/products/pixhawk-jetson-baseboard) 将 Pixhawk 飞控与 NVIDIA Orin 系列计算机集成于单一设备中，大幅简化了使用伴飞计算机时的硬件和软件配置流程。
+
+# Holybro Pixhawk Jetson Baseboard
+
+[Holybro Pixhawk Jetson Baseboard](https://holybro.com/products/pixhawk-jetson-baseboard) 将 Pixhawk 飞控和 NVIDIA Orin 系列计算单元整合为单一模块，极大简化了 PX4 与伴飞计算机的软硬件配置过程。
 
 ![Jetson 载板与 Pixhawk](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/hero_image.png)
 
-该载板提供 [Jetson Orin NX (16GB RAM)](https://holybro.com/products/nvidia-jetson-orin-nx-16g) 或 [Jetson Orin Nano (4GB RAM)](https://holybro.com/products/nvidia-jetson-orin-nx-16g?variant=44391410598077) 两种版本，可与符合 Pixhawk Autopilot Bus (PAB) 规格的任意 Pixhawk 飞控配合使用，例如 Pixhawk 6 或 Pixhawk 6X。
+该开发板提供 [Jetson Orin NX (16GB RAM)](https://holybro.com/products/nvidia-jetson-orin-nx-16g) 或 [Jetson Orin Nano (4GB RAM)](https://holybro.com/products/nvidia-jetson-orin-nx-16g?variant=44391410598077) 两种型号选择。可配合任意符合 Pixhawk Autopilot Bus (PAB) 规范的 Pixhawk 飞控使用，例如 Pixhawk 6 或 Pixhawk 6X。
 
-本指南将引导您完成以下操作：
+本指南将引导完成以下操作流程：
 
-- 硬件概览及配置
-- Jetson 板烧录及通过 SSH 登录
-- Pixhawk 上 PX4 固件的烧录（及编译）
-- Pixhawk 与 Jetson 之间的串口和以太网连接配置
-- 通过串口和以太网接口的 MAVLink 配置/测试
-- 通过串口和以太网接口的 ROS 2/XRCE-DDS 配置/测试
+- 硬件概览与配置
+- Jetson 开发板烧写与 SSH 登录
+- Pixhawk 上 PX4 固件烧写（及编译）
+- Pixhawk 与 Jetson 的串口/以太网连接配置
+- 通过串口/以太网接口的 MAVLink 设置与测试
+- 通过串口/以太网接口的 ROS 2/XRCE-DDS 设置与测试
 
 ::: tip
-您暂时需要以下硬件才能登录 Jetson 并获取其 IP 地址，之后即可通过 SSH 登录：
+您需要临时准备以下硬件设备以登录 Jetson 并获取其 IP 地址，之后即可通过 SSH 登录：
 
-- 外接显示器。
-  如果显示器没有 mini HDMI 接口，还需要 [Mini HDMI 转 HDMI 转换器](https://a.co/d/6N815N9)（如果外接显示器支持 HDMI 输入）
-- 以太网线
-- 鼠标和键盘（载板提供 Jetson 的 4 个 USB 接口，其中两个为 USB 3.0）
+- 外接显示器
+  如果您的显示器没有 mini HDMI 接口，还需要 [Mini HDMI 转 HDMI 转接器](https://a.co/d/6N815N9)（当显示器支持 HDMI 输入时）
+- 网线
+- 鼠标和键盘（开发板提供 Jetson 的 4 个 USB 接口，其中两个为 USB 3.0）
 
 :::
 
@@ -29,11 +31,12 @@
 
 - [Holybro Pixhawk Jetson Baseboard](https://holybro.com/products/pixhawk-jetson-baseboard)
 
-可以选择 Pixhawk 自动驾驶仪和 Jetson 计算机型号。所有主板均配备 WiFi 模块、摄像头、电源模块、独立的 UBEC 以及电源分配板（PDB）。
+可以选择Pixhawk自动驾驶仪和Jetson计算机版本。
+所有板载都配备WiFi模块、摄像头、电源模块、独立UBEC、电源分配板（PDB）。
 
 ## 规格
 
-此信息来源于[Holybro Pixhawk-Jetson Baseboard Documentation](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-jetson-baseboard)
+此信息来自 [Holybro Pixhawk-Jetson Baseboard 文档](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-jetson-baseboard)。
 
 :::: tabs
 
@@ -41,389 +44,709 @@
 
 [尺寸与重量](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-jetson-baseboard/dimension-and-weight) (Holybro)
 
-- 尺寸  
-  - 126 x 80 x 45mm（含Jetson Orin NX + 散热器/风扇 & 飞控模块）  
-  - 126 x 80 x 22.9mm（不含Jetson和飞控模块）  
+- 尺寸
 
-- 重量  
-  - 190g（含Jetson、散热器、飞控模块、M.2 SSD、M.2 Wi-Fi模块）  
+  - 126 x 80 x 45mm (含 Jetson Orin NX + 散热器/风扇 & 飞控模块)
+  - 126 x 80 x 22.9mm (不含 Jetson 和飞控模块)
 
-:::
-
-::: tab Jetson连接器
-
-- 2x 千兆以太网端口  
-  - 通过以太网交换机（RTL8367S）连接至Jetson与飞控  
-  - 以太网交换机由与Pixhawk相同的电路供电  
-  - 8针 JST-GH  
-  - RJ45  
-
-- 2x MIPI CSI相机输入  
-  - 各4通道  
-  - 22针 Raspberry Pi Cam FFC  
-
-- 2x USB 3.0主机端口  
-  - USB A  
-  - 5A电流限制  
-
-- 2x USB 2.0主机端口  
-  - 5针 JST-GH  
-  - 0A电流限制  
-
-- USB 2.0编程/调试端口  
-  - USB-C  
-
-- 2个Key M 2242/2280 NVMe SSD插槽  
-  - PCIEx4  
-
-- 2个Key E 2230 Wi-Fi/蓝牙插槽  
-  - PCIEx2  
-  - USB  
-  - UART  
-  - I2S  
-
-- Mini HDMI输出  
-
-- 4x GPIO  
-  - 6针 JST-GH  
-
-- CAN端口  
-  - 连接至飞控的CAN2（4针 JST-GH）  
-
-- SPI端口  
-  - 7针 JST-GH  
-
-- I2C端口  
-  - 4针 JST-GH  
-
-- I2S端口  
-  - 7针 JST-GH  
-
-- 2x UART端口  
-  - 1个用于调试  
-  - 1个连接至飞控的telem2  
-
-- 风扇电源端口  
-
-- IIM42652 IMU  
+- 重量
+  - 190g (含 Jetson、散热器、飞控、M.2 SSD、M.2 Wi-Fi 模块)
 
 :::
 
-::: tab 飞控连接器
+::: tab Jetson 接口
 
-- Pixhawk飞控总线接口  
-  - 100针 Hirose DF40  
-  - 50针 Hirose DF40  
+- 2个千兆以太网端口
 
-- 冗余数字电源模块输入  
-  - I2C电源监控支持  
-  - 2x 6针 Molex CLIK-Mate  
+  - 通过以太网交换机(RTL8367S)连接至Jetson和飞控
+  - 以太网交换机由与Pixhawk相同的电路供电
+  - 8针 JST-GH
+  - RJ45
 
-- 电源路径选择器  
+- 2个 MIPI CSI 摄像头输入
 
-- 过压保护  
+  - 每个4通道
+  - 22针 Raspberry Pi 摄像头FFC
 
-- 电压参数  
-  - 最大输入电压：6V  
-  - USB电源输入：4.75~5.25V  
+- 2个 USB 3.0 主机端口
 
-- 完整GPS加安全开关端口  
-  - 10针 JST-GH  
+  - USB A
+  - 5A 电流限制
 
-- 二级（GPS2）端口  
-  - 6针 JST-GH  
+- 2个 USB 2.0 主机端口
 
-- 2x CAN端口  
-  - 4针 JST-GH  
+  - 5针 JST-GH
+  - 0A 电流限制
 
-- 3x 带流量控制的遥测端口  
-  - 2x 6针 JST-GH  
-  - 1个连接至Jetson的`UART1`端口  
+- 用于编程/调试的 USB 2.0
 
-- 16路PWM输出  
-  - 2x 10针 JST-GH  
+  - USB-C
 
-- UART4 & I2C端口  
-  - 6针 JST-GH  
+- 2个 Key M 2242/2280 接口用于NVMe SSD
 
-- 2x 千兆以太网端口  
-  - 通过以太网交换机（RTL8367S）连接至Jetson与飞控  
-  - 8针 JST-GH  
-  - RJ45  
+  - PCIEx4
 
-- AD & IO  
-  - 8针 JST-GH  
+- 2个 Key E 2230 接口用于WiFi/BT
 
-- USB 2.0  
-  - USB-C  
-  - 4针 JST-GH  
+  - PCIEx2
+  - USB
+  - UART
+  - I2S
 
-- DSM输入  
-  - 3针 JST-ZH 1.5mm间距  
+- Mini HDMI 输出
 
-- 无线电接收输入  
-  - PPM/SBUS  
-  - 5针 JST-GH  
+- 4个 GPIO
 
-- SPI端口  
-  - 外部传感器总线（SPI5）  
-  - 11针 JST-GH  
+  - 6针 JST-GH
 
-- 2x 调试端口  
-  - 1个用于FMU  
-  - 1个用于IO  
-  - 10针 JST-SH  
+- CAN端口
+
+  - 连接到飞控的 CAN2 (4针 JST-GH)
+
+- SPI端口
+
+  - 7针 JST-GH
+
+- I2C端口
+
+  - 4针 JST-GH
+
+- I2S端口
+
+  - 7针 JST-GH
+
+- 2个 UART端口
+
+  - 1个用于调试
+  - 1个连接到飞控的telem2
+
+- 风扇电源端口
+
+- IIM42652 IMU
 
 :::
 
-::: tab 电源（底板）
+::: tab 自动驾驶仪接口
 
-Pixhawk的电源通过Jetson旁边`Power 1`或`Power 2`端口供电，Jetson的电源连接是板侧的XT30插头。
+- Pixhawk 自动驾驶总线接口
 
-Jetson的输入电源电路与Pixhawk飞控分离：
+  - 100针 Hirose DF40
+  - 50针 Hirose DF40
 
-- 8V/3A 最小（取决于使用和外设）  
-- 电压范围：7-21V（3S-4S）  
-- Jetson底板内置BEC支持7-21V（3S-4S）  
-  注意：对于4S以上应用可使用外部UBEC-12A  
+- 冗余数字电源模块输入
+
+  - 支持I2C电源监控
+  - 2个6针 Molex CLIK-Mate
+
+- 电源路径选择器
+
+- 过压保护
+
+- 电压规格
+
+  - 最大输入电压: 6V
+  - USB电源输入: 4.75~5.25V
+
+- 完整GPS+安全开关端口
+
+  - 10针 JST-GH
+
+- 次级(GPS2)端口
+
+  - 6针 JST-GH
+
+- 2个 CAN端口
+
+  - 4针 JST-GH
+
+- 3个带流量控制的遥测端口
+
+  - 2个6针 JST-GH
+  - 1个连接到Jetson的UART1端口
+
+- 16个PWM输出
+
+  - 2个10针 JST-GH
+
+- UART4 & I2C端口
+
+  - 6针 JST-GH
+
+- 2个千兆以太网端口
+
+  - 通过以太网交换机(RTL8367S)连接至Jetson和飞控
+  - 8针 JST-GH
+  - RJ45
+
+- AD & IO
+
+  - 8针 JST-GH
+
+- USB 2.0
+
+  - USB-C
+  - 4针 JST-GH
+
+- DSM输入
+
+  - 3针 JST-ZH 1.5mm间距
+
+- RC输入
+
+  - PPM/SBUS
+  - 5针 JST-GH
+
+- SPI端口
+
+  - 外部传感器总线(SPI5)
+  - 11针 JST-GH
+
+- 2个调试端口
+
+  - 1个用于FMU
+  - 1个用于IO
+  - 10针 JST-SH
+
+:::
+
+::: tab 电源(底板)
+
+Pixhawk通过Jetson旁边的Power 1或Power 2端口供电。
+Jetson的电源连接是同侧板上的XT30插头。
+
+Jetson的电源电路与Pixhawk自动驾驶仪分离：
+
+- 8V/3A 最小（取决于使用情况和外设）
+- 电压范围: 7-21V (3S-4S)
+- Jetson底板上的BEC支持7-21V (3S-4S)
+  注意：对于4S以上应用可使用外部UBEC-12A
 
 开发时建议使用以下有线电源适配器：
 
 - [Jetson Orin电源适配器](https://holybro.com/products/power_adapter_for_jetson_orin)
 
+
 完整的电源供应框图如下：
 
-![Jetson载板电源图](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/peripherals_block_diagram_1.png)
+![Jetson 载板电源图](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/peripherals_block_diagram_1.png)
 
 :::
 
-::: tab 电源（UBEC-12A）
+::: tab 电源(UBEC-12A)
 
-Holybro单独提供的UBEC 12A（3-14S）BEC可用于更高功率应用（4S）。  
-该模块比内置底板BEC提供更大功率，并在BEC故障时提供冗余和更便捷的更换。
+Holybro UBEC 12A (3-14S) BEC可用于更高功率应用(4S)。
+这比底板内置BEC提供更大功率，并在BEC故障时提供冗余和更易更换。
 
-电源参数：
+电源规格：
 
-- 输入电压：3~14S（XT30）  
-- 输出电压：6.0V/7.2V/8.0V/9.2V（推荐7.2V用于Jetson板供电）  
-- 输出电流  
-  - 持续：12A  
-  - 峰值：24A  
+- 输入电压: 3~14S (XT30)
+- 输出电压: 6.0V/7.2V/8.0V/9.2V (建议为Jetson供电时使用7.2V)
+- 输出电流
+- 持续: 12A
+- 峰值: 24A
 
 尺寸
 
-- 尺寸：48x33.6x16.3 mm  
-- 重量：47.8g  
+- 尺寸: 48x33.6x16.3 mm
+- 重量: 47.8g
 
 :::
 
-::::根据您的需求，以下是Jetson Orin与飞控器（如Pixhawk）的连接方案，重点解决CSI相机与I2C端口的连接问题，并确保电源和数据传输的正确性：
+::::
 
----
+## 引脚分配
 
-### **1. 明确需求与接口匹配**
-- **CSI相机（Orin）**：用于高速视频传输，接口类型为Camera Serial Interface (CSI)，需连接到Orin的CSI端口（Camera0/Camera1）。
-- **I2C端口（飞控器）**：用于低速传感器通信，需连接到Orin的I2C端口（如Orin_I2C1_SCL/SDA）。
-- **连接目标**：若需将CSI相机数据传输到飞控器，需通过中间协议转换；若仅需I2C通信，则直接连接I2C端口。
+![Jetson 接口引脚](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/jetson_pinout.png)
 
----
+::: details Pixhawk 接口
 
-### **2. 连接方案**
-#### **方案一：CSI相机与Orin连接**
-- **硬件连接**：
-  - 将CSI相机模块的CSI接口直接连接到Orin的 **Camera0 或 Camera1** 端口（参考Orin CSI端口信号定义）。
-  - **电源**：CSI端口可能提供3.3V VDD，需确认相机模块是否支持；若不足，需额外供电。
-  - **I2C控制**：若相机需I2C控制（如调整参数），需将Orin的 **CAM0_I2C_SCL/SDA**（Camera0端口）与相机模块的I2C接口连接，而非飞控器的I2C端口。
+### 电源1（主）、电源2端口
 
-#### **方案二：Orin与飞控器I2C通信**
-- **硬件连接**：
-  - 将Orin的 **Orin_I2C1_SCL** 和 **Orin_I2C1_SDA**（来自Orin I2C端口）与飞控器的I2C_SCL/SDA连接。
-  - **共地**：确保Orin的 **GND** 与飞控器的GND连接。
-  - **电源**：若飞控器I2C端口提供5V或3.3V VCC，需确认与Orin I2C端口的电压匹配（通常3.3V）。
+(2.00mm Pitch CLIK-Mate)
 
-#### **方案三：CSI相机数据传输到飞控器（需协议转换）**
-- **中间设备**：使用FPGA或微控制器（如Jetson Nano）将CSI视频流转换为I2C或UART协议。
-- **步骤**：
-  1. Orin通过CSI端口采集视频数据。
-  2. 中间设备接收Orin的视频流，转换为I2C/UART协议。
-  3. 中间设备的I2C/UART接口连接到飞控器的对应端口。
+| 针脚       | 信号              | 电压   |
+| :-------- | :------------------ | :----- |
+| 1 (红色)   | VDD5V_BRICK1/2(in)  | +5V    |
+| 2 (黑色)   | VDD5V_BRICK1/2 (in) | +5V    |
+| 3 (黑色)   | SCL1/2              | +3.3V  |
+| 4 (黑色)   | SDA1/2              | +3.3V  |
+| 5 (黑色)   | GND                 | GND    |
+| 6 (黑色)   | GND                 | GND    |
 
----
+### Tel1, Tel3 端口
 
-### **3. 电源与信号连接细节**
-- **电源匹配**：
-  - Orin的CSI端口和I2C端口通常提供 **3.3V**，飞控器的I2C端口也多为3.3V，可直接连接。
-  - 若飞控器I2C端口为5V，需使用 **I2C电平转换器**（如TXB0108）防止电压不匹配损坏设备。
-- **信号线连接**：
-  - **I2C通信**：Orin的 **Orin_I2C1_SCL** → 飞控器 **I2C_SCL**；Orin的 **Orin_I2C1_SDA** → 飞控器 **I2C_SDA**。
-  - **共地**：Orin **GND** → 飞控器 **GND**。
+| 引脚       | 信号         | 电压   |
+| :-------- | :----------- | :----- |
+| 1 (红色)   | 电源输出     | +5V    |
+| 2 (黑色)   | 发送7/2(输出) | +3.3V  |
+| 3 (黑色)   | 接收7/2(输入) | +3.3V  |
+| 4 (黑色)   | 清空发送7/2(输入) | +3.3V |
+| 5 (黑色)   | 请求发送7/2(输出) | +3.3V |
+| 6 (黑色)   | 地           | GND    |
 
----
+### CAN1, CAN2端口
 
-### **4. 注意事项**
-1. **协议差异**：CSI是高速视频接口，I2C是低速控制接口，直接连接不可行。若需传输视频，需通过USB/以太网或中间转换设备。
-2. **带宽限制**：I2C最大速率约400 kHz（标准模式）或3.4 MHz（快速模式），远低于CSI的Gbps级别，仅适合控制信号。
-3. **飞控器兼容性**：确认飞控器的I2C接口支持所需协议（如MPU9250的I2C地址）。
+| 引脚       | 信号       | 电压   |
+| :-------- | :-------- | :------ |
+| 1（红色）  | VCC（输出） | +5V    |
+| 2（黑色）  | CANH1/2    | +3.3V  |
+| 3（黑色）  | CANL1/2    | +3.3V  |
+| 4（黑色）  | GND        | GND    |
 
----
+### GPS1 接口
 
-### **5. 示例连接图**
-```plaintext
-Orin Camera0端口:
-- CSI_DATA[0..7] → CSI相机模块
-- CAM0_I2C_SCL → CSI相机模块的I2C_SCL
-- CAM0_I2C_SDA → CSI相机模块的I2C_SDA
-- 3.3V VDD → CSI相机供电
+| 引脚        | 信号            | 电压 |
+| :--------- | :---------------- | :------ |
+| 1 (红色)    | VCC (输出)        | +5V     |
+| 2 (黑色)    | TX1(输出)         | +3.3V   |
+| 3 (黑色)    | RX1(输入)         | +3.3V   |
+| 4 (黑色)    | SCL1              | +3.3V   |
+| 5 (黑色)    | SDA1              | +3.3V   |
+| 6 (黑色)    | SAFETY_SWITCH     | +3.3V   |
+| 7 (黑色)    | SAFETY_SWITCH_LED | +3.3V   |
+| 8 (黑色)    | VDD_3V3           | +3.3V   |
+| 9 (黑色)    | BUZZER-           | 0\~5V   |
+| 10 (黑色)   | GND               | GND     |
 
-Orin I2C端口 (Orin_I2C1):
-- SCL → 飞控器 I2C_SCL
-- SDA → 飞控器 I2C_SDA
-- GND → 飞控器 GND
-```
+### GPS2端口
 
----
+| 引脚       | 信号         | 电压   |
+| :-------- | :---------- | :----- |
+| 1 (红色)   | VCC (输出)  | +5V    |
+| 2 (黑色)   | TX8(输出)   | +3.3V  |
+| 3 (黑色)   | RX8(输入)   | +3.3V  |
+| 4 (黑色)   | SCL2        | +3.3V  |
+| 5 (黑色)   | SDA2        | +3.3V  |
+| 6 (黑色)   | GND         | GND    |
 
-### **6. 软件配置**
-- **Orin侧**：
-  - 启用I2C接口（`sudo i2cdetect -y 1` 检查设备地址）。
-  - 使用CSI驱动（如`v4l2-ctl`）配置相机参数。
-- **飞控器侧**：
-  - 配置I2C传感器驱动（如Pixhawk的`MPU9250`）。
-  - 通过串口或MAVLink协议与Orin通信（非I2C）。
+### UART4与I2C端口
 
----
+(在某些板上显示为UART\&I2C)
 
-### **总结**
-- **直接连接**：仅I2C通信可行，CSI相机需Orin处理数据。
-- **视频传输**：需通过USB/以太网或中间转换设备。
-- **电源与电平**：确保3.3V匹配，必要时使用电平转换器。
+| 引脚       | 信号    | 电压 |
+| :-------- | :-------- | :------ |
+| 1 (红色)   | VCC (输出) | +5V     |
+| 2 (黑色)   | TX4(输出)  | +3.3V   |
+| 3 (黑色)   | RX4(输入)  | +3.3V   |
+| 4 (黑色)   | SCL3      | +3.3V   |
+| 5 (黑色)   | SDA3      | +3.3V   |
+| 6 (黑色)   | NFC_GPIO  | +3.3V   |
+| 7 (黑色)   | GND       | GND     |
 
-如需进一步优化，请提供具体飞控器型号和相机模块型号，以便定制详细方案。
+### SPI端口
+
+| 引脚       | 信号         | 电压  |
+| :--------- | :----------- | :---- |
+| 1 (红色)   | VCC (输出)   | +5V   |
+| 2 (黑色)   | SPI6_SCK     | +3.3V |
+| 3 (黑色)   | SPI6_MISO    | +3.3V |
+| 4 (黑色)   | SPI6_MOSI    | +3.3V |
+| 5 (黑色)   | SPI6_CS1     | +3.3V |
+| 6 (黑色)   | SPI6_CS2     | +3.3V |
+| 7 (黑色)   | SPIX_SYNC    | +3.3V |
+| 8 (黑色)   | SPI6_DRDY1   | +3.3V |
+| 9 (黑色)   | SPI6_DRDY2   | +3.3V |
+| 10 (黑色)  | SPI6_nRESET  | +3.3V |
+| 11 (黑色)  | GND          | GND   |
+
+### FMU USB端口
+
+| 引脚       | 信号    | 电压  |
+| :-------- | :-------- | :------ |
+| 1（红色）   | VBUS（输入） | +5V     |
+| 2（黑色） | DM        | +3.3V   |
+| 3（黑色） | DP        | +3.3V   |
+| 4（黑色） | GND       | GND     |
+
+### I2C端口
+
+| 引脚       | 信号 | 电压 |
+| :-------- | :----- | :------ |
+| 1 (red)   | VCC    | +5V     |
+| 2 (black) | SCL3   | +3.3V   |
+| 3 (black) | SDA3   | +3.3V   |
+| 4 (black) | GND    | GND     |
+
+### ETH-P1 端口
+
+| 引脚       | 信号     | 电压 |
+| :-------- | :------- | :--- |
+| 1 (红色)   | TX_D1+   | -    |
+| 2 (黑色)   | TX_D1-   | -    |
+| 3 (黑色)   | RX_D2+   | -    |
+| 4 (黑色)   | RX_D2-   | -    |
+| 5 (黑色)   | Bi_D3+   | -    |
+| 6 (黑色)   | Bi_D3-   | -    |
+| 7 (黑色)   | Bi_D4+   | -    |
+| 8 (黑色)   | Bi_D4-   | -    |
+
+### IO调试端口
+
+(JST-SH 1mm Pitch)
+
+| 引脚        | 信号            | 电压   |
+| :--------- | :-------------- | :----- |
+| 1（红色）    | IO_VDD_3V3(out) | +3.3V  |
+| 2（黑色）    | IO_USART1_TX    | +3.3V  |
+| 3（黑色）    | NC              | -      |
+| 4（黑色）    | IO_SWD_IO       | +3.3V  |
+| 5（黑色）    | IO_SWD_CK       | +3.3V  |
+| 6（黑色）    | IO_SWO          | +3.3V  |
+| 7（黑色）    | IO_SPARE_GPIO1  | +3.3V  |
+| 8（黑色）    | IO_SPARE_GPIO2  | +3.3V  |
+| 9（黑色）    | IO_nRST         | +3.3V  |
+| 10（黑色）   | GND             | GND    |
+
+### FMU 调试端口
+
+（JST-SH 1mm间距）
+
+| 引脚        | 信号             | 电压     |
+| :--------- | :----------------- | :------ |
+| 1（红色）    | FMU_VDD_3V3（输出）   | +3.3V   |
+| 2（黑色）  | FMU_USART3_TX      | +3.3V   |
+| 3（黑色）  | FMU_USART3_RX      | +3.3V   |
+| 4（黑色）  | FMU_SWD_IO         | +3.3V   |
+| 5（黑色）  | FMU_SWD_CK         | +3.3V   |
+| 6（黑色）  | SPI6_SCK_EXTERNAL1 | +3.3V   |
+| 7（黑色）  | NFC_GPIO           | +3.3V   |
+| 8（黑色）  | PH11               | +3.3V   |
+| 9（黑色）  | FMU_nRST           | +3.3V   |
+| 10（黑色） | GND                | GND     |
+
+### AD&IO端口
+
+| 引脚       | 信号         | 电压   |
+| :-------- | :------------- | :------ |
+| 1 (红色)   | VCC（输出）      | +5V     |
+| 2 (黑色)   | FMU_CAP1       | +3.3V   |
+| 3 (黑色)   | FMU_BOOTLOADER | +3.3V   |
+| 4 (黑色)   | FMU_RST_REQ    | +3.3V   |
+| 5 (黑色)   | NARMED         | +3.3V   |
+| 6 (黑色)   | ADC1_3V3       | +3.3V   |
+| 7 (黑色)   | ADC1_6V6       | +6.6V   |
+| 8 (黑色)   | GND            | GND     |
+
+### DSM 无线电端口
+
+(JST-ZH 1.5mm 针距)
+
+| 引脚       | 信号               | 电压   |
+| :--------- | :----------------- | :----- |
+| 1 (黄色)   | VDD_3V3_SPEKTRUM   | +3.3V  |
+| 2 (黑色)   | GND                | GND    |
+| 3 (灰色)   | DSM/Spektrum 输入  | +3.3V  |
+
+### RC输入端口
+
+| 引脚       | 信号            | 电压 |
+| :-------- | :---------------- | :------ |
+| 1 (红色)   | VDD_5V \_RC (输出) | +5V     |
+| 2 (黑色)   | SBUS/PPM 输入       | +3.3V   |
+| 3 (黑色)   | RSSI_IN           | +3.3V   |
+| 4 (黑色)   | 未连接(NC)        | -       |
+| 5 (黑色)   | 地(GND)           | GND     |
+
+### SBUS输出端口
+
+| 引脚       | 信号       | 电压   |
+| :-------- | :--------- | :----- |
+| 1 (红色)  | 无连接     | -      |
+| 2 (黑色)  | SBUS_OUT   | +3.3V  |
+| 3 (黑色)  | GND        | GND    |
+
+### FMU PWM OUT (AUX OUT)
+
+| 引脚       | 信号        | 电压     |
+| :--------- | :---------- | :------- |
+| 1 (红色)   | VDD_SERVO   | 0\~16V  |
+| 2 (黑色)   | FMU_CH1     | +3.3V   |
+| 3 (黑色)   | FMU_CH2     | +3.3V   |
+| 4 (黑色)   | FMU_CH3     | +3.3V   |
+| 5 (黑色)   | FMU_CH4     | +3.3V   |
+| 6 (黑色)   | FMU_CH5     | +3.3V   |
+| 7 (黑色)   | FMU_CH6     | +3.3V   |
+| 8 (黑色)   | FMU_CH7     | +3.3V   |
+| 9 (黑色)   | FMU_CH8     | +3.3V   |
+| 10 (黑色)  | GND         | GND     |
+
+### IO PWM OUT（MAIN OUT）
+
+| 引脚        | 信号        | 电压      |
+| :--------- | :---------- | :-------- |
+| 1（红色）   | VDD_SERVO   | 0\~16V    |
+| 2（黑色）   | IO_CH1      | +3.3V     |
+| 3（黑色）   | IO_CH2      | +3.3V     |
+| 4（黑色）   | IO_CH3      | +3.3V     |
+| 5（黑色）   | IO_CH4      | +3.3V     |
+| 6（黑色）   | IO_CH5      | +3.3V     |
+| 7（黑色）   | IO_CH6      | +3.3V     |
+| 8（黑色）   | IO_CH7      | +3.3V     |
+| 9（黑色）   | IO_CH8      | +3.3V     |
+| 10（黑色）  | GND         | GND       |
+
+:::
+
+::: details Jetson Orin ports
+
+### Orin USB2.0端口
+
+| 引脚       | 信号            | 电压   |
+| :-------- | :------------- | :------ |
+| 1 (红色)   | USB电源总线（输出） | +5V     |
+| 2 (黑色)   | DM             | +3.3V   |
+| 3 (黑色)   | DP             | +3.3V   |
+| 4 (黑色)   | 地线            | GND     |
+| 5 (黑色)   | 屏蔽层          | GND     |
+
+### Orin 调试
+
+(JST-SH 1毫米间距)
+
+| 引脚       | 信号             | 电压    |
+| :-------- | :------------- | :------ |
+| 1 (红色)   | VCC (out)      | +5V     |
+| 2 (黑色)   | Orin_UART2_TXD | +3.3V   |
+| 3 (黑色)   | Orin_UART2_RXD | +3.3V   |
+| 4 (黑色)   | NC             | -       |
+| 5 (黑色)   | NC             | -       |
+| 6 (黑色)   | GND            | GND     |
+
+### Orin I2C端口
+
+| 引脚       | 信号           | 电压   |
+| :-------- | :------------- | :----- |
+| 1 (红色)   | VCC (输出)     | +5V    |
+| 2 (黑色)   | Orin_I2C1_SCL  | +3.3V  |
+| 3 (黑色)   | Orin_I2C1_SDA  | +3.3V  |
+| 4 (黑色)   | GND            | GND    |
+
+### Orin GPIO 端口
+
+| 针脚       | 信号           | 电压   |
+| :-------- | :----------- | :------ |
+| 1 (红色)   | VCC          | +5V     |
+| 2 (黑色)   | Orin_GPIO_07 | +3.3V   |
+| 3 (黑色)   | Orin_GPIO_11 | +3.3V   |
+| 4 (黑色)   | Orin_GPIO_12 | +3.3V   |
+| 5 (黑色)   | Orin_GPIO_13 | +3.3V   |
+| 6 (黑色)   | GND          | GND     |
+
+### Orin Camera0 端口
+
+相机串行接口（CSI）
+
+| 引脚 | 信号            | 电压    |
+| :-- | :---------------- | :------ |
+| 1   | GND               | GND     |
+| 2   | Orin_CSI1_D0_N    | +3.3V   |
+| 3   | Orin_CSI1_D0_P    | +3.3V   |
+| 4   | GND               | GND     |
+| 5   | Orin_CSI1_D1_N    | +3.3V   |
+| 6   | Orin_CSI1_D1_P    | +3.3V   |
+| 7   | GND               | GND     |
+| 8   | Orin_CSI1_CLK_N   | +3.3V   |
+| 9   | Orin_CSI1_CLK_P   | +3.3V   |
+| 10  | GND               | GND     |
+| 11  | Orin_CSI0_D0_N    | +3.3V   |
+| 12  | Orin_CSI0_D0_P    | +3.3V   |
+| 13  | GND               | GND     |
+| 14  | Orin_CSI0_D1_N    | +3.3V   |
+| 15  | Orin_CSI0_D1_P    | +3.3V   |
+| 16  | GND               | GND     |
+| 17  | Orin_CAM0_PWDN    | +3.3V   |
+| 18  | Orin_CAM0_MCLK    | +3.3V   |
+| 19  | GND               | GND     |
+| 20  | Orin_CAM0_I2C_SCL | +3.3V   |
+| 21  | Orin_CAM0_I2C_SDA | +3.3V   |
+| 22  | VDD               | +3.3V   |
+
+### Orin 相机1端口
+
+相机串行接口（CSI）
+
+| 引脚 | 信号            | 电压 |
+| :-- | :---------------- | :------ |
+| 1   | 地               | 地     |
+| 2   | Orin_CSI2_D0_N    | +3.3V   |
+| 3   | Orin_CSI2_D0_P    | +3.3V   |
+| 4   | 地               | 地     |
+| 5   | Orin_CSI2_D1_N    | +3.3V   |
+| 6   | Orin_CSI2_D1_P    | +3.3V   |
+| 7   | 地               | 地     |
+| 8   | Orin_CSI2_CLK_N   | +3.3V   |
+| 9   | Orin_CSI2_CLK_P   | +3.3V   |
+| 10  | 地               | 地     |
+| 11  | Orin_CSI3_D0_N    | +3.3V   |
+| 12  | Orin_CSI3_D0_P    | +3.3V   |
+| 13  | 地               | 地     |
+| 14  | Orin_CSI3_D1_N    | +3.3V   |
+| 15  | Orin_CSI3_D1_P    | +3.3V   |
+| 16  | 地               | 地     |
+| 17  | Orin_CAM1_PWDN    | +3.3V   |
+| 18  | Orin_CAM1_MCLK    | +3.3V   |
+| 19  | 地               | 地     |
+| 20  | Orin_CAM1_I2C_SCL | +3.3V   |
+| 21  | Orin_CAM1_I2C_SDA | +3.3V   |
+| 22  | VDD               | +3.3V   |
+
+### Orin SPI端口
+
+| 引脚       | 信号         | 电压   |
+| :-------- | :------------- | :------ |
+| 1 (red)   | VCC            | +5V     |
+| 2 (black) | Orin_SPI0_SCK  | +3.3V   |
+| 3 (black) | Orin_SPI0_MISO | +3.3V   |
+| 4 (black) | Orin_SPI0_MOSI | +3.3V   |
+| 5 (black) | Orin_SPI0_CS0  | +3.3V   |
+| 6 (black) | Orin_SPI0_CS1  | +3.3V   |
+| 7 (black) | GND            | GND     |
+
+### Orin I2S 端口
+
+| 引脚       | 信号          | 电压  |
+| :-------- | :-------------- | :------ |
+| 1 (红色)   | VCC             | +5V     |
+| 2 (黑色)   | Orin_I2S0_SDOUT | +3.3V   |
+| 3 (黑色)   | Orin_I2S0_SDIN  | +3.3V   |
+| 4 (黑色)   | Orin_I2S0_LRCK  | +3.3V   |
+| 5 (黑色)   | Orin_I2S0_SCLK  | +3.3V   |
+| 6 (黑色)   | Orin_GPIO_09    | +3.3V   |
+| 7 (黑色)   | GND             | GND     |
+
+:::
 
 ## 硬件设置
 
-底板同时提供了 Pixhawk 和 Orin 接口，如上文所述的 [引脚分配](#pinouts) 所示。Pixhawk 接口符合 Pixhawk 连接器标准（针对标准涵盖的接口），这意味着该板可以通过通用的组装说明为 [多旋翼机体](../assembly/assembly_mc.md)、[固定翼](../assembly/assembly_fw.md) 和 [垂直起降](../assembly/assembly_vtol.md) 机体连接 GPS 等常规外设，或参考对应飞控的 Pixhawk 指南（例如 [Pixhawk 6X 快速入门](../assembly/quick_start_pixhawk6x.md)）。
+底板同时提供了Pixhawk和Orin端口，如上文所示的[引脚分配](#引脚分配)。
+Pixhawk端口符合Pixhawk连接器标准（针对标准覆盖的端口），这意味着该板可以按照多旋翼[多旋翼](../assembly/assembly_mc.md)、固定翼[fixed-wing](../assembly/assembly_fw.md)和[VTOL](../assembly/assembly_vtol.md)机体的通用组装说明，或对应Pixhawk指南（例如[Pixhawk 6X Quick Start](../assembly/quick_start_pixhawk6x.md)）进行外设连接（如GPS等）。
 
-主要差异可能体现在电源设置（见下文）以及连接到 Jetson 的附加外设配置上。
+主要差异可能体现在电源设置（见下文）以及连接到Jetson的额外外设设置上。
 
 ### 外设
 
-下图进一步说明了外设应连接的接口位置。
+下图提供了关于外设应连接到哪些端口的进一步指导。
 
-![Jetson 载板外设示意图](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/peripherals_block_diagram_2.png)
+![Jetson Carrier Peripherals Diagram](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/peripherals_block_diagram_2.png)
 
 ### 电源接线
 
-板载的 Pixhawk 和 Jetson 部分必须通过各自的电源接口单独供电。随板提供的电源模块支持 2S-12S 电池输入，并为 Pixhawk 部分提供稳压电源。其另一路输出通常连接到（随板提供的）电源分配板，进而为电机、舵机等设备供电，同时为 Jetson 供电（可通过 UBEC 或直接供电）。
+Pixhawk 和 Jetson 部分必须通过各自的电源端口分别供电。  
+配套的电源模块支持 2S-12S 电池输入，并为 Pixhawk 部分提供稳压供电。  
+其另一个输出通常连接到（配套的）电源分配板，然后通过该分配板为电机、舵机等供电，同时为 Jetson 供电（可直接供电或通过 UBEC 供电）。
 
-Jetson 部分的输入电压范围为 7V-21V，对应 3S 或 4S 电池。若使用高于 Jetson 允许电压的电池，可通过 UBEC 降压供电，或使用独立电池为 Jetson 供电。
+Jetson 部分可通过 7V-21V 输入供电，对应 3S 或 4S 电池。  
+如果使用电压高于 Jetson 允许范围的电池，可以通过 UBEC 提供较低的稳压供电，或使用独立电池为 Jetson 供电。
 
-以下展示了部分常见接线配置。
+一些常见的接线配置如下所示。
 
-#### 3S/4S 电池
+#### 3S/4S电池
 
-此配置演示如何使用 3S/4S 电池（输出低于 21V）同时为 Pixhawk 和 Jetson 部分供电。
+此配置演示如何使用3S/4S电池（输出电压低于21V）同时为Pixhawk和Jetson模块供电。
 
-![电源接线 - 使用单个 3S 或 4S 电池](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/power1_one_battery_3s_4s.jpg)
+![电源布线 - 使用一个3S或4S电池](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/power1_one_battery_3s_4s.jpg)
 
-#### 5S 及以上电池（搭配 UBEC）
+#### 5S电池及更高电压（含UBEC）
 
-此配置展示如何使用外部 UBEC（随板提供）为 Jetson 提供合适电压，当使用高压电池（>21V）时。根据电源需求，也可使用该 UBEC（或其他 UBEC）为舵机等控制部件提供稳压电源。
+此配置展示了如何使用外部UBEC（已提供）为Jetson提供合适电压，当使用高电压电池（>21V）时。
+根据你的供电需求，也可以使用此UBEC（或另一UBEC）为控制面和其他舵机驱动的硬件提供合适的供电。
 
-![电源接线 - 大容量电池和 UBEC](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/power2_one_big_battery_external_ubec.png)
+![电源接线 - 大容量电池和UBEC](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/power2_one_big_battery_external_ubec.png)
 
-#### 双电池（无 UBEC）
+#### 双电池（无Ubec）
 
-此配置展示如何使用独立电池为 Jetson 供电，而非通过大容量电池调节供电（如上文所示）。
+此配置展示了如何通过单独电池为Jetson提供适当电压，而非如上文所示那样通过大电池进行电压调节。
 
-![电源接线 - 双电池无 UBEC](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/power3_two_battery_no_ubec.jpg)
+![电源布线 - 双电池无Ubec](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/power3_two_battery_no_ubec.jpg)
 
 #### 使用电源适配器
 
-在台架测试机体时，建议通过外部电源为 Jetson 供电（如示意图所示）。可通过 USB-C 电源或电池（如图中所示）为 Pixhawk 部分供电。
+在机体开发和测试过程中，建议通过外部电源为Jetson供电，如图所示。
+Pixhawk部分可以通过USB-C电源或电池供电（如本图所示）。
 
 ![电源接线 - 电池和电源适配器](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/power4_battery_and_power_adapter.png)
 
-## 烧录 Jetson 板
+## 烧录Jetson板
 
 ::: info
-此 Jetson 配置已在 Nvidia Jetpack 6.0 (Ubuntu 22.04 基础) 和 ROS 2 Humble 上进行测试，这些是 PX4-Autopilot 社区目前支持的版本。
-开发计算机也运行 Ubuntu 22.04。
+此Jetson配置已通过Nvidia Jetpack 6.0（Ubuntu 22.04基础版）和ROS 2 Humble测试，这些版本目前由PX4-Autopilot社区支持。
+开发计算机同样运行Ubuntu 22.04。
 :::
 
-当 Jetson 伴飞计算机处于恢复模式时，可以通过开发计算机使用 [Nvidia SDK Manager](https://docs.nvidia.com/sdk-manager/download-run-sdkm/index.html#download-sdk-manager) 进行烧录。
-Jetson 板进入恢复模式的方法有很多种，但在此板上最佳方法是使用为此目的提供的滑动开关。
-您还需要将开发计算机通过下图所示的特定 USB-C 接口连接到主板。
+当Jetson板处于恢复模式时，可以通过开发计算机使用[Nvidia SDK Manager](https://docs.nvidia.com/sdk-manager/download-run-sdkm/index.html#download-sdk-manager)烧录Jetson伴飞计算机。
+Jetson板进入恢复模式的方式有多种，但在此板上最佳方式是使用为此目的提供的小型滑动开关。
+您还需要通过下图所示的特定USB-C端口将开发计算机连接到主板。
 
-![USB 接口和引导加载程序开关](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/flashing_usb.png)
+![USB端口和引导加载程序开关](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/flashing_usb.png)
 
 ::: tip
-该 USB 接口仅用于烧录 Jetson，不能用作调试接口。
+该USB端口仅用于烧录Jetson，不能用作调试接口。
 :::
 
-请使用在线或离线安装程序下载 [Nvidia SDK Manager](https://docs.nvidia.com/sdk-manager/download-run-sdkm/index.html#download-sdk-manager)（需要 Nvidia 账号才能安装和使用 SDKManager）。
+使用在线或离线安装程序下载[Nvidia SDK Manager](https://docs.nvidia.com/sdk-manager/download-run-sdkm/index.html#download-sdk-manager)（您需要拥有Nvidia账户才能安装和使用SDKManager）。
 
-启动 SDKManager 后，如果开发板已通过恢复模式连接到主机计算机，您应该会看到如下所示的屏幕：
+启动SDKManager后，您将看到类似下图的界面（如果板已通过恢复模式连接到主机计算机）：
 
-![SDK Manager 初始化界面](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/nvidia_sdkmanager_1.png)
+![SDK Manager初始化界面](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/nvidia_sdkmanager_1.png)
 
-在下一个界面中可以选择要安装的组件。
-如图所示选择 _Jetson Linux_ 目标组件（无需选择其他组件，因为烧录完成后开发板会断开连接）。
+下一个界面允许您选择要安装的组件。
+如图所示选择_Jetson Linux_目标组件（无需选择其他组件，因为烧录后板将断开连接）。
 
-![SDK Manager 安装组件页面](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/nvidia_sdkmanager_2.png)
+![SDK Manager安装组件页面](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/nvidia_sdkmanager_2.png)
 
-在接下来的界面中确认所选设备：
+在下一个界面中确认所选设备：
 
-- 在 OEM 配置中选择 `Pre-config`（这将跳过重启后的 Ubuntu 首次设置界面）。
-- 选择您偏好的用户名和密码（请记录下来），这些将作为 Jetpack 的登录凭据。
-- 选择 `NVMe` 作为存储设备，因为开发板具有独立的 SSD 存储空间。
+- 在OEM配置中选择`Pre-config`（这将跳过重启后的Ubuntu首次设置界面）。
+- 选择您偏好的用户名和密码（请记录下来）。
+  这些将用作Jetpack的登录凭证。
+- 选择`NVMe`作为存储设备，因为该板具有独立的SSD存储。
 
-![SDK Manager 安装存储和 OEM 配置页面](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/nvidia_sdkmanager_3.png)
+![SDK Manager安装存储和OEM配置页面](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/nvidia_sdkmanager_3.png)
 
-点击 **Flash** 开始安装镜像。
-安装过程需要几分钟时间。
+按**Flash**开始安装镜像。
+安装完成需要几分钟时间。
 
 ::: warning
-安装期间风扇会运行，请确保风扇未被阻挡。
-Jetson 烧录完成后将启动到初始登录界面。
+安装过程中风扇会运行，因此请确保风扇未被阻挡。
+烧录完成后Jetson将启动到初始登录界面。
 :::
 
-烧录完成后 Jetson 将重启到登录界面（除非已连接外部显示器否则此变化不会明显）。
+烧录完成后Jetson将重启到登录界面（除非已连接外部显示器，否则不会明显显示）。
 
-注意：在恢复模式位置切换时，仅在烧录后首次重启时跳过恢复模式！
-请断开 Jetson 板的电源，并将小滑动开关从恢复模式切换回 EMMC。
-这可确保未来 Jetson 将从固件启动而非恢复模式。
+请注意，当开关处于恢复模式位置时，恢复模式仅在烧录后的首次重启时跳过！
+断开Jetson板的电源，将小型滑动开关从恢复模式切换回EMMC。
+这确保了未来Jetson将启动到固件而非恢复模式。
 
 ## Jetson 网络与 SSH 登录
 
 接下来我们确认 Jetson 的 WiFi 网络是否正常工作，查找其 IP 地址，并通过该 IP 地址进行 SSH 登录。
 
-下图展示了如何将 Jetson 载板与外部键盘、显示器和鼠标连接。
-此步骤是为了配置网络连接所必需的。
-一旦我们建立了网络连接，我们就可以通过 SSH 连接到 Jetson，而无需使用外部显示器和键盘（如果需要的话）。
+下图展示了如何将 Jetson 载板与外部键盘、显示器和鼠标连接。  
+此步骤是必要的，以便我们配置网络连接。  
+一旦建立了网络连接，我们就可以通过 SSH 连接到 Jetson，而无需使用外部显示器和键盘（如果需要的话）。
 
 ![首次网络设置连接图及电源](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/network_diagram.png)
 
-将外部显示器连接到板载（Jetson）的 HDMI 接口，通过备用 USB 接口连接键盘和鼠标，并通过 XT-30 输入为 Jetson 供电。
-单独连接 Pixhawk 电源，使用 FC 侧的 USB-C 接口或 Jetson 旁边的 `Power1`/`Power2` 接口。
+将外部显示器连接到板载（Jetson）的 HDMI 接口，通过备用 USB 接口连接键盘和鼠标，并通过 XT-30 输入为 Jetson 供电。  
+单独使用 USB-C（位于飞控侧）或 Jetson 旁边的 `Power1`/`Power2` 接口为 Pixhawk 供电。
 
 ::: tip
-Pixhawk 也需要供电，因为板载的内部以太网交换机不通过 XT30 接口供电。
+Pixhawk 也需要供电，因为板载以太网交换机不通过 XT30 接口供电。
 :::
 
-外部显示器应显示登录界面。
-输入您在使用 SDKManager 为 Jetson 刷写系统时设置的 _用户名_ 和 _密码_。
+外部显示器应显示登录界面。  
+输入使用 SDKManager 为 Jetson 刷写固件时设置的 _用户名_ 和 _密码_。
 
-接下来打开终端以获取 Jetson 的 IP 地址。
-该 IP 地址可用于后续通过 SSH 连接。
+接下来打开终端以获取 Jetson 的 IP 地址。  
+稍后可以使用该地址通过 SSH 连接。  
 输入以下命令：
 
 ```sh
 ip addr show
 ```
 
-输出结果应类似以下内容，显示（在此情况下）`wlan0`（WiFi）连接的 IP 地址为 `192.168.1.190`。
-请注意，此步骤中 _eth0_ 的显示可能与此输出不同，因为我们尚未设置它，后续步骤中将进行定义：
+输出结果应类似于以下内容，显示（在此示例中）`wlan0`（WiFi）连接的 IP 地址为 `192.168.1.190`。  
+注意 _eth0_ 在此步骤可能与本输出不同，因为我们尚未配置它，后续步骤将定义其设置：
 
 ```sh
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
@@ -460,29 +783,28 @@ ip addr show
        valid_lft forever preferred_lft forever
 ```
 
-::: tip 如果命令无法运行 ...
-板载的 WiFi 卡可能是 _Intel 8265NGW AC Dual Band_ 或 _Realtek RTL8B22CE_。
-Intel 模块可能无法开箱即用，此时应打开终端并运行以下命令以安装其驱动程序：
+::: tip 如果命令无法正常工作...
+板载的 WiFi 卡可能是 _Intel 8265NGW AC 双频_ 或 _Realtek RTL8B22CE_。  
+Intel 模块可能需要手动安装驱动，出现此情况时，应在终端中运行以下命令进行安装：
 
 ```sh
 sudo apt-get install -y backport-iwlwifi-dkms
 ```
 
-然后重复上述步骤以尝试获取 IP 地址。
+然后重新尝试获取 IP 地址。
 :::
 
-现在我们已经获得了 IP 地址，在您的 _开发计算机_ 上打开终端。
-通过 SSH 登录 Jetson，并指定您 Jetson 的 IP 地址（您需要输入与之前相同的凭据）：
+获取到 IP 地址后，打开开发机的终端，输入以下命令连接 Jetson：
 
 ```sh
-ssh holybro@192.168.1.190
+ssh <用户名>@<Jetson的IP地址>
 ```
 
-如果成功，您可以移除外部显示器，因为此后可以从开发计算机登录。
+系统会提示输入密码，完成认证后即可获得 Jetson 的命令行访问权限。
 
-## Jetson上的初始开发设置
+## 在Jetson上的初始开发环境设置
 
-登录到Jetson后，安装以下依赖项（这些对于大多数开发任务都是必需的）：
+登录到Jetson后安装以下开发依赖项（您在大多数开发任务中都需要这些）：
 
 ```sh
 sudo apt update
@@ -491,39 +813,39 @@ sudo apt install build-essential cmake git genromfs kconfig-frontends libncurses
 
 ## 构建/烧录 Pixhawk
 
-更新 PX4 推荐的方式是使用开发计算机连接 Pixhawk 板载部分进行操作。  
-你可以使用 QGroundControl 安装预构建的二进制文件，或者先构建再上传自定义固件。
+更新 PX4 的推荐方式是使用开发用电脑对 Pixhawk 板载部分进行操作。  
+你可以通过 QGroundControl 安装预编译的二进制文件，或者先构建再上传自定义固件。
 
-作为替代方案，你也可以从 Jetson 构建并部署 PX4 固件到 Pixhawk 板载部分。
+另外，你也可以从 Jetson 构建并部署 PX4 固件到 Pixhawk 板载部分。
 
 ### 从开发计算机构建/部署 PX4（推荐）
 
-首先将开发计算机连接到 Pixhawk FMU USB-C 端口（如下图高亮部分）：
+首先将您的开发计算机连接到 Pixhawk FMU USB-C 接口（如下突出显示）：
 
-![将开发计算机连接到 Pixhawk USB 端口](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/pixhawk_fmu_usb_c.png)
+![连接开发计算机到 Pixhawk USB 接口](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/pixhawk_fmu_usb_c.png)
 
-如果需要使用预构建二进制文件，请启动 QGroundControl 并按照 [加载固件](../config/firmware.md) 中的说明部署最新版本的 PX4。  
-之后你需要选择一个机体类型并完成其他常规配置。
+如果您想使用预编译固件，请启动 QGroundControl 并按照 [加载固件](../config/firmware.md) 中的说明部署最新版本的 PX4。  
+之后您需要选择一个机体并完成对应机体类型的所有常规配置。
 
-如果需要构建并上传 _自定义固件_，请按照以下步骤操作：
+如果您想构建并上传 _自定义固件_，请按照常规步骤操作：
 
 - [设置开发环境（工具链）](../dev_setup/dev_env.md)  
 - [构建 PX4 软件](../dev_setup/building_px4.md)  
-- 使用 [命令行](../dev_setup/building_px4.md#uploading-firmware-flashing-the-board) 或 QGroundC（如上文所述）上传固件
+- 使用 [命令行](../dev_setup/building_px4.md#uploading-firmware-flashing-the-board) 或 QGroundControl（如上）上传固件
 
-### 在 Jetson 上构建 PX4
+### 在Jetson上构建PX4
 
-你也可以在 Jetson 上构建和开发 PX4 代码。  
-注意如果你已有开发计算机无需执行此操作，但可以按需进行。
+您也可以在Jetson上构建和开发PX4代码。  
+如果您有开发用计算机则无需执行此操作，但您仍可以这样操作。
 
-首先打开终端并通过 SSH 会话连接到 Jetson，然后输入以下命令克隆 PX4 源代码：
+首先打开终端并通过SSH连接到Jetson，输入以下命令克隆PX4源代码：
 
 ```sh
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive
 ```
 
 ::: tip
-如果不需要所有分支和标签，可以通过以下方式获取仓库的一部分：
+如果您不需要所有分支和标签，可以通过以下方式获取仓库的较小部分：
 
 ```sh
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive --depth 1 --single-branch --no-tags
@@ -531,27 +853,27 @@ git clone https://github.com/PX4/PX4-Autopilot.git --recursive --depth 1 --singl
 
 :::
 
-然后通过以下命令安装 Ubuntu 构建工具链：
+然后输入以下命令安装Ubuntu构建工具链：
 
 ```sh
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh --no-sim-tools
 ```
 
-如果出现警告，可能需要运行以下命令将二进制目录路径添加到环境变量中：
+如果出现警告信息，可能需要运行以下命令将二进制目录路径添加到环境变量中：
 
 ```sh
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
 ```
 
 ::: tip
-如果运行 `ubuntu.sh` 时出现类似以下错误：
+如果在运行`ubuntu.sh`时出现类似以下错误：
 
 ```sh
 E: Unable to locate package g++-multilib
 E: Couldn't find any package by regex 'g++-multilib'
 ```
 
-需要按照以下方式安装相应的 gcc 工具链，然后重新运行 `ubuntu.sh`：
+您需要按照以下方式安装对应的gcc工具链，然后重新运行`ubuntu.sh`：
 
 ```sh
 sudo apt install gcc-arm-none-eabi gdb-arm-none-eabi -y
@@ -566,18 +888,18 @@ sudo usermod -a -G dialout $USER
 sudo apt-get remove modemmanager -y
 ```
 
-通过为载板上的 Pixhawk 硬件构建 PX4 来进行完整性检查。  
-假设你使用的是 Pixhawk 6x，命令如下：
+通过为搭载板上的Pixhawk硬件构建PX4验证检查是否能构建PX4固件。  
+假设您使用的是Pixhawk 6x，命令如下：
 
 ```sh
 make px4_fmu-v6x_default
 ```
 
-如果构建成功，可以将 Pixhawk USB-C 端口连接到 Jetson USB 端口（如下图，附带的线缆包含在套件中）。
+如果构建成功，可以按照下图方式将Pixhawk的USB-C接口连接到Jetson的USB接口（USB线缆随套件提供）。
 
-![如何将 Jetson 直接连接到 Pixhawk](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/upload_px4_connection.png)
+![如何直接连接Jetson到Pixhawk](../../assets/companion_computer/holybro_pixhawk_jetson_baseboard/upload_px4_connection.png)
 
-然后通过添加 `upload` 参数进行构建来上传固件到 Pixhawk：
+然后通过添加`upload`参数构建并上传固件到Pixhawk：
 
 ```sh
 make px4_fmu-v6x_default upload
@@ -585,19 +907,17 @@ make px4_fmu-v6x_default upload
 
 ## 使用 Netplan 配置以太网
 
-Holybro Jetson Pixhawk 载板在 Pixhawk 与 Jetson 之间内置网络交换机，可用于 MAVLink 或 ROS 2 通信（或任何其他协议）。  
-虽然无需连接任何外部线缆，但仍需配置以太网连接，确保 Jetson 和 PX4 处于同一子网。
+Holybro Jetson Pixhawk 载板在 Pixhawk 和 Jetson 之间内置了网络交换机，可用于 MAVLink 或 ROS 2 通信（或其他协议）。尽管无需连接任何外部网线，但仍需要配置以太网连接，使 Jetson 和 PX4 处于同一子网。
 
-PX4 的默认 IP 地址为 `10.41.10.2`（PX4 v1.15 及更早版本使用 `192.168.0.3`），而 Jetson 通常配置在不同子网的默认 IP 地址上。  
-为了使两块板卡能够通信，它们需要处于同一子网。
+PX4 的默认 IP 地址为 `10.41.10.2`（PX4 v1.15 及更早版本使用 `192.168.0.3`），而 Jetson 通常配置在不同子网的默认 IP 地址上。为了使两块板卡通信，它们必须处于同一子网。
 
-::: 提示
+::: tip
 这些说明大致对应 [PX4 以太网设置](../advanced_config/ethernet_setup.md)（以及 [Holybro Pixhawk RPi CM4 底板](../companion_computer/holybro_pixhawk_rpi_cm4_baseboard.md)）。
 :::
 
-接下来我们修改 Jetson 的 IP 地址，使其与 Pixhawk 处于同一网络：
+接下来我们修改 Jetson 的 IP 地址以与 Pixhawk 处于同一网络：
 
-1. 确保已安装 `netplan`。  
+1. 确保已安装 `netplan`。
    可通过运行以下命令检查：
 
    ```sh
@@ -617,7 +937,7 @@ PX4 的默认 IP 地址为 `10.41.10.2`（PX4 v1.15 及更早版本使用 `192.1
    sudo systemctl status systemd-networkd
    ```
 
-   如果处于活动状态，应看到类似以下的输出：
+   如果处于活动状态，应看到如下类似输出：
 
    ```sh
    ● systemd-networkd.service - Network Configuration
@@ -652,16 +972,16 @@ PX4 的默认 IP 地址为 `10.41.10.2`（PX4 v1.15 及更早版本使用 `192.1
    sudo systemctl enable systemd-networkd
    ```
 
-3. 打开 Netplan 配置文件（以便为 Jetson 设置静态 IP）。
+3. 打开 Netplan 配置文件（以便为 Jetson 配置静态 IP）。
 
-   Netplan 配置文件通常位于 `/etc/netplan/` 目录，文件名类似 `01-netcfg.yaml`（名称可能不同）。  
-   以下使用 `nano` 打开文件，但可使用您偏好的文本编辑器：
+   Netplan 配置文件通常位于 `/etc/netplan/` 目录中，文件名类似 `01-netcfg.yaml`（名称可能因系统而异）。
+   以下使用 `nano` 打开文件，但您也可以使用其他文本编辑器：
 
    ```sh
    sudo nano /etc/netplan/01-netcfg.yaml
    ```
 
-4. 修改 yaml 配置，覆盖内容为以下信息后保存：
+4. 通过覆盖文件内容为以下信息并保存来修改 YAML 配置：
 
    ```sh
    network:
@@ -688,14 +1008,13 @@ PX4 的默认 IP 地址为 `10.41.10.2`（PX4 v1.15 及更早版本使用 `192.1
    sudo netplan apply
    ```
 
-Pixhawk 的以太网地址默认设置为 `10.41.10.2`，与 Jetson 处于同一子网。  
-我们可以通过在 Jetson 终端中 ping Pixhawk 来测试上述更改：
+Pixhawk 的以太网地址默认设置为 `10.41.10.2`，与 Jetson 处于同一子网。我们可以通过在 Jetson 终端中 ping Pixhawk 来测试上述更改：
 
 ```sh
 ping 10.41.10.2
 ```
 
-如果成功，将看到以下输出：
+如果成功，将看到如下输出：
 
 ```sh
 PING 10.41.10.2 (10.41.10.2) 56(84) bytes of data.
@@ -705,25 +1024,25 @@ PING 10.41.10.2 (10.41.10.2) 56(84) bytes of data.
 64 bytes from 10.41.10.2: icmp_seq=4 ttl=64 time=0.415 ms
 ```
 
-Jetson 和 Pixhawk 现已可通过以太网通信。
+Jetson 和 Pixhawk 现在可以通过以太网通信。
 
 ## MAVLink 配置
 
-MAVLink 是 Jetson 与 PX4 之间通信的协议（下一节将讨论 ROS 2 作为替代方案）。  
-PX4 用户通常使用 [MAVSDK](../robotics/mavsdk.md) 管理 MAVLink 通信，因为它为 MAVLink 协议提供了简单且跨平台、跨编程语言的抽象层。
+MAVLink 是一种用于 Jetson 与 PX4 之间通信的协议（下一节将讨论 ROS 2 作为替代方案）。  
+PX4 用户通常使用 [MAVSDK](../robotics/mavsdk.md) 来管理 MAVLink 通信，因为它提供了对 MAVLink 协议的简单跨平台和跨编程语言的抽象。  
 
-内部串口和以太网连接默认都配置为使用 MAVLink。
+默认情况下，内部串口和以太网连接均配置为使用 MAVLink。  
 
-::: info
-更多信息请参见 [MAVLink-Bridge](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-jetson-baseboard/mavlink-bridge)（Holybro 文档）
+::: info  
+详见 [MAVLink-Bridge](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-jetson-baseboard/mavlink-bridge)（Holybro 文档）以获取更多信息。  
 :::
 
 ### 串口连接
 
-Jetson 与 Pixhawk 内部通过 Pixhawk 的 `TELEM2` 接口连接到 Jetson 的 `THS1` 接口的串口线连接。  
-Pixhawk 的 `TELEM2` 接口默认配置为使用 MAVLink（[MAVLink 外设 (GCS/OSD/Companion) > TELEM2](../peripherals/mavlink_peripherals.md#telem2)），因此无需特别操作即可正常工作。
+Jetson 与 Pixhawk 通过串口线缆内部连接，连接方式为 Pixhawk 的 `TELEM2` 接口连接到 Jetson 的 `THS1` 接口。  
+Pixhawk 的 `TELEM2` 接口默认配置为使用 [MAVLink Peripherals (GCS/OSD/Companion) > TELEM2](../peripherals/mavlink_peripherals.md#telem2) 协议，因此无需特别操作即可正常工作。
 
-测试连接的简便方法是运行 Jetson 上的 [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python) 示例代码。
+一个测试连接的简便方法是运行 Jetson 上的 [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python) 示例代码。
 
 首先安装 MAVSDK-Python：
 
@@ -737,20 +1056,19 @@ pip3 install mavsdk
 git clone https://github.com/mavlink/MAVSDK-Python --recursive
 ```
 
-修改 `MAVSDK-Python/examples/telemetry.py` 中的[连接代码](https://github.com/mavlink/MAVSDK-Python/blob/707c48c01866cfddc0082217dba9f7fe27d59b27/examples/telemetry.py#L10)：  
-将以下代码：
+修改 `MAVSDK-Python/examples/telemetry.py` 中的 [连接代码](https://github.com/mavlink/MAVSDK-Python/blob/707c48c01866cfddc0082217dba9f7fe27d59b27/examples/telemetry.py#L10) 从：
 
 ```py
 await drone.connect(system_address="udp://:14540")
 ```
 
-改为通过串口连接：
+更改为通过串口连接：
 
 ```sh
 await drone.connect(system_address="serial:///dev/ttyTHS1:921600")
 ```
 
-然后在 Jetson 终端运行示例：
+然后在 Jetson 终端运行示例代码：
 
 ```sh
 python ~/MAVSDK-Python/examples/telemetry.py
@@ -769,160 +1087,256 @@ Battery: -1.0
 
 ### 以太网连接
 
-Jetson 与 Pixhawk 内部通过以太网交换机连接，如果您已按照 [使用 Netplan 配置以太网](#ethernet-setup-using-netplan) 的说明操作，两者将处于同一以太网子网中。
+Jetson 和 Pixhawk 通过内部的以太网交换机连接，如果你已按照 [使用 Netplan 配置以太网](#使用 Netplan 配置以太网) 中的说明进行设置，那么它们也会处于同一个以太网子网中。
 
-由于 Pixhawk 的 `Ethernet` 接口默认配置为使用 MAVLink（[MAVLink 外设 (GCS/OSD/Companion) > Ethernet](../peripherals/mavlink_peripherals.md#ethernet)），因此无需其他操作即可使用 MAVLink。
+由于 Pixhawk 的 `Ethernet` 接口默认配置为使用 MAVLink ([MAVLink 外设 (地面站/画中画/伴飞) > 以太网](../peripherals/mavlink_peripherals.md#ethernet))，因此无需进行其他操作即可使用 MAVLink。
 
-操作步骤与前一节相同，只需将 `connect()` 行修改为：
+操作步骤与上一节相同，不同之处在于应修改 `connect()` 行为：
 
 ```sh
 await drone.connect(system_address="udp://:14550")
-```To resolve the issues with the **MicroXRCEAgent systemd service** and ensure it runs correctly on your **Holybro carrier board with Jetson**, follow these steps:
+```
 
----
+## ROS 2 配置
 
-### **1. Fix the Service File**
-Your current service file contains **invalid lines** (e.g., `14`, `Holybro carrier board`) and a **malformed `After=` directive**. Replace the entire content of `/etc/systemd/system/microxrceagent.service` with the corrected version below:
+[ROS 2](../ros2/index.md) 是一个强大的机器人API，您可以在Jetson上运行它来控制运行在Pixhawk上的PX4。
+相比MAVLink，它更难学习且接口仍在演变，但能提供与PX4更深层的集成和更低延迟的通信。
 
-```ini
+要使用ROS 2，我们首先需要在PX4上运行[XRCE-DDS中间件](../middleware/uxrce_dds.md)客户端，并在Jetson上运行代理。
+具体操作取决于所使用的通信通道（以太网或串行接口）。
+
+本节详细介绍了具体配置方法，并主要基于[ROS 2用户指南](../ros2/user_guide.md)。
+
+### PX4 XRCE-DDS 客户端设置
+
+uXRCE-DDS 客户端默认集成在 PX4 固件中，通过 XRCE-Agent 将预定义的一组 uORB 话题暴露给运行 ROS 2 的 DDS 网络。  
+所暴露话题的集合在构建配置文件中定义。  
+
+客户端与代理通信所使用的通道通过参数进行配置。  
+您可以使用内部串口连接或内部以太网交换机。
+
+#### XRCE-Client串口设置
+
+如MAVLink部分所述，Pixhawk的`TELEM2`与Jetson的`THS1`之间存在内部串口连接，默认配置为通过MAVLink通信。  
+你需要禁用MAVLink实例并启用UXRCE_DDS配置。
+
+你可以通过[修改参数](../advanced_config/parameters.md)在QGroundControl参数编辑器中操作，或通过[MAVLink shell](../debug/mavlink_shell.md)使用`param set`命令。
+
+::: tip
+访问MAVLink shell有多种方式。最便捷的方式是通过Pixhawk USB-C将Pixhawk连接到开发计算机，并使用[QGroundControl MAVLink Console](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/analyze_view/mavlink_console.html)。
+:::
+
+以下说明假设你在MAVLink shell中输入命令：
+
+```sh
+param set MAV_1_CONFIG 0  # 禁用TELEM2上的MAVLINK（以便用于XRCE-DDS）
+param set UXRCE_DDS_CFG 102 # 将UXRCE_DDS_CFG设置为TELEM2
+```
+
+::: info
+你也可以修改以下参数，但这需要更深入的DDS知识。
+
+```sh
+param set UXRCE_DDS_DOM_ID 0
+param set UXRCE_DDS_PTCFG 0
+param set UXRCE_DDS_SYNCC 0
+param set UXRCE_DDS_SYNCT 1
+```
+
+:::
+
+然后重启Pixhawk。
+
+#### XRCE-客户端以太网设置
+
+如MAVLink部分所述，Jetson和Pixhawk之间通过一个内部以太网交换机相连。我们已为这两块板卡配置了相同的子网。但需要在PX4的`Ethernet`端口上禁用MAVLink并启用`XRCE-DDS`。
+
+您可以通过QGroundControl参数编辑器[修改参数](../advanced_config/parameters.md)，或使用[MAVLink shell](../debug/mavlink_shell.md)中的`param set`命令进行设置。在MAVLink shell中输入以下命令以更改值：
+
+```sh
+param set MAV_2_CONFIG 0  # Disable MAVLINK on Ethernet (so Ethernet can be used for XRCE-DDS)
+param set UXRCE_DDS_CFG 1000 # Ethernet
+param set UXRCE_DDS_PRT 8888  # Set port to 8888 (default)
+param set UXRCE_DDS_AG_IP 170461697 # The int32 version of 10.41.10.1
+```
+
+我们通过`UXRCE_DDS_AG_IP`参数将Jetson的地址设置为170461697。请注意，这是`10.41.10.1`的INT32格式版本（关于版本转换的详细信息请参见[启动uXRCE-DDS客户端](../middleware/uxrce_dds.md#starting-the-client)）。
+
+#### 检查 XRCE-DDS 客户端是否运行
+
+::: tip
+如果配置正确，客户端应在启动时自动运行！
+:::
+
+我们可以通过 MAVLink 壳层中的以下命令检查客户端是否在运行：
+
+```sh
+uxrce_dds_client status
+```
+
+正常的输出应显示：
+
+``` sh
+nsh> uxrce_dds_client status
+INFO [uxrce_dds_client] Running, disconnected
+INFO [uxrce_dds_client] Using transport: serial
+INFO [uxrce_dds_client] timesync converged: false
+uxrce_dds_client: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+uxrce_dds_client: cycle interval: 0 events, 0.00us avg, min 0us max 0us 0.000us rms
+```
+
+另一种检查客户端是否在启动时运行的方法是获取来自 MAVLINK 壳层的 `dmesg` 输出。  
+以下输出作为 `dmesg` 日志的一部分，会提到波特率和实例（对于 Holybro Pixhawk 6X 和 6X Pro，`/dev/tty/S4` 等同于 `TELEM2`）：
+
+```sh
+Starting UXRCE-DDS Client on /dev/ttyS4
+INFO  [uxrce_dds_client] init serial /dev/ttyS4 @ 921600 baud
+```
+
+### XRCE-DDS Agent & ROS 2 设置
+
+请按照ROS2用户指南中的说明在Jetson上[安装ROS 2](../ros2/user_guide.md#install-ros-2)。  
+由于我们不使用模拟器，因此无需在Jetson上安装PX4，但你可能希望安装完整的桌面环境，以便使用更多ROS 2软件包进行进一步开发：
+
+sudo apt install -y ros-humble-desktop-full -y
+
+#### 启动 XRCE-DDS 代理
+
+然后按照 ROS 2 用户指南中[Setup the Agent](../ros2/user_guide.md#setup-the-agent)部分的说明获取并构建 uXRCE-DDS _agent_。  
+
+根据客户端是配置为串口连接还是以太网连接，您将使用不同的命令启动代理。假设客户端已按上述方式设置：  
+
+- （串口连接）在 `/dev/ttyTHS1` 上启动代理：  
+
+  ```sh
+  sudo MicroXRCEAgent serial --dev /dev/ttyTHS1 -b 921600
+  ```
+
+- （以太网）在 UDP 端口 `8888` 上启动代理：  
+
+  ```sh
+  MicroXRCEAgent udp4 -p 8888
+  ```
+
+如果代理和客户端已连接且没有节点运行，您应该会在代理终端看到类似以下的输出：  
+
+```sh
+[1726117589.065585] info     | UDPv4AgentLinux.cpp | init                     | running...             | port: 8888
+[1726117589.066415] info     | Root.cpp           | set_verbose_level        | logger setup           | verbose_level: 4
+[1726117589.568522] info     | Root.cpp           | create_client            | create                 | client_key: 0x00000001, session_id: 0x81
+[1726117589.569317] info     | SessionManager.hpp | establish_session        | session established    | client_key: 0x00000001, address: 10.41.10.2:49940
+[1726117589.580924] info     | ProxyClient.cpp    | create_participant       | participant created    | client_key: 0x00000001, participant_id: 0x001(1)
+[1726117589.581598] info     | ProxyClient.cpp    | create_topic             | topic created          | client_key: 0x00000001, topic_id: 0x800(2), participant_id: 0x001(1)
+[1726117589.581761] info     | ProxyClient.cpp    | create_subscriber        | subscriber created     | client_key: 0x00000001, subscriber_id: 0x800(4), participant_id: 0x001(1)
+[1726117589.584858] info     | ProxyClient.cpp    | create_datareader        | datareader created     | client_key: 0x00000001, datareader_id: 0x800(6), subscriber_id: 0x800(4)
+[1726117589.585643] info     | ProxyClient.cpp    | create_topic             | topic created          | client_key: 0x00000001, topic_id: 0x801(2), participant_id: 0x001(1)
+[1726117589.585746] info     | ProxyClient.cpp    | create_subscriber        | subscriber created     | client_key: 0x00000001, subscriber_id: 0x801(4), participant_id: 0x001(1)
+[1726117589.586284] info     | ProxyClient.cpp    | create_datareader        | datareader created     | client_key: 0x00000001, datareader_id: 0x801(6), subscriber_id: 0x801(4)
+[1726117589.587115] info     | ProxyClient.cpp    | create_topic             | topic created          | client_key: 0x00000001, topic_id: 0x802(2), participant_id: 0x001(1)
+[1726117589.587187] info     | ProxyClient.cpp    | create_subscriber        | subscriber created     | client_key: 0x00000001, subscriber_id: 0x802(4), participant_id: 0x001(1)
+[1726117589.587536] info     | ProxyClient.cpp    | create_datareader        | datareader created     | client_key: 0x00000001, datareader_id: 0x802(6), subscriber_id: 0x802(4)
+```
+
+#### 开机启动代理
+
+要让 Jetson 每次重启时自动运行 XRCE-DDS 代理，可以创建一个守护进程服务来运行代理。
+
+创建一个新的服务文件：
+
+```sh
+sudo nano /etc/systemd/system/microxrceagent.service
+```
+
+将以下内容粘贴进去：
+
+```plain
 [Unit]
-Description=Micro XRCE Agent Service
-After=network.target
-
+Description=Micro XRCE Agent Service After=network.target
 [Service]
-ExecStart=/usr/local/bin/MicroXRCEAgent udp4 -p 8888
+14
+Holybro carrier board
+ExecStart=/usr/local/bin/MicroXRCEAgent udp4 -p 8888 Restart=always
 User=root
 Group=root
-Restart=always
 ExecStartPre=/bin/sleep 10
-
 [Install]
 WantedBy=multi-user.target
 ```
 
-> ✅ **Verify the path** `/usr/local/bin/MicroXRCEAgent` exists. If not, adjust it to match your actual installation path.
+保存文件后在终端运行以下命令：
 
----
-
-### **2. Reload Systemd and Enable the Service**
-After fixing the service file, reload systemd and enable the service:
-
-```bash
+```sh
 sudo systemctl daemon-reload
 sudo systemctl enable microxrceagent.service
-sudo systemctl start microxrceagent.service
 ```
 
----
+然后你可以重启 Jetson 板并检查代理是否在后台运行：
 
-### **3. Check for Errors**
-If the service fails to start, use `journalctl` to debug:
-
-```bash
-sudo journalctl -u microxrceagent.service --since "5 minutes ago"
-```
-
-> 🔍 Look for errors like:
-- `Failed at step EXEC spawning /usr/local/bin/MicroXRCEAgent: No such process`
-- `Connection refused` (network issues)
-- `Address already in use` (port conflict)
-
----
-
-### **4. Verify Network Configuration**
-Ensure the **Jetson and PX4 client** are on the **same network** and the client is configured to connect to the correct IP/port:
-
-```bash
-# On Jetson, check the IP address
-hostname -I
-
-# On PX4 client (e.g., Raspberry Pi), set:
-export PX4_MICROXRCE_AGENT_URI=udp://<JETSON_IP>:8888
-```
-
----
-
-### **5. Test Manually**
-Before relying on systemd, test the agent manually to confirm it works:
-
-```bash
-/usr/local/bin/MicroXRCEAgent udp4 -p 8888
-```
-
-> ✅ If this works, the issue is likely in the systemd service configuration.
-
----
-
-### **6. Fix Common Issues**
-#### **A. Port Conflict**
-If port `8888` is already in use:
-
-```bash
-sudo lsof -i :8888
-```
-
-Kill conflicting processes or change the port in the service file.
-
-#### **B. Delayed Network**
-The `ExecStartPre=/bin/sleep 10` adds a 10-second delay to wait for the network. Adjust if needed.
-
-#### **C. Permissions**
-Ensure the service runs as root (`User=root`), as required by the agent.
-
----
-
-### **7. Final Validation**
-After fixing, reboot the Jetson and check the service status:
-
-```bash
-sudo reboot
+```sh
 sudo systemctl status microxrceagent.service
 ```
 
-You should see output similar to:
+如果服务正在运行，你应该会看到类似以下的输出：
 
-```
+``` sh
+holybro@ubuntu:~$ sudo systemctl status microxrceagent.service
 ● microxrceagent.service - Micro XRCE Agent Service
    Loaded: loaded (/etc/systemd/system/microxrceagent.service; enabled; vendor preset: enabled)
-   Active: active (running) since ... (date/time)
- Main PID: 1234 (MicroXRCEAgent)
+   Active: active (running) since Tue 204-07-30 01:37:45 EDT; 1min 30s ago
+ Main PID: 1616 (MicroXRCEAgent)
     Tasks: 42 (limit: 18457)
    Memory: 29.6M
    CPU: 1.356s
    CGroup: /system.slice/microxrceagent.service
-           └─1234 /usr/local/bin/MicroXRCEAgent udp4 -p 8888
+           └─1616 /usr/local/bin/MicroXRCEAgent udp4 -p 8888
+
+Jul 30 01:37:52 ubuntu MicroXRCEAgent[1616]: [1722317872.094190] info    | ProxyClient.cpp   | create_datawriter       | datawriter created   | client_key: 0x00000001, datawriter_id: 0x0F6(5), publisher_id: 0x0F6(3)
+Jul 30 01:37:52 ubuntu MicroXRCEAgent[1616]: [1722317872.095277] info    | ProxyClient.cpp   | create_topic            | topic created        | client_key: 0x00000001, topic_id: 0x100(2), participant_id: 0x001(1)
+Jul 30 01:37:52 ubuntu MicroXRCEAgent[1616]: [1722317872.095358] info    | ProxyClient.cpp   | create_publisher        | publisher created    | client_key: 0x00000001, publisher_id: 0x100(3), participant_id: 0x001(1)
+Jul 30 01:37:52 ubuntu MicroXRCEAgent[1616]: [1722317872.095537] info    | ProxyClient.cpp   | create_datawriter       | datawriter created   | client_key: 0x00000001, datawriter_id: 0x105(5), publisher_id: 0x100(3)
+Jul 30 01:37:52 ubuntu MicroXRCEAgent[1616]: [1722317872.096029] info    | ProxyClient.cpp   | create_topic            | topic created        | client_key: 0x00000001, topic_id: 0x105(2), participant_id: 0x001(1)
+Jul 30 01:37:52 ubuntu MicroXRCEAgent[1616]: [1722317872.097022] info    | ProxyClient.cpp   | create_publisher        | publisher created    | client_key: 0x00000001, publisher_id: 0x105(3), participant_id: 0x001(1)
+Jul 30 01:37:52 ubuntu MicroXRCEAgent[1616]: [1722317872.097797] info    | ProxyClient.cpp   | create_datawriter       | datawriter created   | client_key: 0x00000001, datawriter_id: 0x10A(5), publisher_id: 0x10A(3)
+Jul 30 01:37:52 ubuntu MicroXRCEAgent[1616]: [1722317872.098088] info    | ProxyClient.cpp   | create_topic            | topic created        | client_key: 0x00000001, topic_id: 0x10A(2), participant_id: 0x001(1)
+Jul 30 01:37:52 ubuntu MicroXRCEAgent[1616]: [1722317872.098168] info    | ProxyClient.cpp   | create_publisher        | publisher created    | client_key: 0x00000001, publisher_id: 0x10A(3), participant_id: 0x001(1)
+Jul 30 01:37:52 ubuntu MicroXRCEAgent[1616]: [1722317872.098486] info    | ProxyClient.cpp   | create_datawriter       | datawriter created   | client_key: 0x00000001, datawriter_id: 0x10A(5), publisher_id: 0x10A(3)
 ```
 
----
+你现在可以启动 ROS2 节点并继续开发。
 
-### **8. Test ROS2 Sensor Data**
-Once the agent is running, test the ROS2 example to ensure data flows correctly:
+### ROS 2 传感器综合测试
 
-```bash
+您可以使用[构建ROS 2工作区](../ros2/user_guide.md#build-ros-2-workspace)（ROS2用户指南）中的`sensor_combined`示例来测试客户端和代理。
+
+::: tip
+[通过SSH使用VSCode](https://code.visualstudio.com/learn/develop-cloud/ssh-lab-machines) 可提升您的ROS 2代码开发与修改应用效率！
+:::
+
+在运行示例到此阶段后：
+
+```sh
 ros2 launch px4_ros_com sensor_combined_listener.launch.py
 ```
 
-You should see high-frequency sensor messages like:
+您将看到高频传感器消息作为输出：
 
+``` sh
+[sensor_combined_listener-1] 接收到传感器综合数据
+[sensor_combined_listener-1] ====================================
+[sensor_combined_listener-1] ts: 1722316316179649
+[sensor_combined_listener-1] gyro_rad[0]: 0.0015163
+[sensor_combined_listener-1] gyro_rad[1]: 0.00191962
+[sensor_combined_listener-1] gyro_rad[2]: 0.00343043
+[sensor_combined_listener-1] gyro_integral_dt: 4999
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.368978
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 1.43863
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.68139
+[sensor_combined_listener-1] accelerometer_integral_dt: 4999
 ```
-[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
-...
-```
 
----
+## 另请参阅
 
-### **Troubleshooting Checklist**
-| Step | Action |
-|------|--------|
-| ✅ | Correct service file with no typos |
-| ✅ | Verify `/usr/local/bin/MicroXRCEAgent` exists |
-| ✅ | Ensure `After=network.target` is properly formatted |
-| ✅ | Use `journalctl` to debug service failures |
-| ✅ | Confirm PX4 client connects to the correct IP/port |
-| ✅ | Test agent manually before systemd |
-
-By following these steps, your **MicroXRCEAgent** should run reliably on boot, enabling seamless communication between PX4 and ROS2. 🚀## 参见
-
-- [Jetson carrier board Holybro Docs](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-jetson-baseboard)
-- [PX4 Middleware docs](../middleware/uxrce_dds.md#starting-the-client)
-- [PX4 ROS 2 user guide](../ros2/user_guide.md)
+- [Holybro Jetson 载板文档](https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-jetson-baseboard)
+- [PX4 中间件文档](../middleware/uxrce_dds.md#starting-the-client)
+- [PX4 ROS 2 用户指南](../ros2/user_guide.md)

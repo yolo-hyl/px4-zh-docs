@@ -26,7 +26,7 @@ QGroundControl 中会通过左上角 **Q** 菜单图标附近显示整体的“�
 <Badge type="tip" text="PX4 v1.14" /> <Badge type="tip" text="QGC v4.2.0" />
 
 可通过 QGroundControl 的 [Fly View](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/fly_view/fly_view.html#arm) 中的 [上锁检查报告](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/fly_view/fly_view.html#arm) 查看哪些上锁前检查未通过。  
-要访问该界面，请在 QGroundControl 的 Fly View 界面左上角点击 [飞行就绪状态](#flight-readiness-status) 指示器。
+要访问该界面，请在 QGroundControl 的 Fly View 界面左上角点击 [飞行就绪状态](#飞行就绪状态) 指示器。
 
 ![QGC 上锁检查报告](../../assets/flying/qgc_arming_checks_ui.png)
 
@@ -43,7 +43,7 @@ QGC 上锁检查 UI 适用于 QGC Daily Build（QGC v4.2.0 及更高版本），
 _QGroundControl_ 中也会以 `PREFLIGHT FAIL` 消息的形式报告预飞错误。  
 [在日志中](../getting_started/flight_reporting.md) 的 `estimator_status.gps_check_fail_flags` 消息显示了哪些 GPS 质量检查未通过。  
 
-请注意，[Arming Check Report](#qgc-arming-check-report) 是确定失败原因更便捷的方式，但在 PX4 v1.14 之前的版本中，日志可能仍有用。
+请注意，[Arming Check Report](#QGC 上锁检查报告) 是确定失败原因更便捷的方式，但在 PX4 v1.14 之前的版本中，日志可能仍有用。
 
 ## EKF 预飞检查/错误
 

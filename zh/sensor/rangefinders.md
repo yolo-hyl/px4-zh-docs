@@ -2,9 +2,11 @@
 
 距离传感器提供距离测量数据，可用于[地形跟随](../flying/terrain_following_holding.md#terrain_following)、[地形保持](../flying/terrain_following_holding.md#terrain_hold)（即摄影用精确悬停）、改进着陆行为（[条件范围辅助](../advanced_config/tuning_the_ecl_ekf.md#conditional-range-aiding)）、高度限制预警、防撞等。
 
-本节列出了PX4支持的距离传感器（链接至更详细文档），并提供所有测距仪所需的[通用配置](#configuration)、[测试](#testing)以及在[Gazebo](#gazebo-simulation)或[Gazebo-Classic](#gazebo-classic-simulation)中的模拟信息。更详细的设置和配置信息请参见下方链接的主题（及侧边栏）。
+本节列出了PX4支持的距离传感器（链接至更详细文档），并提供所有测距仪所需的[通用配置](#configuration)、[测试](#测试)以及在[Gazebo](#Gazebo 模拟)或[Gazebo-Classic](#Gazebo-Classic 模拟)中的模拟信息。更详细的设置和配置信息请参见下方链接的主题（及侧边栏）。
 
-<img src="../../assets/hardware/sensors/lidar_lite/lidar_lite_v3.jpg" alt="Lidar Lite V3" width="200px" /><img src="../../assets/hardware/sensors/lidar_lightware/sf11c_120_m.jpg" alt="LightWare SF11/C Lidar" width="200px" /><img src="../../assets/hardware/sensors/optical_flow/ark_flow_distance_sensor.jpg" alt="ARK Flow" width="200px">## 支持的测距仪
+<img src="../../assets/hardware/sensors/lidar_lite/lidar_lite_v3.jpg" alt="Lidar Lite V3" width="200px" /><img src="../../assets/hardware/sensors/lidar_lightware/sf11c_120_m.jpg" alt="LightWare SF11/C Lidar" width="200px" /><img src="../../assets/hardware/sensors/optical_flow/ark_flow_distance_sensor.jpg" alt="ARK Flow" width="200px">
+
+## 支持的测距仪
 
 ::: tip
 这是可以与PX4配合使用的测距仪子集。
@@ -44,7 +46,7 @@ MaxBotix [I2CXL-MaxSonar-EZ](https://www.maxbotix.com/product-category/i2cxl-max
 PX4支持：SF11/c和SF/LW20。
 PX4还可与以下停产型号配合使用：SF02、SF10/a、SF10/b、SF10/c。
 
-其他型号可通过下文描述的[RaccoonLab Cyphal和DroneCAN测距仪适配器](#raccoonlab-cyphal-and-dronecan-rangefinder-adapter)支持。
+其他型号可通过下文描述的[RaccoonLab Cyphal和DroneCAN测距仪适配器](#RaccoonLab Cyphal和DroneCAN测距仪适配器)支持。
 
 PX4还支持[LightWare LiDAR SF45旋转激光雷达](../sensor/sf45_rotating_lidar.md)，用于[防撞](../computer_vision/collision_prevention.md)应用。
 
@@ -122,7 +124,9 @@ _Ainstein_ [US-D1 标准雷达高度计](../sensor/ulanding_radar.md)是一款�
   使用简单三角函数计算非零俯仰角时的地面距离。
 - [EKF2_RNG_DELAY](../advanced_config/parameter_reference.md#EKF2_RNG_DELAY) - 数据从传感器到达估计器的近似延迟。
 - [EKF2_RNG_SFE](../advanced_config/parameter_reference.md#EKF2_RNG_SFE) - 测距仪距离相关的噪声缩放因子。
-- [EKF2_RNG_NOISE](../advanced_config/parameter_reference.md#EKF2_RNG_NOISE) - 测距仪融合的测量噪声## 测试
+- [EKF2_RNG_NOISE](../advanced_config/parameter_reference.md#EKF2_RNG_NOISE) - 测距仪融合的测量噪声
+
+## 测试
 
 测试测距仪的最简单方法是改变距离并与PX4检测到的值进行比较。  
 以下章节展示了获取测量距离的几种方法。

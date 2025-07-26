@@ -18,7 +18,9 @@ _OFFBOARD_ 控制存在危险。
 
 <video width="100%" autoplay="true" controls="true">
  <source src="../../assets/simulation/gazebo_classic/gazebo_offboard.webm" type="video/webm">
-</video>## 创建ROS包
+</video>
+
+## 创建ROS包
 
 1. 打开终端并进入 `~/catkin_ws/src` 目录
 
@@ -195,8 +197,7 @@ PX4 在两次 _OFFBOARD_ 指令之间有 500ms 的超时限制。
 此处我们设置适当发布频率：
 
 ```py
-
-```# 设定点发布频率必须高于2Hz
+# 设定点发布频率必须高于2Hz
 rate = rospy.Rate(20)
 ```
 
@@ -204,9 +205,10 @@ rate = rospy.Rate(20)
 此循环应在接收到心跳消息后立即退出。
 
 ```py
-```# 等待飞控连接
+# 等待飞控连接
 while(not rospy.is_shutdown() and not current_state.connected):  
     rate.sleep()
+```
 
 虽然PX4在航空航天NED坐标系下运行，但MAVROS会将这些坐标转换为标准ENU坐标系，反之亦然。  
 这就是为什么我们设置`z`为正2的原因：
@@ -224,14 +226,15 @@ pose.pose.position.z = 2
 以下是任意选择的`100`值：
 
 ```py
-```# 在启动前发送一些设定点  
+
+# 在启动前发送一些设定点  
 for i in range(100):  
     if(rospy.is_shutdown()):  
         break  
 
     local_pos_pub.publish(pose)  
     rate.sleep()  
-
+```
 我们准备一条消息请求，将自定义模式设置为`OFFBOARD`。  
 [支持的模式列表](http://wiki.ros.org/mavros/CustomModes#PX4_native_flight_stack)可供参考。  
 

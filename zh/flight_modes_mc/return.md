@@ -30,7 +30,7 @@ _Return_ 飞行模式用于沿无障碍路径将机体飞往安全目的地，�
 
 多旋翼默认使用 [家/集结点返回类型](../flight_modes/return.md#home-rally-point-return-type-rtl-type-0) (RTL_TYPE=0)。对于该返回类型，飞行器将执行以下操作：
 
-- 上升至 [最小返回高度](#minimum-return-altitude)（高于预期障碍物的安全高度）。若初始高度高于最小返回高度，则保持初始高度不变。
+- 上升至 [最小返回高度](#最小返回高度)（高于预期障碍物的安全高度）。若初始高度高于最小返回高度，则保持初始高度不变。
 - 通过固定高度直线路径飞往安全着陆点（家点与最近集结点中的最近点）。
 - 抵达目标点后，快速下降至“下降高度”([RTL_DESCEND_ALT](#RTL_DESCEND_ALT))。
 - 等待可配置的延时时间([RTL_LAND_DELAY](#RTL_LAND_DELAY))，可用于展开起落架。
@@ -62,7 +62,9 @@ RTL 参数列于 [参数参考 > 返回模式](../advanced_config/parameter_refe
 | <a id="RTL_MIN_DIST"></a>[RTL_MIN_DIST](../advanced_config/parameter_reference.md#RTL_MIN_DIST)           | 从家位置水平距离触发升至锥形返回高度的最小值。如果机体与家的水平距离小于此值，则将直接在当前高度或 `RTL_DESCEND_ALT`（取较大值）返回，而非先升至 RTL_RETURN_ALT。                                                                                                                                                                                                                     |
 | <a id="RTL_CONE_ANG"></a>[RTL_CONE_ANG](../advanced_config/parameter_reference.md#RTL_CONE_ANG)           | 定义机体 RTL 返回高度的锥形半角。取值（度）：0, 25, 45, 65, 80, 90。注意：0 表示"无锥形"（始终返回至 `RTL_RETURN_ALT` 或更高），而 90 表示机体必须在当前高度或 `RTL_DESCEND_ALT`（取较大值）返回。                                                                                                                                                                                       |
 | <a id="COM_RC_OVERRIDE"></a>[COM_RC_OVERRIDE](../advanced_config/parameter_reference.md#COM_RC_OVERRIDE) | 控制多旋翼（或 VTOL 在 MC 模式）的操作杆动作是否导致切换至 [Position mode](../flight_modes_mc/position.md)（除机体处理电池紧急保护时）。此功能可分别对自动模式和外部模式启用，默认在自动模式中启用。                                                                                                                                                                                      |
-| <a id="COM_RC_STICK_OV"></a>[COM_RC_STICK_OV](../advanced_config/parameter_reference.md#COM_RC_STICK_OV) | 操作杆移动量触发切换至 [Position mode](../flight_modes_mc/position.md)（如果 [COM_RC_OVERRIDE](#COM_RC_OVERRIDE) 已启用）。                                                                                                                                                                                                                                                        |## 另请参见
+| <a id="COM_RC_STICK_OV"></a>[COM_RC_STICK_OV](../advanced_config/parameter_reference.md#COM_RC_STICK_OV) | 操作杆移动量触发切换至 [Position mode](../flight_modes_mc/position.md)（如果 [COM_RC_OVERRIDE](#COM_RC_OVERRIDE) 已启用）。                                                                                                                                                                                                                                                        |
+
+## 另请参见
 
 - [返航模式 (通用)](../flight_modes/return.md)
 - [返航模式 (固定翼)](../flight_modes_fw/return.md)

@@ -1,143 +1,161 @@
-# Holybro Microhard P900 无线电
 
-[Holybro Microhard P900 无线电](https://holybro.com/products/microhard-radio)集成了[Microhard Pico Serial](http://microhardcorp.com/P900.php) P900 RF模块，该模块能够在稳健且安全的网状、点对点或点对多点拓扑结构中提供高性能的无线串行通信。
-它实现了机体与地面站（GCS）之间的MAVLink通信。
 
-该无线电在902-928 MHz ISM频段内工作，采用跳频扩频（FHSS）技术，可在大多数使用串口的设备间提供可靠的异步数据传输。
-该无线电可在网状拓扑结构中配置为初级协调器、次级协调器、备用协调器或远程节点，或在PP/PMP拓扑结构中配置为主站、中继或远程节点。
+# Holybro Microhard P900 Radio
 
-这种多功能性对用户非常方便。
-该无线电可通过数据端口使用AT命令进行配置，或通过诊断端口使用_PicoConfig_应用程序进行配置。
+Holybro Microhard P900 Radio 集成了 [Microhard Pico Serial](http://microhardcorp.com/P900.php) P900 RF模块，该模块能够在稳健且安全的网状、点对点或点对多点拓扑结构中提供高性能无线串行通信。  
+它实现了机体与地面控制站（GCS）之间的MAVLink通信。
 
-发射功率可通过软件在100mW至1W之间选择，通信距离最远可达40英里。
-单个地面站无线电可通过点对多点或网状结构与多个机体通信。
-机体必须具有不同的MAVLINK ID。
+该无线电工作在902-928 MHz ISM频段，采用跳频扩频（FHSS）技术，可在使用串行接口的大多数设备类型之间提供可靠的无线异步数据传输。  
+该无线电可在网状拓扑结构中配置为初级协调器、次级协调器、备用协调器或远程设备，或在PP或PMP拓扑结构中配置为主设备、中继器或远程设备。
 
-![Holybro Microhard 无线电](../../assets/hardware/telemetry/holybro_microhard.jpg)
+这种灵活性对用户非常便利。  
+该无线电可通过数据端口使用AT命令配置，或通过诊断端口使用 _PicoConfig_ 应用程序配置。
 
-## 特性
+发射功率可通过软件在100mW至1W之间选择，通信距离可达40英里。  
+单个地面站无线电可通过点对多点或网状拓扑结构与多架机体通信。  
+机体必须配置不同的MAVLINK ID。
 
-- USB Type-C端口，集成USB转UART转换器
-- 6位JST-GH连接器，可直接连接到各种Pixhawk标准飞控器的TELEM端口，如[Pixhawk 4](../flight_controller/pixhawk4.md)与[Pixhawk 5X](../flight_controller/pixhawk5x.md)
-- 高压BEC，支持7~35V直流电压输入
-- UART传输 & 三级RSSI LED指示灯
-- 在无线电频谱的公共免许可频段内传输
-- 透明、低延迟的数据传输速率最高可达276 Kbps
-- 支持自动路由的稳健网状操作
-- 32位CRC，可选重传和前向纠错
-- 独立诊断端口，远程透明诊断和在线网络控制
+![Holybro Microhard Radio](../../assets/hardware/telemetry/holybro_microhard.jpg)
 
-## 购买渠道
+## 功能  
 
-- [Holybro Microhard P900 测距无线电 (100mW - 1W)](https://holybro.com/products/microhard-radio)
+- USB Type-C端口，集成USB转UART转换器  
+- 6位JST-GH连接器，可直接连接到各种符合Pixhawk标准的飞控器上的TELEM端口，如[Pixhawk 4](../flight_controller/pixhawk4.md) & [Pixhawk 5X](../flight_controller/pixhawk5x.md)  
+- 内置高压BEC，支持DC7~35V电压输入  
+- UART传输 & 三级RSSI LED指示器  
+- 在无线电频谱的公共、免授权频段内传输  
+- 透明、低延迟的链路速率，最高可达276 Kbps  
+- 支持稳健的真正Mesh操作及自动路由  
+- 32位CRC，可选重传和前向纠错  
+- 独立的诊断端口，透明的远程诊断和在线网络控制
+
+## 购买地点
+
+- [Holybro Microhard P900 Telemetry Radio (100mW - 1W)](https://holybro.com/products/microhard-radio)
 
 ## 规格
 
 <img src="../../assets/hardware/telemetry/holybro_microhard_spec.png" width="500px" title="Holybro Microhard P900 Diagnosis" />
 
-## 连接方法
+## 连接
 
 #### 机体无线电
 
-该无线电附带6针JST GH电缆，可连接到符合Pixhawk接头标准的飞控器上的`TELEM1`端口。
-无线电需通过4针JST-GH XT30电源线（7-35VDC）单独供电。
+该无线电模块配备一根6针JST GH电缆，可以连接到符合Pixhawk连接器标准的飞控上的`TELEM1`端口。
+该无线电必须通过4针JST-GH XT30电源线单独供电(7-35VDC)。
 
 #### 地面站无线电
 
-该无线电内置USB转UART转换器，可通过USB C连接到地面站。
-无线电需通过XT30电源线（7-35VDC）单独供电。
+该无线电设备内置USB转UART转换器，地面无线电可以通过USB C连接到地面站。  
+该无线电必须通过XT30电源线（7-35VDC）单独供电。
 
 ## 设置/配置
 
-Holybro Microhard P900无线电出厂时已配置为点对点操作模式和57600波特率。
-这可使其直接连接到PX4的`TELEM1`端口和_QGroundControl_ **无需任何额外配置**。
+Holybro Microhard P900 无线电在出厂时已配置为点对点操作模式和 57600 波特率的串口速率。  
+这使得它们能够直接连接到 PX4 的 `TELEM1` 端口并 **无需任何额外配置** 即可使用 _QGroundControl_。
 
 ::: info
-您可以使用不同的波特率、模式或飞控端口。
-唯一“要求”是地面无线电、机体无线电、PX4和QGroundControl必须设置为相同的波特率。
+您可以使用不同的波特率、模式或飞控端口。  
+唯一的要求是地面无线电、空中无线电、PX4 和 QGroundControl 必须全部设置为相同的波特率。
 :::
 
-[Microhard 串口测距无线电 > 配置](../telemetry/microhard_serial.md#configuration)说明了如何配置无线电、_QGroundControl_和PX4。
+[Microhard Serial Telemetry Radios > Configuration](../telemetry/microhard_serial.md#configuration) 说明了如何配置无线电、_QGroundControl_ 和 PX4。
 
-为了通过_PicoConfig_应用（如上文链接所述）配置无线电，必须通过诊断端口连接：
+要通过 _PicoConfig_ 应用程序（如上述链接所述）配置无线电，必须通过诊断端口连接：
 
-<img src="../../assets/hardware/telemetry/holybro_microhard_uart converter.png" width="500px" title="Holybro Microhard P900 Diagnosis" />
+<img src="../../assets/hardware/telemetry/holybro_microhard_uart converter.png" width="500px" title="Holybro Microhard P900 诊断" />
 
-诊断端口使用4位JST SH连接器。
-如果使用_PicoConfig_应用或特殊诊断命令配置无线电，应连接到此端口。
-诊断端口兼容3.3V逻辑电平。
-需要USB转串口板将无线电连接到计算机。
-您可购买[Holybro UART转USB转换器](https://holybro.com/products/uart-to-usb-converter)。
+诊断端口使用 4 位 JST SH 连接器。  
+如果您使用 _PicoConfig_ 应用程序或特殊诊断命令配置无线电，应连接到此端口。  
+诊断端口兼容 3.3V 逻辑电平。  
+连接无线电和计算机需要 USB 转串口板。  
+您可以购买 [Holybro UART to USB Converter](https://holybro.com/products/uart-to-usb-converter)。
 
-_Pico Config_将自动识别并配置相关参数。
+_Pico Config_ 会自动检测并连接到配置端口。  
+调整设置以使波特率与 PX4（及地面站）匹配。
 
-在按下电源按钮后，等待约30秒让系统初始化完成。
-此时，您可以通过串口调试工具（如Putty或Screen）与无线电通信。
+在给无线电上电时按住 **Config** 按钮，将会启动进入 COMMAND 模式：默认串口接口将被激活并临时设置为默认串口参数 9600/8/N/1。
+
+注意，也可以通过数据端口使用 AT 命令配置无线电。
 
 ### 默认配置
 
-- 波特率：57600
-- 数据位：8
-- 停止位：1
-- 校验位：None
+出厂时的默认遥控器配置如下方的_PicoConfig_所示（在固件更新或重置遥控器后，可能需要重新配置）。
 
-### 使用AT命令配置
+<img src="../../assets/hardware/telemetry/holybro_pico_config.png" width="400px" title="Holybro Pico Config" />
+<img src="../../assets/hardware/telemetry/holybro_pico_config1.png" width="400px" title="Holybro Pico Config" />
 
-1. 打开串口调试工具（如Putty或Screen）
-2. 输入`AT`测试连接（应返回`OK`）
-3. 输入`AT+NAME=YourName`设置设备名称
-4. 输入`AT+ADDR=YourAddress`设置设备地址
-5. 输入`AT+BAUD=9600`设置波特率
-6. 输入`AT+SAVE`保存配置
-7. 重启设备使配置生效
+在点对点操作模式下，系统必须有一个主设备提供网络同步，因此其中一个遥控器应配置为PP master，另一个应配置为PP remote。
 
-### 状态LED指示
+## 状态LED
 
-| LED颜色 | 状态 | 含义 |
-|---------|------|------|
-| 绿色常亮 | 正常工作 | 无线电已通电并处于待机状态 |
-| 绿色闪烁 | 通信中 | 无线电正在发送或接收数据 |
-| 红色常亮 | 错误 | 配置错误或硬件故障 |
+<img src="../../assets/hardware/telemetry/holybro_microhard_leds.png" width="600px" title="Holybro Pico Config" />
 
-### 常见问题排查
+P900数传模块有6个状态LED：3个蓝色、2个橙色和1个绿色。
+不同LED的含义如下：
 
-1. **无法连接**：
-   - 检查串口设置是否正确（波特率、数据位等）
-   - 确保诊断端口连接正确
-   - 重启无线电设备
+- 电源LED（绿色）
+  - 当P900数传模块连接电源（7-35VDC）时，该LED会亮起。
+- TX LED（橙色）
+  - 该LED亮起时，表示数传模块正在通过无线方式传输数据。
+- RX LED（橙色）
+  - 该LED表示数传模块已同步并接收到有效数据包。
+- RSSI LED（3个蓝色）
+  - 随着接收信号强度增加，从最左侧开始，激活的
+- RSSI LED
+  数量会增加。信号强度基于最后四个有效接收且CRC正确的数据包计算得出。RSSI值在S123中报告。
 
-2. **通信不稳定**：
-   - 检查天线连接
-   - 避开干扰源（如Wi-Fi路由器、微波炉）
-   - 尝试降低波特率
+<img src="../../assets/hardware/telemetry/holybro_microhard_led_status.png" width="600px" title="Holybro Pico Config" />
 
-3. **配置不生效**：
-   - 确保输入了`AT+SAVE`保存配置
-   - 重启设备使配置生效
+<img src="../../assets/hardware/telemetry/holybro_microhard_rssi.png" width="600px" title="Holybro Pico Config" />
 
-### 进阶配置
+### 引脚分配
 
-对于需要高级设置的用户，可通过以下AT命令进行配置：
+#### 诊断端口
 
-- `AT+POWER=20`：设置发射功率为20dBm
-- `AT+RATE=276000`：设置数据传输速率为276 Kbps
-- `AT+MODE=1`：切换到透明传输模式
-- `AT+NETID=1234`：设置网络ID
+| 引脚       | 信号 | 电压 |
+| --------- | ------ | ------- |
+| 1         | NC     | --      |
+| 2 (黑色) | RX     | +3.3V   |
+| 3 (黑色) | TX     | +3.3V   |
+| 4 (黑色) | GND    | GND     |
 
-### 电源管理
+#### 数据端口
 
-- **低功耗模式**：输入`AT+POWERSAVE=1`启用低功耗模式，可延长电池续航时间
-- **自动关机**：输入`AT+AUTOOFF=60`设置60分钟自动关机
+| 引脚       | 信号 | 电压 |
+| --------- | ------ | ------- |
+| 1 (红色)   | NC     | --      |
+| 2 (黑色) | RX     | +3.3V   |
+| 3 (黑色) | TX     | +3.3V   |
+| 4 (黑色) | CTS    | +3.3V   |
+| 5 (黑色) | RTS    | +3.3V   |
+| 6 (黑色) | GND    | GND     |
 
-### 固件升级
+#### 电源端口
 
-1. 下载最新固件包：[Microhard Radio固件下载](https://docs.holybro.com/telemetry-radio/microhard-radio/download)
-2. 使用`AT+UPDATE`命令启动升级模式
-3. 通过串口上传固件文件
-4. 等待升级完成并重启设备
+| 引脚       | 信号 | 电压 |
+| --------- | ------ | ------- |
+| 1(红色)    | BAT+   | 7-35V   |
+| 2 (红色)   | BAT+   | 7-35V   |
+| 3 (黑色) | BAT-   | GND     |
+| 4 (黑色) | BAT-   | GND     |
 
-### 技术支持
+<img src="../../assets/hardware/telemetry/holybro_microhard_pinout.jpg" width="600px" title="Holybro Pico 配置" />
 
-如需进一步帮助，请访问：
-- [Microhard 无线电文档](https://docs.holybro.com/telemetry-radio/microhard-radio) (docs.holybro.com)
-- [Holybro Microhard P900 下载](https://docs.holybro.com/telemetry-radio/microhard-radio/download)（手册及其他文档）（Holybro）
+### 尺寸
+
+<img src="../../assets/hardware/telemetry/holybro_microhard_dimension.png" width="600px" title="Holybro Pico Config" />
+
+### 功率消耗
+
+- 供电电压：4针JST-GH至XT30（含）的直流7~35V
+- 发射电流：200毫安/7伏特（20dBm）
+  - 350毫安/7伏特（27dBm）
+  - 800毫安/7伏特（30dBm）
+- 接收电流：100毫安
+- 重量：42克（不含天线）
+
+## 进一步信息
+
+- [Microhard Radio](https://docs.holybro.com/telemetry-radio/microhard-radio) (docs.holybro.com)
+- [Holybro Microhard P900 下载](https://docs.holybro.com/telemetry-radio/microhard-radio/download) (手册和其他文档) (Holybro)

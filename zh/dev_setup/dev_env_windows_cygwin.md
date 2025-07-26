@@ -28,7 +28,7 @@
 1. 在安装结束时勾选复选框以 _克隆 PX4 仓库、构建并运行 jMAVSim 仿真_ (这将简化入门流程)。
 
    ::: info
-   如果错过了这一步，将需要[手动克隆 PX4-Autopilot 仓库](#getting-started)。
+   如果错过了这一步，将需要[手动克隆 PX4-Autopilot 仓库](#入门指南)。
    :::
 
 :::warning

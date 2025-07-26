@@ -6,7 +6,9 @@ GPS 模块使用 [DroneCAN](index.md) 协议进行通信。
 DroneCAN 连接相比串口连接对电磁干扰更具抗性，因此更可靠。  
 此外，使用 DroneCAN 意味着 GPS 和电子罗盘不会占用任何飞控串口（可通过 CAN 分线板将不同的/额外的 CAN 设备连接到同一个 CAN 总线）。
 
-<img src="../../assets/hardware/gps/hb_dronecan_m8n/hb_dronecan_m8n_gps.jpg" width="400px" title="Hero diagram for the GPS module" />## 购买渠道
+<img src="../../assets/hardware/gps/hb_dronecan_m8n/hb_dronecan_m8n_gps.jpg" width="400px" title="Hero diagram for the GPS module" />
+
+## 购买渠道
 
 从以下渠道订购此模块：
 
@@ -39,13 +41,14 @@ DroneCAN 连接相比串口连接对电磁干扰更具抗性，因此更可靠�
 | 尺寸                    | <p>直径: 54mm<br>厚度: 14.5mm</p>                                                                                                                  |
 | 重量                    | 36g                                                                                                                                                |
 | 电缆长度                | 26cm                                                                                                                                               |
-| 其他特性                | <ul><li>LNA MAX2659ELT+ 射频放大器</li><li>可充电Farah电容</li><li>低噪声3.3V稳压器</li><li>附带26cm电缆</li></ul> |## 硬件设置
+| 其他特性                | <ul><li>LNA MAX2659ELT+ 射频放大器</li><li>可充电Farah电容</li><li>低噪声3.3V稳压器</li><li>附带26cm电缆</li></ul> |
+## 硬件设置
 
 ### 安装
 
 建议的安装方向是将GPS上的箭头指向机体前方。
 
-传感器可以安装在机架的任何位置，但在[PX4配置](#px4-configuration)过程中需要指定其相对于机体重心的位置。
+传感器可以安装在机架的任何位置，但在[PX4配置](#PX4配置)过程中需要指定其相对于机体重心的位置。
 
 ### 接线
 

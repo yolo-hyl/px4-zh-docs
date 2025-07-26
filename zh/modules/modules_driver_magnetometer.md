@@ -1,4 +1,6 @@
-# 模块参考：磁强计（驱动）## ak09916
+# 模块参考：磁强计（驱动）
+
+## ak09916
 
 源码位置: [drivers/magnetometer/akm/ak09916](https://github.com/PX4/PX4-Autopilot/tree/main/src/drivers/magnetometer/akm/ak09916)
 

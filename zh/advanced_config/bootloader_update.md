@@ -11,7 +11,7 @@ Pixhawk控制器通常预装了合适的Bootloader版本。
 
 - 您可以使用 [QGC Bootloader更新](#qgc-bootloader-update-sys-bl-update) 来更新包含 [`bl-update`模块](../modules/modules_command.md#bl-update) 的固件。
   这是在控制器能加载固件时更新Bootloader的最简便方式。
-- 您也可以使用 [Debug Probe](#debug-probe-bootloader-update) 来更新Bootloader。
+- 您也可以使用 [Debug Probe](#调试探针引导加载程序更新) 来更新Bootloader。
   这在控制器损坏时更新/修复Bootloader非常有用。
 - 在 [FMUv6X-RT](../flight_controller/pixhawk6x-rt.md) 上，您可以通过USB [安装Bootloader/修复损坏的控制器](bootloader_update_v6xrt.md)。
   这对于没有调试探针的情况非常有用。
@@ -47,7 +47,7 @@ Pixhawk控制器通常预装了合适的Bootloader版本。
 
 通常在此之后，您可能需要再次使用新安装的 Bootloader [更新固件](../config/firmware.md)。
 
-以下提供了一个针对 [FMUv2 Bootloader](#fmuv2-bootloader-update) 更新的具体示例。
+以下提供了一个针对 [FMUv2 Bootloader](#FMUv2引导程序更新) 更新的具体示例。
 
 ## 构建 PX4 引导程序
 
@@ -82,7 +82,7 @@ arm-none-eabi-objcopy -O ihex build/px4_fmu-v6x_bootloader/px4_fmu-v6x_bootloade
 
 以下步骤说明如何使用[兼容的调试探针](../debug/swd_debug.md#debug-probes-for-px4-hardware)手动更新引导加载程序：
 
-1. 获取包含引导加载程序的二进制文件（可从开发团队获取或[自行构建](#building-the-px4-bootloader)）。
+1. 获取包含引导加载程序的二进制文件（可从开发团队获取或[自行构建](#构建 PX4 引导程序)）。
 2. 获取[调试探针](../debug/swd_debug.md#debug-probes-for-px4-hardware)。
    通过USB将探针连接到PC并设置`gdbserver`。
 3. 进入包含二进制文件的目录，并在终端中运行对应目标引导加载程序的命令：

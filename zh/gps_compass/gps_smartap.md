@@ -5,7 +5,7 @@ SmartAP GPS 支持并发接收最多3种GNSS系统（GPS、伽利略、GLONASS�
 
 ![SmartAP GPS](../../assets/hardware/gps/gps_smartap_gps.jpg)
 
-## 主要特性
+主要特性：
 
 - 最多支持3种GNSS系统并发接收（GPS、伽利略、GLONASS、北斗）  
 - 3个内置磁力计：HMC5983、IST8310和LIS3MDL  

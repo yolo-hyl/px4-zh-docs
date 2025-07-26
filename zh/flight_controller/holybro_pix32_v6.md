@@ -15,7 +15,9 @@ _Pix32 v6_<sup>&reg;</sup> 是对 pix32 v5 飞行控制器的最新升级版本�
 :::tip
 此自动驾驶仪获得 PX4 维护和测试团队的[支持](../flight_controller/autopilot_pixhawk_standard.md)。
 :::
--->## 简介
+-->
+
+## 简介
 
 在 Pix32 v6 内部，您将找到基于 STMicroelectronics® 的 STM32H743 处理器，结合来自 Bosch® 与 InvenSense® 的传感器技术，为您提供控制任何自主机体所需的高度灵活性与可靠性，适用于学术和商业应用。
 
@@ -28,7 +30,9 @@ Pix32 v6 的 H7 微控制器搭载 Arm® Cortex®-M7 核心，主频高达 480 M
 - 高性能 STM32H743 处理器，具有更强的计算能力和更大的内存
 - 新型低成本设计，采用低剖面外形结构
 - 集成振动隔离系统，过滤高频振动并降低噪声以确保测量精度
-- IMUs 通过板载加热电阻进行温度控制，实现 IMUs 最佳工作温度# 技术规格
+- IMUs 通过板载加热电阻进行温度控制，实现 IMUs 最佳工作温度
+
+# 技术规格
 
 ### **处理器与传感器**
 
@@ -79,7 +83,9 @@ Pix32 v6 的 H7 微控制器搭载 Arm® Cortex®-M7 核心，主频高达 480 M
 - 2个电源输入端口（模拟）  
 
 - 其他特性:  
-  - 工作与存储温度: -40 ~ 85°c## 购买渠道
+  - 工作与存储温度: -40 ~ 85°c
+  
+## 购买渠道
 
 从 [Holybro](https://holybro.com/collections/autopilot-flight-controllers/products/pix32-v6) 订购。
 
@@ -98,7 +104,9 @@ Pix32 v6 的 H7 微控制器搭载 Arm® Cortex®-M7 核心，主频高达 480 M
 | UART5  | /dev/ttyS3   | TELEM2         |
 | USART6 | /dev/ttyS4   | PX4IO          |
 | UART7  | /dev/ttyS5   | TELEM1         |
-| UART8  | /dev/ttyS6   | GPS2           |## 尺寸
+| UART8  | /dev/ttyS6   | GPS2           |
+
+## 尺寸
 
 - [Pix32v6尺寸](https://docs.holybro.com/autopilot/pix32-v6/dimensions)
 
@@ -144,7 +152,9 @@ Holybro 针对不同需求提供了多种模拟[电源模块](../power_module/in
 make px4_fmu-v6c_default
 ```
 
-<a id="debug_port"></a>## 调试端口
+<a id="debug_port"></a>
+
+## 调试端口
 
 [PX4系统控制台](../debug/system_console.md) 和 [SWD接口](../debug/swd_debug.md) 运行在 **FMU调试** 端口上。
 
@@ -166,7 +176,9 @@ make px4_fmu-v6c_default
 有关此端口使用的信息请参见：
 
 - [SWD调试端口](../debug/swd_debug.md)
-- [PX4系统控制台](../debug/system_console.md)（注意：FMU控制台映射到 USART3）## 外设
+- [PX4系统控制台](../debug/system_console.md)（注意：FMU控制台映射到 USART3）
+
+## 外设
 
 - [数字空速传感器](https://holybro.com/products/digital-air-speed-sensor)
 - [遥测无线电模块](https://holybro.com/collections/telemetry-radios?orderby=date)

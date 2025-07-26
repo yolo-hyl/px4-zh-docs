@@ -2,7 +2,7 @@
 
 机械手是可集成到无人机体上的机械装置，用于抓取（固定）和释放载荷。
 
-PX4允许在[载荷投递任务](../flying/package_delivery_mission.md)中自动触发机械手，或通过[遥控器](#qgc-joystick-configuration)手动触发。
+PX4允许在[载荷投递任务](../flying/package_delivery_mission.md)中自动触发机械手，或通过[遥控器](#QGC遥控器配置)手动触发。
 
 ![高负载机械手示例](../../assets/hardware/grippers/highload_gripper_example.jpg)
 
@@ -24,7 +24,7 @@ PX4支持具有简单抓取/释放功能的机械手，且需使用以下接口�
 
 关于任务中使用机械手的说明，请参见[载荷投递任务](../flying/package_delivery_mission.md)。
 
-如果已在[QGC遥控器配置](#qgc-joystick-configuration)中映射了`gripper open`和`gripper close`按钮，可通过遥控器按钮手动触发机械手。注意当机械手正在打开时按下**Grab**按钮，会中止释放行为并切换到关闭位置，从而取消释放命令。如果在任务执行释放时这么做，[投递将被取消](../flying/package_delivery_mission.md#manual-control-of-gripper-in-missions)。
+如果已在[QGC遥控器配置](#QGC遥控器配置)中映射了`gripper open`和`gripper close`按钮，可通过遥控器按钮手动触发机械手。注意当机械手正在打开时按下**Grab**按钮，会中止释放行为并切换到关闭位置，从而取消释放命令。如果在任务执行释放时这么做，[投递将被取消](../flying/package_delivery_mission.md#manual-control-of-gripper-in-missions)。
 
 不支持通过[遥控器控制](../getting_started/rc_transmitter_receiver.md)开关手动触发机械手。
 
@@ -78,7 +78,7 @@ PX4的机械手支持与载荷投递功能绑定，需启用并配置才能使�
      可能还需要在Nuttx shell中运行`payload_deliverer start`命令。
      :::
 
-   - 使用[遥控器](#qgc-joystick-configuration)触发机械手开合动作。
+   - 使用[遥控器](#QGC遥控器配置)触发机械手开合动作。
 
 1. 将[PD_GRIPPER_TO](../advanced_config/parameter_reference.md#PD_GRIPPER_TO)设置为机械手开合时间中较长的值。
 
@@ -94,7 +94,7 @@ PX4的机械手支持与载荷投递功能绑定，需启用并配置才能使�
 
 设置超时：
 
-1. 将[MIS_COMMAND_TOUT](../advanced_config/parameter_reference.md#MIS_COMMAND_TOUT)设置为大于[机械手动作超时](#gripper-actuation-timeout)的值。
+1. 将[MIS_COMMAND_TOUT](../advanced_config/parameter_reference.md#MIS_COMMAND_TOUT)设置为大于[机械手动作超时](#机械手动作超时)的值。
 
 ## QGC遥控器配置
 

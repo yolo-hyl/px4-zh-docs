@@ -217,6 +217,8 @@ Turnigy 高容量 5200mAh 3S 12C 锂电池包（XT60 接口） | 1
 
 ## 视频
 
-<lite-youtube videoid="r-IkaVpN1Ko" title="CUAV V5+"/>## 致谢
+<lite-youtube videoid="r-IkaVpN1Ko" title="CUAV V5+"/>
+
+## 致谢
 
 本构建日志由Dronecode Test Flight Team提供。

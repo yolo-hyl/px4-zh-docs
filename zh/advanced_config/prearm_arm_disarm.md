@@ -60,7 +60,8 @@ PX4允许通过参数配置预上电、上电和断电行为（可通过_QGround
 | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | <a id="MAN_ARM_GESTURE"></a>[MAN_ARM_GESTURE](../advanced_config/parameter_reference.md#MAN_ARM_GESTURE) | 启用上锁/解锁杆手势。`0`: 禁用，`1`: 启用（默认）。                                                           |
 | <a id="COM_DISARM_MAN"></a>[COM_DISARM_MAN](../advanced_config/parameter_reference.md#COM_DISARM_MAN)    | 在MC手动推力模式下，通过开关/杆/按钮启用飞行中解锁。`0`: 禁用，`1`: 启用（默认）。                            |
-| <a id="COM_RC_ARM_HYST"></a>[COM_RC_ARM_HYST](../advanced_config/parameter_reference.md#COM_RC_ARM_HYST) | RC杆必须在上锁/解锁位置保持的时间（默认：`1` 秒）。                                                           |## 上锁按钮/开关 {#arm_disarm_switch}
+| <a id="COM_RC_ARM_HYST"></a>[COM_RC_ARM_HYST](../advanced_config/parameter_reference.md#COM_RC_ARM_HYST) | RC杆必须在上锁/解锁位置保持的时间（默认：`1` 秒）。                                                           |
+## 上锁按钮/开关 {#arm_disarm_switch}
 
 一个 _上锁按钮_ 或 "瞬时开关" 可被配置为用以触发上锁/解锁 _替代_ [基于手势的上锁](#arm_disarm_gestures) (设置上锁开关将禁用上锁手势)。  
 按钮需按住约 ([nominally](#COM_RC_ARM_HYST)) 一秒时间以实现上锁 (处于解锁状态时) 或解锁 (处于上锁状态时)。
@@ -89,7 +90,9 @@ PX4允许通过参数配置预上电、上电和断电行为（可通过_QGround
 | 参数                                                                                                   | 描述                                                                     |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | <a id="COM_DISARM_LAND"></a>[COM_DISARM_LAND](../advanced_config/parameter_reference.md#COM_DISARM_LAND)    | 着陆后自动解除武装的超时时间。默认值：2秒（-1表示禁用）。            |
-| <a id="COM_DISARM_PRFLT"></a>[COM_DISARM_PRFLT](../advanced_config/parameter_reference.md#COM_DISARM_PRFLT) | 若起飞过慢时的自动解除武装超时时间。默认值：10秒（<=0表示禁用）。 |## 启动前检查
+| <a id="COM_DISARM_PRFLT"></a>[COM_DISARM_PRFLT](../advanced_config/parameter_reference.md#COM_DISARM_PRFLT) | 若起飞过慢时的自动解除武装超时时间。默认值：10秒（<=0表示禁用）。 |
+
+## 启动前检查
 
 为了减少事故，机体仅允许在满足特定条件时启动（部分条件可配置）。  
 以下情况会阻止启动：

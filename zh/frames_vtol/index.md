@@ -113,7 +113,9 @@ VTOL配置涉及多个章节：
 - [基本配置](../config/index.md) - 所有机体类型通用的配置(传感器、安全系统、电池等)
 - [VTOL特定配置](../config_vtol/index.md)
 - [外设硬件](../peripherals/index.md) - 可选硬件和传感器的配置
-- [高级配置](../advanced_config/index.md)：涵盖出厂调校、高级及可选配置的附加配置## 视频
+- [高级配置](../advanced_config/index.md)：涵盖出厂调校、高级及可选配置的附加配置
+
+## 视频
 
 ### 教育类
 

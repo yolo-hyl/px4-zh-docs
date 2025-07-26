@@ -1,6 +1,6 @@
 # PX4 架构概览
 
-PX4由两个主要层级组成：[飞行堆栈](#flight-stack)是一个估计与飞行控制系统，[中间件](#middleware)则是一个通用机器人层级，可支持任何类型的自主机器人，提供内部/外部通信和硬件集成。
+PX4由两个主要层级组成：[飞行堆栈](#飞行栈)是一个估计与飞行控制系统，[中间件](#中间件)则是一个通用机器人层级，可支持任何类型的自主机器人，提供内部/外部通信和硬件集成。
 
 所有PX4 [机体](../airframes/index.md)共享单一代码库（这包括其他机器人系统，如船只、探测器、潜水器等）。整个系统设计是[响应式](http://www.reactivemanifesto.org)，这意味着：
 
@@ -8,7 +8,9 @@ PX4由两个主要层级组成：[飞行堆栈](#flight-stack)是一个估计与
 - 通信通过异步消息传递完成
 - 系统可处理不同的工作负载
 
-<a id="architecture"></a>## 高级软件架构
+<a id="architecture"></a>
+
+## 高级软件架构
 
 下图详细概述了 PX4 的构建模块。  
 图的上半部分包含中间件模块，下半部分显示了飞行栈的组件。
@@ -84,7 +86,9 @@ PX4由两个主要层级组成：[飞行堆栈](#flight-stack)是一个估计与
 
 可通过运行`uorb top`实时检查系统中的消息更新速率，详情可参考[inspected](../middleware/uorb.md)
 
-<a id="runtime-environment"></a>## 运行环境
+<a id="runtime-environment"></a>
+
+## 运行环境
 
 PX4 运行在提供 POSIX-API 的多种操作系统上（如 Linux、macOS、NuttX 或 QuRT）。系统应具备某种形式的实时调度（例如 FIFO）。
 

@@ -27,7 +27,9 @@ PX4支持基于mosaic-X5和mosaic-H接收器模块的Septentrio GNSS接收机。
 - 飞控内部存储的接收器通信日志
 - 自动波特率和端口检测
 - 所有功能的自动参数化配置
-- 来自MAVLink控制台的状态和健康监测## 快速入门
+- 来自MAVLink控制台的状态和健康监测
+
+## 快速入门
 
 对于Septentrio GNSS接收器与飞控之间的物理连接，请参考针对[mosaic-go 接收器](septentrio_mosaic-go.md)和[AsteRx-m3 接收器与机器人接口板](../gps_compass/septentrio_asterx-rib.md)的硬件特定指南。
 
@@ -128,17 +130,20 @@ Septentrio GNSS 接收器有两方式记录数据。
 **当驱动是从控制台启动时，错误信息才会显示。**
 
 ```sh
-
-```# 查看帮助
-
+# See help
 septentrio -h
+```
 
 ```sh
+# Get current health and statistics
+septentrio status
+```
 
-```# 获取当前状态和统计信息
-septentrio status# 启动驱动程序并连接接收机到端口 `/dev/ttyS0` 和# 自动配置为波特率 115200。同时使用接收器# 端口 `/dev/ttyS7` 并使用其当前波特率  
-septentrio start -d /dev/ttyS0 -b 115200 -e /dev/ttyS7  
-
+```sh
+# Start the driver with a receiver connected on port `/dev/ttyS0` and
+# automatically configure it to baud rate 115200. Also use a receiver on
+# port `/dev/ttyS7` and use its current baud rate.
+septentrio start -d /dev/ttyS0 -b 115200 -e /dev/ttyS7
 ```
 
 支持三种重置类型：
@@ -147,6 +152,7 @@ septentrio start -d /dev/ttyS0 -b 115200 -e /dev/ttyS7
 - `warm`: 重置接收器固件，保留当前配置但清除缓存的PVT数据  
 - `cold`: 重置接收器固件并使用引导配置，同时清除卫星数据（如星历）  
 
-```sh  
-```# 对已连接的接收器执行热重置
+```sh
+# Perform a hot reset on the connected receivers
 septentrio reset hot
+```

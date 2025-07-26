@@ -1,4 +1,6 @@
-# 模块参考：系统## 电池模拟器
+# 模块参考：系统
+
+## 电池模拟器
 
 源代码：[modules/simulation/battery_simulator](https://github.com/PX4/PX4-Autopilot/tree/main/src/modules/simulation/battery_simulator)
 

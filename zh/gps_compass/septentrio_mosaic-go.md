@@ -13,7 +13,9 @@ Septentrio mosaic-go 接收器是用于其 mosaic-X5 和 mosaic-H 接收器模�
 - 可靠的厘米级定位
 - 通过P(Y)码的L2完整支持
 - 尺寸：71 x 59 x 12 mm ± 1mm
-- 重量：58g ± 1g## 购买
+- 重量：58g ± 1g
+
+## 购买
 
 mosaic-go 套件可在 Septentrio 的 [官方商店](https://web.septentrio.com/l/858493/2022-04-19/xgrnz) 购买：
 
@@ -30,7 +32,9 @@ Septentrio 其他 PX4 支持的设备：
 - 1 条 USB 数据线
 - 6 针 COM1 开放式电缆
 - 4 针 COM2 开放式电缆
-- 帮助用户指南卡## 物理接口
+- 帮助用户指南卡
+
+## 物理接口
 
 | 类型            | 标签        | 用途                                      |
 | --------------- | ------------ | ---------------------------------------- |
@@ -65,7 +69,8 @@ _连接器类型：GH连接器，1.25mm间距，4针。配合连接器外壳：G
 | NRST     | In        | 3V3_LVTTL | 复位输入               | 直接连接到内部mosaic的nRST_IN |
 | TXD2     | Out       | 3V3_LVTTL | 串口COM2发送线 | 直接连接到内部mosaic的TXD2    |
 | RXD2     | In        | 3V3_LVTTL | 串口COM2接收线  | 直接连接到内部mosaic的RXD2    |
-| GND      |           | 0         | 接地                    |                                                 |## PX4 配置
+| GND      |           | 0         | 接地                    |                                                 |
+## PX4 配置
 
 PX4 配置相关内容请参见 [Septentrio GNSS 接收机](../gps_compass/septentrio.md)。
 

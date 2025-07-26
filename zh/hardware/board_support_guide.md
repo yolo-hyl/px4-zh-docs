@@ -2,10 +2,10 @@
 
 PX4 开发和测试团队完全支持和维护符合 [Pixhawk 标准](https://pixhawk.org/standards/) 的板卡。希望偏离标准或创建全新板卡的制造商可以这样做，但需要自行承担由此产生的兼容性差异问题。
 
-本指南概述了 [通用要求](#general_requirements) 以及不同 [板卡支持类别](#board-support-categories) 的附加要求。
+本指南概述了 [通用要求](#general_requirements) 以及不同 [板卡支持类别](#板卡支持类别) 的附加要求。
 
 ::: info
-不符合要求的板卡将被 [不支持](#unsupported)；它们将不会出现在 PX4 官方网站的硬件列表中，并将从代码库中移除。
+不符合要求的板卡将被 [不支持](#不支持)；它们将不会出现在 PX4 官方网站的硬件列表中，并将从代码库中移除。
 :::
 
 <a id="general_requirements"></a>

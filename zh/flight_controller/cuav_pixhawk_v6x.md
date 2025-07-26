@@ -135,7 +135,9 @@ Pixhawk® V6X适用于企业研究实验室、学术研究和商业应用。
 | UART5  | /dev/ttyS4   | TELEM2         |
 | USART6 | /dev/ttyS5   | PX4IO/RC       |
 | UART7  | /dev/ttyS6   | TELEM1         |
-| UART8  | /dev/ttyS7   | GPS2           |## 电压规格
+| UART8  | /dev/ttyS7   | GPS2           |
+
+## 电压规格
 
 _Pixhawk V6X_ 可通过三个电源输入实现供电冗余功能。三个电源通道分别为：**POWERC1/POWER1**、**POWERC2/POWER2** 和 **USB**。
 
@@ -178,7 +180,9 @@ _Pixhawk V6X_ 可通过三个电源输入实现供电冗余功能。三个电源
 make px4_fmu-v6x_default
 ```
 
-<a id="debug_port"></a>## 调试端口
+<a id="debug_port"></a>
+
+## 调试端口
 
 [PX4系统控制台](../debug/system_console.md)和[SWD接口](../debug/swd_debug.md)运行在 **FMU调试** 端口上。
 

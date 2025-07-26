@@ -31,11 +31,11 @@ Cube 通常包含您在 [购买](../flight_controller/pixhawk-2.md#stores) 时�
 ![Cube - 接线概述](../../assets/flight_controller/cube/cube_wiring_overview.jpg)
 
 1. [遥测系统](#telemetry) — 允许您规划/执行任务，并实时控制和监控机体。通常包括遥测电台、平板/PC和地面站软件。
-2. [蜂鸣器](#buzzer) — 提供指示无人机状态的音频信号
+2. [蜂鸣器](#蜂鸣器) — 提供指示无人机状态的音频信号
 3. [遥控接收系统](#rc_control) — 连接到操作员可用来手动飞行机体的手持遥控器（图中展示的是带有PWM->PPM转换器的PWM接收器）
-4. （专用）[安全开关](#safety-switch) — 按住以锁定/解锁电机。如果您没有使用推荐的内置安全开关的[GPS](#gps)，则必须使用此开关
+4. （专用）[安全开关](#安全开关) — 按住以锁定/解锁电机。如果您没有使用推荐的内置安全开关的[GPS](#gps)，则必须使用此开关
 5. [GPS、指南针、LED、安全开关](#gps) — 推荐的GPS模块集成了GPS、指南针、LED和安全开关
-6. [供电系统](#power) — 为Cube和电机电调供电。包括锂聚合物电池、电源模块和可选的电池报警系统（当电池电量低于预设值时发出音频警告）
+6. [供电系统](#电源) — 为Cube和电机电调供电。包括锂聚合物电池、电源模块和可选的电池报警系统（当电池电量低于预设值时发出音频警告）
 
 ::: info
 标记为 `GPS2` 的端口在 PX4 中映射到 `TEL4`（即如果连接到标记为 `GPS2` 的端口，请将连接硬件的[串口配置参数](../peripherals/serial_configuration.md)分配为 `TEL4`）。
@@ -59,7 +59,9 @@ Cube可通过减震泡沫垫（套件内含）或安装螺丝进行安装。Cube
 
 ![Cube安装 - 安装板](../../assets/flight_controller/cube/cube_mount_plate_screws.jpg)
 
-<a id="gps"></a>## GPS + 电子罗盘 + 安全开关 + LED
+<a id="gps"></a>
+
+## GPS + 电子罗盘 + 安全开关 + LED
 
 推荐的GPS模块是_Here_和[Here+](../gps_compass/rtk_gps_hex_hereplus.md)，这两个模块都集成了GPS模块、电子罗盘、安全开关和[LED](../getting_started/led_meanings.md)。
 模块的主要区别在于_Here+_支持通过[RTK](../gps_compass/rtk_gps.md)实现厘米级定位。其他方面它们的使用和连接方式相同。
@@ -81,7 +83,7 @@ GPS模块集成的安全开关默认处于启用状态（启用后，PX4将不�
 :::
 
 :::tip
-如果要使用传统的6针GPS模块，套件附带了一根可用于连接GPS和[安全开关](#safety-switch)的线缆。
+如果要使用传统的6针GPS模块，套件附带了一根可用于连接GPS和[安全开关](#安全开关)的线缆。
 :::
 
 ## 安全开关
@@ -98,7 +100,9 @@ Cube 附带的 _专用_ 安全开关仅在未使用推荐的 [全球定位系统
 
 ![Cube Buzzer](../../assets/flight_controller/cube/cube_buzzer.jpg)
 
-<a id="rc_control"></a>## 遥控
+<a id="rc_control"></a>
+
+## 遥控
 
 如果你希望_手动_控制机体(PX4在自主飞行模式下不需要遥控系统)，则需要[遥控器(RC)无线电系统](../getting_started/rc_transmitter_receiver.md)。
 
@@ -141,7 +145,9 @@ Cube 通常通过随套件提供的电源模块（Power Module）从锂离子聚
 请确保所使用舵机的电压范围合适！
 :::
 
-<a id="telemetry"></a>## 遥测系统（可选）
+<a id="telemetry"></a>
+
+## 遥测系统（可选）
 
 遥测系统允许您通过地面站与机体进行通信、监控和飞行控制（例如，您可以将无人机引导至特定位置，或上传新的任务）。
 
