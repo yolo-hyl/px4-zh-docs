@@ -102,11 +102,16 @@ NXP的DCD-LZ是一个7针JST-GH连接器，它在[Pixhawk 6针标准调试端口
 
 DCD-LZ扩展适配器允许使用标准10针JTAG/SWD接口（即使用Segger Jlink）和标准5针FTDI USB-TTL-3V3类型电缆。
 
+
+
 <!--
 
-## 外设
+## Peripherals
 
 * [与该硬件配合使用的任何设备列表]
+-->
+
+
 
 ## 支持的平台/机体构型
 
