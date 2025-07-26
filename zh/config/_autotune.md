@@ -71,7 +71,7 @@ VTOL有其独立的文档，该文档引用了其他两个文档
 
 1. 执行[调参前测试](#调参前测试)。  
 
-2. 使用遥控器控制起飞<div style="display: inline;" v-if="$frontmatter.frame === 'Multicopter'">在[高度模式](../flight_modes_mc/altitude.md)下。 
+2. 使用遥控器控制起飞<div style="display: inline;" v-if="$frontmatter.frame === 'Multicopter'">在[高度模式](../flight_modes_mc/altitude.md)下。  
    在安全距离和离地几米处悬停（4到20米之间）。</div><div v-else-if="$frontmatter.frame === 'Plane'">  
    在巡航速度飞行后激活[保持模式](../flight_modes_fw/hold.md)。  
    这将引导飞机以恒定高度和速度环形飞行。</div>  
@@ -315,3 +315,7 @@ Autotuning 提供了一种自动调校角速度和姿态控制器的机制。它
 
 - [固定翼PID调校指南](../config_fw/pid_tuning_guide_fixedwing.md)
 - [参数 > 自动调校](../advanced_config/parameter_reference.md#autotune) (前缀为 `FW_AT_`)
+</div>
+</div>
+</div>
+</div>
