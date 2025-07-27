@@ -59,7 +59,7 @@ sudo usermod -aG docker $USER
 
 最新版本可以通过`latest`标签访问：`px4io/px4-dev-nuttx-focal:latest`
 （每个容器的可用标签在_hub.docker.com_上列出。
-例如，`px4io/px4-dev-nuttx-focal`的标签可在此处找到[here](https://hub.docker.com/r/px4io/px4-dev-nuttx-focal/tags?page=1&ordering=last_updated))。
+例如，`px4io/px4-dev-nuttx-focal`的标签可在此处找到[here](https://hub.docker.com/r/px4io/px4-dev-nuttx-focal/tags?page=1&ordering=last_updated)）。
 
 :::tip
 通常你应该使用较新的容器，但不一定是`latest`（因为这会频繁变更）。
