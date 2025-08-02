@@ -7,7 +7,7 @@
 ::: info
 调参时我们将使用手动[Position mode](../flight_modes_rover/manual.md#position-mode)模式。
 该模式需要全局定位估算（GPS）以及对部分超出速度控制器范围的参数进行调参。
-如果你使用的是自定义的外部飞行模式（控制速度但不依赖全局定位估算），可以忽略[手动位置模式参数](#manual-position-mode-parameters)。
+如果你使用的是自定义的外部飞行模式（控制速度但不依赖全局定位估算），可以忽略[手动位置模式参数](#手动位置模式参数)。
 :::
 
 ## 速度参数
@@ -30,7 +30,7 @@
    :::
 
    ::: info
-   如果车辆在 [Position 模式](../flight_modes_rover/manual.md#position-mode) 下直线行驶时出现振荡，请将此参数设置为 [Manual 模式](../flight_modes_rover/manual.md#manual-mode) 全油门时的观测地面速度，并首先完成 [手动位置模式参数](#manual-position-mode-parameters) 的调校，再继续闭环速度控制的调校。
+   如果车辆在 [Position 模式](../flight_modes_rover/manual.md#position-mode) 下直线行驶时出现振荡，请将此参数设置为 [Manual 模式](../flight_modes_rover/manual.md#manual-mode) 全油门时的观测地面速度，并首先完成 [手动位置模式参数](#手动位置模式参数) 的调校，再继续闭环速度控制的调校。
    :::
 
 3. [RO_SPEED_P](#RO_SPEED_P) [-]: 闭环速度控制器的比例增益。

@@ -48,7 +48,7 @@ PX4 必须以 2Hz 的频率接收 MAVLink 设定点消息或 ROS 2 的 [Offboard
 `OffboardControlMode` 消息的定义如下所示。
 
 ```sh
-```# 机载控制模式
+# 机载控制模式
 
 uint64 timestamp		# 系统启动后经过的时间（微秒）
 
@@ -59,7 +59,7 @@ bool attitude
 bool body_rate
 bool thrust_and_torque
 bool direct_actuator
-
+```
 字段按优先级排序，`position`优先于`velocity`及后续字段，`velocity`优先于`acceleration`，依此类推。第一个非零值字段（从上至下）定义了使用外部控制模式所需的有效估计值和可使用的设定点消息。例如，若`acceleration`是第一个非零值字段，则PX4需要有效的`velocity estimate`，且设定点必须使用`TrajectorySetpoint`消息。
 
 | 目标控制量           | position字段 | velocity字段 | acceleration字段 | attitude字段 | body_rate字段 | thrust_and_torque字段 | direct_actuator字段 | 所需估计值 | 所需消息                                                                                                                |
@@ -250,7 +250,9 @@ _外部控制模式_ 受以下参数影响：
 | <a id="COM_OBL_RC_ACT"></a>[COM_OBL_RC_ACT](../advanced_config/parameter_reference.md#COM_OBL_RC_ACT)                          | 外部控制丢失时切换的飞行模式(取值为 - `0`: _Position_, `1`: _Altitude_, `2`: _Manual_, `3`: *Return, `4`: *Land\*)                                                                                   |
 | <a id="COM_RC_OVERRIDE"></a>[COM_RC_OVERRIDE](../advanced_config/parameter_reference.md#COM_RC_OVERRIDE)                       | 控制多旋翼(或 VTOL 在 MC mode 模式下)摇杆移动是否会导致切换到[Position mode](../flight_modes_mc/position.md)模式。默认情况下在外部控制模式中未启用此功能。                                            |
 | <a id="COM_RC_STICK_OV"></a>[COM_RC_STICK_OV](../advanced_config/parameter_reference.md#COM_RC_STICK_OV)                         | 导致切换到[Position mode](../flight_modes_mc/position.md)模式的摇杆移动幅度(如果[COM_RC_OVERRIDE](#COM_RC_OVERRIDE)已启用)。                                                                                     |
-| <a id="COM_RCL_EXCEPT"></a>[COM_RCL_EXCEPT](../advanced_config/parameter_reference.md#COM_RCL_EXCEPT)                            | 指定忽略遥控器信号丢失并不会触发故障安全动作的模式。设置位`2`以在外部控制模式中忽略遥控器信号丢失。                                                                                                   |## 开发者资源
+| <a id="COM_RCL_EXCEPT"></a>[COM_RCL_EXCEPT](../advanced_config/parameter_reference.md#COM_RCL_EXCEPT)                            | 指定忽略遥控器信号丢失并不会触发故障安全动作的模式。设置位`2`以在外部控制模式中忽略遥控器信号丢失。                                                                                                   |
+
+## 开发者资源
 
 通常情况下，开发者不会直接在MAVLink层进行开发，而是使用如[MAVSDK](https://mavsdk.mavlink.io/)或[ROS](http://www.ros.org/)等机器人API（这些工具提供了开发者友好的API，并负责管理连接、发送消息和监控响应等底层操作——这些正是在使用_外部模式_和MAVLink时需要处理的细节）。
 

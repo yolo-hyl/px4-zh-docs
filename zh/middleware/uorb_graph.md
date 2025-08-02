@@ -1,7 +1,7 @@
 # uORB 发布/订阅图
 
 本页提供了一个uORB发布/订阅图，展示了模块之间的通信关系。  
-该图信息直接从源代码中提取。使用说明请参见[下方](#graph-properties)。
+该图信息直接从源代码中提取。使用说明请参见[下方](#图表属性)。
 
 <iframe :src="withBase('/middleware/index.html')" frameborder="0" width="1300" height="1450px" style="text-align: center; margin-left: 0px; margin-right: 0px;"></iframe>
 

@@ -77,7 +77,9 @@ PX4 直接使用 [Gazebo API](https://gazebosim.org/docs) 与 [Gazebo](../sim_ga
 地面控制站、外部 API 和模拟器的端口由启动脚本指定。详见 [系统启动](../concept/system_startup.md) 了解更多信息。
 :::
 
-<!-- 关于 UDP 端口的有用讨论在这里：https://github.com/PX4/PX4-user_guide/issues/1035#issuecomment-777243106 -->## SITL 仿真环境
+<!-- 关于 UDP 端口的有用讨论在这里：https://github.com/PX4/PX4-user_guide/issues/1035#issuecomment-777243106 -->
+
+## SITL 仿真环境
 
 下图展示了一个典型的 SITL 仿真环境，适用于所有使用 MAVLink 的支持仿真器（即除了 Gazebo 之外的所有仿真器）。
 
@@ -86,7 +88,7 @@ PX4 直接使用 [Gazebo API](https://gazebosim.org/docs) 与 [Gazebo](../sim_ga
 系统各部分通过 UDP 连接，可在同一台计算机或同一网络中的另一台计算机上运行。
 
 - PX4 使用一个仿真专用模块连接到仿真器的本地 TCP 端口 4560。
-  仿真器随后通过上述 [Simulator MAVLink API](#simulator-mavlink-api) 与 PX4 交换信息。
+  仿真器随后通过上述 [Simulator MAVLink API](#模拟器 MAVLink API) 与 PX4 交换信息。
   SITL 上的 PX4 与仿真器可在同一台计算机或同一网络中的不同计算机上运行。
 
   ::: info
@@ -119,14 +121,20 @@ make px4_sitl simulator[_vehicle-model]
 以下是一些示例，更多内容可参考各仿真器的独立页面：
 
 ```sh
-```# 使用x500多旋翼启动Gazebo
 
-make px4_sitl gz_x500# 使用plane启动Gazebo Classic
+# 使用x500多旋翼启动Gazebo
+make px4_sitl gz_x500
 
-make px4_sitl gazebo-classic_plane# 使用iris和光流启动Gazebo Classic
-make px4_sitl gazebo-classic_iris_opt_flow# 使用 iris 启动 JMavSim（默认机体模型）
-make px4_sitl jmavsim# 无需模拟器启动 PX4（即使用您自己的“自定义”模拟器）  
-```  
+# 使用plane启动Gazebo Classic
+make px4_sitl gazebo-classic_plane
+
+# 使用iris和光流启动Gazebo Classic
+make px4_sitl gazebo-classic_iris_opt_flow
+
+# 使用 iris 启动 JMavSim（默认机体模型）
+make px4_sitl jmavsim
+
+# 无需模拟器启动 PX4（即使用您自己的“自定义”模拟器）  
 make px4_sitl none_iris  
 ```  
 
@@ -181,7 +189,9 @@ _QGroundControl_ 桌面版可通过 USB 连接摇杆/游戏手柄，并通过 MA
 - [摇杆设置](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/setup_view/joystick.html)  
 - [虚拟摇杆](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/settings_view/virtual_joystick.html)  
 
-<!-- FYI Airsim info on this setting up remote controls: https://github.com/Microsoft/AirSim/blob/master/docs/remote_controls.md -->## 相机模拟
+<!-- FYI Airsim info on this setting up remote controls: https://github.com/Microsoft/AirSim/blob/master/docs/remote_controls.md -->
+
+## 相机模拟
 
 PX4支持从[Gazebo Classic](../sim_gazebo_classic/index.md)模拟环境中捕获静态图像和视频。
 这可以通过如下方式启用/设置：[Gazebo Glassic > 视频流](../sim_gazebo_classic/index.md#video-streaming)。
@@ -254,7 +264,7 @@ PX4与此相机的连接/集成方式与任何其他MAVLink相机完全相同：
 
 ::: info
 当网络中只有一个模拟器运行时，UDP广播提供了一种简单的连接设置方式。
-如果有多个模拟器在运行，请不要使用此方法（你可能需要[发布到特定地址](#enable-streaming-to-specific-address)）。
+如果有多个模拟器在运行，请不要使用此方法（你可能需要[发布到特定地址](#启用到特定地址的流传输)）。
 :::
 
 这应该在适当的配置文件中完成，其中调用了`mavlink start`。

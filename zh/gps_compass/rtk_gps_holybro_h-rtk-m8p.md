@@ -6,7 +6,7 @@
 
 [Holybro H-RTK M8P GNSS](https://holybro.com/collections/standard-h-rtk-series/products/h-rtk-m8p-gnss-series) 是一个面向大众市场的[RTK GNSS模块](../gps_compass/rtk_gps.md)系列。该产品线与[H-RTK M9P](../gps_compass/rtk_gps_holybro_h-rtk-f9p.md)系列类似，但使用了更小、更轻且成本更低的M8P u-blox RTK GNSS模块（仍能提供比前代产品优越得多的定位精度）。
 
-Holybro H-RTK M8P系列提供三种不同型号，每种型号采用不同天线设计以满足不同需求。详情请参考[规格和型号比较部分](#specification-and-model-comparison)。
+Holybro H-RTK M8P系列提供三种不同型号，每种型号采用不同天线设计以满足不同需求。详情请参考[规格和型号比较部分](#规格和型号比较)。
 
 通过RTK技术，PX4可获得厘米级定位精度，这比普通GPS的精度高出许多。
 

@@ -211,6 +211,8 @@ Turnigy 高容量 5200mAh 3S 12C 锂电池组 带XT60 | 1
 
 ## 视频
 
-<lite-youtube videoid="b0bKNdDqVHw" title="CUAV Nano"/>## 致谢
+<lite-youtube videoid="b0bKNdDqVHw" title="CUAV Nano"/>
+
+## 致谢
 
 本构建日志由Dronecode Test Flight Team提供。

@@ -27,9 +27,9 @@
 
 如果需要：
 
-- [更新固件](#flash-a-flight-control-board) 到真实机体。
+- [更新固件](#刷写飞行控制板) 到真实机体。
 - 监控真实机体。
-  注意：你也可以用它监控模拟器，但必须手动[连接到运行在 WSL 中的模拟器](#qgroundcontrol-on-windows)。
+  注意：你也可以用它监控模拟器，但必须手动[连接到运行在 WSL 中的模拟器](#QGroundControl on Windows)。
 
 ::: info
 无法从 WSL 内连接 USB 设备，因此不能通过命令行的 [`upload`](../dev_setup/building_px4.md#uploading-firmware-flashing-the-board) 选项，或通过 _Linux版QGroundControl_ 更新固件。
@@ -127,7 +127,7 @@ wsl -d <distribution_name> --shutdown
 
 要安装开发工具链：
 
-1. [打开 WSL2 Shell](#opening-a-wsl-shell)（如果尚未关闭，可以使用安装 WSL2 时的相同 Shell）。
+1. [打开 WSL2 Shell](#打开 WSL Shell)（如果尚未关闭，可以使用安装 WSL2 时的相同 Shell）。
 1. 执行命令 `cd ~` 切换到 WSL 的家目录进行后续操作。
 
    :::warning
@@ -190,7 +190,7 @@ VS Code 在 Windows 上与 WSL 集成良好。
 1. [下载](https://code.visualstudio.com/) 并在 Windows 上安装 Visual Studio Code (VS Code)，
 2. 打开 _VS Code_。
 3. 安装名为 [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) (marketplace) 的扩展
-4. [打开 WSL shell](#opening-a-wsl-shell)
+4. [打开 WSL shell](#打开 WSL Shell)
 5. 在 WSL shell 中切换到 PX4 文件夹：
 
    ```sh
@@ -212,10 +212,12 @@ VS Code 在 Windows 上与 WSL 集成良好。
 
    ![](../../assets/toolchain/vscode/vscode_wsl.png)
 
-   但请注意，WSL 虚拟机的 IP 地址已更改，因此无法从 Windows 的 QGC 监控仿真（仍可以使用 Linux 的 QGC 进行监控）## QGroundControl
+   但请注意，WSL 虚拟机的 IP 地址已更改，因此无法从 Windows 的 QGC 监控仿真（仍可以使用 Linux 的 QGC 进行监控）
+   
+## QGroundControl
 
 您可以在WSL或Windows中运行QGroundControl以连接到正在运行的模拟器。  
-如果您需要[刷写飞行控制板固件](#flash-a-flight-control-board)，只能通过Windows版QGroundControl完成。
+如果您需要[刷写飞行控制板固件](#刷写飞行控制板)，只能通过Windows版QGroundControl完成。
 
 ### QGroundControl in WSL
 
@@ -225,7 +227,7 @@ VS Code 在 Windows 上与 WSL 集成良好。
 1. 在浏览器中访问QGC的[Ubuntu下载页面](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/getting_started/download_and_install.html#ubuntu)  
 1. 右键点击 **QGroundControl.AppImage** 链接，选择"复制链接地址"。  
    链接格式类似 _https://d176td9ibe4jno.cloudfront.net/builds/master/QGroundControl.AppImage_  
-1. [打开WSL shell](#opening-a-wsl-shell) 并执行以下命令下载appimage并设置可执行权限（替换对应URL）：
+1. [打开WSL shell](#打开 WSL Shell) 并执行以下命令下载appimage并设置可执行权限（替换对应URL）：
 
    ```sh
    cd ~
@@ -247,7 +249,7 @@ QGroundControl 将启动并自动连接到正在运行的模拟器，允许您�
 如果需要使用PX4生成的固件更新硬件，需要在Windows上[安装QGroundControl](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/getting_started/download_and_install.html#windows)。  
 
 以下是连接到WSL中运行的模拟器的步骤：  
-1. [打开WSL shell](#opening-a-wsl-shell)  
+1. [打开WSL shell](#打开 WSL Shell)  
 2. 通过运行命令 `ip addr | grep eth0` 查询WSL虚拟机的IP地址：
 
    ```sh
@@ -270,12 +272,12 @@ QGroundControl 将启动并自动连接到正在运行的模拟器，允许您�
 
 ## 刷写飞行控制板
 
-使用自定义构建的 PX4 二进制文件进行刷写必须通过 [QGroundControl for Windows](#qgroundcontrol-on-windows) 完成。
+使用自定义构建的 PX4 二进制文件进行刷写必须通过 [QGroundControl for Windows](#QGroundControl on Windows) 完成。
 
 ::: info
 WSL2 本身不提供对连接到计算机的 Pixhawk 飞行控制器等串口/USB 设备的直接访问。
 这意味着你无法将运行在 WSL2 中的 QGC 连接到飞行控制器以安装固件，或使用 `upload` 命令 [在构建时上传固件](../dev_setup/building_px4.md#uploading-firmware-flashing-the-board)。
-正确的做法是将 [QGroundControl for Windows](#qgroundcontrol-on-windows) 连接到运行在 WSL2 中的 PX4 和飞行控制器，以上传固件。
+正确的做法是将 [QGroundControl for Windows](#QGroundControl on Windows) 连接到运行在 WSL2 中的 PX4 和飞行控制器，以上传固件。
 :::
 
 按照以下步骤在 WSL 中刷写自定义二进制文件：

@@ -1,6 +1,6 @@
 # 添加机体配置
 
-PX4 [机体配置文件](#configuration-file-overview) 是 shell 脚本，用于设置特定机体（如四旋翼无人机、地面车辆或船只）所需的参数、控制器和应用程序（部分或全部）。
+PX4 [机体配置文件](#配置文件概述) 是 shell 脚本，用于设置特定机体（如四旋翼无人机、地面车辆或船只）所需的参数、控制器和应用程序（部分或全部）。
 这些脚本在 _QGroundControl_ 中选择并应用对应 [机体](../config/airframe.md) 时执行。
 
 编译到 NuttX 目标固件中的配置文件位于 [ROMFS/px4fmu_common/init.d](https://github.com/PX4/PX4-Autopilot/tree/main/ROMFS/px4fmu_common/init.d) 文件夹（POSIX 模拟器的配置文件存储在 [ROMFS/px4fmu_common/init.d-posix](https://github.com/PX4/PX4-Autopilot/tree/main/ROMFS/px4fmu_common/init.d-posix/airframes)）。
@@ -56,7 +56,7 @@ PX4会自动识别固件中的所有链接文件。
 - 文档（用于[Airframes Reference](../airframes/airframe_reference.md)和_QGroundControl_）
   机体系专用参数设置
   - 使用[控制分配](../concept/control_allocation.md)参数的配置和几何定义
-  - [调参增益](#tuning-gains)
+  - [调参增益](#增益调整)
 - 应该启动的控制器和应用程序，例如多旋翼或固定翼控制器、着陆检测器等
 
 这些模块在很大程度上是相互独立的，这意味着许多配置文件会共享相同的机体物理布局，启动相同的应用程序，差异主要体现在调参增益上。
@@ -79,8 +79,12 @@ PX4会自动识别固件中的所有链接文件。
 `@name`、`@type`和`@class`用于在[API Reference](../airframes/airframe_reference.md#copter_quadrotor_x_generic_quadcopter)和QGroundControl机架选择中识别和分组该框架。
 
 ```plain
-
-```# @name 通用四旋翼飞行器 ## @type 四旋翼 x# @class Copter# @maintainer Lorenz Meier <lorenz@px4.io>
+# @name Generic Quadcopter
+#
+# @type Quadrotor x
+# @class Copter
+#
+# @maintainer Lorenz Meier <lorenz@px4.io>
 #
 ```
 
@@ -118,11 +122,26 @@ shebang 和文档部分与通用框架类似，但此处我们还会记录每个
 ```sh
 #!/bin/sh
 #
-
-```# @name BabyShark VTOL
-## @type 标准 VTOL# @class VTOL ## @maintainer Silvan Fuhrer <silvan@auterion.com># @output Motor1 电机1# @output Motor2 电机2# @output Motor3 电机3# @output 电机4 motor 4# @output 电机5 推式电机# @output 舵机1 副翼# @output Servo2 V尾左侧# @output Servo3 A尾右侧 ## @board px4_fmu-v2 exclude# @board bitcraze_crazyflie exclude# @board holybro_kakutef7 exclude
+# @name BabyShark VTOL
 #
-
+# @type Standard VTOL
+# @class VTOL
+#
+# @maintainer Silvan Fuhrer <silvan@auterion.com>
+#
+# @output Motor1 motor 1
+# @output Motor2 motor 2
+# @output Motor3 motor 3
+# @output Motor4 motor 4
+# @output Motor5 Pusher motor
+# @output Servo1 Ailerons
+# @output Servo2 A-tail left
+# @output Servo3 A-tail right
+#
+# @board px4_fmu-v2 exclude
+# @board bitcraze_crazyflie exclude
+# @board holybro_kakutef7 exclude
+#
 ```
 
 与通用机架相同，我们接着包含通用垂直起降(VTOL)默认值。
@@ -131,7 +150,7 @@ shebang 和文档部分与通用框架类似，但此处我们还会记录每个
 . ${R}etc/init.d/rc.vtol_defaults
 ```
 
-然后我们定义配置参数和[调节增益](#tuning-gains)：
+然后我们定义配置参数和[调节增益](#增益调整)：
 
 ```sh
 param set-default MAV_TYPE 22

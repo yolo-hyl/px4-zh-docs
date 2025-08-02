@@ -79,7 +79,7 @@
 在任何自动导航任务中，如果对路径跟踪效果不满意，可采取以下两个步骤：
 
 1. 检查所有设定点([角速度](rate_tuning.md)、[姿态](attitude_tuning.md)和[速度](velocity_tuning.md))是否被正确跟踪。
-2. 进一步调整[路径跟踪算法](#path-following)。
+2. 进一步调整[路径跟踪算法](#路径跟踪)。
 
 ## Ackermann Rover Only
 
@@ -129,7 +129,9 @@ $$
 | $\vec{b}$   | 当前至下一航点的向量       | m    |
 | $r_{min}$   | 最小转弯半径               | m    |
 | $\delta_{max}$ | 最大转向角               | m    |
-| $r_{acc}$   | 接受半径                   | m    |## 仅差速车
+| $r_{acc}$   | 接受半径                   | m    |
+
+## 仅差速车
 
 差速车采用以下状态机以充分利用差速车原地转弯的能力：
 
@@ -178,12 +180,16 @@ $$
 | <a id="RO_SPEED_RED"></a>[RO_SPEED_RED](../advanced_config/parameter_reference.md#RO_SPEED_RED)          | （可选）基于航向误差的速度降低调节参数                             | -    |
 | <a id="PP_LOOKAHD_GAIN"></a>[PP_LOOKAHD_GAIN](../advanced_config/parameter_reference.md#PP_LOOKAHD_GAIN) | Pure pursuit: 主要调节参数                                           | -    |
 | <a id="PP_LOOKAHD_MAX"></a>[PP_LOOKAHD_MAX](../advanced_config/parameter_reference.md#PP_LOOKAHD_MAX)    | Pure pursuit: 前瞻半径的最大值                                       | m    |
-| <a id="PP_LOOKAHD_MIN"></a>[PP_LOOKAHD_MIN](../advanced_config/parameter_reference.md#PP_LOOKAHD_MIN)    | Pure pursuit: 前瞻半径的最小值                                       | m    |## Ackermann Specific
+| <a id="PP_LOOKAHD_MIN"></a>[PP_LOOKAHD_MIN](../advanced_config/parameter_reference.md#PP_LOOKAHD_MIN)    | Pure pursuit: 前瞻半径的最小值                                       | m    |
+
+## Ackermann Specific
 
 | 参数                                                                                                   | 描述                                                       | 单位 |
 | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- | ---- |
 | <a id="RA_ACC_RAD_MAX"></a>[RA_ACC_RAD_MAX](../advanced_config/parameter_reference.md#RA_ACC_RAD_MAX) | (可选) 接受半径可以缩放的最大半径                          | m    |
-| <a id="RA_ACC_RAD_GAIN"></a>[RA_ACC_RAD_GAIN](../advanced_config/parameter_reference.md#RA_ACC_RAD_GAIN) | (可选) 接受半径缩放的调节参数                              | -    |## 差分特定参数
+| <a id="RA_ACC_RAD_GAIN"></a>[RA_ACC_RAD_GAIN](../advanced_config/parameter_reference.md#RA_ACC_RAD_GAIN) | (可选) 接受半径缩放的调节参数                              | -    |
+
+## 差分特定参数
 
 | 参数                                                                                                   | 描述                                                  | 单位 |
 | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ---- |

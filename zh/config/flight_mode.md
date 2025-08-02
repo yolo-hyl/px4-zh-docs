@@ -5,7 +5,7 @@
 :::tip
 在设置飞行模式之前，您需要已经完成以下步骤：
 - [配置遥控器](../config/radio.md)
-- [设置遥控发射机](#rc-transmitter-setup)以将模式开关的物理位置编码为单个通道。
+- [设置遥控发射机](#遥控发射机设置)以将模式开关的物理位置编码为单个通道。
   我们为流行的*Taranis*发射机提供了示例[如下](#taranis-setup-3-way-switch-configuration-for-single-channel-mode)（如果使用其他发射机，请查阅对应文档）。
 :::
 
@@ -100,7 +100,7 @@ PX4允许您指定一个"模式"通道，并选择最多6个飞行模式，这�
 
 <lite-youtube videoid="TFEjEQZqdVA" title="Taranis 模式开关"/>
 
-*QGroundControl* 配置如[上文所述](#flight-mode-selection)。
+*QGroundControl* 配置如[上文所述](#飞行模式选择)。
 
 ## 进一步信息
 

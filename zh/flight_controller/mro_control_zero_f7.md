@@ -119,3 +119,8 @@ make mro_ctrl-zero-f7
 
 <!-- 注：通过 https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 获取端口信息 -->
 <!-- 参见 https://github.com/PX4/PX4-Autopilot/blob/master/platforms/px4/src/px4/px4_tasks.c 中的配置 -->
+
+## 更多信息
+
+- [Introducing the new mRo Control Zero Autopilot](https://mrobotics.io/introducing-the-new-mro-control-zero-autopilot/) (blog)
+- [Quick Start Guide](https://mrobotics.io/mrocontrolzero/)

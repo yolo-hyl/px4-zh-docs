@@ -10,7 +10,7 @@
 
 [MAVLink相机协议v2](https://mavlink.io/en/services/camera.html)允许查询相机支持的功能，并提供控制图像和视频采集、视频流传输、设置变焦和对焦、在红外和可见光图像流之间切换、设置采集数据存储位置等命令。
 
-相机可以原生实现该协议，但大多数MAVLink相机配置涉及PX4与运行在伴随计算机上的[camera manager](#camera-managers)进行通信，该管理器在MAVLink和相机原生协议之间进行接口转换。
+相机可以原生实现该协议，但大多数MAVLink相机配置涉及PX4与运行在伴随计算机上的[camera manager](#相机管理器)进行通信，该管理器在MAVLink和相机原生协议之间进行接口转换。
 
 通常来说，PX4对相机的"集成"方式是通过命令协议重新发送任务中发现的相机命令。
 否则它可能充当桥梁，在地面站和相机之间转发命令（当没有直接MAVLink通道时）。
@@ -123,7 +123,9 @@ void Navigator::publish_vehicle_command(vehicle_command_s &vehicle_command)  => 
 - [摇杆](../config/joystick.md#enabling-px4-joystick-support) 解释了如何在PX4上启用摇杆功能。
 - [QGroundControl > 摇杆设置](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/setup_view/joystick.html) 解释了如何将按键映射到飞行栈功能
 
-<!-- 相机似乎无法通过遥控器进行控制 -->## 相机管理器
+<!-- 相机似乎无法通过遥控器进行控制 -->
+
+## 相机管理器
 
 如果要使用不原生支持MAVLink相机协议的相机，你需要一个MAVLink相机管理器。  
 相机管理器在伴随计算机上运行，作为MAVLink相机协议接口和相机原生接口之间的桥梁。

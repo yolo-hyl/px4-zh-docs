@@ -1,45 +1,44 @@
-# CUAV X7 飞行控制器
+
+
+# CUAV X7 飞控
 
 :::warning
 PX4 不生产此（或任何）自动驾驶仪。
-有关硬件支持或合规性问题，请联系[制造商](https://www.cuav.net)。
+有关硬件支持或合规性问题，请联系[制造商](https://www.cuav.net)
 :::
 
-[X7](http://doc.cuav.net/flight-controller/x7/en/x7.html)<sup>&reg;</sup>飞行控制器是一款高性能自动驾驶仪。
-它是工业无人机和大型重型无人机的理想选择。
-主要面向商业制造商供应。
+[X7](http://doc.cuav.net/flight-controller/x7/en/x7.html)<sup>&reg;</sup> 飞控是一款高性能自动驾驶仪。它是工业无人机和大型重型无人机的理想选择，主要供应给商业制造商。
 
 ![CUAV x7](../../assets/flight_controller/cuav_x7/x7.jpg)
 
-飞行控制器采用模块化设计，可匹配不同底板。
-您可以为无人机设计专用载板以提升商业系统集成度，减少布线，提高系统可靠性并增强无人机竞争力（例如在载板中集成空速传感器、数传模块甚至伴飞计算机）。
-CUAV 也提供了多种载板供选择。
+飞控采用模块化设计，可匹配不同底板。您可以为无人机设计专用载板，以提升商业系统的集成度、减少布线、提高系统可靠性并增强无人机竞争力（例如在载板中集成空速传感器、遥测设备甚至伴随计算机）。
+CUAV 还提供了多种载板供您选择。
 
 ::: info
-此飞行控制器为[制造商支持](../flight_controller/autopilot_manufacturer_supported.md)。
+此飞控是[制造商支持的](../flight_controller/autopilot_manufacturer_supported.md)
 :::
 
-## 功能特点
+## 功能
 
 - 内部减震
-- 模块化设计，可DIY载板
-- 支持 USB_HS，下载日志更快（PX4暂不支持）
+- 模块化设计，可作为DIY载板
+- 支持USB_HS，下载日志更快（PX4尚未支持）
 - 支持更多DShot输出
 - 支持IMU加热，使传感器工作更佳
-- 专用CAN电池接口
+- 专用CAN电池端口
 - 3组IMU传感器
 - 车规级RM3100指南针
 - 高性能处理器
 
 :::tip
-制造商[CUAV Docs](https://doc.cuav.net/flight-controller/x7/en/)是X7的权威参考。
-建议优先使用，因其包含最完整和最新的信息。
+制造商 [CUAV 文档](https://doc.cuav.net/flight-controller/x7/en/) 是X7的权威参考。
+应优先使用它们，因为其中包含最完整和最新的信息。
 :::
 
 ## 快速摘要
 
-- 主FMU处理器：STM32H743
-- 板载传感器：
+- 主控FMU处理器：STM32H743
+- 机载传感器：
 
   - 加速度计/陀螺仪：ICM-20689
   - 加速度计/陀螺仪：ICM-20649
@@ -49,421 +48,128 @@ CUAV 也提供了多种载板供选择。
 
 - 接口：
   - 14路PWM输出（12路支持Dshot）
-  - 支持多种遥控输入（SBUs / CPPM / DSM）
+  - 支持多路遥控器输入(SBUs / CPPM / DSM)
   - 模拟/PWM RSSI输入
   - 2个GPS端口（GPS和UART4端口）
-  - 4组I2C（4组I2C）
-  - 4组SPI（4组SPI）
-  - 2路CAN总线
-  - USB 2.0 OTG
-  - 1路UART
-  - 1路I2S
-  - 1路SDIO
-  - 1路LCD
-  - 1路摄像头接口
-  - 1路HDMI
-  - 1路MIPI
-  - 1路PCIe
-  - 1路SATA
-  - 1路USB 3.0
-  - 1路Thunderbolt
-  - 1路DisplayPort
-  - 1路HDMI 2.1
-  - 1路USB4
-  - 1路Thunderbolt 4
-  - 1路DisplayPort 2.0
-  - 1路HDMI 2.1a
-  - 1路USB4 20Gbps
-  - 1路Thunderbolt 4 40Gbps
-  - 1路DisplayPort 2.0 80Gbps
-  - 1路HDMI 2.1a 48Gbps
-  - 1路USB4 40Gbps
-  - 1路Thunderbolt 4 80Gbps
-  - 1路DisplayPort 2.0 160Gbps
-  - 1路HDMI 2.1a 96Gbps
-  - 1路USB4 80Gbps
-  - 1路Thunderbolt 4 160Gbps
-  - 1路DisplayPort 2.0 320Gbps
-  - 1路HDMI 2.1a 192Gbps
-  - 1路USB4 160Gbps
-  - 1路Thunderbolt 4 320Gbps
-  - 1路DisplayPort 2.0 640Gbps
-  - 1路HDMI 2.1a 384Gbps
-  - 1路USB4 320Gbps
-  - 1路Thunderbolt 4 640Gbps
-  - 1路DisplayPort 2.0 1280Gbps
-  - 1路HDMI 2.1a 768Gbps
-  - 1路USB4 640Gbps
-  - 1路Thunderbolt 4 1280Gbps
-  - 1路DisplayPort 2.0 2560Gbps
-  - 1路HDMI 2.1a 1536Gbps
-  - 1路USB4 1280Gbps
-  - 1路Thunderbolt 4 2560Gbps
-  - 1路DisplayPort 2.0 5120Gbps
-  - 1路HDMI 2.1a 3072Gbps
-  - 1路USB4 2560Gbps
-  - 1路Thunderbolt 4 5120Gbps
-  - 1路DisplayPort 2.0 10240Gbps
-  - 1路HDMI 2.1a 6144Gbps
-  - 1路USB4 5120Gbps
-  - 1路Thunderbolt 4 10240Gbps
-  - 1路DisplayPort 2.0 20480Gbps
-  - 1路HDMI 2.1a 12288Gbps
-  - 1路USB4 10240Gbps
-  - 1路Thunderbolt 4 20480Gbps
-  - 1路DisplayPort 2.0 40960Gbps
-  - 1路HDMI 2.1a 24576Gbps
-  - 1路USB4 20480Gbps
-  - 1路Thunderbolt 4 40960Gbps
-  - 1路DisplayPort 2.0 81920Gbps
-  - 1路HDMI 2.1a 49152Gbps
-  - 1路USB4 40960Gbps
-  - 1路Thunderbolt 4 81920Gbps
-  - 1路DisplayPort 2.0 163840Gbps
-  - 1路HDMI 2.1a 98304Gbps
-  - 1路USB4 81920Gbps
-  - 1路Thunderbolt 4 163840Gbps
-  - 1路DisplayPort 2.0 327680Gbps
-  - 1路HDMI 2.1a 196608Gbps
-  - 1路USB4 163840Gbps
-  - 1路Thunderbolt 4 327680Gbps
-  - 1路DisplayPort 2.0 655360Gbps
-  - 1路HDMI 2.1a 393216Gbps
-  - 1路USB4 327680Gbps
-  - 1路Thunderbolt 4 655360Gbps
-  - 1路DisplayPort 2.0 1310720Gbps
-  - 1路HDMI 2.1a 786432Gbps
-  - 1路USB4 655360Gbps
-  - 1路Thunderbolt 4 1310720Gbps
-  - 1路DisplayPort 2.0 2621440Gbps
-  - 1路HDMI 2.1a 1572864Gbps
-  - 1路USB4 1310720Gbps
-  - 1路Thunderbolt 4 2621440Gbps
-  - 1路DisplayPort 2.0 5242880Gbps
-  - 1路HDMI 2.1a 3145728Gbps
-  - 1路USB4 2621440Gbps
-  - 1路Thunderbolt 4 5242880Gbps
-  - 1路DisplayPort 2.0 10485760Gbps
-  - 1路HDMI 2.1a 6291456Gbps
-  - 1路USB4 5242880Gbps
-  - 1路Thunderbolt 4 10485760Gbps
-  - 1路DisplayPort 2.0 20971520Gbps
-  - 1路HDMI 2.1a 12582912Gbps
-  - 1路USB4 10485760Gbps
-  - 1路Thunderbolt 4 20971520Gbps
-  - 1路DisplayPort 2.0 41943040Gbps
-  - 1路HDMI 2.1a 25165824Gbps
-  - 1路USB4 20971520Gbps
-  - 1路Thunderbolt 4 41943040Gbps
-  - 1路DisplayPort 2.0 83886080Gbps
-  - 1路HDMI 2.1a 50331648Gbps
-  - 1路USB4 41943040Gbps
-  - 1路Thunderbolt 4 83886080Gbps
-  - 1路DisplayPort 2.0 167772160Gbps
-  - 1路HDMI 2.1a 100663296Gbps
-  - 1路USB4 83886080Gbps
-  - 1路Thunderbolt 4 167772160Gbps
-  - 1路DisplayPort 2.0 335544320Gbps
-  - 1路HDMI 2.1a 201326592Gbps
-  - 1路USB4 167772160Gbps
-  - 1路Thunderbolt 4 335544320Gbps
-  - 1路DisplayPort 2.0 671088640Gbps
-  - 1路HDMI 2.1a 402653184Gbps
-  - 1路USB4 335544320Gbps
-  - 1路Thunderbolt 4 671088640Gbps
-  - 1路DisplayPort 2.0 1342177280Gbps
-  - 1路HDMI 2.1a 805306368Gbps
-  - 1路USB4 671088640Gbps
-  - 1路Thunderbolt 4 1342177280Gbps
-  - 1路DisplayPort 2.0 2684354560Gbps
-  - 1路HDMI 2.1a 1610612736Gbps
-  - 1路USB4 1342177280Gbps
-  - 1路Thunderbolt 4 2684354560Gbps
-  - 1路DisplayPort 2.0 5368709120Gbps
-  - 1路HDMI 2.1a 3221225472Gbps
-  - 1路USB4 2684354560Gbps
-  - 1路Thunderbolt 4 5368709120Gbps
-  - 1路DisplayPort 2.0 10737418240Gbps
-  - 1路HDMI 2.1a 6442450944Gbps
-  - 1路USB4 5368709120Gbps
-  - 1路Thunderbolt 4 10737418240Gbps
-  - 1路DisplayPort 2.0 21474836480Gbps
-  - 1路HDMI 2.1a 12884901888Gbps
-  - 1路USB4 10737418240Gbps
-  - 1路Thunderbolt 4 21474836480Gbps
-  - 1路DisplayPort 2.0 42949672960Gbps
-  - 1路HDMI 2.1a 25769803776Gbps
-  - 1路USB4 21474836480Gbps
-  - 1路Thunderbolt 4 42949672960Gbps
-  - 1路DisplayPort 2.0 85899345920Gbps
-  - 1路HDMI 2.1a 51539607552Gbps
-  - 1路USB4 42949672960Gbps
-  - 1路Thunderbolt 4 85899345920Gbps
-  - 1路DisplayPort 2.0 171798691840Gbps
-  - 1路HDMI 2.1a 103079215104Gbps
-  - 1路USB4 85899345920Gbps
-  - 1路Thunderbolt 4 171798691840Gbps
-  - 1路DisplayPort 2.0 343597383680Gbps
-  - 1路HDMI 2.1a 206158430208Gbps
-  - 1路USB4 171798691840Gbps
-  - 1路Thunderbolt 4 343597383680Gbps
-  - 1路DisplayPort 2.0 687194767360Gbps
-  - 1路HDMI 2.1a 412316860416Gbps
-  - 1路USB4 343597383680Gbps
-  - 1路Thunderbolt 4 687194767360Gbps
-  - 1路DisplayPort 2.0 1374389534720Gbps
-  - 1路HDMI 2.1a 824633720832Gbps
-  - 1路USB4 687194767360Gbps
-  - 1路Thunderbolt 4 1374389534720Gbps
-  - 1路DisplayPort 2.0 2748779069440Gbps
-  - 1路HDMI 2.1a 1649267441664Gbps
-  - 1路USB4 1374389534720Gbps
-  - 1路Thunderbolt 4 2748779069440Gbps
-  - 1路DisplayPort 2.0 5497558138880Gbps
-  - 1路HDMI 2.1a 3298534883328Gbps
-  - 1路USB4 2748779069440Gbps
-  - 1路Thunderbolt 4 5497558138880Gbps
-  - 1路DisplayPort 2.0 10995116277760Gbps
-  - 1路HDMI 2.1a 6597069766656Gbps
-  - 1路USB4 5497558138880Gbps
-  - 1路Thunderbolt 4 10995116277760Gbps
-  - 1路DisplayPort 2.0 21990232555520Gbps
-  - 1路HDMI 2.1a 13194139533312Gbps
-  - 1路USB4 10995116277760Gbps
-  - 1路Thunderbolt 4 21990232555520Gbps
-  - 1路DisplayPort 2.0 43980465111040Gbps
-  - 1路HDMI 2.1a 26388279066624Gbps
-  - 1路USB4 21990232555520Gbps
-  - 1路Thunderbolt 4 43980465111040Gbps
-  - 1路DisplayPort 2.0 87960930222080Gbps
-  - 1路HDMI 2.1a 52776558133248Gbps
-  - 1路USB4 43980465111040Gbps
-  - 1路Thunderbolt 4 87960930222080Gbps
-  - 1路DisplayPort 2.0 175921860444160Gbps
-  - 1路HDMI 2.1a 105553116266496Gbps
-  - 1路USB4 87960930222080Gbps
-  - 1路Thunderbolt 4 175921860444160Gbps
-  - 1路DisplayPort 2.0 351843720888320Gbps
-  - 1路HDMI 2.1a 211106232532992Gbps
-  - 1路USB4 175921860444160Gbps
-  - 1路Thunderbolt 4 351843720888320Gbps
-  - 1路DisplayPort 2.0 703687441776640Gbps
-  - 1路HDMI 2.1a 422212465065984Gbps
-  - 1路USB4 351843720888320Gbps
-  - 1路Thunderbolt 4 703687441776640Gbps
-  - 1路DisplayPort 2.0 1407374883553280Gbps
-  - 1路HDMI 2.1a 844424930131968Gbps
-  - 1路USB4 703687441776640Gbps
-  - 1路Thunderbolt 4 1407374883553280Gbps
-  - 1路DisplayPort 2.0 2814749767106560Gbps
-  - 1路HDMI 2.1a 1688849860263936Gbps
-  - 1路USB4 1407374883553280Gbps
-  - 1路Thunderbolt 4 2814749767106560Gbps
-  - 1路DisplayPort 2.0 5629499534213120Gbps
-  - 1路HDMI 2.1a 3377699720527872Gbps
-  - 1路USB4 2814749767106560Gbps
-  - 1路Thunderbolt 4 5629499534213120Gbps
-  - 1路DisplayPort 2.0 11258999068426240Gbps
-  - 1路HDMI 2.1a 6755399441055744Gbps
-  - 1路USB4 5629499534213120Gbps
-  - 1路Thunderbolt 4 11258999068426240Gbps
-  - 1路DisplayPort 2.0 22517998136852480Gbps
-  - 1路HDMI 2.1a 13510798882111488Gbps
-  - 1路USB4 11258999068426240Gbps
-  - 1路Thunderbolt 4 22517998136852480Gbps
-  - 1路DisplayPort 2.0 45035996273704960Gbps
-  - 1路HDMI 2.1a 27021597764222976Gbps
-  - 1路USB4 22517998136852480Gbps
-  - 1路Thunderbolt 4 45035996273704960Gbps
-  - 1路DisplayPort 2.0 90071992547409920Gbps
-  - 1路HDMI 2.1a 54043195528445952Gbps
-  - 1路USB4 45035996273704960Gbps
-  - 1路Thunderbolt 4 90071992547409920Gbps
-  - 1路DisplayPort 2.0 180143985094819840Gbps
-  - 1路HDMI 2.1a 108086391056891904Gbps
-  - 1路USB4 90071992547409920Gbps
-  - 1路Thunderbolt 4 180143985094819840Gbps
-  - 1路DisplayPort 2.0 360287970189639680Gbps
-  - 1路HDMI 2.1a 216172782113783808Gbps
-  - 1路USB4 180143985094819840Gbps
-  - 1路Thunderbolt 4 360287970189639680Gbps
-  - 1路DisplayPort 2.0 720575940379279360Gbps
-  - 1路HDMI 2.1a 432345564227567616Gbps
-  - 1路USB4 360287970189639680Gbps
-  - 1路Thunderbolt 4 720575940379279360Gbps
-  - 1路DisplayPort 2.0 1441151880758558720Gbps
-  - 1路HDMI 2.1a 864691128455135232Gbps
-  - 1路USB4 720575940379279360Gbps
-  - 1路Thunderbolt 4 1441151880758558720Gbps
-  - 1路DisplayPort 2.0 2882303761517117440Gbps
-  - 1路HDMI 2.1a 1729382256910270464Gbps
-  - 1路USB4 1441151880758558720Gbps
-  - 1路Thunderbolt 4 2882303761517117440Gbps
-  - 1路DisplayPort 2.0 5764607523034234880Gbps
-  - 1路HDMI 2.1a 3458764513820540928Gbps
-  - 1路USB4 2882303761517117440Gbps
-  - 1路Thunderbolt 4 5764607523034234880Gbps
-  - 1路DisplayPort 2.0 11529215046068469760Gbps
-  - 1路HDMI 2.1a 6917529027641081856Gbps
-  - 1路USB4 5764607523034234880Gbps
-  - 1路Thunderbolt 4 11529215046068469760Gbps
-  - 1路DisplayPort 2.0 23058430092136939520Gbps
-  - 1路HDMI 2.1a 13835058055282163712Gbps
-  - 1路USB4 11529215046068469760Gbps
-  - 1路Thunderbolt 4 23058430092136939520Gbps
-  - 1路DisplayPort 2.0 46116860184273879040Gbps
-  - 1路HDMI 2.1a 27670116110564327424Gbps
-  - 1路USB4 23058430092136939520Gbps
-  - 1路Thunderbolt 4 46116860184273879040Gbps
-  - 1路DisplayPort 2.0 92233720368547758080Gbps
-  - 1路HDMI 2.1a 55340232221128654848Gbps
-  - 1路USB4 46116860184273879040Gbps
-  - 1路Thunderbolt 4 92233720368547758080Gbps
-  - 1路DisplayPort 2.0 184467440737095516160Gbps
-  - 1路HDMI 2.1a 110680464442257309696Gbps
-  - 1路USB4 92233720368547758080Gbps
-  - 1路Thunderbolt 4 184467440737095516160Gbps
-  - 1路DisplayPort 2.0 368934881474191032320Gbps
-  - 1路HDMI 2.1a 221360928884514619392Gbps
-  - 1路USB4 184467440737095516160Gbps
-  - 1路Thunderbolt 4 368934881474191032320Gbps
-  - 1路DisplayPort 2.0 737869762948382064640Gbps
-  - 1路HDMI 2.1a 442721857769029238784Gbps
-  - 1路USB4 368934881474191032320Gbps
-  - 1路Thunderbolt 4 737869762948382064640Gbps
-  - 1路DisplayPort 2.0 1475739525896764129280Gbps
-  - 1路HDMI 2.1a 885443715538058477568Gbps
-  - 1路USB4 737869762948382064640Gbps
-  - 1路Thunderbolt 4 1475739525896764129280Gbps
-  - 1路DisplayPort 2.0 2951479051793528258560Gbps
-  - 1路HDMI 2.1a 1770887431076116955136Gbps
-  - 1路USB4 1475739525896764129280Gbps
-  - 1路Thunderbolt 4 2951479051793528258560Gbps
-  - 1路DisplayPort 2.0 5902958103587056517120Gbps
-  - 1路HDMI 2.1a 3541774862152233910272Gbps
-  - 1路USB4 2951479051793528258560Gbps
-  - 1路Thunderbolt 4 5902958103587056517120Gbps
-  - 1路DisplayPort 2.0 11805916207174113034240Gbps
-  - 1路HDMI 2.1a 7083549724304467820544Gbps
-  - 1路USB4 5902958103587056517120Gbps
-  - 1路Thunderbolt 4 11805916207174113034240Gbps
-  - 1路DisplayPort 2.0 23611832414348226068480Gbps
-  - 1路HDMI 2.1a 14167099448608935641088Gbps
-  - 1路USB4 11805916207174113034240Gbps
-  - 1路Thunderbolt 4 23611832414348226068480Gbps
-  - 1路DisplayPort 2.0 47223664828696452136960Gbps
-  - 1路HDMI 2.1a 28334198897217871282176Gbps
-  - 1路USB4 23611832414348226068480Gbps
-  - 1路Thunderbolt 4 47223664828696452136960Gbps
-  - 1路DisplayPort 2.0 94447329657392904273920Gbps
-  - 1路HDMI 2.1a 56668397794435742564352Gbps
-  - 1路USB4 47223664828696452136960Gbps
-  - 1路Thunderbolt 4 94447329657392904273920Gbps
-  - 1路DisplayPort 2.0 188894659314785808547840Gbps
-  - 1路HDMI 2.1a 113336795588871485128704Gbps
-  - 1路USB4 94447329657392904273920Gbps
-  - 1路Thunderbolt 4 188894659314785808547840Gbps
-  - 1路DisplayPort 2.0 377789318629571617095680Gbps
-  - 1路HDMI 2.1a 226673591177742970257408Gbps
-  - 1路USB4 188894659314785808547840Gbps
-  - 1路Thunderbolt 4 377789318629571617095680Gbps
-  - 1路DisplayPort 2.0 755578637259143234191360Gbps
-  - 1路HDMI 2.1a 453347182355485940514816Gbps
-  - 1路USB4 377789318629571617095680Gbps
-  - 1路Thunderbolt 4 755578637259143234191360Gbps
-  - 1路DisplayPort 2.0 1511157274518286468382720Gbps
-  - 1路HDMI 2.1a 906694364710971881029632Gbps
-  - 1路USB4 755578637259143234191360Gbps
-  - 1路Thunderbolt 4 1511157274518286468382720Gbps
-  - 1路DisplayPort 2.0 3022314549036572936765440Gbps
-  - 1路HDMI 2.1a 1813388729421943762059264Gbps
-  - 1路USB4 1511157274518286468382720Gbps
-  - 1路Thunderbolt 4 3022314549036572936765440Gbps
-  - 1路DisplayPort 2.0 6044629098073145873530880Gbps
-  - 1路HDMI 2.1a 3626777458843887524118528Gbps
-  - 1路USB4 3022314549036572936765440Gbps
-  - 1路Thunderbolt 4 6044629098073145873530880Gbps
-  - 1路DisplayPort 2.0 12089258196146291747061760Gbps
-  - 1路HDMI 2.1a 7253554917687775048237056Gbps
-  - 1路USB4 6044629098073145873530880Gbps
-  - 1路Thunderbolt 4 12089258196146291747061760Gbps
-  - 1路DisplayPort 2.0 24178516392292583494123520Gbps
-  - 1路HDMI 2.1a 14507109835375550096474112Gbps
-  - 1路USB4 12089258196146291747061760Gbps
-  - 1路Thunderbolt 4 24178516392292583494123520Gbps
-  - 1路DisplayPort 2.0 48357032784585166988247040Gbps
-  - 1路HDMI 2.1a 29014219670751100192948224Gbps
-  - 1路USB4 24178516392292583494123520Gbps
-  - 1路Thunderbolt 4 48357032784585166988247040Gbps
-  - 1路DisplayPort 2.0 96714065569170333976494080Gbps
-  - 1路HDMI 2.1a 58028439341502200385896448Gbps
-  - 1路USB4 48357032784585166988247040Gbps
-  - 1路Thunderbolt 4 96714065569170333976494080Gbps
-  - 1路DisplayPort 2.0 193428131138340667952988160Gbps
-  - 1路HDMI 2.1a 116056878683004400771792896Gbps
-  - 1路USB4 96714065569170333976494080Gbps
-  - 1路Thunderbolt 4 193428131138340667952988160Gbps
-  - 1路DisplayPort 2.0 386856262276681335905976320Gbps
-  - 1路HDMI 2.1a 232113757366008801543585792Gbps
-  - 1路USB4 193428131138340667952988160Gbps
-  - 1路Thunderbolt 4 386856262276681335905976320Gbps
-  - 1路DisplayPort 2.0 773712524553362671811952640Gbps
-  - 1路HDMI 2.1a 464227514732017603087171584Gbps
-  - 1路USB4 386856262276681335905976320Gbps
-  - 1路Thunderbolt 4 773712524553362671811952640Gbps
-  - 1路DisplayPort 2.0 1547425049106725343623905280Gbps
-  - 1路HDMI 2.1a 928455029464035206174343168Gbps
-  - 1路USB4 773712524553362671811952640Gbps
-  - 1路Thunderbolt 4 1547425049106725343623905280Gbps
-  - 1路DisplayPort 2.0 3094850098213450687247810560Gbps
-  - 1路HDMI 2.1a 1856910058928070412348686336Gbps
-  - 1路USB4 1547425049106725343623905280Gbps
-  - 1路Thunderbolt 4 3094850098213450687247810560Gbps
-  - 1路DisplayPort 2.0 6189700196426901374495621120Gbps
-  - 1路HDMI 2.1a 3713820117856140824697372672Gbps
-  - 1路USB4 3094850098213450687247810560Gbps
-  - 1路Thunderbolt 4 6189700196426901374495621120Gbps
-  - 1路DisplayPort 2.0 12379400392853802748991242240Gbps
-  - 1路HDMI 2.1a 7427640235712281649394745344Gbps
-  - 1路USB4 6189700196426901374495621120Gbps
-  - 1路Thunderbolt 4 12379400392853802748991242240Gbps
-  - 1路DisplayPort 2.0 24758800785707605497982484480Gbps
-  - 1路HDMI 2.1a 14855280471424563298789490688Gbps
-  - 1路USB4 12379400392853802748991242240Gbps
-  - 1路Thunderbolt 4 24758800785707605497982484480Gbps
-  - 1路DisplayPort 2.0 49517601571415210995964968960Gbps
-  - 1路HDMI 2.1a 29710560942849126597578981376Gbps
-  - 1路USB4 24758800785707605497982484480Gbps
-  - 1路Thunderbolt 4 49517601571415210995964968960Gbps
-  - 1路DisplayPort 2.0 99035203142830421991929937920Gbps
-  - 1路HDMI 2.1a 59421121885698253195157962752Gbps
-  - 1路USB4 49517601571415210995964968960Gbps
-  - 1路Thunderbolt 4 99035203142830421991929937920Gbps
-  - 1路DisplayPort 2.0 198070406285660843983859875840Gbps
-  - 1路HDMI 2.1a 118842243771396506390315925504Gbps
-  - 1路USB4 99035203142830421991929937920Gbps
-  - 1路Thunderbolt 4 198070406285660843983859875840Gbps
-  - 1路DisplayPort 2.0 396140812571321687967719751680Gbps
-  - 1路HDMI 2.1a 237684487542793012780631851008Gbps
-  - 1路USB4 198070406285660843983859875840Gbps
-  - 1路Thunderbolt 4 396140812571321687967719751680Gbps
-  - 1路DisplayPort 2.0 792281625142643375935439503360Gbps
-  - 1路HDMI 2.1a 475368975085586025561263702016Gbps
-  - 1路USB4 396140812571321687967719751680Gbps
-  - 1路Thunderbolt 4 792281625142643375935439503360Gbps
-  - 1路DisplayPort 2.0 1584563250285286751870879006720Gbps
-  - 1路HDMI 2.1a 950737950171172051122527404032Gbps
-  - 1路USB4 792281625142643375935439503360Gbps
-  - 1路Thunderbolt 4 1584563250285286751870879006720Gbps
-  - 1路DisplayPort 2.0 3169126500570573503741758013440Gbps
-  - 1路HDMI 2.1a 1901475900342344102245054808064Gbps
-  - 1路USB4 1584563250285286751870879006720Gbps
-  - 1路Thunderbolt 4 3169126500570573503741758013440Gbps
-  - 1路DisplayPort 2.0 6338253001141147007483516026880Gbps
-  - 1路HDMI 2.1a 3802951800684688204490109616128Gbps
-  - 1路USB4 3169126500570573503741758013440Gbps
-  - 1路Thunderbolt 4 6338253001141147007483516026880Gbps
-  - 1路DisplayPort 2.0 12676506002282294014967032053760Gbps
-  - 1路HDMI 2.1a 7605903601369376408980219232256Gbps
-  - 1路USB4 6338253001141147007483516026880Gbps
-  - 1路Thunderbolt 4 12676506002282294014967032053760Gbps
+  - 4组I2C总线（2组专用I2C端口）
+  - 2组CAN总线端口
+  - 2组电源接口（Power A为通用ADC接口，Power C为DroneCAN电池接口）
+  - 2组ADC输入
+  - 1个USB接口
+- 电源系统：
+  - 供电：4.3~5.4V
+  - USB输入：4.75~5.25V
+  - 舵机电源输入：0~36V
+- 重量与尺寸：
+  - 重量：101g
+- 其他特性：
+  - 工作温度：-20 ~ 80°c（实测值）
+  - 三组IMU
+  - 支持温度补偿
+  - 内置减震结构
+
+::: info
+当运行PX4固件时，仅8路PWM可用，剩余6路PWM仍在适配中，因此目前与VOLT不兼容。
+:::
+
+## 购买渠道
+
+[CUAV 商店](https://store.cuav.net)
+
+[CUAV 阿里速卖通](https://www.aliexpress.com/item/4001042683738.html?spm=a2g0o.detail.1000060.2.1ebb2a9d3WDryi&gps-id=pcDetailBottomMoreThisSeller&scm=1007.13339.169870.0&scm_id=1007.13339.169870.0&scm-url=1007.13339.169870.0&pvid=f0df2481-1c0a-44eb-92a4-9c11c6cb3d06&_t=gps-id:pcDetailBottomMoreThisSeller,scm-url:1007.13339.169870.0,pvid:f0df2481-1c0a-44eb-92a4-9c11c6cb3d06,tpp_buckets:668%230%23131923%2320_668%23808%234094%23518_668%23888%233325%2319_668%234328%2319934%23630_668%232846%238115%23807_668%232717%237566%23827_668%231000022185%231000066058%230_668%233468%2315607%2376)
+
+## 连接（布线）
+
+[CUAV X7 布线快速入门](http://doc.cuav.net/flight-controller/x7/en/quick-start/quick-start-x7.html)
+
+## 尺寸和引脚分配
+
+![CUAV x7](../../assets/flight_controller/cuav_x7/x7-size.jpg)
+
+![X7 pinouts](../../assets/flight_controller/cuav_x7/x7-pinouts.jpg)
+
+:::warning
+`RCIN`端口仅限于为遥控接收机供电，不能连接到任何电源/负载。
+:::
+
+## 电压等级
+
+当提供三个电源时，_X7 AutoPilot_ 的供电系统可实现三重冗余。  
+供电轨包括：**POWERA**、**POWERC** 和 **USB**。
+
+::: info  
+输出供电轨 **PWM OUT**（0V 至 36V）不为飞控板供电（也不会被飞控板供电）。  
+必须为 **POWERA**、**POWERC** 或 **USB** 中的至少一个供电轨供电，否则电路板将处于未通电状态。  
+:::  
+
+**正常运行最大电压规格**  
+
+在此条件下，系统将按以下顺序使用所有可用电源供电：  
+
+1. **POWERA** 和 **POWERC** 输入（4.3V 至 5.4V）  
+2. **USB** 输入（4.75V 至 5.25V）
+
+## 构建固件
+
+:::tip
+大多数用户不需要构建此固件！
+当连接适当的硬件时，它会由_QGroundControl_预先构建并自动安装。
+:::
+
+要[构建PX4](../dev_setup/building_px4.md)以用于此目标：
+
+```
+make cuav_x7pro_default
+```
+
+## 过流保护
+
+_X7_ 在5伏外设和5伏高功率接口上具有过流保护，将电流限制为2.5A。  
+_X7_ 具备短路保护功能。  
+
+:::警告  
+最多可向标记为引脚1的接口提供2.5 A电流（尽管这些接口的额定电流仅为1 A）。  
+:::
+
+## 调试端口
+
+系统的串口控制台和SWD接口在 **DSU7** 端口上运行。  
+只需将FTDI线缆连接到DSU7接口（产品清单包含CUAV FTDI线缆）。
+
+![调试端口 (DSU7)](../../assets/flight_controller/cuav_v5_plus/debug_port_dsu7.jpg)
+
+[ PX4系统控制台](../debug/system_console.md) 和 [SWD接口](../debug/swd_debug.md) 在 **FMU调试** 端口（`DSU7`）上运行。
+
+调试端口（`DSU7`）使用 [JST BM06B](https://www.digikey.com.au/product-detail/en/jst-sales-america-inc/BM06B-GHS-TBT-LF-SN-N/455-1582-1-ND/807850) 接口，其引脚分配如下：
+
+| 引脚    | 信号            | 电压    |
+| ------- | --------------- | ------- |
+| 1 (红色) | 5V+            | +5V     |
+| 2 (黑色) | 调试TX（输出） | +3.3V   |
+| 3 (黑色) | 调试RX（输入） | +3.3V   |
+| 4 (黑色) | FMU_SWDIO      | +3.3V   |
+| 5 (黑色) | FMU_SWCLK      | +3.3V   |
+| 6 (黑色) | GND            | GND     |
+
+CUAV提供了专用的调试线缆，可连接到 `DSU7` 端口。  
+该线缆分接出FTDI线缆，用于将 [PX4系统控制台](../debug/system_console.md) 连接到计算机USB端口，以及用于SWD/JTAG调试的SWD引脚。  
+提供的调试线缆未连接到SWD端口 `Vref` 引脚（1）。
+
+![CUAV调试线缆](../../assets/flight_controller/cuav_v5_plus/cuav_v5_debug_cable.jpg)
+
+:::warning
+SWD Vref引脚（1）使用5V作为Vref，但CPU运行电压为3.3V！
+
+部分JTAG适配器（SEGGER J-Link）会使用Vref电压来设置SWD线路的电压。  
+对于直接连接到 _Segger Jlink_ 的情况，我们建议您使用标记为 `DSM`/`SBUS`/`RSSI` 的接口第4引脚的3.3伏电压，为JTAG提供 `Vtref`（即提供3.3V而非5V）。
+:::
+
+## 支持的平台 / 机型
+
+任何可以使用普通RC舵机或Futaba S-Bus舵机进行控制的多旋翼/固定翼/地面车或船只。所有支持的配置可在[机型参考](../airframes/airframe_reference.md)中查看。
+
+## 进一步信息
+
+- [快速入门](http://doc.cuav.net/flight-controller/x7/en/quick-start/quick-start-x7.html)
+- [CUAV 文档](http://doc.cuav.net)
+- [x7 电路图](https://github.com/cuav/hardware/tree/master/X7_Autopilot)

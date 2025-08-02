@@ -1,4 +1,6 @@
-# 模块参考：距离传感器（驱动程序）## afbrs50
+# 模块参考：距离传感器（驱动程序）
+
+## afbrs50
 
 源代码: [drivers/distance_sensor/broadcom/afbrs50](https://github.com/PX4/PX4-Autopilot/tree/main/src/drivers/distance_sensor/broadcom/afbrs50)
 

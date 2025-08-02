@@ -14,7 +14,7 @@ _跟随我_模式允许多旋翼飞行器根据另一个系统广播的位置（
 - 模式要求风速和飞行时间在允许范围内（通过参数指定）。
 - 该模式目前仅支持多旋翼（或VTOL的多旋翼模式）。
 - 跟随目标也必须能够提供位置信息。
-- 跟随我模式由_QGroundControl_在带有GPS模块的Android设备上以及[MAVSDK](#follow-me-with-mavsdk)支持。
+- 跟随我模式由_QGroundControl_在带有GPS模块的Android设备上以及[MAVSDK](#MAVSDK随行模式)支持。
 
 <!-- https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/commander/ModeUtil/mode_requirements.cpp -->
 
@@ -141,7 +141,7 @@ MAVLink [FOLLOW_TARGET](https://mavlink.io/en/messages/common.html#FOLLOW_TARGET
 | <a id="FLW_TGT_HT"></a>[FLW_TGT_HT](../advanced_config/parameter_reference.md#FLW_TGT_HT)                | 机体跟随高度，单位为米。注意此高度是相对于起始/启动位置的固定值（不是目标机体）。默认和最小高度为8米（约26英尺）                                                                                                                                                                                                                                          |
 | <a id="FLW_TGT_DST"></a>[FLW_TGT_DST](../advanced_config/parameter_reference.md#FLW_TGT_DST)             | 机体/地面站在水平（x,y）平面的分离距离，单位为米。允许的最小分离距离为1米。默认距离为8米（约26英尺）                                                                                                                                                                                                                                                       |
 | <a id="FLW_TGT_FA"></a>[FLW_TGT_FA](../advanced_config/parameter_reference.md#FLW_TGT_FA)                | 相对于目标航向的跟随角度，单位为度。如果输入值超出范围 [`-180.0`, `+180.0`]，将自动进行环绕处理并应用（例如 `480.0` 将转换为 `120.0`）                                                                                                                                                                                                                     |
-| <a id="FLW_TGT_ALT_M"></a>[FLW_TGT_ALT_M](../advanced_config/parameter_reference.md#FLW_TGT_ALT_M)       | 高度控制模式。<br>- `0` = 2D跟踪（高度固定）<br>- `1` = 2D跟踪 + 地形跟随<br>- `2` = 3D跟踪目标GPS高度 **警告：[不要与QGC for Android一起使用](#altitude-control-mode)**。                                                                                                                                                                                   |
+| <a id="FLW_TGT_ALT_M"></a>[FLW_TGT_ALT_M](../advanced_config/parameter_reference.md#FLW_TGT_ALT_M)       | 高度控制模式。<br>- `0` = 2D跟踪（高度固定）<br>- `1` = 2D跟踪 + 地形跟随<br>- `2` = 3D跟踪目标GPS高度 **警告：[不要与QGC for Android一起使用](#高度控制模式)**。                                                                                                                                                                                   |
 | <a id="FLW_TGT_MAX_VEL"></a>[FLW_TGT_MAX_VEL](../advanced_config/parameter_reference.md#FLW_TGT_MAX_VEL) | 相对于目标的轨道运动最大速度，单位为m/s。<br>- 10 m/s 被证明是在激进性与平滑性之间的最佳平衡点。<br>- 设置更高的值意味着目标周围的轨道轨迹移动速度更快，但如果机体物理上无法达到该速度，会导致激进的飞行行为。                                                                                                                                              |
 | <a id="FLW_TGT_RS"></a>[FLW_TGT_RS](../advanced_config/parameter_reference.md#FLW_TGT_RS)                | 动态过滤算法响应性，用于过滤目标位置。<br>- `0.0` = 对运动和位置、速度、加速度的噪声估计非常敏感。<br>- `1.0` = 非常稳定但响应性差的过滤器                                                                                                                                                                                                                 |
 

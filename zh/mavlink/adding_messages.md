@@ -52,7 +52,7 @@ PX4/PX4-Autopilot 源代码仅使用已被 MAVLink 标准化的消息。
 
 - [记录 uORB 主题](../dev_log/logging.md) 关联您的 MAVLink 消息。
 - 在 QGroundControl [MAVLink Inspector](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/analyze_view/mavlink_inspector.html) 中查看接收消息。  
-  您需要 [重新构建 QGroundControl 以包含新消息定义](#updating-ground-stations)。
+  您需要 [重新构建 QGroundControl 以包含新消息定义](#更新地面站)。
 
 ### 通过 Shell 设置流式传输速率
 

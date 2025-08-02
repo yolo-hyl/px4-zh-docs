@@ -98,7 +98,7 @@ make RELEASE=1
 ### 使用Sapog手动枚举电调
 
 :::tip
-我们推荐使用上述的 [QGroundControl自动枚举Sapog电调](#automatic-esc-enumeration-using-qgroundcontrol) 方法，而非手动枚举（更简单且安全）。
+我们推荐使用上述的 [QGroundControl自动枚举Sapog电调](#使用QGroundControl自动枚举电调) 方法，而非手动枚举（更简单且安全）。
 :::
 
 可使用 [DroneCAN GUI工具](https://dronecan.github.io/GUI_Tool/Overview/) 手动配置电调索引和方向。  

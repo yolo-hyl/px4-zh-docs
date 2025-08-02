@@ -13,7 +13,7 @@ RTK通过测量信号载波波的相位而非信号的信息内容来实现定�
 
 在PX4中设置RTK需要两个RTK GNSS模块和一个数据链路。固定式地面GPS单元称为**基站**，空中单元称为**流动站**。基站通过USB连接到_QGroundControl_，并通过数据链路使用MAVLink [GPS_RTCM_DATA](https://mavlink.io/en/messages/common.html#GPS_RTCM_DATA) 消息将RTCM校正数据流发送到机体。在飞控器上，MAVLink数据包被解包并发送到流动站单元进行处理以获得RTK解算结果。
 
-数据链路通常需要能够处理每秒300字节的上行速率（更多信息请参见下方的[上行数据速率](#uplink-datarate)部分）。
+数据链路通常需要能够处理每秒300字节的上行速率（更多信息请参见下方的[上行数据速率](#上行数据速率)部分）。
 
 ## 支持的RTK GNSS模块
 

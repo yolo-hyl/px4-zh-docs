@@ -13,7 +13,7 @@ _Flight Tasks_ 用于 [Flight Modes](../concept/flight_modes.md) 中提供特定
 按照惯例，任务存储在 [PX4-Autopilot/src/modules/flight_mode_manager/tasks](https://github.com/PX4/PX4-Autopilot/tree/main/src/modules/flight_mode_manager/tasks) 子文件夹中，文件夹名称与任务同名，源文件以 "FlightTask" 为前缀命名。
 
 ::: info
-PX4 开发者峰会的视频概述见下方 [视频](#video)。
+PX4 开发者峰会的视频概述见下方 [视频](#视频)。
 :::
 
 ## 创建飞行任务

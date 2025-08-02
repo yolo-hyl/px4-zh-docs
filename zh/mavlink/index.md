@@ -44,7 +44,9 @@ MAVLink 项目通过以下定义文件标准化消息、命令、枚举和微服
 
 <!--
 消息通过 [MAVLink 数据包](https://mavlink.io/en/guide/serialization.html#mavlink2_packet_format) 的“载荷”传输。为减少传输数据量，数据包不包含消息元数据（如字段构成等）。字段按预定义顺序（基于数据大小和 XML 定义顺序）序列化，MAVLink 依赖通信双方共享消息定义。消息身份通过消息 ID 和基于名称、ID、字段名及类型的 CRC（"CRC_EXTRA"）唯一标识。接收端会丢弃消息 ID 与 CRC_EXTRA 不匹配的数据包。
--->## PX4 和 MAVLink
+-->
+
+## PX4 和 MAVLink
 
 PX4 发行版默认构建 `common.xml` MAVLink 定义，以确保与 MAVLink 地面站、库和外部组件（如 MAVLink 摄像机）的最大兼容性。  
 在 `main` 分支中，这些定义在 SITL 上从 `development.xml` 引入，其他板子则使用 `common.xml`。

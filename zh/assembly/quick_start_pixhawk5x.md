@@ -9,7 +9,9 @@ PX4 并不制造此款（或任何）自动驾驶仪。
 
 <img src="../../assets/flight_controller/pixhawk5x/pixhawk5x_standard_set.jpg" width="520px" title="Pixhawk5x 标准套装" />
 
-Pixhawk 5 标准套装## 接线图概览
+Pixhawk 5 标准套装
+
+## 接线图概览
 
 下图展示了如何连接最重要的传感器和外设。
 
@@ -45,7 +47,9 @@ GPS/指南针应 [安装在机体框架上](../assembly/mount_gps_compass.md)，
 GPS 模块集成的安全开关默认启用（启用时，PX4 将不允许你解锁机体）。
 要禁用安全开关，请按住安全开关 1 秒。
 再次按下安全开关可启用安全功能并解除机体锁定（如果由于任何原因无法通过遥控器或地面站解除机体锁定，此功能非常有用）。
-:::# 电源
+:::
+
+## 电源
 
 使用6线电缆将Standard Set中提供的_PM02D电源模块_(PM板)的输出连接到_Pixhawk 5X_的**POWER**端口之一。Pixhawk 5X的PM02D和电源端口使用[2.00mm Pitch CLIK-Mate Wire-to-Board PCB Receptacle](https://www.molex.com/molex/products/part-detail/pcb_receptacles/5024430670)及[Housing](https://www.molex.com/molex/products/part-detail/crimp_housings/5024390600)的6路电路。
 
@@ -75,7 +79,9 @@ _Pixhawk 5X_电源端口的引脚分配如下所示。电源端口通过PM02D电
 | 3(黑色) | SCL | +3.3V |
 | 4(黑色) | SDA | +3.3V |
 | 5(黑色) | GND | GND |
-| 6(黑色) | GND | GND |# 遥控控制
+| 6(黑色) | GND | GND |
+
+## 遥控控制
 
 如果要_手动_控制机体(PX4在自主飞行模式下不需要遥控系统)，则必须使用遥控(RC)无线电系统。
 
@@ -136,7 +142,9 @@ _Pixhawk 5X_电源端口的引脚分配如下所示。电源端口通过PM02D电
 
 QuadPlane 特定配置请参考：[QuadPlane 垂直起降配置](../config_vtol/vtol_quad_configuration.md)
 
-<!-- Nice to have detailed wiring infographic and instructions for different vehicle types. -->## 进一步信息
+<!-- Nice to have detailed wiring infographic and instructions for different vehicle types. -->
+
+## 进一步信息
 
 - [Pixhawk 5X](../flight_controller/pixhawk5x.md) (PX4 文档概览页面)
 - [Pixhawk 5X 概述与规格](https://cdn.shopify.com/s/files/1/0604/5905/7341/files/Holybro_Pixhawk5X_Spec_Overview.pdf) (Holybro)

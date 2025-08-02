@@ -1,4 +1,6 @@
-# 模块参考：IMU（驱动）## adis16448
+# 模块参考：IMU（驱动）
+
+## adis16448
 
 源代码: [drivers/imu/analog_devices/adis16448](https://github.com/PX4/PX4-Autopilot/tree/main/src/drivers/imu/analog_devices/adis16448)
 

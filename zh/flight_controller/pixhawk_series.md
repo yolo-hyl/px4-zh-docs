@@ -44,7 +44,7 @@ PX4 维护和测试团队负责维护和支持这些标准板卡。
 尽管没有强制的物理连接器标准，但较新的产品通常遵循 [Pixhawk 连接器标准](https://pixhawk.org/pixhawk-connector-standard/)。
 :::
 
-该项目还基于开放设计创建参考自动驾驶仪板卡，并以相同的 [许可证](#licensing-and-trademarks) 分享。
+该项目还基于开放设计创建参考自动驾驶仪板卡，并以相同的 [许可证](#许可证与商标) 分享。
 
 <a id="fmu_versions"></a>
 

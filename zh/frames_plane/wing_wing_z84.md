@@ -78,7 +78,7 @@ MAIN 4   | 电机1
 
 ### 执行器映射
 
-根据上述[接线部分](#wiring)设置[执行器配置](../config/actuators.md)以匹配副翼和油门的连接。  
+根据上述[接线部分](#接线)设置[执行器配置](../config/actuators.md)以匹配副翼和油门的连接。  
 
 ![QGC - 设置执行器](../../assets/airframes/fw/wing_wing/qgc_actuator_config.png)  
 

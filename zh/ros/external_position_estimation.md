@@ -50,7 +50,7 @@ PX4使用FRD（X **前向**，Y **右向**，Z **向下**）作为局部机体�
 根据你的参考坐标系来源，发送MAVLink视觉/MoCap消息前需要对姿态估计应用自定义转换。这需要调整姿态估计的父坐标系和子坐标系的朝向，使其符合PX4惯例。请参考MAVROS的[*odom*插件](https://github.com/mavlink/mavros/blob/master/mavros_extras/src/plugins/odom.cpp)中所需的转换。
 
 :::tip
-ROS用户可在下方的[参考坐标系与ROS](#reference-frames-and-ros)中找到更详细的说明。
+ROS用户可在下方的[参考坐标系与ROS](#参考坐标系与 ROS)中找到更详细的说明。
 :::
 
 例如，使用Optitrack框架时，局部坐标系的$x$和$z$在水平面（$x$向前，$z$向右），而$y$轴垂直向上。

@@ -92,7 +92,7 @@ options:
 test/mavsdk_tests/mavsdk_test_runner.py test/mavsdk_tests/configs/sitl.json --speed-factor 10 --model tailsitter --case 'Fly VTOL mission'
 ```
 
-找出当前模型和其相关测试用例的最简单方法是运行所有 PX4 测试 [如上所述](#run-all-px4-tests)（注意，如果只想测试一个测试用例，可以随时取消构建）。
+找出当前模型和其相关测试用例的最简单方法是运行所有 PX4 测试 [如上所述](#运行所有 PX4 测试)（注意，如果只想测试一个测试用例，可以随时取消构建）。
 
 在写作时，通过运行所有测试生成的列表为：
 

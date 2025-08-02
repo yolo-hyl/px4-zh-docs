@@ -35,7 +35,7 @@
 
    ![Set sensor orientations](../../assets/qgc/setup/sensor/sensor_orientation_set_orientations.jpg)
 
-1. 选择 **飞行控制器方向**（按照[上述方法](#calculating-orientation)计算的方向）。  
+1. 选择 **飞行控制器方向**（按照[上述方法](#计算方向)计算的方向）。  
 
    ![Orientation options](../../assets/qgc/setup/sensor/sensor_orientation_selector_values.jpg)
 

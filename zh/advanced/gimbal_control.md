@@ -93,7 +93,7 @@ PX4会为检测到的PWM云台或首个具有相同系统ID的MAVLink云台设�
 ## 模拟 / SITL
 
 以下模拟环境预配置了模拟云台。  
-您可以通过 [QGroundControl 界面](#qgc-testing) 或发送 [驱动命令](#driver-testing) 来测试云台。
+您可以通过 [QGroundControl 界面](#QGC测试) 或发送 [驱动命令](#驱动测试) 来测试云台。
 
 ::: tip
 如果只需要测试 [云台驱动](../modules/modules_driver.md#gimbal)，则可以在任何模型或模拟器上进行测试。  

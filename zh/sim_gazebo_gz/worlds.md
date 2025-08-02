@@ -36,7 +36,7 @@ Aruco世界是默认世界中添加了[ArUco标记](https://docs.opencv.org/4.x/
 
 ## Lawn
 
-由绿色平面构成的世界，是[rover世界](#rover)的优化替代方案。
+由绿色平面构成的世界，是[Rover世界](#Rover)的优化替代方案。
 由于帧率较低，会导致部分框架出现分段错误，因此不推荐使用。
 
 [PX4-gazebo-models/main/worlds/lawn.sdf](https://github.com/PX4/PX4-gazebo-models/blob/main/worlds/lawn.sdf)
@@ -52,7 +52,7 @@ Rover世界专为地面车辆优化（将进一步优化），是[Ackermann Rove
 ![Rover世界截图](../../assets/simulation/gazebo/worlds/rover.png)
 
 ::: info
-Rover世界与[lawn世界](#lawn)非常相似，但有以下两个主要区别：
+Rover世界与[Lawn世界](#Lawn)非常相似，但有以下两个主要区别：
 
 - 地面网格，驾驶时作为参考。
 - 更高的更新率，解决了Ackermann转向车辆的分段错误问题。
@@ -104,4 +104,4 @@ PX4_GZ_MODEL_POSE=0,0,2.2 PX4_GZ_WORLD=moving_platform make px4_sitl gz_standard
 
 特定模型世界包括：
 
-- [Aruco世界](#aruco): 带有[ArUco标记](https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html)的默认世界，可与[x500_mono_cam_down](../sim_gazebo_gz/vehicles.md#x500-quadrotor-with-monocular-camera-down-facing)配合使用，用于测试[精准降落](../advanced_features/precland.md)。
+- [Aruco世界](#Aruco): 带有[ArUco标记](https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html)的默认世界，可与[x500_mono_cam_down](../sim_gazebo_gz/vehicles.md#x500-quadrotor-with-monocular-camera-down-facing)配合使用，用于测试[精准降落](../advanced_features/precland.md)。

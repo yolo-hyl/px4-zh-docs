@@ -33,7 +33,9 @@ Cube 在两个 IMU 上采用了减震隔离设计，第三个 IMU 则作为参�
 - 高功率、多音调压电音频指示器
 - microSD卡用于长时间高速数据记录
 
-<a id="stores"></a>## 购买渠道
+<a id="stores"></a>
+
+## 购买渠道
 
 - [经销商列表](https://www.cubepilot.com/#/reseller/list)
 
@@ -83,7 +85,9 @@ Cube 在两个 IMU 上采用了减震隔离设计，第三个 IMU 则作为参�
   - I2C
   - SPI
   - 3.3v ADC 输入
-  - 内部microUSB接口和外部microUSB扩展接口## 端口
+  - 内部microUSB接口和外部microUSB扩展接口
+  
+  ## 端口
 
 ### 顶部（GPS、TELEM等）
 
@@ -193,7 +197,9 @@ Cube 在两个 IMU 上采用了减震隔离设计，第三个 IMU 则作为参�
 | 3 (黑色) | RX (输入)  | +3.3V 至 5V     |
 | 4 (黑色) | CTS (输出) | +3.3V 至 5V     |
 | 5 (黑色) | RTS (输入) | +3.3V 至 5V     |
-| 6 (黑色) | GND        | GND             |## 串口映射
+| 6 (黑色) | GND        | GND             |
+
+## 串口映射
 
 | UART   | 设备       | 端口                  |
 | ------ | ---------- | --------------------- |

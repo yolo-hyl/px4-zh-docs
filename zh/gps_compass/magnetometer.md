@@ -2,9 +2,9 @@
 
 PX4 通过磁力计（指南针）来确定机体相对于地磁的偏航角和航向角。
 
-[Pixhawk 系列](../flight_controller/pixhawk_series.md)飞控以及其他许多飞控都包含[内部磁力计](#internal-compass)。该磁力计用于外部磁力计的自动旋转检测和自动驾驶仪的台架测试。除上述用途外不应使用，且在校准后若存在外部磁力计将自动禁用。
+[Pixhawk 系列](../flight_controller/pixhawk_series.md)飞控以及其他许多飞控都包含[内部磁力计](#内部磁力计)。该磁力计用于外部磁力计的自动旋转检测和自动驾驶仪的台架测试。除上述用途外不应使用，且在校准后若存在外部磁力计将自动禁用。
 
-在大多数机体，尤其是小型机体上，我们推荐使用[尽可能远离电机/电调供电线路安装的组合 GPS + 指南针](../assembly/mount_gps_compass.md)——通常安装在支架或机翼上（固定翼）。虽然可以使用[独立的外部指南针模块](#stand-alone-compass-modules)（如下所列），但更常见的是使用[组合 GPS/指南针模块](#combined-gnss-compass-modules)。
+在大多数机体，尤其是小型机体上，我们推荐使用[尽可能远离电机/电调供电线路安装的组合 GPS + 指南针](../assembly/mount_gps_compass.md)——通常安装在支架或机翼上（固定翼）。虽然可以使用[独立的外部指南针模块](#独立指南针模块)（如下所列），但更常见的是使用[组合 GPS/指南针模块](#combined-gnss-compass-modules)。
 
 磁力计可通过 I2C/SPI 总线（Pixhawk 的 `GPS1` 或 `GPS2` 接口）或 CAN 总线连接。若模块名称中未包含 "CAN"，则通常是 I2C/SPI 指南针。
 

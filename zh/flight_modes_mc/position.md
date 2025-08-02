@@ -71,7 +71,9 @@ RC模式下，横滚（Roll）、俯仰（Pitch）、油门（Throttle）杆位�
 | <a id="MPC_POS_MODE"></a>[MPC_POS_MODE](../advanced_config/parameter_reference.md#MPC_POS_MODE)        | 杆位输入到运动的转换策略。从PX4 v1.12开始，默认值（`基于加速度`）为杆位位置控制加速度（类似于汽车油门踏板）。其他选项允许杆位偏移直接控制地面速度，且可带或不带平滑和加速度限制。                                                                 |
 | <a id="MPC_ACC_HOR_MAX"></a>[MPC_ACC_HOR_MAX](../advanced_config/parameter_reference.md#MPC_ACC_HOR_MAX) | 最大水平加速度。                                                                                                                                                                                                                                                                             |
 | <a id="MPC_VEL_MANUAL"></a>[MPC_VEL_MANUAL](../advanced_config/parameter_reference.md#MPC_VEL_MANUAL)   | 最大水平速度。                                                                                                                                                                                                                                                                                 |
-| <a id="MPC_LAND_SPEED"></a>[MPC_LAND_SPEED](../advanced_config/parameter_reference.md#MPC_LAND_SPEED)   | 降落下降率。默认0.7 m/s。                                                                                                                                                                                                                                                                       |## 补充信息
+| <a id="MPC_LAND_SPEED"></a>[MPC_LAND_SPEED](../advanced_config/parameter_reference.md#MPC_LAND_SPEED)   | 降落下降率。默认0.7 m/s。                                                                                                                                                                                                                                                                       |
+
+## 补充信息
 
 ### 位置丢失/安全
 

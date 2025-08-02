@@ -1,55 +1,57 @@
-# ModalAI Flight Core v1
+
+
+# ModalAI 飞行核心 v1
 
 <Badge type="tip" text="PX4 v1.11" />
 
 :::warning
-PX4 不生产此类（或任何）自动驾驶仪。
-有关硬件支持或合规性问题，请联系 [制造商](https://forum.modalai.com/)。
+PX4不制造此（或任何）自动驾驶仪。
+有关硬件支持或合规性问题，请联系[制造商](https://forum.modalai.com/)。
 :::
 
-ModalAI [Flight Core v1](https://modalai.com/flight-core) ([Datasheet](https://docs.modalai.com/flight-core-datasheet)) 是一款适用于 PX4 的飞行控制器，产自美国。
-Flight Core 可与 ModalAI [VOXL](https://modalai.com/voxl) ([Datasheet](https://docs.modalai.com/voxl-datasheet/)) 配合使用，实现避障和无 GPS 导航，也可作为独立飞行控制器使用。
+[ModalAI Flight Core v1](https://modalai.com/flight-core) ([数据手册](https://docs.modalai.com/flight-core-datasheet)) 是一款在美国制造的PX4飞控。
+Flight Core 可与 ModalAI [VOXL](https://modalai.com/voxl) ([数据手册](https://docs.modalai.com/voxl-datasheet/)) 配合使用，实现避障和无GPS导航功能，也可作为独立飞控使用。
 
 ![FlightCoreV1](../../assets/flight_controller/modalai/fc_v1/main.jpg)
 
-Flight Core 与 [VOXL Flight](https://www.modalai.com/voxl-flight) ([Datasheet](https://docs.modalai.com/voxl-flight-datasheet/)) 中的 PX4 飞行控制器部分完全一致，VOXL Flight 将 VOXL 从机计算机和 Flight Core 集成在一块 PCB 上。
+Flight Core 与 [VOXL Flight](https://www.modalai.com/voxl-flight) ([数据手册](https://docs.modalai.com/voxl-flight-datasheet/)) 中的PX4飞控部分完全相同，VOXL Flight将VOXL协处理器和Flight Core集成在单一PCB上。
 
 ::: info
-此飞行控制器受到 [制造商支持](../flight_controller/autopilot_manufacturer_supported.md)。
+此飞控为[制造商支持](../flight_controller/autopilot_manufacturer_supported.md)的飞控。
 :::
 
-## 规格参数
+## 规格
 
-| 功能          | 详细信息                                                          |
+| 功能             | 详细信息                                                          |
 | :--------------- | :--------------------------------------------------------------- |
-| 重量           | 6 g                                                              |
-| MCU              | 216MHz，32 位 ARM M7 [STM32F765II][stm32f765ii]                 |
-| 存储           | 256Kb FRAM                                                       |
+| 重量             | 6 克                                                              |
+| 主控芯片         | 216MHz，32位ARM M7 [STM32F765II][stm32f765ii]                 |
+| 内存             | 256Kb FRAM                                                       |
 |                  | 2Mbit Flash                                                      |
 |                  | 512Kbit SRAM                                                     |
-| 固件           | [PX4][px4]                                                       |
-| IMU             | [ICM-20602][icm-20602] (SPI1)                                    |
+| 固件             | [PX4][px4]                                                       |
+| 惯性测量单元     | [ICM-20602][icm-20602] (SPI1)                                    |
 |                  | ICM-42688 (SPI2)                                                 |
 |                  | [BMI088][bmi088] (SPI6)                                          |
-| 气压计         | [BMP388][bmp388] (I2C4)                                          |
-| 安全元件       | [A71CH][a71ch] (I2C4)                                            |
-| microSD 卡      | [支持的卡片信息](../dev_log/logging.md#sd-cards)               |
-| 输入           | GPS/磁力计                                                       |
+| 气压计           | [BMP388][bmp388] (I2C4)                                          |
+| 安全元件         | [A71CH][a71ch] (I2C4)                                            |
+| microSD 卡       | [支持的存储卡信息](../dev_log/logging.md#sd-cards)             |
+| 输入接口         | GPS/磁力计                                                       |
 |                  | Spektrum                                                         |
-|                  | 通信遥测                                                         |
-|                  | CAN 总线                                                         |
+|                  | 遥测                                                             |
+|                  | CAN总线                                                          |
 |                  | PPM                                                              |
-| 输出           | 6 个 LED（2 个 RGB）                                             |
-|                  | 8 路 PWM 通道                                                   |
-| 额外接口       | 3 个串口                                                         |
+| 输出接口         | 6 LED (2xRGB)                                                    |
+|                  | 8 PWM通道                                                        |
+| 额外接口         | 3串口                                                            |
 |                  | I2C                                                              |
 |                  | GPIO                                                             |
 
 ::: info
-更详细的硬件文档请见 [此处](https://docs.modalai.com/flight-core-datasheet/)。
+更详细的硬件文档可以在此处找到 [here](https://docs.modalai.com/flight-core-datasheet/)。
 :::
 
-<!-- 表格上方的参考链接（改善布局） -->
+<!-- 表格引用链接（优化布局） -->
 [stm32f765ii]: https://www.st.com/en/microcontrollers-microprocessors/stm32f765ii.html
 [bmp388]: https://www.bosch-sensortec.com/products/environmental-sensors/pressure-sensors/bmp388/
 [icm-20602]: https://www.invensense.com/products/motion-tracking/6-axis/icm-20602/
@@ -63,114 +65,82 @@ Flight Core 与 [VOXL Flight](https://www.modalai.com/voxl-flight) ([Datasheet](
 
 ## PX4 固件兼容性
 
-_Flight Core v1_ 与 PX4 v1.11 及后续的官方 PX4 固件完全兼容。
-ModalAI 为 PX4 v1.11 维护了一个 [分支版本](https://github.com/modalai/px4-firmware/tree/modalai-1.11)。
-该版本包含 UART 电调支持以及计划上游化的 VIO 和 VOA 改进。
+_Flight Core v1_ 完全兼容官方 PX4 固件（从 PX4 v1.11 开始）。
 
-更多固件信息请见 [此处](https://docs.modalai.com/flight-core-firmware/)。
+ModalAI 为 PX4 v1.11 维护一个 [分支版 PX4](https://github.com/modalai/px4-firmware/tree/modalai-1.11)。
+这包括 UART ESC 支持，以及计划合并到上游的 VIO 和 VOA 改进。
+
+有关固件的更多信息，请参见[此处](https://docs.modalai.com/flight-core-firmware/)。
 
 ## QGroundControl 支持
 
-此开发板在 QGroundControl 4.0 及更高版本中得到支持。
+该开发板在 QGroundControl 4.0 及更高版本中提供支持。
 
 ## 可用性
 
 - [Flight Core 完整套件](https://modalai.com/flight-core)
-- [Flight Core 与 VOXL 从机计算机集成于单块 PCB 上](https://modalai.com/flight-core)
-- [Flight Core 与 VOXL 从机计算机及避障摄像头集成（VOXL Flight Deck）](https://modalai.com/flight-deck) ([Datasheet](https://docs.modalai.com/voxl-flight-deck-platform-datasheet/))
-- [Flight Core 与 VOXL 及摄像头组装件](https://shop.modalai.com/products/voxl-flight-deck-r1)
+- [集成 VOXL 伴生计算机的 Flight Core 单 PCB 版本](https://modalai.com/flight-core)
+- [集成 VOXL 伴生计算机和避障摄像头的 Flight Core (VOXL Flight Deck)](https://modalai.com/flight-deck) ([数据手册](https://docs.modalai.com/voxl-flight-deck-platform-datasheet/))
+- [集成 VOXL 和摄像头的 Flight Core 组装套件](https://shop.modalai.com/products/voxl-flight-deck-r1)
 
 ## 快速入门
 
 ### 方向
 
-下图显示了推荐方向，对应于 PX4 v1.11 及后续版本的 `ROTATION_NONE`。
+下图展示了推荐的朝向，该朝向自PX4 v1.11版本起对应于`ROTATION_NONE`。
 
 ![FlightCoreV1Orientation](../../assets/flight_controller/modalai/fc_v1/orientation.png)
 
-### 接口
+### 连接器
 
-关于引脚详细信息，请参见 [此处](https://docs.modalai.com/flight-core-datasheet-connectors)。
+关于引脚定义的详细信息请参考[此处](https://docs.modalai.com/flight-core-datasheet-connectors)。
 
 ![FlightCoreV1Top](../../assets/flight_controller/modalai/fc_v1/top.png)
 
-| 接口   | 概述                                                    |
-| ------- | ---------------------------------------------------------- |
-| J1      | VOXL 通信接口（TELEM2）                                  |
-| J2      | 编程与调试接口                                           |
-| J3      | USB 接口                                                 |
-| J4      | UART 接口                                                |
-| J5      | I2C 接口                                                 |
-| J6      | GPIO 接口                                                |
+| 连接器 | 概述                                                    |
+| ------- | --------------------------------------------------------- |
+| J1      | VOXL通信接口连接器（TELEM2）                             |
+| J2      | 编程与调试连接器                                         |
+| J3      | USB连接器                                                |
+| J4      | UART2, UART电调（TELEM3）                                |
+| J5      | 通信连接器（TELEM1）                                     |
+| J6      | VOXL-电源管理输入/扩展                                   |
+| J7      | 8通道PWM输出连接器                                       |
+| J8      | CAN总线连接器                                            |
+| J9      | PPM遥控输入                                              |
+| J10     | 外部GPS & 磁力计连接器                                   |
+| J12     | 遥控输入，Spektrum/SBus/UART连接器                       |
+| J13     | I2C显示（备用传感器连接器）/安全按钮输入                |
 
-::: info
-具体接口功能请参见 [数据手册](https://docs.modalai.com/flight-core-datasheet)。
-:::
+![FlightCoreV1Bottom](../../assets/flight_controller/modalai/fc_v1/bottom.png)
 
-## 串口分配表
+### 用户指南
 
-| 串口编号 | 功能             | 默认波特率 | 备注                |
-|----------|------------------|------------|---------------------|
-| UART1    | 通信遥测         | 57600      | 与 GPS 通信         |
-| UART2    | 电调控制         | 115200     | PWM 信号输出        |
-| UART3    | 调试接口         | 921600     | 高速调试            |
+完整的用户指南可在此处获取 [https://docs.modalai.com/flight-core-manual/](https://docs.modalai.com/flight-core-manual/)
 
-## 编译配置
+### 如何构建
 
-```bash
-make modalai_fc-v1 configure
+要[构建 PX4](../dev_setup/building_px4.md)以适配该目标：
+
+```
+make modalai_fc-v1
 ```
 
-## 固件烧录
+## 串口映射
 
-```bash
-make modalai_fc-v1 flash
-```
+| UART   | 设备       | 端口                                     |
+| ------ | ---------- | ---------------------------------------- |
+| USART1 | /dev/ttyS0 | GPS1 (J10)                               |
+| USART2 | /dev/ttyS1 | TELEM3 (J4)                              |
+| USART3 | /dev/ttyS2 | 调试控制台 (J2)                          |
+| UART4  | /dev/ttyS3 | 扩展UART (J6)                            |
+| UART5  | /dev/ttyS4 | TELEM2，主VOXL通信 (J1)                  |
+| USART6 | /dev/ttyS5 | 遥控器 (J12)                             |
+| UART7  | /dev/ttyS6 | TELEM1 (J5)                              |
+| UART8  | /dev/ttyS7 | N/A                                      |
 
-## 通信协议
+<!-- Note: Got ports using https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 -->
 
-Flight Core v1 支持以下通信协议：
-- MAVLink 2.0
-- ROS 2
-- CANopen
-- I2C 从模式
+## 支持
 
-## 环境要求
-
-| 参数       | 最小值 | 典型值 | 最大值 | 单位 |
-|------------|--------|--------|--------|------|
-| 电压输入   | 4.75   | 5.0    | 5.25   | V    |
-| 工作温度   | -40    | 25     | 85     | °C   |
-| 存储温度   | -55    | 25     | 125    | °C   |
-
-## 认证
-
-- CE 认证 (EN 300 328)
-- FCC 认证 (47 CFR Part 15)
-- RoHS 2.0
-
-## 接口定义
-
-| 引脚编号 | 功能               | 信号类型 | 电压电平 |
-|----------|--------------------|----------|----------|
-| 1        | UART1 TX           | 串口     | 3.3V     |
-| 2        | UART1 RX           | 串口     | 3.3V     |
-| 3        | UART2 TX           | 串口     | 3.3V     |
-| 4        | UART2 RX           | 串口     | 3.3V     |
-| 5        | I2C SDA            | I2C      | 3.3V     |
-| 6        | I2C SCL            | I2C      | 3.3V     |
-
-## 故障排除
-
-| 问题描述               | 可能原因                   | 解决方案                        |
-|------------------------|----------------------------|---------------------------------|
-| 无法连接               | USB 线路故障               | 更换 USB 线路                   |
-| 固件烧录失败           | 电源不稳定                 | 使用稳压电源                   |
-| 信号丢失               | 天线接触不良               | 检查天线连接                    |
-| 电机不转               | 电调参数配置错误           | 重置电调参数                    |
-
-## 技术支持
-
-- 邮箱：support@modalai.com
-- 电话：+1 (415) 555-0198
-- 企业微信：[加入社群](https://modalai.com/wechat)
+请访问[ModalAI论坛](https://forum.modalai.com/category/10/flight-core)以获取更多信息。

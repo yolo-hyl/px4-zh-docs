@@ -35,10 +35,10 @@ P/PID控制器的输入是一个机体应尝试跟踪的**期望设定点**。
 
 [Mission mode](../flight_modes_mc/mission.md)始终使用[Jerk-limited](../config_mc/mc_jerk_limited_type_trajectory.md)轨迹。
 
-[Position mode](../flight_modes_mc/position.md)支持以下[实现](#position-mode-implementations)：
+[Position mode](../flight_modes_mc/position.md)支持以下[实现](#位置模式实现)：
 默认使用加速度映射；其他类型可通过[MPC_POS_MODE](../advanced_config/parameter_reference.md#MPC_POS_MODE)设置。
 
-[Altitude mode](../flight_modes_mc/altitude.md)同样支持通过[MPC_POS_MODE](../advanced_config/parameter_reference.md#MPC_POS_MODE)选择的[实现](#altitude-mode-implementations)，但**仅**用于平滑垂直分量（即控制高度时）。
+[Altitude mode](../flight_modes_mc/altitude.md)同样支持通过[MPC_POS_MODE](../advanced_config/parameter_reference.md#MPC_POS_MODE)选择的[实现](#高度模式实现)，但**仅**用于平滑垂直分量（即控制高度时）。
 
 其他模式不支持轨迹调校。
 
@@ -64,7 +64,7 @@ P/PID控制器的输入是一个机体应尝试跟踪的**期望设定点**。
 
 ## 高度模式实现
 
-与[位置模式实现](#position-mode-implementations)类似，这些是解释垂直操作杆输入的实现方式：
+与[位置模式实现](#位置模式实现)类似，这些是解释垂直操作杆输入的实现方式：
 
 - [Jerk-limited](../config_mc/mc_jerk_limited_type_trajectory.md)
   - 垂直输入平滑处理。

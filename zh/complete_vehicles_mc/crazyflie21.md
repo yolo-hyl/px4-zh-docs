@@ -32,7 +32,9 @@ Crazyflie 2.1 的概述可[在此处找到](https://www.bitcraze.io/products/cra
 - 板载LiPo电池充电器，支持100mA、500mA和980mA模式  
 - 全速USB设备接口  
 - 部分USB OTG功能（USB OTG存在但无5V输出）  
-- 8KB EEPROM## 哪里购买
+- 8KB EEPROM
+
+## 哪里购买
 
 机体可通过以下链接购买：[Crazyflie 2.1](https://store.bitcraze.io/products/crazyflie-2-1) (store.bitcraze.io)
 
@@ -50,7 +52,9 @@ Crazyflie 2.1 的概述可[在此处找到](https://www.bitcraze.io/products/cra
 
 ## 组装 Crazyflie 2.1
 
-- [Bitcraze crazyflie 2.1 getting started](https://www.bitcraze.io/documentation/tutorials/getting-started-with-crazyflie-2-x/).## 烧录 PX4
+- [Bitcraze crazyflie 2.1 getting started](https://www.bitcraze.io/documentation/tutorials/getting-started-with-crazyflie-2-x/).
+
+## 烧录 PX4
 
 ::: info
 这些说明仅在 Ubuntu 上测试过。

@@ -52,10 +52,10 @@ PX4 配合 ROS 2 使用时，官方支持并推荐的平台是运行在 Ubuntu 2
 :::
 
 要设置用于 PX4 的 ROS 2，请执行以下步骤：  
-- [安装 PX4](#install-px4)（用于运行 PX4 仿真器）  
-- [安装 ROS 2](#install-ros-2)  
+- [安装 PX4](#安装 PX4)（用于运行 PX4 仿真器）  
+- [安装 ROS 2](#安装 ROS 2)  
 - [配置 Micro XRCE-DDS Agent & 客户端](#setup-micro-xrce-dds-agent-client)  
-- [构建并运行 ROS 2 工作空间](#build-ros-2-workspace)  
+- [构建并运行 ROS 2 工作空间](#构建 ROS 2 工作空间)  
 
 架构中自动安装的其他依赖项（如 _Fast DDS_）不在本文讨论范围内。
 
@@ -235,7 +235,7 @@ px4_msgs 仓库的分支名称与不同 PX4 版本的消息定义对应。
 如果由于任何原因无法确保 PX4 固件与 ROS 2 px4_msgs 包之间的消息定义一致，您还需要在设置过程中[启动消息转换节点](#optional-starting-the-translation-node)。
 
 ::: info
-示例构建了位于 [px4_ros_com](https://github.com/PX4/px4_ros_com) 的 [ROS 2 监听器](#ros-2-listener) 示例应用程序。  
+示例构建了位于 [px4_ros_com](https://github.com/PX4/px4_ros_com) 的 [ROS 2 监听器](#ROS 2 监听器) 示例应用程序。  
 [px4_msgs](https://github.com/PX4/px4_msgs) 也是必需的，以便示例能够解析 PX4 ROS 2 话题。
 :::
 
@@ -386,7 +386,7 @@ accelerometer_integral_dt: 4739
 可用的主题在 [dds_topics.yaml](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/uxrce_dds_client/dds_topics.yaml) 中定义，更多数据信息可参考 [uORB 消息参考](../msg_docs/index.md)。  
 例如，[VehicleGlobalPosition](../msg_docs/VehicleGlobalPosition.md) 可用于获取机体全局位置，[VehicleCommand](../msg_docs/VehicleCommand.md) 可用于发送起飞/降落等指令。  
 
-下方的 [ROS 2 示例应用](#ros-2-example-applications) 提供了使用这些主题的具体示例。
+下方的 [ROS 2 示例应用](#ROS 2 示例应用) 提供了使用这些主题的具体示例。
 
 ## 兼容性问题
 
@@ -395,7 +395,7 @@ accelerometer_integral_dt: 4739
 ### ROS 2 订阅者 QoS 设置
 
 订阅 PX4 发布主题的 ROS 2 代码 _必须_ 指定合适的（兼容的）QoS 设置才能监听主题。  
-具体而言，节点应使用 ROS 2 预定义的 QoS 传感器数据配置文件（来自 [监听器示例源代码](#ros-2-listener)）进行订阅：
+具体而言，节点应使用 ROS 2 预定义的 QoS 传感器数据配置文件（来自 [监听器示例源代码](#ROS 2 监听器)）进行订阅：
 
 ```cpp
 ...
@@ -515,7 +515,7 @@ ROS2 侧的修改到此完成。在 PX4 侧，只需通过将参数 [UXRCE_DDS_S
 这里以 `px4_ros_com/src/examples/listeners` 下的 [sensor_combined_listener.cpp](https://github.com/PX4/px4_ros_com/blob/main/src/examples/listeners/sensor_combined_listener.cpp) 节点为例，它订阅了 [SensorCombined](../msg_docs/SensorCombined.md) 消息。
 
 ::: info
-[构建ROS 2工作空间](#build-ros-2-workspace) 展示了如何构建并运行该示例
+[构建ROS 2工作空间](#构建 ROS 2 工作空间) 展示了如何构建并运行该示例
 :::
 
 代码首先导入与 ROS 2 中间件交互所需的 C++ 库，以及订阅 `SensorCombined` 消息的头文件：
@@ -566,7 +566,7 @@ public:
 ::: info
 订阅设置了基于 `rmw_qos_profile_sensor_data` 的 QoS 配置文件。  
 这是必需的，因为 ROS 2 订阅者的默认 QoS 配置文件与 PX4 发布者的配置文件不兼容。  
-更多信息请参见：[ROS 2 订阅者 QoS 设置](#ros-2-subscriber-qos-settings)
+更多信息请参见：[ROS 2 订阅者 QoS 设置](#ROS 2 订阅者 QoS 设置)
 :::
 
 下方代码创建了对 `SensorCombined` uORB 主题的发布器，可以与一个或多个订阅 `fmu/sensor_combined/out` ROS 2 主题的兼容订阅者匹配。
@@ -592,7 +592,7 @@ int main(int argc, char *argv[])
 }
 ````
 
-该示例在 [launch/sensor_combined_listener.launch.py](https://github.com/PX4/px4_ros_com/blob/main/launch/sensor_combined_listener.launch.py) 中有对应的启动文件，允许通过 [`ros2 launch`](#ros2-launch) 命令启动。
+该示例在 [launch/sensor_combined_listener.launch.py](https://github.com/PX4/px4_ros_com/blob/main/launch/sensor_combined_listener.launch.py) 中有对应的启动文件，允许通过 [`ros2 launch`](#ros2 launch) 命令启动。
 
 ### ROS 2 发布者
 
@@ -705,7 +705,7 @@ ROS 2 必须具有与 PX4 固件中创建的 uXRCE-DDS 客户端模块使用的 
 - 对于仿真环境（仅限），可以通过在启动仿真前设置环境变量`PX4_UXRCE_DDS_NS`来提供自定义命名空间。
 
 ::: info
-在运行时更改命名空间会将所需命名空间作为前缀追加到 [dds_topics.yaml](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/uxrce_dds_client/dds_topics.yaml) 中所有`topic`字段和所有 [服务服务器](#px4-ros-2-service-servers)。  
+在运行时更改命名空间会将所需命名空间作为前缀追加到 [dds_topics.yaml](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/uxrce_dds_client/dds_topics.yaml) 中所有`topic`字段和所有 [服务服务器](#PX4 ROS 2 服务服务器)。  
 因此，命令如：
 
 ```sh
@@ -744,7 +744,7 @@ PX4 uXRCE-DDS 中间件支持 [ROS 2 服务](https://docs.ros.org/en/jazzy/Conce
 
   该服务可由 ROS 2 应用程序调用，用于发送 PX4 [VehicleCommand](../msg_docs/VehicleCommand.md) uORB 消息，并接收 PX4 [VehicleCommandAck](../msg_docs/VehicleCommandAck.md) uORB 消息作为响应。
 
-所有 PX4 服务名称遵循 `{extra_namespace}/fmu/{server_specific_name}` 的命名规范，其中 `{extra_namespace}` 是与 PX4 主题相同的 [自定义命名空间](#customizing-the-namespace)。
+所有 PX4 服务名称遵循 `{extra_namespace}/fmu/{server_specific_name}` 的命名规范，其中 `{extra_namespace}` 是与 PX4 主题相同的 [自定义命名空间](#自定义命名空间)。
 
 具体细节和示例将在后续章节中提供。
 

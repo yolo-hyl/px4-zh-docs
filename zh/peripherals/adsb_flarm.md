@@ -11,7 +11,9 @@ PX4避障功能支持通过MAVLink [ADSB_VEHICLE](https://mavlink.io/en/messages
 已测试支持以下设备：
 
 - [PingRX ADS-B接收器](https://uavionix.com/product/pingrx-pro/) (uAvionix)
-- [FLARM](https://flarm.com/products/uav/atom-uav-flarm-for-drones/) <!-- I think originally https://flarm.com/products/powerflarm/uav/ -->## 硬件设置
+- [FLARM](https://flarm.com/products/uav/atom-uav-flarm-for-drones/) <!-- I think originally https://flarm.com/products/powerflarm/uav/ -->
+
+## 硬件设置
 
 任何设备均可连接至飞控器上任意未使用的串口。  
 通常它们被连接到 `TELEM2` 端口（前提是该端口未被其他用途占用）。
@@ -73,7 +75,9 @@ FLARM 配备了 DF-13 6 针接口，其针脚排列与 [mRo Pixhawk](../flight_c
 | <a id="NAV_TRAFF_AVOID"></a>[NAV_TRAFF_AVOID](../advanced_config/parameter_reference.md#NAV_TRAFF_AVOID)    | 启用交通避让模式并指定避让响应。0：禁用，1：仅警告，2：返航模式，3：降落模式。                                                                                             |
 | <a id="NAV_TRAFF_A_HOR"></a>[NAV_TRAFF_A_HOR](../advanced_config/parameter_reference.md#NAV_TRAFF_A_HOR)    | 定义机体空域的水平半径（即地面平面上的空域）。                                                                                                                               |
 | <a id="NAV_TRAFF_A_VER"></a>[NAV_TRAFF_A_VER](../advanced_config/parameter_reference.md#NAV_TRAFF_A_VER)    | 定义机体空域的垂直高度（上下方的圆柱体高度，另请参见[NAV_TRAFF_A_HOR](#NAV_TRAFF_A_HOR)）。                                                                                  |
-| <a id="NAV_TRAFF_COLL_T"></a>[NAV_TRAFF_COLL_T](../advanced_config/parameter_reference.md#NAV_TRAFF_COLL_T) | 碰撞时间阈值。当预计碰撞时间低于此值时将触发避让（预计时间基于交通与机体的相对速度计算）。                                                                                   |## 实现
+| <a id="NAV_TRAFF_COLL_T"></a>[NAV_TRAFF_COLL_T](../advanced_config/parameter_reference.md#NAV_TRAFF_COLL_T) | 碰撞时间阈值。当预计碰撞时间低于此值时将触发避让（预计时间基于交通与机体的相对速度计算）。                                                                                   |
+
+## 实现
 
 ### ADSB/FLARM
 
@@ -167,7 +171,9 @@ PX4在任务执行期间监听`UTM_GLOBAL_POSITION` MAVLink消息。
 :::
 
 <!-- See also implementation PR: https://github.com/PX4/PX4-Autopilot/pull/21283 -->
-<!-- See also bug to make this work without uncommenting: https://github.com/PX4/PX4-Autopilot/issues/21810 -->## 进一步信息
+<!-- See also bug to make this work without uncommenting: https://github.com/PX4/PX4-Autopilot/issues/21810 -->
+
+## 进一步信息
 
 - [MAVLink 外设](../peripherals/mavlink_peripherals.md)
 - [串口配置](../peripherals/serial_configuration.md)

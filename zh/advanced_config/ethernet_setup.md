@@ -6,16 +6,16 @@
 
 本主题涵盖以下内容：
 
-- [PX4以太网设置](#px4-ethernet-setup)
-  - [支持的飞控](#supported-flight-controllers)
-  - [设置以太网网络](#setting-up-the-ethernet-network)
-    - [PX4以太网网络设置](#px4-ethernet-network-setup)
-    - [Ubuntu以太网网络设置](#ubuntu-ethernet-network-setup)
-    - [伴飞计算机以太网网络设置](#companion-computer-ethernet-network-setup)
-  - [PX4 MAVLink串口配置](#px4-mavlink-serial-port-configuration)
-  - [QGroundControl设置示例](#qgroundcontrol-setup-example)
-  - [MAVSDK-Python设置示例](#mavsdk-python-setup-example)
-  - [ROS 2设置示例](#ros-2-setup-example)
+- [PX4以太网设置](#PX4以太网设置)
+  - [支持的飞控](#支持的飞行控制器)
+  - [设置以太网网络](#设置以太网网络)
+    - [PX4以太网网络设置](#PX4以太网网络设置)
+    - [Ubuntu以太网网络设置](#Ubuntu以太网网络设置)
+    - [伴飞计算机以太网网络设置](#辅助计算机以太网网络设置)
+  - [PX4 MAVLink串口配置](#PX4 MAVLink 串口配置)
+  - [QGroundControl设置示例](#QGroundControl 设置示例)
+  - [MAVSDK-Python设置示例](#MAVSDK-Python 设置示例)
+  - [ROS 2设置示例](#ROS 2 设置示例)
 
 ## 支持的飞行控制器
 
@@ -89,7 +89,7 @@ DNS=10.41.10.254
 1. 设置完成后断开USB连接。
 1. 重启飞控以应用设置。
 
-注意：上述设置为飞控分配了以太网地址。您还需[配置以太网端口](#px4-mavlink-serial-port-configuration)使用MAVLink。
+注意：上述设置为飞控分配了以太网地址。您还需[配置以太网端口](#PX4 MAVLink 串口配置)使用MAVLink。
 
 ### Ubuntu以太网网络设置
 
@@ -139,7 +139,7 @@ Ubuntu计算机设置步骤：
 这包括流式传输的 MAVLink 消息集、数据速率、远程系统可监听的 UDP 端口等。
 
 ::: info
-必须单独配置 PX4 的 IP 地址和其他 _网络设置_ ([如前所示](#px4-ethernet-network-setup))。
+必须单独配置 PX4 的 IP 地址和其他 _网络设置_ ([如前所示](#PX4以太网网络设置))。
 :::
 
 PX4 使用以下参数配置串口以通过 MAVLink 连接到地面站：
@@ -162,11 +162,11 @@ PX4 使用以下参数配置串口以通过 MAVLink 连接到地面站：
 
 ## QGroundControl 设置示例
 
-假设您已 [设置以太网网络](#setting-up-the-ethernet-network) 使地面站计算机和 PX4 运行在同一个网络上，并且
+假设您已 [设置以太网网络](#设置以太网网络) 使地面站计算机和 PX4 运行在同一个网络上，并且
 
 要通过以太网将 QGroundControl 连接到 PX4：
 
-1. [设置以太网网络](#setting-up-the-ethernet-network) 使地面站计算机和 PX4 运行在同一个网络上。
+1. [设置以太网网络](#设置以太网网络) 使地面站计算机和 PX4 运行在同一个网络上。
 1. 使用以太网电缆将地面站计算机和 PX4 连接。
 1. 启动 QGroundControl 并 [定义通信链接](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/settings_view/settings_view.html) (**Application Settings > Comm Links**)，分别指定 _服务器地址_ 和端口为 PX4 中分配的 IP 地址和端口。
 
@@ -177,15 +177,15 @@ PX4 使用以下参数配置串口以通过 MAVLink 连接到地面站：
 1. 如果选择此链接，QGroundControl 应该会连接。
 
 ::: info
-[PX4 以太网端口配置](#px4-ethernet-network-setup) 不应需要（默认值对地面站是合适的）。
+[PX4 以太网端口配置](#PX4以太网网络设置) 不应需要（默认值对地面站是合适的）。
 :::
 
 ## MAVSDK-Python 设置示例
 
 要在伴飞计算机上设置运行 MAVSDK-Python：
 
-1. [设置以太网网络](#setting-up-the-ethernet-network) 使伴飞计算机和 PX4 使用相同网络。
-1. 修改 [PX4 以太网端口配置](#px4-ethernet-network-setup) 以连接到伴飞计算机。
+1. [设置以太网网络](#设置以太网网络) 使伴飞计算机和 PX4 使用相同网络。
+1. 修改 [PX4 以太网端口配置](#PX4以太网网络设置) 以连接到伴飞计算机。
    您可能需要将参数 [MAV_2_REMOTE_PRT](../advanced_config/parameter_reference.md#MAV_2_REMOTE_PRT) 和 [MAV_2_UDP_PRT](../advanced_config/parameter_reference.md#MAV_2_UDP_PRT) 设置为 `14540`，并将 [MAV_2_MODE](../advanced_config/parameter_reference.md#MAV_2_MODE) 设置为 `2` (Onboard)。
 1. 按照 [MAVSDK-python](https://github.com/mavlink/MAVSDK-Python) 中的说明安装和使用 MAVSDK。
 

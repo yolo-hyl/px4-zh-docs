@@ -12,7 +12,7 @@
 - 可以使用 [Gazebo Classic 模拟器](../sim_gazebo_classic/index.md) 替代 Gazebo
   Gazebo 在 PX4 上的功能几乎与 Gazebo-Classic 相同，很快将完全取代其所有用例
 
-其他飞控器、模拟器和与 ROS 的构建工具链请参见下文 [Other Targets](#other-targets) 章节
+其他飞控器、模拟器和与 ROS 的构建工具链请参见下文 [Other Targets](#其他目标) 章节
 
 ::: details 我可以使用旧版 Ubuntu 吗？
 PX4 支持当前及上一版 Ubuntu LTS（如可能）。

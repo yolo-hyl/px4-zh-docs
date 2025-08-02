@@ -1,4 +1,6 @@
-# 源代码管理## 分支模型
+# 源代码管理
+
+## 分支模型
 
 PX4 项目使用一个包含三个分支的 Git 分支模型：
 
@@ -9,7 +11,7 @@ PX4 项目使用一个包含三个分支的 Git 分支模型：
 我们尽量通过 [rebase 保持线性历史记录](https://www.atlassian.com/git/tutorials/rewriting-history)，并避免使用 [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow)。
 但由于全球化团队和快速迭代的特性，有时不得不使用合并操作。
 
-要贡献新功能，请先 [注册 GitHub 账号](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account)，然后 [fork 仓库](https://docs.github.com/en/get-started/quickstart/fork-a-repo)，[创建新分支](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository)，添加你的 [提交记录](#commits-and-commit-messages)，最后 [发送拉取请求](#pull-requests)。
+要贡献新功能，请先 [注册 GitHub 账号](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account)，然后 [fork 仓库](https://docs.github.com/en/get-started/quickstart/fork-a-repo)，[创建新分支](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository)，添加你的 [提交记录](#提交记录和提交信息)，最后 [发送拉取请求](#拉取请求)。
 当代码通过我们的 [持续集成](https://en.wikipedia.org/wiki/Continuous_integration) 测试后将会被合并。
 
 所有代码贡献必须采用宽松的 [BSD 3-clause license](https://opensource.org/licenses/BSD-3-Clause) 协议授权，且代码不得对使用施加任何额外限制。
@@ -179,7 +181,7 @@ Reported-by: 姓名 <email@px4.io>
 
 Github [拉取请求（PRs）](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) 是向 PX4 提交新功能和错误修复的主要机制。
 
-它们包含你的分支中相对于主分支的新 [提交](#commits-and-commit-messages) 集合，以及对更改的描述。
+它们包含你的分支中相对于主分支的新 [提交](#提交记录和提交信息) 集合，以及对更改的描述。
 
 描述应包括：
 

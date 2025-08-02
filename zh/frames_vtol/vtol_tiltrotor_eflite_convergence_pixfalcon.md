@@ -5,7 +5,7 @@
 
 ::: info
 原始 Horizon Hobby *E-Flite Convergence* 机身和 [Pixfalcon](../flight_controller/pixfalcon.md) 已停产。  
-替代方案见 [购买](#where-to-buy) 部分。
+替代方案见 [购买](#购买渠道) 部分。
 :::
 
 <lite-youtube videoid="E61P2f2WPNU" title="E-flite Convergence 自主任务飞行"/>

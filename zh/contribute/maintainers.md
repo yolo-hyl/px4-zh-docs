@@ -8,7 +8,7 @@ Dronecode维护者在PX4特定领域（如MAVLink、MAVSDK、QGroundControl等�
 
 若希望加入PX4维护者团队或提名他人，请遵循以下步骤：
 
-1. 阅读[角色描述](#dronecode-maintainer-role-description)，确保理解该角色的职责。
+1. 阅读[角色描述](#Dronecode 维护者角色描述)，确保理解该角色的职责。
 2. 若提名自己，需联系现有维护者（完整名单见[PX4-Autopilot README](https://github.com/PX4/PX4-Autopilot#maintenance-team)），并寻求其支持。
 3. 表达成为维护者的意愿，并明确希望维护的领域。
 4. 支持的维护者需在[每周开发者电话会议](dev_call.md)中提出讨论。
@@ -57,7 +57,7 @@ Dronecode维护者在PX4特定领域（如MAVLink、MAVSDK、QGroundControl等�
 ### 附加权益
 
 1. **官方认可** 作为Dronecode/PX4网站、文档、社区和社交媒体的维护者。
-2. **GitHub与Discord权限**（详见[入职流程](#onboarding-process)）。
+2. **GitHub与Discord权限**（详见[入职流程](#入职流程)）。
 3. 优先获得年度**PX4开发者峰会**奖学金资格，用于报销差旅费用。
 
 ### 我们提供的辅助工具

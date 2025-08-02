@@ -35,7 +35,9 @@
 `/fmu/out/vehicle_status` | [px4_msgs::msg::VehicleStatus](../msg_docs/VehicleStatus.md) | 5.0
 `/fmu/out/airspeed_validated` | [px4_msgs::msg::AirspeedValidated](../msg_docs/AirspeedValidated.md) | 50.0
 `/fmu/out/vtol_vehicle_status` | [px4_msgs::msg::VtolVehicleStatus](../msg_docs/VtolVehicleStatus.md) | 
-`/fmu/out/home_position` | [px4_msgs::msg::HomePosition](../msg_docs/HomePosition.md) | 5.0## 订阅
+`/fmu/out/home_position` | [px4_msgs::msg::HomePosition](../msg_docs/HomePosition.md) | 5.0
+
+## 订阅
 
 Topic | 类型
 --- | ---
@@ -73,7 +75,9 @@ Topic | 类型
 
 ## 订阅多
 
-无## 未导出
+无
+
+## 未导出
 
 这些消息未在yaml文件中列出。
 它们未构建到模块中，因此既未发布也未订阅。

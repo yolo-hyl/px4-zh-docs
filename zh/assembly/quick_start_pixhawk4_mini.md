@@ -146,6 +146,8 @@ VCC线路需至少支持3A持续电流，标准电压为5.1V。5V较低电压仍
 
 QuadPlane 特定配置请参考：[QuadPlane VTOL 配置](../config_vtol/vtol_quad_configuration.md)
 
-<!-- Nice to have detailed wiring infographic and instructions for different vehicle types. -->## 更多信息
+<!-- Nice to have detailed wiring infographic and instructions for different vehicle types. -->
+
+## 更多信息
 
 - [_Pixhawk 4 Mini_](../flight_controller/pixhawk4_mini.md)

@@ -7,7 +7,7 @@ LightWare [SF45/B](https://lightwarelidar.com/shop/sf45-b-50-m/) 是一款极其
 
 :::info
 激光雷达驱动程序未包含在 PX4 的默认构建中。  
-您需要[创建并使用自定义构建](#add-the-driver-to-the-px4-build)。
+您需要[创建并使用自定义构建](#向 PX4 构建中添加驱动程序)。
 :::
 
 ## LightWare Studio 配置
@@ -22,7 +22,7 @@ LightWare [SF45/B](https://lightwarelidar.com/shop/sf45-b-50-m/) 是一款极其
 
 ## 硬件设置
 
-测距仪可以连接到任何未使用的串口，例如 `TELEM2`。[参数配置](#parameter-configuration) 会说明如何配置所使用的端口及其他测距仪属性。
+测距仪可以连接到任何未使用的串口，例如 `TELEM2`。[参数配置](#参数配置) 会说明如何配置所使用的端口及其他测距仪属性。
 
 ## PX4 设置
 

@@ -30,7 +30,7 @@ PX4 元数据在 PX4 源代码中与其关联数据一同定义。
 
 - [参数与配置 > 创建/定义参数](../advanced/parameters_and_configurations.md#creating-defining-parameters)
 - [事件接口](../concept/events_interface.md)
-- [执行器元数据](#actuator-metadata)（下文）
+- [执行器元数据](#执行器元数据)（下文）
 
 ## 元数据工具链
 

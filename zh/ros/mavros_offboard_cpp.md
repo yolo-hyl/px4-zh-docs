@@ -15,7 +15,9 @@ Python 的类似示例可参考 [ROS/MAVROS Offboard 示例 (Python)](../ros/mav
 
 <video width="100%" autoplay="true" controls="true">  
   <source src="../../assets/simulation/gazebo_classic/gazebo_offboard.webm" type="video/webm">  
-</video>## 代码
+</video>
+
+## 代码
 
 在您的ROS包中创建 `offb_node.cpp` 文件（同时将其添加到 `CMakeList.txt` 以进行编译），并将以下内容粘贴到其中：
 

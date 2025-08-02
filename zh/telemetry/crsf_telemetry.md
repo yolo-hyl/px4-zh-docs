@@ -4,7 +4,7 @@ CRSF 是一种遥测协议，可用于 [遥控器控制](../getting_started/rc_t
 
 该协议由 [Team BlackSheep](https://www.team-blacksheep.com/) 为其 Crossfire 遥控系统开发，同时被 [ExpressLRS (ELRS)](https://www.expresslrs.org/) 遥控系统使用。它是一种双向协议，仅需一个 UART 即可同时传输遥控信号和遥测数据。
 
-[支持的遥测消息详见此处](#telemetry-messages)，包括：飞行模式、电池电量、GPS 数据、遥控信号强度、速度、高度等。
+[支持的遥测消息详见此处](#遥测消息)，包括：飞行模式、电池电量、GPS 数据、遥控信号强度、速度、高度等。
 
 ::: info
 如果不需要遥测功能，可将 TBS Crossfire 连接到 `RCIN` 接口并配置接收机使用 S.BUS。
@@ -13,12 +13,12 @@ Crossfire 遥控系统也可作为 [遥测电台](../telemetry/index.md) 使用�
 
 ::: warning
 PX4 默认不包含 CRSF 协议支持。
-[下方说明](#px4-configuration) 解释了如何构建并上传包含所需模块的自定义 PX4 固件。
+[下方说明](#PX4配置) 解释了如何构建并上传包含所需模块的自定义 PX4 固件。
 :::
 
 ## 无线电系统设置
 
-要使用CRSF遥测功能，需要配备[TBS Crossfire无线电系统](#tbs-radio-systems)或[ExpressLRS无线电系统](#expresslrs-radio-systems)，这些系统包含[遥控器](#rc-controllers)（带发射模块）和接收模块（需来自同一厂商）。
+要使用CRSF遥测功能，需要配备[TBS Crossfire无线电系统](#TBS Radio Systems)或[ExpressLRS无线电系统](#ExpressLRS无线电系统)，这些系统包含[遥控器](#遥控器)（带发射模块）和接收模块（需来自同一厂商）。
 
 ::: info
 历史上，遥控无线电系统由地面控制器向机体接收器发送信号组成。
@@ -27,11 +27,11 @@ PX4 默认不包含 CRSF 协议支持。
 
 通常需要分别设置和配置发射机与接收机，然后将它们进行绑定（_bind_）。
 
-发射机可能是[遥控器](#rc-controllers)的集成部分，也可能是一个单独模块插入控制器使用。
+发射机可能是[遥控器](#遥控器)的集成部分，也可能是一个单独模块插入控制器使用。
 如果是单独模块，可能需要升级发射模块固件到支持CRSF的版本（如OpenTX或EdgeTx）。
 无论哪种情况，都需要配置发射机以启用CRSF功能。
 
-接收机必须通过[接线](#wiring)连接到飞控的备用端口（UART）。
+接收机必须通过[接线](#接线)连接到飞控的备用端口（UART）。
 然后即可将发射机和接收机进行绑定。
 
 上述步骤的详细说明请参考：
@@ -63,7 +63,9 @@ PX4 默认不包含 CRSF 协议支持。
 | TX            | RX         |
 | RX            | TX         |
 | VCC           | VCC        |
-| GND           | GND        |## PX4配置
+| GND           | GND        |
+
+## PX4配置
 
 ### 固件配置/构建
 
@@ -175,8 +177,12 @@ Express LRS在[Hardware Selection](https://www.expresslrs.org/hardware/hardware-
 
 - [ExpressLRS Matek Diversity RX](http://www.mateksys.com/?portfolio=elrs-r24)
 
+::: info
 这在[Reptile Dragon 2组装日志](../frames_plane/reptile_dragon_2.md)中使用。  
-请参见章节 [ELRS Rx](../frames_plane/reptile_dragon_2.md#elrs-rx) 和 [Radio Setup](../frames_plane/reptile_dragon_2.md#radio-setup)。# 遥测消息
+请参见章节 [ELRS Rx](../frames_plane/reptile_dragon_2.md#elrs-rx) 和 [Radio Setup](../frames_plane/reptile_dragon_2.md#radio-setup)。
+:::
+
+# 遥测消息
 
 下表列出了支持的遥测消息及其来源（该表格摘自 [TBS Crossfire Manual: "Available sensors with OpenTX"](https://www.team-blacksheep.com/tbs-crossfire-manual.pdf))。
 
@@ -203,7 +209,9 @@ Express LRS在[Hardware Selection](https://www.expresslrs.org/hardware/hardware-
 | Roll | 飞控滚转角度 | FC |
 | Yaw | 飞控偏航角度 | FC |
 | FM | 飞行模式 | FC |
-| VSPD | 气压计 | FC |## 另请参阅
+| VSPD | 气压计 | FC |
+
+## 另请参阅
 
 - [TBS Crossfire 手册](https://www.team-blacksheep.com/tbs-crossfire-manual.pdf)
 - [ExpressLRS 文档](https://www.expresslrs.org/quick-start/getting-started/)

@@ -31,7 +31,9 @@ Turbo Timber Evolution 是 Horizon Hobby 销售的模型，最初设计用于传
 * [第一视角（FPV）](https://en.wikipedia.org/wiki/First-person_view_(radio_control)) 配备云台相机安装位  
 
 * 空中数据由机翼悬挂的皮托管提供  
-* 长续航时间（使用锂离子电池时>24分钟）## 零件清单
+* 长续航时间（使用锂离子电池时>24分钟）
+
+## 零件清单
 
 - [Turbo Timber Evolution PNP (包含电机、舵机、电调等，全部已安装完毕)](https://www.horizonhobby.com/product/turbo-timber-evolution-1.5m-pnp-includes-floats/EFL105275.html#)
 - [80A Plush-32 电调](https://hobbyking.com/en_us/turnigy-plush-32-80a-2-6s-brushless-speed-controller-w-bec-rev1-1-0.html)
@@ -48,7 +50,9 @@ Turbo Timber Evolution 是 Horizon Hobby 销售的模型，最初设计用于传
   - FPV 模块和摄像头安装座
   - 皮托管和机翼固定点支架
 - 其他硬件：M3 螺纹件（间隔环、垫圈、螺丝）、XT30 接头、热熔胶、热缩管、Molex Microfit 接插件
-- 3.6Ah 4S 锂聚合物电池 OR 4s2p 18650 锂离子电池## 机体组装
+- 3.6Ah 4S 锂聚合物电池 OR 4s2p 18650 锂离子电池
+
+## 机体组装
 
 机体开箱后基本已组装完成  
 舵机和连杆已经安装完毕，剩余主要工作是安装起落架和水平稳定器  
@@ -175,7 +179,7 @@ TTE在电池选择上具有高度灵活性。
 
 即使安装了Pixhawk 4 Mini增加了重量，飞机依然平衡良好，并保留了原始STOL特性，拥有充足动力。
 PX4能够轻松稳定飞机，通过[固定翼自动调参](../config/autotune_fw.md)完成了速率环的精细调节。
-调参结果可参考[下方链接的参数文件](#parameter-file)。
+调参结果可参考[下方链接的参数文件](#参数文件)。
 
 在测试中我发现，不使用襟翼时起飞距离可短至10英尺（3米）。
 着陆时我会使用全襟翼来降低原本平滑的机体速度。

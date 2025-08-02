@@ -183,7 +183,9 @@ Pixhawk® 6X非常适用于企业研发实验室、初创公司、学术机构�
 | UART5  | /dev/ttyS4   | TELEM2           |
 | USART6 | /dev/ttyS5   | PX4IO/RC         |
 | UART7  | /dev/ttyS6   | TELEM1           |
-| UART8  | /dev/ttyS7   | GPS2             |## 尺寸
+| UART8  | /dev/ttyS7   | GPS2             |
+
+## 尺寸
 
 [Pixhawk 6X Dimensions](https://docs.holybro.com/autopilot/pixhawk-6x/dimensions)
 

@@ -1,6 +1,8 @@
 # GIT 示例
 
-<a id="contributing_code"></a>## 为PX4贡献代码
+<a id="contributing_code"></a>
+
+## 为PX4贡献代码
 
 向PX4添加新功能需遵循定义的流程。要分享你的贡献，可以按照以下示例操作：
 
@@ -89,7 +91,9 @@
   系统会列出你的更改，此时需要添加有意义的标题（单次提交PR通常使用提交信息）和说明（<span style="color:orange">说明你做了什么及原因</span>。可参考[其他拉取请求](https://github.com/PX4/PX4-Autopilot/pulls)进行对比）
 - 完成！
   PX4负责人将审查你的贡献并决定是否集成
-  请定期查看他们是否就你的修改提出问题## 切换源代码树
+  请定期查看他们是否就你的修改提出问题
+  
+## 切换源代码树
 
 我们建议使用 PX4 的 `make` 命令在源代码分支之间切换。  
 这可以避免你记住更新子模块和清理构建产物的命令（未清理的构建文件在切换后会导致 "untracked files" 错误）。
@@ -116,9 +120,11 @@
    make submodulesclean
    ```
 
-<!-- FYI: Cleaning commands in https://github.com/PX4/PX4-Autopilot/blob/main/Makefile#L494 -->## 获取特定版本
+<!-- FYI: Cleaning commands in https://github.com/PX4/PX4-Autopilot/blob/main/Makefile#L494 -->
 
-特定 PX4 版本发布以 [发布分支](#get-a-release-branch) 的标签形式存在，命名格式为 `v<release>`。
+## 获取特定版本
+
+特定 PX4 版本发布以 [发布分支](#获取发布分支) 的标签形式存在，命名格式为 `v<release>`。
 这些版本可通过 [Github 页面查看](https://github.com/PX4/PX4-Autopilot/releases?q=release&expanded=true)（也可通过 `git tag -l` 查询所有标签）。
 
 要获取 _特定旧版本_ 的源代码（标签）：
@@ -133,7 +139,7 @@
    ::: info
 
    可复用现有仓库而非克隆新仓库。
-   此时需要清理构建环境（参见 [源代码树切换](#changing-source-trees)）：
+   此时需要清理构建环境（参见 [源代码树切换](#切换源代码树)）：
 
    ```sh
    make clean
@@ -171,7 +177,7 @@
   ::: info
 
   可以复用已存在的仓库，而无需重新克隆。  
-  在这种情况下需要清理构建环境（详见 [更改源代码树](#changing-source-trees)）：
+  在这种情况下需要清理构建环境（详见 [更改源代码树](#切换源代码树)）：
 
   ```sh
   make clean

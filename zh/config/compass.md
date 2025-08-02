@@ -21,11 +21,11 @@ _QGroundControl_ 也会提示错误 `mag sensors inconsistent`。
 
 目前提供以下几种指南针校准类型：
 
-1. [完整校准](#complete-calibration): 该校准在首次将飞控安装到机体或机体配置发生显著变化后必须执行。
+1. [完整校准](#完整校准): 该校准在首次将飞控安装到机体或机体配置发生显著变化后必须执行。
    通过估算每个轴的偏移量和缩放系数来补偿硬铁和软铁效应。
 1. [快速校准](#partial-quick-calibration): 该校准可在每次飞行准备时执行，更换载荷后，或当航向罗盘显示不准确时进行。
    该类型校准仅估算偏移量以补偿硬铁效应。
-1. [大型机体校准](#large-vehicle-calibration): 当机体过大或过重无法执行完整校准时可执行该校准。该类型校准仅估算偏移量以补偿硬铁效应。
+1. [大型机体校准](#大型机体校准): 当机体过大或过重无法执行完整校准时可执行该校准。该类型校准仅估算偏移量以补偿硬铁效应。
 
 ## 执行校准
 
@@ -98,7 +98,7 @@ _QGroundControl_ 也会提示错误 `mag sensors inconsistent`。
 注意事项：
 
 - 此方法专为无法或难以进行完整旋转的机体设计。
-  如果可以完整旋转，请改用[完整校准](#complete-calibration)。
+  如果可以完整旋转，请改用[完整校准](#完整校准)。
 - 机体不需要完全水平，因为会使用倾斜估计自动补偿。
 - 也可以通过MAVLink命令[MAV_CMD_FIXED_MAG_CAL_YAW](https://mavlink.io/en/messages/common.html#MAV_CMD_FIXED_MAG_CAL_YAW)触发此校准。
 

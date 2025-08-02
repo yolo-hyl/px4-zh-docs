@@ -161,7 +161,7 @@ Vinyl 螺丝和螺母 |  4
 
 基础机架组装已完成（如果您需要更多信息，可以参考[Pixhawk 4 Wiring Quickstart](../assembly/quick_start_pixhawk4.md)中的组件连接说明）。 
 
-如果您使用的是"基础版"套件，现在可以跳转到[Install/Configure PX4](#px4-configuration)部分查看安装/配置说明。
+如果您使用的是"基础版"套件，现在可以跳转到[Install/Configure PX4](#PX4 配置)部分查看安装/配置说明。
 
 ### FPV组装
 

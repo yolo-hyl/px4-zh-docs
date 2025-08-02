@@ -8,7 +8,7 @@
 
 ## 概述
 
-PX4 可通过任务中或地面控制站发送的 [相机命令](#mavlink-command-interface) 触发连接到飞控输出的 [相机](../camera/index.md)。  
+PX4 可通过任务中或地面控制站发送的 [相机命令](#MAVLink 命令接口) 触发连接到飞控输出的 [相机](../camera/index.md)。  
 支持的命令是 MAVLink [Camera Protocol v1](https://mavlink.io/en/services/camera.html) 定义命令的子集。
 
 每次触发相机时，MAVLink [CAMERA_TRIGGER](https://mavlink.io/en/messages/common.html#CAMERA_TRIGGER) 消息会被发布，包含当前会话的图像 _序列号_ 和对应的时间戳。  
@@ -16,11 +16,13 @@ PX4 可通过任务中或地面控制站发送的 [相机命令](#mavlink-comman
 
 相机可通过不同输出方式连接，包括 PWM 输出、GPIO 输出，以及通过 PWM 输出的 Seagull MAP2。
 
-相机还可通过连接到其热靴的 [相机捕获引脚](#camera-capture-configuration)（可选）在拍摄照片/帧的精确时刻向 PX4 发送信号。  
+相机还可通过连接到其热靴的 [相机捕获引脚](#相机捕捉配置)（可选）在拍摄照片/帧的精确时刻向 PX4 发送信号。  
 这允许更精确地将图像映射到 GPS 位置以进行地理标记，或获取正确的 IMU 样本来实现 VIO 同步等。
 
 <!-- Camera trigger driver: https://github.com/PX4/PX4-Autopilot/tree/main/src/drivers/camera_trigger -->
-<!-- Camera capture driver: https://github.com/PX4/PX4-Autopilot/tree/main/src/drivers/camera_capture -->## MAVLink 命令接口
+<!-- Camera capture driver: https://github.com/PX4/PX4-Autopilot/tree/main/src/drivers/camera_capture -->
+
+## MAVLink 命令接口
 
 PX4 支持以下 MAVLink 命令，用于与飞控连接的云台相机，在任务中以及从地面站接收时均有效：
 
@@ -72,15 +74,17 @@ PX4 支持以下 MAVLink 命令，用于与飞控连接的云台相机，在任�
 此命令接受 `param1` 至 `param4`，如 MAVLink 消息定义中所述。
 快门集成设置 (`param2`) 仅在使用 GPIO 后端时有效。
 
-<!-- https://github.com/PX4/PX4-Autopilot/blob/main/src/drivers/camera_trigger/camera_trigger.cpp#L632 -->## 触发配置
+<!-- https://github.com/PX4/PX4-Autopilot/blob/main/src/drivers/camera_trigger/camera_trigger.cpp#L632 -->
 
-相机可通过指定适当的[触发接口后端](#trigger-interface-backends)连接至飞控器进行触发，支持PWM和GPIO等不同接口。您还可以指定相机的[触发模式](#trigger-modes)。
+## 触发配置
+
+相机可通过指定适当的[触发接口后端](#触发接口后端)连接至飞控器进行触发，支持PWM和GPIO等不同接口。您还可以指定相机的[触发模式](#触发模式)。
 
 此配置可通过_QGroundControl_ [机体设置 > 相机](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/setup_view/camera.html#px4-camera-setup)部分最便捷地完成。
 
 ![触发引脚](../../assets/camera/trigger_pins.png)
 
-以下描述了不同的[触发模式](#trigger-modes)、[后端接口](#trigger-interface-backends)和[触发输出配置](#trigger-output-pin-configuration)（这些也可通过[参数](../advanced_config/parameters.md)直接设置）。
+以下描述了不同的[触发模式](#触发模式)、[后端接口](#触发接口后端)和[触发输出配置](#触发输出引脚配置)（这些也可通过[参数](../advanced_config/parameters.md)直接设置）。
 
 ::: info
 基于FMUv2的飞行控制器（例如3DR Pixhawk）默认不包含相机设置部分，因为固件中未自动包含相机模块。更多信息请参见[查找/更新参数 > 固件中未包含的参数](../advanced_config/parameters.md#parameter-not-in-firmware)。
@@ -93,7 +97,7 @@ PX4 支持以下 MAVLink 命令，用于与飞控连接的云台相机，在任�
 | 模式 | 描述                                                                                                                                                                                         |
 | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0    | 禁用相机触发。                                                                                                                                                                      |
-| 1    | 通过MAVLink命令`MAV_CMD_DO_TRIGGER_CONTROL`启用/禁用基础定时器功能。详见[命令接口](#mavlink-command-interface)。 |
+| 1    | 通过MAVLink命令`MAV_CMD_DO_TRIGGER_CONTROL`启用/禁用基础定时器功能。详见[命令接口](#MAVLink 命令接口)。 |
 | 2    | 持续启用定时器功能。                                                                                                                                                          |
 | 3    | 基于距离触发。每次设定的水平距离超过时拍摄一张照片，但两次拍摄之间的最短时间间隔由设定的触发间隔限制。      |
 | 4    | 在任务模式下执行航测时自动触发。                                                                                                                                        |
@@ -109,8 +113,8 @@ PX4 支持以下 MAVLink 命令，用于与飞控连接的云台相机，在任�
 | 编号 | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1      | 启用GPIO接口。根据`TRIG_POLARITY`参数，AUX输出会在设定的[TRIG_INTERVAL](../advanced_config/parameter_reference.md#TRIG_INTERVAL)间隔内被拉高或拉低。可直接用于触发大多数标准机器视觉相机。注意在PX4FMU系列硬件（Pixhawk、Pixracer等）上，AUX引脚的信号电平为3.3V。                                                                                                                     |
-| 2      | 启用Seagull MAP2接口。通过[Seagull MAP2](http://www.seagulluav.com/product/seagull-map2/)可连接多种支持的相机。MAP2的Pin/Channel 1（相机触发）和Pin/Channel 2（模式选择器）应连接至[相机触发引脚配置](#trigger-output-pin-configuration)中映射的低/高引脚。使用Seagull MAP2时，PX4还支持Sony Multiport相机（如QX-1）的自动电源控制和保持功能。 |
-| 3      | 启用使用遗留[MAVLink接口](#mavlink-command-interface)的MAVLink相机。当任务中发现相关消息时，消息会自动通过MAVLink `onboard`通道发出。触发相机时，默认通过`onboard`通道发出`CAMERA_TRIGGER` MAVLink消息（若未使用该通道，需要启用自定义流）。[简易MAVLink相机](../camera/mavlink_v1_camera.md)详细说明了此用例。                |
+| 2      | 启用Seagull MAP2接口。通过[Seagull MAP2](http://www.seagulluav.com/product/seagull-map2/)可连接多种支持的相机。MAP2的Pin/Channel 1（相机触发）和Pin/Channel 2（模式选择器）应连接至[相机触发引脚配置](#触发输出引脚配置)中映射的低/高引脚。使用Seagull MAP2时，PX4还支持Sony Multiport相机（如QX-1）的自动电源控制和保持功能。 |
+| 3      | 启用使用遗留[MAVLink接口](#MAVLink 命令接口)的MAVLink相机。当任务中发现相关消息时，消息会自动通过MAVLink `onboard`通道发出。触发相机时，默认通过`onboard`通道发出`CAMERA_TRIGGER` MAVLink消息（若未使用该通道，需要启用自定义流）。[简易MAVLink相机](../camera/mavlink_v1_camera.md)详细说明了此用例。                |
 | 4      | 启用通用PWM接口。允许使用[infrared triggers](https://hobbyking.com/en_us/universal-remote-control-infrared-shutter-ir-rc-1g.html)或舵机触发相机。                                                                                                                                                                                                                                                                                                             |
 
 ### 触发输出引脚配置

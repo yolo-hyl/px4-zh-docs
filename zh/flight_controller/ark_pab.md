@@ -18,7 +18,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 ## 功能特性
 
 - [Pixhawk 自主飞行器总线 (PAB) 外形规格](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-010%20Pixhawk%20Autopilot%20Bus%20Standard.pdf?_ga=2.20605755.2081055420.1671562222-391294592.1671562222)
-- 美国制造## 连接器
+- 美国制造
+
+## 连接器
 
 - PAB 板对板接口
   - 100针 Hirose DF40
@@ -54,22 +56,30 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 - ADIO 端口
   - 8针 JST-GH
 - 调试端口
-  - 10针 JST-SH## 尺寸
+  - 10针 JST-SH
+  
+## 尺寸
 
 - 未安装飞控模块
   - 74.0mm x 43.5mm x 12.0mm
-  - 22g## 电源
+  - 22g
+  
+## 电源
 
 - `POWER1`、`POWER2`、`USB C` 和 `USB JST-GH` 接口的 5V 输入
   - 输入优先级顺序为：POWER1 > POWER2 > USB
   - `USB C` 和 `USB JST-GH` 并联
   - 5.8V 过压保护
   - 3.9V 欠压保护
-- `VDD_5V_HIPOWER` 和 `VDD_5V_PERIPH` 每个均可在所有连接器上提供总计 1.5A 的电流## LED指示灯
+- `VDD_5V_HIPOWER` 和 `VDD_5V_PERIPH` 每个均可在所有连接器上提供总计 1.5A 的电流
+
+## LED指示灯
 
 - ARK PAB板载有两个LED指示灯  
   - `红色` 为以太网电源指示灯  
-  - `绿色` 为以太网活动指示灯## 引脚分配
+  - `绿色` 为以太网活动指示灯
+  
+## 引脚分配
 
 ![ARKPAB Pinout](../../assets/flight_controller/arkpab/arkpab_pinout.jpg)
 
@@ -82,7 +92,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 3 (黑)  | I2C1_SCL   | +3.3V  |
 | 4 (黑)  | I2C1_SDA   | +3.3V  |
 | 5 (黑)  | `GND`      | GND    |
-| 6 (黑)  | `GND`      | GND    |## 电源2
+| 6 (黑)  | `GND`      | GND    |
+
+## 电源2
 
 | 引脚     | 信号    | 电压  |
 | ------- | --------- | ----- |
@@ -91,7 +103,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 3（黑色） | I2C2_SCL  | +3.3V |
 | 4（黑色） | I2C2_SDA  | +3.3V |
 | 5（黑色） | `GND`     | 地   |
-| 6（黑色） | `GND`     | 地   |## PWM
+| 6（黑色） | `GND`     | 地   |
+
+## PWM
 
 | 引脚      | 信号                    | 电压   |
 | -------- | ------------------------- | ----- |
@@ -104,7 +118,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 7（黑）  | FMU_CH6                   | +3.3V |
 | 8（黑）  | FMU_CH7                   | +3.3V |
 | 9（黑）  | FMU_CH8                   | +3.3V |
-| 10（黑） | `GND`                     | GND   |## GPS1
+| 10（黑） | `GND`                     | GND   |
+
+## GPS1
 
 | 引脚     | 信号                 | 电压   |
 | -------- | ---------------------- | ----- |
@@ -117,7 +133,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 7 (blk)  | nSAFETY_SWITCH_LED_OUT | +3.3V |
 | 8 (blk)  | `3V3_FMU`              | +3.3V |
 | 9 (blk)  | BUZZER                 | +5.0V |
-| 10 (blk) | `GND`                  | GND   |## GPS2
+| 10 (blk) | `GND`                  | GND   |
+
+## GPS2
 
 | 引脚     | 信号           | 电压  |
 | ------- | ---------------- | ----- |
@@ -126,7 +144,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 3（黑色） | UART8_RX_GPS2    | +3.3V |
 | 4（黑色） | I2C2_SCL         | +3.3V |
 | 5（黑色） | I2C2_SDA         | +3.3V |
-| 6（黑色） | `GND`            | 地    |## TELEM1
+| 6（黑色） | `GND`            | 地    |
+
+## TELEM1
 
 | 引脚     | 信号           | 电压  |
 | ------- | ---------------- | ----- |
@@ -135,7 +155,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 3 (黑色) | UART7_RX         | +3.3V |
 | 4 (黑色) | UART7_CTS        | +3.3V |
 | 5 (黑色) | UART7_RTS        | +3.3V |
-| 6 (黑色) | `GND`            | GND   |## TELEM2
+| 6 (黑色) | `GND`            | GND   |
+
+## TELEM2
 
 | 引脚     | 信号              | 电压    |
 | ------- | ----------------- | ------- |
@@ -144,7 +166,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 3 (黑色) | UART5_RX          | +3.3V   |
 | 4 (黑色) | UART5_CTS         | +3.3V   |
 | 5 (黑色) | UART5_RTS         | +3.3V   |
-| 6 (黑色) | `GND`             | GND     |## TELEM3
+| 6 (黑色) | `GND`             | GND     |
+
+## TELEM3
 
 | 引脚     | 信号           | 电压   |
 | ------- | ---------------- | ----- |
@@ -153,7 +177,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 3 (黑) | USART2_RX        | +3.3V |
 | 4 (黑) | USART2_CTS       | +3.3V |
 | 5 (黑) | USART2_RTS       | +3.3V |
-| 6 (黑) | `GND`            | GND   |## UART4/I2C3
+| 6 (黑) | `GND`            | GND   |
+
+## UART4/I2C3
 
 | 引脚     | 信号            | 电压   |
 | ------- | --------------- | ----- |
@@ -162,28 +188,36 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 3 (blk) | UART4_RX        | +3.3V |
 | 4 (blk) | I2C3_SCL        | +3.3V |
 | 5 (blk) | I2C3_SDA        | +3.3V |
-| 6 (blk) | `GND`           | GND   |## I2C3
+| 6 (blk) | `GND`           | GND   |
+
+## I2C3
 
 | 引脚     | 信号          | 电压   |
 | ------- | --------------- | ----- |
 | 1 (红色) | `VDD_5V_PERIPH` | +5.0V |
 | 2 (黑)  | I2C3_SCL        | +3.3V |
 | 3 (黑)  | I2C3_SDA        | +3.3V |
-| 4 (黑)  | `GND`           | GND   |## CAN1
+| 4 (黑)  | `GND`           | GND   |
+
+## CAN1
 
 | 引脚     | 信号           | 电压   |
 | ------- | ---------------- | ----- |
 | 1 (red) | `VDD_5V_HIPOWER` | +5.0V |
 | 2 (blk) | CAN1_H           | +3.3V |
 | 3 (blk) | CAN1_L           | +3.3V |
-| 4 (blk) | `GND`            | GND   |## CAN2
+| 4 (blk) | `GND`            | GND   |
+
+## CAN2
 
 | 引脚     | 信号          | 电压  |
 | ------- | --------------- | ----- |
 | 1 (red) | `VDD_5V_PERIPH` | +5.0V |
 | 2 (blk) | CAN2_H          | +3.3V |
 | 3 (blk) | CAN2_L          | +3.3V |
-| 4 (blk) | `GND`           | GND   |## USB
+| 4 (blk) | `GND`           | GND   |
+
+## USB
 
 所有信号与USB C连接器并行
 引脚 | 信号 | 电压
@@ -191,14 +225,18 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 1 (red) | `VBUS_IN` | +5.0V
 2 (blk) | USB_N | +3.3V
 3 (blk) | USB_P | +3.3V
-4 (blk) | `GND` | GND## ETH
+4 (blk) | `GND` | GND
+
+## ETH
 
 | 引脚     | 信号       | 电压                 |
 | ------- | ---------- | -------------------- |
 | 1 (red) | ETH_RD_N  | +50.0V Tolerant     |
 | 2 (blk) | ETH_RD_P  | +50.0V Tolerant     |
 | 3 (blk) | ETH_TD_N  | +50.0V Tolerant     |
-| 4 (blk) | ETH_TD_P  | +50.0V Tolerant     |## ADIO
+| 4 (blk) | ETH_TD_P  | +50.0V Tolerant     |
+
+## ADIO
 
 | 引脚     | 信号          | 电压  |
 | ------- | --------------- | ----- |
@@ -209,7 +247,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 5 (黑色) | nARMED          | +3.3V |
 | 6 (黑色) | ADC1_3V3        | +3.3V |
 | 7 (黑色) | ADC1_6V6        | +3.3V |
-| 8 (黑色) | `GND`           | GND   |## RC/SBUS
+| 8 (黑色) | `GND`           | GND   |
+
+## RC/SBUS
 
 | 引脚     | 信号             | 电压   |
 | ------- | ------------------ | ----- |
@@ -217,19 +257,25 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 2 (黑色) | USART6_RX_SBUS_IN  | +3.3V |
 | 3 (黑色) | USART6_TX          | +3.3V |
 | 4 (黑色) | `VDD_3V3_SPEKTRUM` | +3.3V |
-| 5 (黑色) | `GND`              | GND   |## 脉冲调制（PPM）
+| 5 (黑色) | `GND`              | GND   |
+
+## 脉冲调制（PPM）
 
 | Pin     | 信号                  | 电压   |
 | ------- | ----------------------- | ----- |
 | 1 (红色) | `VDD_5V_PPM_RC`         | +5.0V |
 | 2 (黑色) | DSM_INPUT/FMU_PPM_INPUT | +3.3V |
-| 3 (黑色) | `GND`                   | GND   |## DSM
+| 3 (黑色) | `GND`                   | GND   |
+
+## DSM
 
 | 引脚     | 信号                  | 电压  |
 | ------- | ----------------------- | ----- |
 | 1 (红色) | `VDD_3V3_SPEKTRUM`      | +3.3V |
 | 2 (黑色) | `GND`                   | GND   |
-| 3 (黑色) | DSM_INPUT/FMU_PPM_INPUT | +3.3V |## SPI6
+| 3 (黑色) | DSM_INPUT/FMU_PPM_INPUT | +3.3V |
+
+## SPI6
 
 | 引脚      | 信号            | 电压    |
 | -------- | --------------- | ------- |
@@ -243,7 +289,9 @@ PAB外形设计使ARK PAB载板可以与任何[PAB兼容飞控](../flight_contro
 | 8 (黑色)  | SPI6_DRDY1      | +3.3V   |
 | 9 (黑色)  | SPI6_DRDY2      | +3.3V   |
 | 10 (黑色) | SPI6_nRESET     | +3.3V   |
-| 11 (黑色) | `GND`           | GND     |## 调试端口
+| 11 (黑色) | `GND`           | GND     |
+
+## 调试端口
 
 [PX4 系统控制台](../debug/system_console.md) 和 [SWD 接口](../debug/swd_debug.md) 运行在 **FMU 调试** 端口上。
 

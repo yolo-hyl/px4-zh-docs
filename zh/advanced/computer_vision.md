@@ -4,8 +4,8 @@
 
 PX4 通过运行在 [Companion Computers](../companion_computer/index.md) 上的计算机视觉系统支持以下功能：
 
-- [光流](#optical-flow) 提供2D速度估计（使用向下摄像头和向下距离传感器）。
-- [运动捕捉](#motion-capture) 通过外部视觉系统提供3D位姿估计，主要应用于室内导航。
+- [光流](#光流) 提供2D速度估计（使用向下摄像头和向下距离传感器）。
+- [运动捕捉](#运动捕捉) 通过外部视觉系统提供3D位姿估计，主要应用于室内导航。
 - [视觉惯性里程计](#visual-inertial-odometry-vio) (VIO) 通过机载视觉系统和IMU提供3D位姿和速度估计，用于GNSS定位信息缺失或不可靠时的导航。
 - [碰撞预防](../computer_vision/collision_prevention.md) 用于在飞行器即将碰撞障碍物前主动停止（主要在手动模式飞行时）。
 
@@ -34,7 +34,7 @@ MoCap常用于GPS缺失场景（例如室内导航），提供相对于本地坐
 VIO通过[视觉里程计](https://en.wikipedia.org/wiki/Visual_odometry)从视觉信息中估计位姿，结合IMU惯性测量数据（用于修正快速运动导致的图像采集误差）。
 
 ::: info
-VIO与[MoCap](#motion-capture)的主要区别在于：VIO的摄像头/IMU安装在机体上，并且提供速度信息。
+VIO与[MoCap](#运动捕捉)的主要区别在于：VIO的摄像头/IMU安装在机体上，并且提供速度信息。
 :::
 
 关于在PX4上配置VIO的信息请参考：

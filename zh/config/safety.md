@@ -2,10 +2,10 @@
 
 PX4 提供了多种安全功能，用于在出现问题时保护和恢复机体：
 
-- _故障安全_ 允许您定义安全飞行的区域和条件，并指定在触发故障安全时执行的[操作](#failsafe-actions)（例如降落、保持位置或返回指定点）。  
-  最重要的故障安全设置在 _QGroundControl_ 的 [安全设置](#qgroundcontrol-safety-setup) 页面中配置。  
+- _故障安全_ 允许您定义安全飞行的区域和条件，并指定在触发故障安全时执行的[操作](#故障安全动作)（例如降落、保持位置或返回指定点）。  
+  最重要的故障安全设置在 _QGroundControl_ 的 [安全设置](#QGroundControl 安全设置) 页面中配置。  
   其他设置必须通过 [参数](../advanced_config/parameters.md) 进行配置。
-- 遥控器上的 [安全开关](#emergency-switches) 可用于立即停止电机或在出现问题时将机体返航。
+- 遥控器上的 [安全开关](#紧急开关) 可用于立即停止电机或在出现问题时将机体返航。
 
 ## QGroundControl 安全设置
 
@@ -28,7 +28,7 @@ _QGroundControl_ 安全设置页面通过点击 _QGroundControl_ 图标、**机�
 | <a id="act_none"></a>无/禁用                           | 无操作。故障安全机制将被忽略。                                                                                                                                                                                                                                                                                               |
 | <a id="act_warn"></a>警告                             | 将发送警告信息（例如发送至_QGroundControl_）。                                                                                                                                                                                                                                                                             |
 | <a id="act_hold"></a>保持模式                         | 机体将进入[保持模式（多旋翼）](../flight_modes_mc/hold.md)或[保持模式（固定翼）](../flight_modes_fw/hold.md)并悬停或盘旋。VTOL机体将根据当前模式（多旋翼/固定翼）保持状态。                                                                                                                |
-| <a id="act_return"></a>[返回模式][return]           | 机体将进入_返回模式_。返回行为可通过[返回家中设置](#return-mode-settings)（下方）进行配置。                                                                                                                                                                                                        |
+| <a id="act_return"></a>[返回模式][return]           | 机体将进入_返回模式_。返回行为可通过[返回家中设置](#返回模式设置)（下方）进行配置。                                                                                                                                                                                                        |
 | <a id="act_land"></a>降落模式                         | 机体将进入[降落模式（多旋翼）](../flight_modes_mc/land.md)或[降落模式（固定翼）](../flight_modes_fw/land.md)并降落。VTOL将首先转换为多旋翼模式。                                                                                                                                                                |
 | <a id="act_disarm"></a>解除武装                     | 立即停止电机运转。                                                                                                                                                                                                                                                                                                          |
 | <a id="act_term"></a>[飞行终止][flight_term]         | 关闭所有控制器并将所有PWM输出设置为故障安全值（例如[PWM_MAIN_FAILn][pwm_main_failn]，[PWM_AUX_FAILn][pwm_main_failn]）。故障安全输出可用于释放降落伞、起落架或其他操作。对于固定翼机体，这可能允许滑翔到安全区域。 |
@@ -49,7 +49,7 @@ _QGroundControl_ 安全设置页面通过点击 _QGroundControl_ 图标、**机�
 
 <!-- 建议用摘要和链接替换此部分 - 返回模式较为复杂 -->
 
-_Return_ 是一种常见的[故障安全动作](#failsafe-actions)，用于激活[返回模式](../flight_modes/return.md)使机体返回家点。
+_Return_ 是一种常见的[故障安全动作](#故障安全动作)，用于激活[返回模式](../flight_modes/return.md)使机体返回家点。
 每种机体的默认设置通常适用，但固定翼通常需要定义一个任务降落程序。
 
 ::: tip
@@ -62,7 +62,7 @@ QGC允许用户设置返回模式和降落行为的某些方面，例如返回�
 
 ### 降落模式设置
 
-_在当前位置降落_ 是一种常见的[故障安全动作](#failsafe-actions)（尤其适用于多旋翼），用于激活[降落模式](../flight_modes_mc/land.md)。
+_在当前位置降落_ 是一种常见的[故障安全动作](#故障安全动作)（尤其适用于多旋翼），用于激活[降落模式](../flight_modes_mc/land.md)。
 每种机体的默认设置通常适用。
 
 ::: tip
@@ -105,7 +105,9 @@ QGC允许用户设置降落行为的某些方面，例如降落后的解除武�
 | 设置                                                              | 参数                                                                      | 描述                                                                                                                     |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="COM_FLTT_LOW_ACT"></a>安全返航低飞行时间动作 | [COM_FLTT_LOW_ACT](../advanced_config/parameter_reference.md#COM_FLTT_LOW_ACT) | 当返航模式仅能勉强达到安全区域时的响应动作。`0`: 无响应，`1`: 警告，`3`: 返航模式（默认）。 |
-| <a id="COM_FLT_TIME_MAX"></a>最大飞行时间断电保护层级     | [COM_FLT_TIME_MAX](../advanced_config/parameter_reference.md#COM_FLT_TIME_MAX) | 触发返航模式前允许的最大飞行时间（秒）。`-1`: 禁用（默认）。                           |## 手动控制丢失的紧急保护
+| <a id="COM_FLT_TIME_MAX"></a>最大飞行时间断电保护层级     | [COM_FLT_TIME_MAX](../advanced_config/parameter_reference.md#COM_FLT_TIME_MAX) | 触发返航模式前允许的最大飞行时间（秒）。`-1`: 禁用（默认）。                           |
+
+## 手动控制丢失的紧急保护
 
 当与[遥控器](../getting_started/rc_transmitter_receiver.md)或[操纵杆](../config/joystick.md)的连接丢失且没有备用控制源时，可能会触发手动控制丢失的紧急保护机制。  
 若使用[遥控器](../getting_started/rc_transmitter_receiver.md)，该机制在[遥控器链路丢失](../getting_started/rc_transmitter_receiver.md#set-signal-loss-behaviour)时触发。  
@@ -117,7 +119,7 @@ PX4和接收机可能还需要配置以_检测遥控器丢失_：[无线电设�
 
 ![Safety - RC Loss (QGC)](../../assets/qgc/setup/safety/safety_rc_loss.png)
 
-QGroundControl安全界面允许设置[紧急保护动作](#failsafe-actions)和[遥控器丢失超时](#COM_RC_LOSS_T)。  
+QGroundControl安全界面允许设置[紧急保护动作](#故障安全动作)和[遥控器丢失超时](#COM_RC_LOSS_T)。  
 希望在特定自动模式（任务、悬停、外部控制）中禁用遥控器丢失保护的用户，可通过参数[COM_RCL_EXCEPT](#COM_RCL_EXCEPT)实现。
 
 附加（及底层）参数设置如下：
@@ -127,7 +129,9 @@ QGroundControl安全界面允许设置[紧急保护动作](#failsafe-actions)和
 | <a id="COM_RC_LOSS_T"></a>[COM_RC_LOSS_T](../advanced_config/parameter_reference.md#COM_RC_LOSS_T)    | 手动控制丢失超时           | 从选定的手动控制源接收到最后一个设定点后的时间，超过该时间则视为手动控制丢失。此值需保持较短，因为机体将持续使用旧的手动控制设定点飞行，直到超时触发。                                                                                                                                              |
 | <a id="COM_FAIL_ACT_T"></a>[COM_FAIL_ACT_T](../advanced_config/parameter_reference.md#COM_FAIL_ACT_T) | 紧急保护反应延迟           | 紧急保护条件触发（`COM_RC_LOSS_T`）与紧急保护动作（RTL、降落、悬停）之间的延迟时间（秒）。在此状态下，机体将在悬停模式下等待手动控制源重新连接。对于长距离飞行，此值可设置较长以避免间歇性连接丢失立即触发紧急保护。该值可设为零以立即触发紧急保护。 |
 | <a id="NAV_RCL_ACT"></a>[NAV_RCL_ACT](../advanced_config/parameter_reference.md#NAV_RCL_ACT)          | 紧急保护动作               | 禁用、盘旋、返航、降落、解除武装、终止。                                                                                                                                                                                                                                                                                                                                                       |
-| <a id="COM_RCL_EXCEPT"></a>[COM_RCL_EXCEPT](../advanced_config/parameter_reference.md#COM_RCL_EXCEPT) | 遥控器丢失例外情况          | 设置忽略手动控制丢失的模式：任务、悬停、外部控制。                                                                                                                                                                                                                                                                                                                          |## 数据链路丢失故障保护
+| <a id="COM_RCL_EXCEPT"></a>[COM_RCL_EXCEPT](../advanced_config/parameter_reference.md#COM_RCL_EXCEPT) | 遥控器丢失例外情况          | 设置忽略手动控制丢失的模式：任务、悬停、外部控制。                                                                                                                                                                                                                                                                                                                          |
+
+## 数据链路丢失故障保护
 
 当遥测链路（与地面站的连接）丢失时，数据链路丢失故障保护将被触发。
 
@@ -144,7 +148,9 @@ QGroundControl安全界面允许设置[紧急保护动作](#failsafe-actions)和
 
 | 设置                                                     | 参数                                                                  | 描述                                          |
 | ----------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------- |
-| <a id="COM_DLL_EXCEPT"></a>DLL故障保护的模式例外 | [COM_DLL_EXCEPT](../advanced_config/parameter_reference.md#COM_DLL_EXCEPT) | 设置数据链路丢失时不会触发故障保护的模式。 |## 地理围栏安全机制
+| <a id="COM_DLL_EXCEPT"></a>DLL故障保护的模式例外 | [COM_DLL_EXCEPT](../advanced_config/parameter_reference.md#COM_DLL_EXCEPT) | 设置数据链路丢失时不会触发故障保护的模式。 |
+
+## 地理围栏安全机制
 
 当无人机突破了“虚拟”边界时，将触发 _地理围栏安全机制_。  
 在最简单的形式中，边界被设置为以起降点为中心的圆柱体。如果机体移动超出半径或高于指定的 _安全机制动作_ 时，将触发响应动作。
@@ -174,7 +180,9 @@ PX4 支持更复杂的地理围栏几何形状，包括多个任意多边形和�
 | ------------------------------------------------------------------ | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="GF_SOURCE"></a>地理围栏来源                              | [GF_SOURCE](../advanced_config/parameter_reference.md#GF_SOURCE)             | 设置位置来源是估计的全局位置还是直接来自GPS设备。                                                             |
 | <a id="GF_PREDICT"></a>预触发地理围栏                             | [GF_PREDICT](../advanced_config/parameter_reference.md#GF_PREDICT)           | （实验性）如果机体当前运动趋势预测会触发突破，则提前触发地理围栏（而非在突破后触发）。 |
-| <a id="CBRK_FLIGHTTERM"></a>飞行终止电路保护器                  | [CBRK_FLIGHTTERM](../advanced_config/parameter_reference.md#CBRK_FLIGHTTERM) | 启用/禁用飞行终止动作（默认禁用）。                                                                                   |## 位置（GNSS）丢失故障安全
+| <a id="CBRK_FLIGHTTERM"></a>飞行终止电路保护器                  | [CBRK_FLIGHTTERM](../advanced_config/parameter_reference.md#CBRK_FLIGHTTERM) | 启用/禁用飞行终止动作（默认禁用）。                                                                                   |
+
+## 位置（GNSS）丢失故障安全
 
 当机体处于需要有效位置估算的模式下时，若PX4的位置估算质量低于可接受水平（可能由GNSS信号丢失引起），则会触发**位置丢失故障安全**机制。下文将分别介绍触发条件和控制器的故障安全响应动作。
 
@@ -214,7 +222,9 @@ PX4中触发位置故障安全机制主要有两种方式：
 | 参数                                                                                   | 描述                                                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | <a id="FW_GPSF_LT"></a>[FW_GPSF_LT](../advanced_config/parameter_reference.md#FW_GPSF_LT) | 盘旋时间（等待GNSS恢复后进入降落或飞行终止前的持续时间）。设为0则禁用。 |
-| <a id="FW_GPSF_R"></a>[FW_GPSF_R](../advanced_config/parameter_reference.md#FW_GPSF_R)    | 盘旋时的固定滚转/倾斜角。                                                                           |## 外部控制丢失故障安全
+| <a id="FW_GPSF_R"></a>[FW_GPSF_R](../advanced_config/parameter_reference.md#FW_GPSF_R)    | 盘旋时的固定滚转/倾斜角。                                                                           |
+
+## 外部控制丢失故障安全
 
 当在[外部控制](../flight_modes/offboard.md)模式下丢失外部连接时，将触发_Offboard Loss Failsafe_。  
 根据是否有可用的遥控器（RC）连接，可以指定不同的故障安全行为。
@@ -224,7 +234,9 @@ PX4中触发位置故障安全机制主要有两种方式：
 | 参数名称 | 描述 |
 | --- | --- |
 | [COM_OF_LOSS_T](../advanced_config/parameter_reference.md#COM_OF_LOSS_T) | 在外部连接丢失后，触发故障安全前的延迟时间。 |
-| [COM_OBL_RC_ACT](../advanced_config/parameter_reference.md#COM_OBL_RC_ACT) | 当有RC连接时的故障安全动作：位置模式、高度模式、手动模式、返航模式、降落模式、悬停模式。 |## 交通避让保险机制
+| [COM_OBL_RC_ACT](../advanced_config/parameter_reference.md#COM_OBL_RC_ACT) | 当有RC连接时的故障安全动作：位置模式、高度模式、手动模式、返航模式、降落模式、悬停模式。 |
+
+## 交通避让保险机制
 
 交通避让保险机制允许PX4在任务期间响应应答器数据（例如来自[ADSB应答器](../advanced_features/traffic_avoidance_adsb.md)）。
 
@@ -232,7 +244,9 @@ PX4中触发位置故障安全机制主要有两种方式：
 
 | 参数                                                                    | 描述                                                      |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| [NAV_TRAFF_AVOID](../advanced_config/parameter_reference.md#NAV_TRAFF_AVOID) | 设置保险机制动作：禁用、警告、返航模式、降落模式。 |## Quad-chute 应急措施
+| [NAV_TRAFF_AVOID](../advanced_config/parameter_reference.md#NAV_TRAFF_AVOID) | 设置保险机制动作：禁用、警告、返航模式、降落模式。 |
+
+## Quad-chute 应急措施
 
 当 VTOL 机体无法再以固定翼模式飞行时（例如推力电机、空速传感器或控制面故障），将触发此应急措施。触发后，机体将立即切换为多旋翼模式并执行 [COM_QC_ACT](#COM_QC_ACT) 参数定义的操作。
 
@@ -250,7 +264,8 @@ Quad-chute 也可通过发送 MAVLINK [MAV_CMD_DO_VTOL_TRANSITION](https://mavli
 | <a id="VT_QC_T_ALT_LOSS"></a>[VT_QC_T_ALT_LOSS](../advanced_config/parameter_reference.md#VT_QC_T_ALT_LOSS) | VTOL 转为固定翼飞行时 quad-chute 触发的高度损失阈值。若机体在完成转换前下降超过初始高度此阈值，将触发 quad-chute。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | <a id="VT_FW_MIN_ALT"></a>[VT_FW_MIN_ALT](../advanced_config/parameter_reference.md#VT_FW_MIN_ALT)      | 固定翼飞行的最低家点高度。当固定翼飞行中高度低于此值时将触发 quad-chute。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | <a id="VT_FW_QC_R"></a>[VT_FW_QC_R](../advanced_config/parameter_reference.md#VT_FW_QC_R)               | 固定翼模式下触发 quad-chute 的绝对滚转阈值。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| <a id="VT_FW_QC_P"></a>[VT_FW_QC_P](../advanced_config/parameter_reference.md#VT_FW_QC_P)               | 固定翼模式下触发 quad-chute 的绝对俯仰阈值。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |## 强风故障安全
+| <a id="VT_FW_QC_P"></a>[VT_FW_QC_P](../advanced_config/parameter_reference.md#VT_FW_QC_P)               | 固定翼模式下触发 quad-chute 的绝对俯仰阈值。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+## 强风故障安全
 
 当风速超过警告和最大风速阈值时，强风故障安全机制可触发警告和/或其他模式切换。相关参数如下表所示。
 
@@ -258,7 +273,9 @@ Quad-chute 也可通过发送 MAVLINK [MAV_CMD_DO_VTOL_TRANSITION](https://mavli
 | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="COM_WIND_MAX"></a>[COM_WIND_MAX](../advanced_config/parameter_reference.md#COM_WIND_MAX)       | 触发故障安全动作的风速阈值（以米每秒为单位），见[COM_WIND_MAX_ACT](#COM_WIND_MAX_ACT)。                                                                                                                                                 |
 | <a id="COM_WIND_MAX_ACT"></a>[COM_WIND_MAX_ACT](../advanced_config/parameter_reference.md#COM_WIND_MAX_ACT) | 强风故障安全动作（由[COM_WIND_MAX](#COM_WIND_MAX)触发）。可设置为：`0`：无（默认），`1`：[警告](#act_warn)，`2`：[悬停](#act_hold)，`3`：[返航](#act_return)，`4`：[终止](#act_term)，`5`：[降落](#act_land)。 |
-| <a id="COM_WIND_WARN"></a>[COM_WIND_WARN](../advanced_config/parameter_reference.md#COM_WIND_WARN)    | 触发周期性故障安全警告的风速阈值。                                                                                                                                                                                                           |## 故障检测器
+| <a id="COM_WIND_WARN"></a>[COM_WIND_WARN](../advanced_config/parameter_reference.md#COM_WIND_WARN)    | 触发周期性故障安全警告的风速阈值。                                                                                                                                                                                                           |
+
+## 故障检测器
 
 故障检测器允许机体在意外翻转时，或被外部故障检测系统通知时采取保护性措施。
 
@@ -268,7 +285,7 @@ Quad-chute 也可通过发送 MAVLINK [MAV_CMD_DO_VTOL_TRANSITION](https://mavli
 飞行过程中的故障检测默认是禁用的（通过设置参数 [CBRK_FLIGHTTERM=0](#CBRK_FLIGHTTERM) 可启用）。
 :::
 
-在**起飞**阶段，如果机体翻转，故障检测器的[姿态触发器](#attitude-trigger)将触发[解除武装动作](#act_disarm)（解除武装会关闭电机，但与飞行终止不同，不会启动降落伞或执行其他故障动作）。  
+在**起飞**阶段，如果机体翻转，故障检测器的[姿态触发器](#姿态触发器)将触发[解除武装动作](#act_disarm)（解除武装会关闭电机，但与飞行终止不同，不会启动降落伞或执行其他故障动作）。  
 请注意，此检查在起飞时始终启用，与 `CBRK_FLIGHTTERM` 参数无关。
 
 故障检测器在所有机体类型和模式中均处于活动状态，除非机体预期会进行翻转（例如 [Acro mode (MC)](../flight_modes_mc/altitude.md)、[Acro mode (FW)](../flight_modes_fw/altitude.md) 和 [Manual (FW)](../flight_modes_fw/manual.md)）。
@@ -289,7 +306,7 @@ Quad-chute 也可通过发送 MAVLINK [MAV_CMD_DO_VTOL_TRANSITION](https://mavli
 
 ### 外部自动触发系统 (ATS)
 
-如果[启用](#CBRK_FLIGHTTERM)，[故障检测器](#failure-detector)还可以由外部 ATS 系统触发。  
+如果[启用](#CBRK_FLIGHTTERM)，[故障检测器](#故障检测器)还可以由外部 ATS 系统触发。  
 外部触发系统必须连接到飞行控制器的 AUX5 端口（或在没有 AUX 端口的板上使用 MAIN5 端口），并通过以下参数进行配置。
 
 ::: info
@@ -300,7 +317,9 @@ Quad-chute 也可通过发送 MAVLINK [MAV_CMD_DO_VTOL_TRANSITION](https://mavli
 | 参数                                                                                                 | 描述                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="FD_EXT_ATS_EN"></a>[FD_EXT_ATS_EN](../advanced_config/parameter_reference.md#FD_EXT_ATS_EN)    | 在 AUX5 或 MAIN5（取决于板型）上启用 PWM 输入以通过外部自动触发系统（ATS）触发故障保护。默认：禁用。                                           |
-| <a id="FD_EXT_ATS_TRIG"></a>[FD_EXT_ATS_TRIG](../advanced_config/parameter_reference.md#FD_EXT_ATS_TRIG) | 从外部自动触发系统触发故障保护的 PWM 阈值。默认：1900 毫秒。                                                                                   |## 任务可行性检查
+| <a id="FD_EXT_ATS_TRIG"></a>[FD_EXT_ATS_TRIG](../advanced_config/parameter_reference.md#FD_EXT_ATS_TRIG) | 从外部自动触发系统触发故障保护的 PWM 阈值。默认：1900 毫秒。                                                                                   |
+
+## 任务可行性检查
 
 在任务开始前会执行多项检查以确保任务是可执行的。
 例如，检查确保第一个航点不会过远，并且任务飞行路径不会与任何地理围栏冲突。
@@ -309,7 +328,7 @@ Quad-chute 也可通过发送 MAVLINK [MAV_CMD_DO_VTOL_TRANSITION](https://mavli
 
 ## 紧急开关
 
-远程控制开关可被配置（作为_QGroundControl_ [飞行模式设置](../config/flight_mode.md)的一部分），以便在出现问题或紧急情况下快速采取纠正措施；例如，停止所有电机，或激活[返回模式](#return-switch)。
+远程控制开关可被配置（作为_QGroundControl_ [飞行模式设置](../config/flight_mode.md)的一部分），以便在出现问题或紧急情况下快速采取纠正措施；例如，停止所有电机，或激活[返回模式](#返回开关)。
 
 本节列出可用的紧急开关。
 
@@ -324,7 +343,7 @@ Kill开关会立即停止所有电机输出——如果正在飞行，机体将�
 | <a id="COM_KILL_DISARM"></a>[COM_KILL_DISARM](../advanced_config/parameter_reference.md#COM_KILL_DISARM) | 在触发Kill开关后断开的超时值。默认值：`5`秒。                              |
 
 ::: info
-还有一个[Kill手势](#kill-gesture)，其无法被复位。
+还有一个[Kill手势](#紧急停止手势)，其无法被复位。
 :::
 
 ### 上锁/断开开关
@@ -347,7 +366,7 @@ Kill开关会立即停止所有电机输出——如果正在飞行，机体将�
 这包括_位置模式_和自主模式（例如_任务_、_降落_等）。
 
 ::: info
-[自动断开超时](#auto-disarming-timeouts)（例如通过[COM_DISARM_LAND](#COM_DISARM_LAND)）与上锁/断开开关独立——即即使开关处于上锁状态，超时机制仍会生效。
+[自动断开超时](#自动断电超时设置)（例如通过[COM_DISARM_LAND](#COM_DISARM_LAND)）与上锁/断开开关独立——即即使开关处于上锁状态，超时机制仍会生效。
 :::
 
 <!--
@@ -363,11 +382,13 @@ Kill开关会立即停止所有电机输出——如果正在飞行，机体将�
 
 紧急停止手势会立即停止所有电机输出——如果正在飞行，机体将开始下坠！
 
-该操作只能通过重启才能恢复（这与[Kill Switch](#kill-switch)不同，后者可以在[COM_KILL_DISARM](#COM_KILL_DISARM)定义的时限内恢复操作）。
+该操作只能通过重启才能恢复（这与[Kill Switch](#Kill开关)不同，后者可以在[COM_KILL_DISARM](#COM_KILL_DISARM)定义的时限内恢复操作）。
 
 | 参数                                                                                                    | 描述                                                                                                  |
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| <a id="MAN_KILL_GEST_T"></a>[MAN_KILL_GEST_T](../advanced_config/parameter_reference.md#MAN_KILL_GEST_T) | 摇杆保持在手势位置时触发电机停止的持续时间。默认值：`-1`秒（禁用）。 |## 上电/断电设置
+| <a id="MAN_KILL_GEST_T"></a>[MAN_KILL_GEST_T](../advanced_config/parameter_reference.md#MAN_KILL_GEST_T) | 摇杆保持在手势位置时触发电机停止的持续时间。默认值：`-1`秒（禁用）。 |
+
+## 上电/断电设置
 
 [指挥模块](../advanced_config/parameter_reference.md#commander)包含多个以`COM_ARM`为前缀的参数，用于配置机体是否可以上电以及在何种条件下上电（注意部分以`COM_ARM`为前缀的参数用于其他系统的上电）。以`COM_DISARM_`为前缀的参数则会影响断电行为。
 

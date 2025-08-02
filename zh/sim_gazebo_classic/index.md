@@ -92,8 +92,8 @@ make px4_sitl gazebo-classic
 
 上述命令会启动一个完整用户界面的单机体模拟。其他选项包括：
 
-- [分别启动 PX4 和 Gazebo](#starting-gazebo-and-px4-separately)，以便保持 Gazebo Classic 运行并仅在需要时重新启动 PX4（比重启两者更快）。
-- 以 [无头模式](#headless-mode) 运行模拟，该模式不会启动 Gazebo Classic 用户界面（占用资源更少，运行速度更快）。
+- [分别启动 PX4 和 Gazebo](#分别启动 Gazebo 和 PX4)，以便保持 Gazebo Classic 运行并仅在需要时重新启动 PX4（比重启两者更快）。
+- 以 [无头模式](#无头模式) 运行模拟，该模式不会启动 Gazebo Classic 用户界面（占用资源更少，运行速度更快）。
 
 ## 升空操作
 
@@ -163,7 +163,7 @@ HEADLESS=1 make px4_sitl gazebo-classic_plane
 ### 设置自定义起飞位置
 
 Gazebo Classic 中的起飞位置可以通过环境变量设置。
-这将覆盖默认起飞位置以及[世界设置](#set-world-location)中的任何值。
+这将覆盖默认起飞位置以及[世界设置](#设置世界坐标)中的任何值。
 
 需要设置的变量是：`PX4_HOME_LAT`、`PX4_HOME_LON` 和 `PX4_HOME_ALT`。
 
@@ -301,7 +301,7 @@ make px4_sitl_default gazebo-classic_plane_cam__warehouse
 这在测试尚未包含在 PX4 中的新世界时非常有用。
 
 :::tip
-如果加载的世界与地图不匹配，可能需要 [设置世界位置](#set-world-location)。
+如果加载的世界与地图不匹配，可能需要 [设置世界位置](#设置世界坐标)。
 :::
 
 ## 设置世界坐标
@@ -337,7 +337,9 @@ make px4_sitl gazebo-classic_rover__sonoma_raceway
 
 下方视频展示了环境坐标与真实世界的对齐效果：
 
-<lite-youtube videoid="-a2WWLni5do" title="Driving a simulated PX4 Rover in the Sonoma Raceway"/>## 分别启动 Gazebo 和 PX4
+<lite-youtube videoid="-a2WWLni5do" title="Driving a simulated PX4 Rover in the Sonoma Raceway"/>
+
+## 分别启动 Gazebo 和 PX4
 
 对于长时间开发会话来说，单独启动 Gazebo Classic 和 PX4 或者从 IDE 内部启动可能会更加方便。
 
@@ -435,7 +437,7 @@ PX4 SITL for Gazebo Classic 支持从连接到模拟机体模型的摄像头传�
 ### 先决条件
 
 视频流传输需要_Gstreamer 1.0_。  
-所需依赖项在安装Gazebo Classic时应该已经[安装](#installation)（它们包含在标准PX4安装脚本/说明中，适用于macOS和Ubuntu Linux）。
+所需依赖项在安装Gazebo Classic时应该已经[安装](#安装)（它们包含在标准PX4安装脚本/说明中，适用于macOS和Ubuntu Linux）。
 
 ::: info
 仅供了解，依赖项包括：`gstreamer1.0-plugins-base`，`gstreamer1.0-plugins-good`，`gstreamer1.0-plugins-bad`，`gstreamer1.0-plugins-ugly`，`libgstreamer-plugins-base1.0-dev`。
@@ -497,7 +499,7 @@ VERBOSE_SIM=1 make px4_sitl gazebo-classic
 
 PX4 SITL 和 Gazebo-Classic 已配置为以 _lockstep_ 模式运行。
 这意味着 PX4 和模拟器以相同的速度运行，因此可以对传感器和执行器消息做出适当响应。
-Lockstep 模式使得可以 [更改模拟速度](#change-simulation-speed)，也可以暂停以逐行调试代码。
+Lockstep 模式使得可以 [更改模拟速度](#修改仿真速度)，也可以暂停以逐行调试代码。
 
 #### Lockstep 序列
 

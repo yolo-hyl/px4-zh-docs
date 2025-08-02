@@ -13,7 +13,7 @@ _Radio Setup_ 屏幕用于配置您的遥控器的姿态控制杆（roll, pitch,
 发射器和接收器对的绑定过程是硬件特定的（请参见您的RC手册获取说明）。
 
 ::: info
-如果您使用的是 _Spektrum_ 接收器，可以通过 _QGroundControl_ 将其进入绑定模式，如[下方所示](#spectrum-bind)。
+如果您使用的是 _Spektrum_ 接收器，可以通过 _QGroundControl_ 将其进入绑定模式，如[下方所示](#Spektrum 绑定)。
 :::
 
 ::: info

@@ -92,7 +92,7 @@ KISS电调因其出色的性能而闻名，但也存在两个缺点：
 
 :::tip
 如果同时安装FPV部件，不要忘记将JST公头电源插头焊接到电源模块的输出侧。
-之后进行[FPV设置](#fpv-setup)时会需要它。
+之后进行[FPV设置](#FPV 设置)时会需要它。
 :::
 
 ![电源模块](../../assets/airframes/multicopter/qav_r_5_kiss_esc_racer/power-module.jpg)
@@ -110,7 +110,9 @@ KISS电调因其出色的性能而闻名，但也存在两个缺点：
 
 ![电机测试](../../assets/airframes/multicopter/qav_r_5_kiss_esc_racer/motor-test.jpg)
 
-<a id="mounting"></a>## 连接与安装电子元件
+<a id="mounting"></a>
+
+## 连接与安装电子元件
 
 :::tip
 请仔细检查所连接每个组件的引脚分配。
@@ -216,7 +218,9 @@ KISS电调因其出色的性能而闻名，但也存在两个缺点：
 配件清单中的精美 FPV 摄像机不仅配备我见过的最优质的 FPV 镜头，还包含多个摄像机支架，其中一种支架具有高度灵活的调节角度功能，且与 QAV-R 机架完美契合。
 我按照下图方式安装了摄像机。用于将摄像机支架固定到机架的两个螺丝和螺母是从机架套件剩余的备用件中取用的。
 
-![摄像机](../../assets/airframes/multicopter/qav_r_5_kiss_esc_racer/fpv-cam.jpg)# PX4 配置
+![摄像机](../../assets/airframes/multicopter/qav_r_5_kiss_esc_racer/fpv-cam.jpg)
+
+# PX4 配置
 
 *QGroundControl* 用于安装 PX4 飞控系统并为机体进行配置/调参。  
 [下载并安装](http://qgroundcontrol.com/downloads/) *QGroundControl* 到您的平台。

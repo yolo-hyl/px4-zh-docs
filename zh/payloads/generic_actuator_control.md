@@ -1,6 +1,6 @@
 # 通用执行器控制
 
-您可以将任意硬件连接到未使用的 PX4 输出，并通过 [RC 控制](#generic-actuator-control-with-rc) 或 [MAVLink](#generic-actuator-control-with-mavlink)（作为指令或在 [任务](#generic-actuator-control-in-missions) 中）进行控制。
+您可以将任意硬件连接到未使用的 PX4 输出，并通过 [RC 控制](#使用RC进行通用执行器控制) 或 [MAVLink](#使用MAVLink的通用执行器控制)（作为指令或在 [任务](#任务中的通用执行器控制) 中）进行控制。
 
 当需要使用没有对应 MAVLink 指令的载荷类型，或 PX4 没有特定集成时，这种功能非常有用。
 
@@ -11,7 +11,7 @@
 
 ## 使用MAVLink的通用执行器控制
 
-[MAV_CMD_DO_SET_ACTUATOR](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ACTUATOR) 可用于同时设置最多6个执行器的值。该指令既可以通过创建"设置执行器"任务项在[任务](#generic-actuator-control-in-missions)中使用，也可以作为独立指令使用。
+[MAV_CMD_DO_SET_ACTUATOR](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ACTUATOR) 可用于同时设置最多6个执行器的值。该指令既可以通过创建"设置执行器"任务项在[任务](#任务中的通用执行器控制)中使用，也可以作为独立指令使用。
 
 在[执行器](../config/actuators.md#actuator-outputs)配置界面中，通过将 `Peripheral via Actuator Set 1` 到 `Peripheral via Actuator Set 6` 功能分配到目标[执行器输出](../config/actuators.md#actuator-outputs)来指定要控制的输出。
 
@@ -21,7 +21,9 @@
 
 例如，在上图中，`AUX5` 输出被分配了 `Peripheral via Actuator Set 1` 功能。要控制连接到 `AUX5` 的执行器，需要设置 `MAV_CMD_DO_SET_ACTUATOR.param1` 的值。
 
-<!-- PX4 v1.14 bug https://github.com/PX4/PX4-Autopilot/issues/21966 -->## 使用RC进行通用执行器控制
+<!-- PX4 v1.14 bug https://github.com/PX4/PX4-Autopilot/issues/21966 -->
+
+## 使用RC进行通用执行器控制
 
 最多可使用6个自动驾驶仪PWM或CAN输出通过RC通道进行控制。
 需要控制的输出在[Actuators](../config/actuators.md#actuator-outputs)配置界面中设置，通过将功能`RC AUX 1`至`RC AUX 6`分配给目标[actuator outputs](../config/actuators.md#actuator-outputs)来实现。
@@ -33,7 +35,7 @@
 
 ## 任务中的通用执行器控制
 
-要在任务中使用通用执行器控制，首先需要[配置您希望通过MAVLink控制的输出](#generic-actuator-control-with-mavlink)。
+要在任务中使用通用执行器控制，首先需要[配置您希望通过MAVLink控制的输出](#使用MAVLink的通用执行器控制)。
 
 然后在 _QGroundControl_ 中，可以通过 **设置执行器** 任务项来设置任务中的执行器输出值（这会向上传的任务计划中添加一个 [MAV_CMD_DO_SET_ACTUATOR](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ACTUATOR) 指令）。
 

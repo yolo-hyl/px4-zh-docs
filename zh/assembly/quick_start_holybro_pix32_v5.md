@@ -152,7 +152,7 @@ SanDisk Extreme U3 32GB [强烈推荐](../dev_log/logging.md#sd-cards)。
 
 ![Pix32 v5 - 背部引脚图（原理图）](../../assets/flight_controller/holybro_pix32_v5/pix32_v5_pinouts_back_label.png)
 
-电机必须[单独供电](#power)。
+电机必须[单独供电](#Power)。
 
 ::: info
 如果您的机架未列在机体参考中，则使用正确类型的"通用"机体。
@@ -172,7 +172,9 @@ SanDisk Extreme U3 32GB [强烈推荐](../dev_log/logging.md#sd-cards)。
 
 四旋翼飞行器专用配置请参考此处：[QuadPlane VTOL配置](../config_vtol/vtol_quad_configuration.md)
 
-<!-- Nice to have detailed wiring infographic and instructions for different vehicle types. -->## 更多信息
+<!-- Nice to have detailed wiring infographic and instructions for different vehicle types. -->
+
+## 更多信息
 
 - [Pix32 v5 概述](../flight_controller/holybro_pix32_v5.md) (概述页面)
 - [Pix32 v5 技术数据表](https://cdn.shopify.com/s/files/1/0604/5905/7341/files/Holybro_PIX32-V5_technical_data_sheet_v1.1.pdf)

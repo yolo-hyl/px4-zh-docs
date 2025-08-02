@@ -50,7 +50,9 @@ FrSky遥测需要：
 
 只需将UART的TX引脚连接到SPort的反相或非反相引脚（PX4会自动检测并处理任一类型），然后[配置PX4](#configure)。
 
-<a id="configure"></a>## PX4 配置
+<a id="configure"></a>
+
+## PX4 配置
 
 使用 [TEL_FRSKY_CONFIG](../advanced_config/parameter_reference.md#TEL_FRSKY_CONFIG) 配置 FrSky 运行的串口 [Configure the serial port](../peripherals/serial_configuration.md)。  
 无需设置串口的波特率，因为这是由驱动程序配置的。
@@ -68,7 +70,9 @@ drivers/telemetry/frsky_telemetry
 
 无需其他配置；连接 FrSky 遥测并在检测到 D 或 S 模式时自动启动。
 
-<a id="transmitters"></a>## 兼容的遥控器
+<a id="transmitters"></a>
+
+## 兼容的遥控器
 
 你需要一个能够接收遥测数据流（并已绑定到FrSky接收器）的遥控器。
 
@@ -95,7 +99,9 @@ drivers/telemetry/frsky_telemetry
 - `local BattLevelmAh = -1` - 使用机体的电池电量计算
 - `local SayFlightMode = 0` - PX4 飞行模式没有 WAV 文件
 
-<a id="messages"></a>## 遥测消息
+<a id="messages"></a>
+
+## 遥测消息
 
 FrySky遥测可以传输来自PX4的大部分有用状态信息。
 S-Port和D-Port接收器传输不同的消息集合，如下节所列。
@@ -151,7 +157,9 @@ D-Port接收器传输以下消息（来自[此处](https://github.com/cleanfligh
 - **VFAS:** 实际电池电压值（FrSky安培传感器电压）。
 - **Vspd:** 垂直速度（厘米/秒）。
 
-<a id="receivers"></a>## FrSky 遥测接收器
+<a id="receivers"></a>
+
+## FrSky 遥测接收器
 
 Pixhawk/PX4 支持 D（旧）和 S（新）系列 FrSky 遥测协议。下表列出了所有通过 D/S.PORT 支持遥测的 FrSky 接收器（理论上所有设备均可正常工作）。
 
@@ -180,7 +188,9 @@ Pixhawk/PX4 支持 D（旧）和 S（新）系列 FrSky 遥测协议。下表列
 上表源自 http://www.redsilico.com/frsky-receiver-chart 和 FrSky [产品文档](https://www.frsky-rc.com/product-category/receivers/)。
 :::
 
-<a id="ready_made_cable"></a>## 现成线缆
+<a id="ready_made_cable"></a>
+
+## 现成线缆
 
 适用于 Pixhawk FMUv4 及更早版本（除 Pixracer 外）的现成线缆可从以下来源获取：
 
@@ -188,7 +198,9 @@ Pixhawk/PX4 支持 D（旧）和 S（新）系列 FrSky 遥测协议。下表列
 
   <a href="http://www.craftandtheoryllc.com/telemetry-cable"><img src="../../assets/hardware/telemetry/craft_and_theory_frsky_telemetry_cables.jpg" alt="Purchase cable here from Craft and Theory"></a>
 
-<a id="diy_cables"></a>## DIY线缆  
+<a id="diy_cables"></a>
+
+## DIY线缆  
 
 你可以自行制作适配线缆。  
 你需要为自动驾驶仪选择合适的连接器（例如，FMUv3/Pixhawk 2 "The Cube" 和 FMUv4/PixRacer v1 使用 _JST-GH 连接器_，旧版自动驾驶仪则使用 DF-13 兼容的 _PicoBlade 连接器_）。  
@@ -239,7 +251,9 @@ S-port 连接方式如下图所示（使用提供的 I/O 连接器）：
 
 你需要通过 UART 到 S.PORT 适配板或 [成品线缆](#ready_made_cable) 进行连接。  
 
-<!-- 理想情况下在此处添加示意图 -->## 附加信息
+<!-- 理想情况下在此处添加示意图 -->
+
+## 附加信息
 
 如需更多信息，请参考以下链接：
 

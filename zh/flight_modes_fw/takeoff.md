@@ -4,7 +4,7 @@
 
 _起飞_飞行模式将使机体升至指定高度，然后进入[悬停模式](../flight_modes_fw/takeoff.md)。
 
-机体默认使用[手动或弹射发射](#catapult-hand-launch)，但硬件支持时也可[配置](#RWTO_TKOFF)为使用[跑道起飞](#runway-takeoff)。
+机体默认使用[手动或弹射发射](#catapult-hand-launch)，但硬件支持时也可[配置](#RWTO_TKOFF)为使用[跑道起飞](#跑道起飞)。
 
 ::: info
 
@@ -23,7 +23,7 @@ _起飞_飞行模式将使机体升至指定高度，然后进入[悬停模式](
 
 ## 技术概述
 
-起飞模式（以及[固定翼任务起飞](../flight_modes_fw/mission.md#mission-takeoff)）有两种模式：[弹射/手抛](#catapult-hand-launch)或[跑道起飞](#runway-takeoff)（硬件相关）。
+起飞模式（以及[固定翼任务起飞](../flight_modes_fw/mission.md#mission-takeoff)）有两种模式：[弹射/手抛](#catapult-hand-launch)或[跑道起飞](#跑道起飞)（硬件相关）。
 该模式默认为弹射/手抛模式，但通过设置[RWTO_TKOFF](#RWTO_TKOFF)为1可切换为跑道起飞。
 
 使用_起飞模式_时，首先切换到该模式，然后激活机体。
@@ -55,7 +55,9 @@ _起飞_飞行模式将使机体升至指定高度，然后进入[悬停模式](
 机体在起飞过程中始终遵循正常的FW最大/最小油门设置（[FW_THR_MIN](../advanced_config/parameter_reference.md#FW_THR_MIN), [FW_THR_MAX](../advanced_config/parameter_reference.md#FW_THR_MAX)）。
 :::
 
-<a id="hand_launch"></a>## 弹射/手投模式
+<a id="hand_launch"></a>
+
+## 弹射/手投模式
 
 在 _弹射/手投模式_ 下，机体等待通过加速度触发检测发射。  
 发射后，启动电机并以最大爬升率 [FW_T_CLMB_MAX](#FW_T_CLMB_MAX) 爬升，同时保持俯仰设定值高于 [FW_TKO_PITCH_MIN](#FW_TKO_PITCH_MIN)。  
@@ -81,7 +83,9 @@ _发射检测器_ 受以下参数影响：
 | <a id="FW_LAUN_AC_T"></a>[FW_LAUN_AC_T](../advanced_config/parameter_reference.md#FW_LAUN_AC_T)             | 触发时间（加速度必须高于阈值持续此秒数）                                            |
 | <a id="FW_LAUN_MOT_DEL"></a>[FW_LAUN_MOT_DEL](../advanced_config/parameter_reference.md#FW_LAUN_MOT_DEL)    | 从发射检测到电机加速的延迟时间                                                      |
 
-<a id="runway_launch"></a>## 跑道起飞
+<a id="runway_launch"></a>
+
+## 跑道起飞
 
 跑道起飞功能仅适用于带有起落架和可转向轮的机体。  
 首先需要通过参数 [FW_W_EN](#FW_W_EN) 启用轮子控制器。
@@ -115,7 +119,9 @@ _跑道起飞模式_ 包含以下阶段：
 | <a id="FW_TKO_AIRSPD"></a>[FW_TKO_AIRSPD](../advanced_config/parameter_reference.md#FW_TKO_AIRSPD)       | 起飞爬升阶段（旋转后）的空速设定值。若未配置则默认设置为 FW_AIRSPD_MIN。                                            |
 | <a id="RWTO_NUDGE"></a>[RWTO_NUDGE](../advanced_config/parameter_reference.md#RWTO_NUDGE)               | 在跑道上启用轮子控制器微调功能                                                                                      |
 | <a id="FW_WING_SPAN"></a>[FW_WING_SPAN](../advanced_config/parameter_reference.md#FW_WING_SPAN)         | 机体翼展。用于防止机翼触地。                                                                                          |
-| <a id="FW_WING_HEIGHT"></a>[FW_WING_HEIGHT](../advanced_config/parameter_reference.md#FW_WING_HEIGHT)   | 机翼离地高度（地面间隙）。用于防止机翼触地。                                                                          |## 另请参见
+| <a id="FW_WING_HEIGHT"></a>[FW_WING_HEIGHT](../advanced_config/parameter_reference.md#FW_WING_HEIGHT)   | 机翼离地高度（地面间隙）。用于防止机翼触地。                                                                          |
+
+## 另请参见
 
 - [起飞模式 (MC)](../flight_modes_mc/takeoff.md)
 - [规划任务起飞](../flight_modes_fw/mission.md#mission-takeoff)

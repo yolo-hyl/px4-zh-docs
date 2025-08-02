@@ -176,7 +176,7 @@ GPS模块的集成安全开关默认启用（启用时，PX4将不允许您解�
 
 ![Durandal - 背部接线图](../../assets/flight_controller/durandal/durandal_pinouts_back.jpg)
 
-电机需要[单独供电](#power)。
+电机需要[单独供电](#电源)。
 
 ::: info
 如果您的机体未在机架参考中列出，请使用类型正确的"通用"机架。
@@ -194,7 +194,9 @@ _Durandal_ 有5个AUX端口，因此不能用于将AUX6、AUX7、AUX8映射到�
 
 [Durandal > 引脚分配](../flight_controller/durandal.md#pinouts)
 
-<a id="configuration"></a>## PX4 配置
+<a id="configuration"></a>
+
+## PX4 配置
 
 首先需要通过 _QGroundControl_ 将 [PX4 "Master" 固件](../config/firmware.md#custom) 安装到控制器中。
 

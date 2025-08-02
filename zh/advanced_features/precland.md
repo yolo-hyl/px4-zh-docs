@@ -2,7 +2,7 @@
 
 PX4 支持 _多旋翼_ 无人机在静止或移动目标上进行精确着陆。目标信息可以通过机载红外传感器和着陆信标提供，也可以通过外部定位系统提供。
 
-精确着陆可通过以下方式启动：作为 [任务](#mission) 的一部分、在 [返回模式](#return-mode-precision-landing) 着陆中，或通过进入 [_精确着陆_ 飞行模式](#precision-landing-flight-mode)。
+精确着陆可通过以下方式启动：作为 [任务](#mission) 的一部分、在 [返回模式](#返回模式精确着陆) 着陆中，或通过进入 [_精确着陆_ 飞行模式](#精确着陆飞行模式)。
 
 ::: info
 由于位置控制器当前实现的限制，精确着陆需要有效的全局位置。
@@ -49,7 +49,7 @@ PX4 支持 _多旋翼_ 无人机在静止或移动目标上进行精确着陆。
 搜索流程在第一和第二阶段启动，最多执行 [PLD_MAX_SRCH](../advanced_config/parameter_reference.md#PLD_MAX_SRCH) 次。  
 着陆阶段流程图
 
-着陆阶段的流程图请参见下文的[着陆阶段流程图](#landing-phases-flow-diagram)。
+着陆阶段的流程图请参见下文的[着陆阶段流程图](#降落阶段流程图)。
 
 ## 启动精确着陆
 
@@ -62,8 +62,8 @@ PX4 支持 _多旋翼_ 无人机在静止或移动目标上进行精确着陆。
 通过[mission](../flying/missions.md)使用[MAV_CMD_NAV_LAND](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_LAND)并适当设置`param2`参数可以启动精确着陆：
 
 - `0`: 不使用目标的普通着陆。
-- `1`: [机会式](#opportunistic-mode)精确着陆。
-- `2`: [必要式](#required-mode)精确着陆。
+- `1`: [机会式](#机会模式)精确着陆。
+- `2`: [必要式](#必选模式)精确着陆。
 
 ### 返回模式精确着陆
 
@@ -72,8 +72,8 @@ PX4 支持 _多旋翼_ 无人机在静止或移动目标上进行精确着陆。
 通过参数[RTL_PLD_MD](../advanced_config/parameter_reference.md#RTL_PLD_MD)启用，该参数取值如下：
 
 - `0`: 禁用精确着陆（按普通方式着陆）。
-- `1`: [机会式](#opportunistic-mode)精确着陆。
-- `2`: [必要式](#required-mode)精确着陆。
+- `1`: [机会式](#机会模式)精确着陆。
+- `2`: [必要式](#必选模式)精确着陆。
 
 ### 精确着陆飞行模式
 
@@ -136,7 +136,9 @@ PX4不明确要求有[距离传感器](../sensor/rangefinders.md)或其他传感
 ```
 CONFIG_DRIVERS_IRLOCK=y
 CONFIG_MODULES_LANDING_TARGET_ESTIMATOR=y
-```## PX4配置（参数）
+```
+
+## PX4配置（参数）
 
 IR-Lock传感器默认处于禁用状态。
 通过将[SENS_EN_IRLOCK](../advanced_config/parameter_reference.md#SENS_EN_IRLOCK)设置为`1`（true）来启用它。
@@ -156,7 +158,7 @@ IR-Lock传感器默认处于禁用状态。
 | <a id="PLD_BTOUT"></a>[PLD_BTOUT](../advanced_config/parameter_reference.md#PLD_BTOUT)            | 着陆目标超时时间，之后目标被认为丢失。默认为5秒。                               |
 | <a id="PLD_FAPPR_ALT"></a>[PLD_FAPPR_ALT](../advanced_config/parameter_reference.md#PLD_FAPPR_ALT) | 最终进近高度。默认为0.1米。                                                                     |
 | <a id="PLD_MAX_SRCH"></a>[PLD_MAX_SRCH](../advanced_config/parameter_reference.md#PLD_MAX_SRCH)   | 必要着陆时的最大搜索尝试次数。                                                           |
-| <a id="RTL_PLD_MD"></a>[RTL_PLD_MD](../advanced_config/parameter_reference.md#RTL_PLD_MD)         | RTL精确着陆模式。`0`：禁用，`1`：[Opportunistic](#opportunistic-mode)，`2`：[Required](#required-mode)。 |
+| <a id="RTL_PLD_MD"></a>[RTL_PLD_MD](../advanced_config/parameter_reference.md#RTL_PLD_MD)         | RTL精确着陆模式。`0`：禁用，`1`：[Opportunistic](#机会模式)，`2`：[Required](#必选模式)。 |
 
 ### IR信标缩放
 
@@ -208,6 +210,6 @@ make px4_sitl gazebo-classic_iris_irlock
 
 ### 降落阶段流程图
 
-此图像以流程图形式展示了[降落阶段](#landing-phases)。
+此图像以流程图形式展示了[降落阶段](#着陆阶段)。
 
 ![精确降落流程图](../../assets/precision_land/precland-flow-diagram.png)

@@ -108,7 +108,9 @@ V5+ 套件包含 _HV_PM_ 模块，支持 2~14S 锂电池。
 
 ![V5+ AutoPilot](../../assets/flight_controller/cuav_v5_plus/connection/v5+_quickstart_06.png)
 
-<a id="sd_card"></a>## SD卡（可选）
+<a id="sd_card"></a>
+
+## SD卡（可选）
 
 [SD卡](../getting_started/px4_basic_concepts.md#sd-cards-removable-memory)已由工厂预装（您无需执行任何操作）。
 

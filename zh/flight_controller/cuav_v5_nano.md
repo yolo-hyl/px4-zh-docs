@@ -58,7 +58,9 @@ V5 nano与[CUAV V5+](../flight_controller/cuav_v5_plus.md)类似，但采用一�
 - 重量和尺寸：
   - 尺寸：60\*40\*14mm
 - 其他特性：
-  - 工作温度：-20 ~ 85°C（实测值）## 哪里购买
+  - 工作温度：-20 ~ 85°C（实测值）
+  
+  ## 哪里购买
 
 [CUAV 商店](https://store.cuav.net/shop/v5-nano/)
 
@@ -70,7 +72,9 @@ V5 nano与[CUAV V5+](../flight_controller/cuav_v5_plus.md)类似，但采用一�
 自动驾驶仪可能包含Neo GPS模块
 :::
 
-<a id="connection"></a>## 连接（布线）
+<a id="connection"></a>
+
+## 连接（布线）
 
 [V5 nano 布线快速入门](../assembly/quick_start_cuav_v5_nano.md)
 
@@ -91,7 +95,9 @@ V5 nano与[CUAV V5+](../flight_controller/cuav_v5_plus.md)类似，但采用一�
 make px4_fmu-v5_default
 ```
 
-<a id="debug_port"></a>## 调试端口
+<a id="debug_port"></a>
+
+## 调试端口
 
 [PX4系统控制台](../debug/system_console.md)和[SWD接口](../debug/swd_debug.md)通过**FMU调试**端口（`DSU7`）运行。  
 该板没有I/O调试接口。
@@ -121,7 +127,7 @@ SWD Vref引脚（1）使用5V作为参考电压，但CPU运行在3.3V！
 某些JTAG适配器（如SEGGER J-Link）会使用Vref电压来设置SWD线路的电压。  
 对于直接连接到_Segger Jlink_，我们建议使用标记为`DSM`/`SBUS`/`RSSI`的连接器第4引脚提供的3.3V电源作为JTAG的`Vtref`（即提供3.3V而非5V）。
 
-更多详情请参见[Using JTAG for hardware debugging](#using-jtag-for-hardware-debugging)。
+更多详情请参见[Using JTAG for hardware debugging](#使用 JTAG 进行硬件调试)。
 :::
 
 ## 串口映射
@@ -136,7 +142,9 @@ SWD Vref引脚（1）使用5V作为参考电压，但CPU运行在3.3V！
 | UART7  | /dev/ttyS5   | 调试控制台                            |
 | UART8  | /dev/ttyS6   | 未连接 (无 PX4IO)                     |
 
-<!-- 注：端口信息获取自 https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 -->## 电压规格
+<!-- 注：端口信息获取自 https://github.com/PX4/PX4-user_guide/pull/672#issuecomment-598198434 -->
+
+## 电压规格
 
 _V5 nano_ 必须通过 `Power` 连接器在飞行时供电，也可通过 `USB` 连接器进行台架测试供电。
 
@@ -153,7 +161,9 @@ Servo Power Rail 既不会由 FMU 供电，也不会向 FMU 提供电力。
 
 _V5 nano_ 没有过流保护。
 
-<a id="Optional-hardware"></a>## 外设
+<a id="Optional-hardware"></a>
+
+## 外设
 
 - [数字空速传感器](https://item.taobao.com/item.htm?spm=a1z10.3-c-s.w4002-16371268452.37.6d9f48afsFgGZI&id=9512463037)
 - [遥测无线电模块](https://cuav.taobao.com/category-158480951.htm?spm=2013.1.w5002-16371268426.4.410b7a821qYbBq&search=y&catName=%CA%FD%B4%AB%B5%E7%CC%A8)
@@ -212,7 +222,9 @@ This is a safety issue.
 请勿在 SBUS / DSM / RSSI 接口上连接其他设备（除遥控接收机外）——这可能导致设备损坏！
 
 - _发现于:_ Batches V01190904xxxx  
-- _修复于:_ Batches later than V01190904xxxx## 进一步信息
+- _修复于:_ Batches later than V01190904xxxx
+
+## 进一步信息
 
 - [V5 nano 手册](http://manual.cuav.net/V5-nano.pdf) (CUAV)
 - [FMUv5 参考设计引脚分配](https://docs.google.com/spreadsheets/d/1-n0__BYDedQrc_2NHqBenG1DNepAgnHpSGglke-QQwY/edit#gid=912976165) (CUAV)

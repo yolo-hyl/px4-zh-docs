@@ -9,7 +9,9 @@
 不过这些步骤相对通用，因此在其他发行版/版本上只需进行少量或无需修改即可正常工作。
 :::
 
-<!-- 内容经 @JoonmoAhn 在 https://github.com/JoonmoAhn/Sending-Custom-Message-from-MAVROS-to-PX4/issues/1 中的许可授权转载 -->## MAVROS 安装
+<!-- 内容经 @JoonmoAhn 在 https://github.com/JoonmoAhn/Sending-Custom-Message-from-MAVROS-to-PX4/issues/1 中的许可授权转载 -->
+
+## MAVROS 安装
 
 按照 [mavlink/mavros](https://github.com/mavlink/mavros/blob/master/mavros/index.md) 中的 *Source Installation* 指南安装 "ROS Kinetic"。
 
@@ -274,7 +276,9 @@
     CONFIG_MODULES_KEY_RECEIVER=y
    ```
 
-现在你就可以构建所有工作内容了！## 构建
+现在你就可以构建所有工作内容了！
+
+## 构建
 
 ### 为 ROS 构建
 

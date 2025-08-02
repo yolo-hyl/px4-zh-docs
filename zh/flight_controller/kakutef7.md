@@ -128,64 +128,11 @@ UART3 的 RX 和 TX 被配置为 [系统控制台](../debug/system_console.md)�
 
 [SWD 接口](../debug/swd.md) 的配置如下：
 
-| 引脚 | 功能       |
-| ---- | ---------- |
-| SWDIO | 数据 I/O  |
-| SWCLK | 时钟信号  |
-| GND  | 地线       |
+- `SWCLK`: Test Point 2 (Pin 72 on the CPU)
+- `SWDIO`: Test Point 3 (Pin 76 on CPU)
+- `GND`: As marked on board
+- `VDD_3V3`: As marked on board
 
-### JTAG/SWD 转换器
+These are shown below.
 
-使用 ST-Link v2 或兼容的 JTAG/SWD 转换器连接到以下引脚：
-
-| 转换器引脚 | Kakute F7 引脚 |
-| ---------- | -------------- |
-| SWDIO      | SWDIO          |
-| SWCLK      | SWCLK          |
-| GND        | GND            |
-
-## 系统控制台
-
-### 串口调试
-
-使用以下命令通过串口连接到飞控：
-
-```bash
-screen /dev/ttyUSB0 115200
-```
-
-## 电源管理
-
-### 电池电压监测
-
-通过以下步骤校准电压监测：
-
-1. 在 QGroundControl 中进入 **Setup > Power > Voltage Calibration**。
-2. 根据电池类型选择校准系数。
-3. 保存并重新启动飞控。
-
-## 故障排除
-
-### 常见问题
-
-| 问题 | 解决方案 |
-|----|------|
-| 无法连接到 QGroundControl | 检查 USB 连接并确保驱动程序已安装 |
-| 电机不转 | 检查电机线缆连接和电调设置 |
-| 飞行不稳定 | 校准 IMU 并检查 PID 参数 |
-
-## 维护
-
-### 固件更新
-
-定期检查 PX4 官方网站获取最新固件更新。
-
-### 硬件维护
-
-- 定期清洁板子上的灰尘
-- 检查所有连接器是否牢固
-- 避免在极端温度下使用
-
-## 许可证
-
-此硬件设计遵循 [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/)。
+![SWD Pins on Kakute F7 - CLK SWO](../../assets/flight_controller/kakutef7/debug_swd_port.jpg) ![SWD Pins on Kakute F7:  GND and VDD_3V3](../../assets/flight_controller/kakutef7/debug_swd_port_gnd_vcc3_3.jpg)

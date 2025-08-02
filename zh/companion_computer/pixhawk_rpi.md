@@ -111,7 +111,9 @@ sudo chmod a+rw /dev/ttyACM0
 cd /PX4-Autopilot
 make px4_fmu-v6c_default upload
 ```
--->## 在RPi上安装Ubuntu
+-->
+
+## 在RPi上安装Ubuntu
 
 以下步骤展示如何在RPi上安装和设置Ubuntu 22.04。  
 注意ROS 2版本与特定Ubuntu版本对应。  

@@ -47,7 +47,7 @@ PX4 支持 [u-blox M8P](https://www.u-blox.com/en/product/neo-m8p)、[u-blox F9P
 
 ## 定位设置/配置
 
-RTK定位需要一对[RTK GNSS设备](#supported-devices)：一个"基准"模块用于地面站，一个"移动"模块用于机体。
+RTK定位需要一对[RTK GNSS设备](#支持的设备)：一个"基准"模块用于地面站，一个"移动"模块用于机体。
 
 此外还需要：
 
@@ -66,7 +66,7 @@ _QGroundControl_配合基准模块理论上可以为多架机体/移动模块启
 
 大多数模块通过飞控的GPS端口连接，与普通GPS模块相同。部分模块连接到[CAN](../can/index.md)总线（即使用[DroneCAN](../dronecan/index.md)）。
 
-请参阅[所选设备文档](#supported-devices)、通用[GNSS硬件/配置设置](../gps_compass/index.md#hardware-setup)以及[DroneCAN](../dronecan/index.md)以获取布线和配置的更多信息。
+请参阅[所选设备文档](#支持的设备)、通用[GNSS硬件/配置设置](../gps_compass/index.md#hardware-setup)以及[DroneCAN](../dronecan/index.md)以获取布线和配置的更多信息。
 
 #### 基准RTK模块（地面）
 
@@ -80,7 +80,7 @@ _QGroundControl_配合基准模块理论上可以为多架机体/移动模块启
 
 机体和地面控制笔记本必须通过[wifi或无线电遥测链路](../telemetry/index.md)连接。
 
-链路_必须_使用MAVLink 2协议，因为它能更高效利用信道。该协议通常默认启用，否则请按照下方[MAVLink2配置说明](#mavlink2)操作。
+链路_必须_使用MAVLink 2协议，因为它能更高效利用信道。该协议通常默认启用，否则请按照下方[MAVLink2配置说明](#MAVLink2协议)操作。
 
 ### RTK连接流程
 
@@ -95,7 +95,7 @@ RTK GPS连接本质上是即插即用：
 
 1. _QGroundControl_开始RTK设置流程（称为"Survey-In"）。
 
-   Survey-In是获取基准站精确位置的启动程序。该过程通常持续数分钟（在达到[RTK设置](#rtk-gps-settings)中指定的最短时间和精度后结束）。
+   Survey-In是获取基准站精确位置的启动程序。该过程通常持续数分钟（在达到[RTK设置](#RTK GPS设置)中指定的最短时间和精度后结束）。
 
    点击RTK GPS状态图标可跟踪进度。
 

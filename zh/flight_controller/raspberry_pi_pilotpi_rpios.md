@@ -1,14 +1,16 @@
+
+
 # PilotPi 与 Raspberry Pi OS
 
 ## 开发者快速入门
 
 ### 操作系统镜像
 
-始终推荐使用最新的官方 [Raspberry Pi OS Lite](https://downloads.raspberrypi.org/raspios_lite_armhf_latest) 镜像。
+建议始终使用最新的官方[Raspberry Pi OS Lite](https://downloads.raspberrypi.org/raspios_lite_armhf_latest)镜像。
 
-要进行安装，您需要已具备与 RPi 的 SSH 连接功能。
+安装前必须已具备与RPi的SSH连接。
 
-### 设置访问 (可选)
+### 设置访问权限（可选）
 
 #### 主机名和 mDNS
 
@@ -18,11 +20,11 @@ mDNS 可帮助您通过主机名而非 IP 地址连接到 RPi。
 sudo raspi-config
 ```
 
-导航至 **Network Options > Hostname**。
+导航至 **网络选项 > 主机名**。
 设置并退出。
-您可能还需要配置 [免密码认证](https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md)。
+您可能还需要配置 [无需密码的认证](https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md)。
 
-### 操作系统设置
+### 设置操作系统
 
 #### config.txt
 
@@ -30,22 +32,29 @@ sudo raspi-config
 sudo nano /boot/config.txt
 ```
 
-替换文件内容为：
+用以下内容替换文件：
 
 ```sh
+
+```
+
 # 启用 sc16is752 覆盖层
 dtoverlay=sc16is752-spi1
-# 启用 I2C-1 并将频率设置为 400KHz
+
+# 启用 I2C-1 并将频率设置为 400千赫兹
 dtparam=i2c_arm=on,i2c_arm_baudrate=400000
+
 # 启用 spidev0.0
 dtparam=spi=on
-# 启用遥控输入
+
+# 启用RC输入
 enable_uart=1
+
 # 启用 I2C-0
 dtparam=i2c_vc=on
-# 将蓝牙切换到 miniuart
+
+# 切换蓝牙到miniuart
 dtoverlay=miniuart-bt
-```
 
 #### cmdline.txt
 
@@ -53,48 +62,48 @@ dtoverlay=miniuart-bt
 sudo raspi-config
 ```
 
-**Interfacing Options > Serial > login shell = No > hardware = Yes**。
-启用 UART 但不带登录 shell。
+**接口选项 > 串口 > 登录外壳 = 否 > 硬件 = 是**.
+启用UART但不带登录外壳。
 
 ```sh
 sudo nano /boot/cmdline.txt
 ```
 
-在最后一词后追加 `isolcpus=2`。
+在最后一个单词后追加 `isolcpus=2`。
 整个文件内容应为：
 
 ```sh
 console=tty1 root=PARTUUID=xxxxxxxx-xx rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait isolcpus=2
 ```
 
-这告诉 Linux 内核不要在 CPU 核心 2 上调度任何进程。
-我们稍后会手动在该核心上运行 PX4。
+这告诉Linux内核不要在CPU核心2上调度任何进程。
+我们稍后会手动将PX4运行在该核心上。
 
-重启并 SSH 登录到您的 RPi。
+重启并SSH连接到你的RPi。
 
-检查 UART 接口：
+检查UART接口：
 
 ```sh
 ls /dev/tty*
 ```
 
-应存在 `/dev/ttyAMA0`、`/dev/ttySC0` 和 `/dev/ttySC1`。
+应该有 `/dev/ttyAMA0`、`/dev/ttySC0` 和 `/dev/ttySC1`。
 
-检查 I2C 接口：
+检查I2C接口：
 
 ```sh
 ls /dev/i2c*
 ```
 
-应存在 `/dev/i2c-0` 和 `/dev/i2c-1`
+应该有 `/dev/i2c-0` 和 `/dev/i2c-1`。
 
-检查 SPI 接口
+检查SPI接口：
 
 ```sh
 ls /dev/spidev*
 ```
 
-应存在 `/dev/spidev0.0`。
+应该有 `/dev/spidev0.0`。
 
 #### rc.local
 
@@ -104,7 +113,7 @@ ls /dev/spidev*
 sudo nano /etc/rc.local
 ```
 
-在 `exit 0` 上方追加以下内容：
+将以下内容添加到上述文件的 `exit 0` 之前：
 
 ```sh
 echo "25" > /sys/class/gpio/export
@@ -119,36 +128,36 @@ echo "25" > /sys/class/gpio/unexport
 保存并退出。
 
 ::: info
-不需要时请务必关闭开关。
+不需要时请记得关闭开关。
 :::
 
-#### CSI 摄像头
+#### CSI摄像头
 
 ::: info
-启用 CSI 摄像头将停止 I2C-0 上的任何操作。
+启用CSI摄像头将停止I2C-0上的任何工作。
 :::
 
 ```sh
 sudo raspi-config
 ```
 
-**Interfacing Options > Camera**
+**接口选项 > 摄像头**
 
-### 编译代码
+### 构建代码
 
-要在计算机上获取_最新版本_，请在终端中输入以下命令：
+要将最新版本代码克隆到计算机上，请在终端中输入以下命令：
 
 ```sh
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive
 ```
 
 ::: info
-这只是编译最新代码所需的操作。
+如果您只需要构建最新代码，仅需执行以上操作即可。
 :::
 
 #### 为 Raspberry Pi OS 交叉编译
 
-使用以下命令设置您的 RPi IP（或主机名）：
+使用以下方式设置你的 RPi 的 IP（或主机名）：
 
 ```sh
 export AUTOPILOT_HOST=192.168.X.X
@@ -160,14 +169,14 @@ export AUTOPILOT_HOST=192.168.X.X
 export AUTOPILOT_HOST=pi_hostname.local
 ```
 
-编译可执行文件：
+构建可执行文件：
 
 ```sh
 cd PX4-Autopilot
 make scumaker_pilotpi_default
 ```
 
-然后上传：
+然后通过以下命令上传：
 
 ```sh
 make scumaker_pilotpi_default upload
@@ -180,65 +189,100 @@ cd px4
 sudo taskset -c 2 ./bin/px4 -s pilotpi_mc.config
 ```
 
-现在 PX4 已以多旋翼配置启动。
+此时 PX4 将以多旋翼配置启动。
 
-如果您在 Pi 上执行 `bin/px4` 时遇到类似以下问题：
+如果你在 Pi 上执行 `bin/px4` 时遇到类似以下问题：
 
 ```
 bin/px4: /lib/xxxx/xxxx: version `GLIBC_2.29' not found (required by bin/px4)
 ```
 
-则应通过 docker 进行编译。
+则应改用 docker 进行编译。
 
-### 通过 Docker 编译
-
-#### 构建 Docker 镜像
+在进行下一步之前，请先清除现有的编译内容：
 
 ```sh
-docker build -t px4-dev -f Dockerfile .
+rm -rf build/scumaker_pilotpi_default
 ```
 
-#### 运行容器
+### 替代构建方法（使用Docker）
+
+以下方法可提供与CI中部署相同的工具集。
+
+如果您是首次使用Docker进行编译，请参考[官方文档](../test_and_ci/docker.md#prerequisites)。
+
+在PX4-Autopilot目录下执行命令：
 
 ```sh
-docker run -it --rm \
-  -v ${PWD}:/src \
-  -v ${HOME}/.ssh:/root/.ssh \
-  -w /src \
-  px4-dev
+./Tools/docker_run.sh "export AUTOPILOT_HOST=192.168.X.X; export NO_NINJA_BUILD=1; make scumaker_pilotpi_default upload"
 ```
 
-#### 在容器内编译
+::: info
+docker中不支持mDNS。上传时必须每次指定正确的IP地址。
+:::
+
+::: info
+如果您的IDE不支持ninja构建，`NO_NINJA_BUILD=1`选项将有所帮助。
+您也可以不上传直接编译。只需移除`upload`目标。
+:::
+
+也可以通过以下命令仅编译代码：
 
 ```sh
-make scumaker_pilotpi_default
+./Tools/docker_run.sh "make scumaker_pilotpi_default"
 ```
 
-#### 从容器上传
+### 配置后
+
+您需要检查这些额外项目以确保机体正常工作。
+
+#### 执行器配置
+
+首先为您的机体设置 [CA_AIRFRAME](../advanced_config/parameter_reference.md#CA_AIRFRAME) 参数。
+
+然后您可以使用正常的 [执行器配置](../config/actuators.md) 配置界面分配输出（一个输出标签将出现在RPi PWM输出驱动程序中）。
+
+#### 外部指南针
+
+在启动脚本(`*.config`)中，您可以找到
 
 ```sh
-make scumaker_pilotpi_default upload
+
 ```
 
-### 后续步骤
+# 外部GPS & 电子罗盘
+gps start -d /dev/ttySC0 -i uart -p ubx -s
+#hmc5883 start -X
+#ist8310 start -X
 
-1. **验证连接**：确保 RPi 与遥控器/飞控的通信正常。
-2. **配置参数**：根据实际硬件调整 PX4 参数（如 `RC_MAP_CHANNEL_1`）。
-3. **测试飞行**：在安全环境下进行首次手动飞行测试。
+```
 
-### 常见问题
+根据你的具体情况取消相应的注释。
+不确定你的GPS模块搭配的是哪种电子罗盘？执行以下命令并查看输出：
 
-**Q：上传时提示权限错误？**  
-A：确保 RPi 的 USB 接口供电充足，并在主机上运行 `sudo chmod 666 /dev/ttyACM0`。
+```sh
+sudo apt-get update
+sudo apt-get install i2c-tools
+i2cdetect -y 0
+```
 
-**Q：启动后无法连接到 PX4？**  
-A：检查 `/boot/config.txt` 中的 UART 配置是否启用，重启后重试。
+示例输出：
 
-**Q：编译时提示缺少依赖？**  
-A：在容器内运行 `apt-get update && apt-get install -y build-essential` 安装基础依赖。
+```
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- -- -- -- -- 0e --
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- 1e --
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+70: -- -- -- --
+```
 
-### 参考资料
+`1e` 表示基于HMC5883的电子罗盘已安装在外部I2C总线上。同样，IST8310的值为 `0e`。
 
-- [PX4 官方文档](https://docs.px4.io/)
-- [Raspberry Pi OS 配置手册](https://www.raspberrypi.com/documentation/)
-- [Docker 官方文档](https://docs.docker.com/)
+::: info
+通常你只会有一个。
+如果其他设备连接到外部I2C总线(地址为`/dev/i2c-0`)，它们也会显示在这里。
+:::

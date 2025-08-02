@@ -19,7 +19,7 @@ _任务模式_ 会使得机体执行预设的自主[任务](../flying/missions.m
 任务通常在地面控制站（例如[QGroundControl](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/plan_view/plan_view.html)）中创建并上传，通常在起飞前完成。  
 任务也可通过开发者API创建，或在飞行中上传。  
 
-[任务命令](#mission-commands)的处理方式会根据固定翼飞行特性进行调整（例如盘旋操作会被实现为绕圈飞行）。  
+[任务命令](#任务命令)的处理方式会根据固定翼飞行特性进行调整（例如盘旋操作会被实现为绕圈飞行）。  
 
 ::: info  
 任务需上传至SD卡，且在启动自动驾驶仪**之前**需要插入SD卡。  
@@ -27,7 +27,7 @@ _任务模式_ 会使得机体执行预设的自主[任务](../flying/missions.m
 
 当进入MISSION模式时，所有机体类型的行为逻辑如下：  
 
-1. 如果未存储任务、PX4已执行完所有任务命令、或[任务不可行](#mission-feasibility-checks)：  
+1. 如果未存储任务、PX4已执行完所有任务命令、或[任务不可行](#任务可行性检查)：  
    - 飞行中会盘旋。  
    - 着陆后会"等待"。  
 
@@ -37,7 +37,7 @@ _任务模式_ 会使得机体执行预设的自主[任务](../flying/missions.m
 
 1. 如果已存储任务且机体着陆：  
    - 仅当当前航点是`Takeoff`时才会起飞。  
-   - 如果配置为弹射起飞，机体必须通过弹射器发射（见[FW Takeoff/Landing in Mission](#mission-takeoff)）。  
+   - 如果配置为弹射起飞，机体必须通过弹射器发射（见[FW Takeoff/Landing in Mission](#任务起飞)）。  
 
 1. 如果未存储任务、或PX4已执行完所有任务命令：  
    - 飞行中会盘旋。  
@@ -114,13 +114,15 @@ _QGroundControl_ 提供了额外的地面控制站（GCS）级别任务处理支
 | <a id="NAV_RCL_ACT"></a>[NAV_RCL_ACT](../advanced_config/parameter_reference.md#NAV_RCL_ACT)       | 遥控丢失故障安全模式（机体在失去遥控连接时的应对方式）- 例如进入悬停模式、返航模式、终止等。 |
 | <a id="NAV_LOITER_RAD"></a>[NAV_LOITER_RAD](../advanced_config/parameter_reference.md#NAV_RCL_ACT) | 固定翼盘旋半径。                                                                                                       |
 
-与[任务可行性检查](#mission-feasibility-checks)相关的参数：
+与[任务可行性检查](#任务可行性检查)相关的参数：
 
 | 参数                                                                                                   | 描述                                                                                                                                                        |
 | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id="MIS_DIST_1WP"></a>[MIS_DIST_1WP](../advanced_config/parameter_reference.md#MIS_DIST_1WP)             | 当首个航点与Home点距离超过此值时会触发警告消息。若值为0或更小则禁用此功能。                                  |
 | <a id="FW_LND_ANG"></a>[FW_LND_ANG](../advanced_config/parameter_reference.md#FW_LND_ANG)                   | 最大降落坡度角。                                                                                                                                       |
-| <a id="MIS_TKO_LAND_REQ"></a>[MIS_TKO_LAND_REQ](../advanced_config/parameter_reference.md#MIS_TKO_LAND_REQ) | 设置任务是否_需要_包含起飞和/或降落项。固定翼和垂直起降飞行器默认值均为2，表示任务必须包含降落。 |## 任务命令
+| <a id="MIS_TKO_LAND_REQ"></a>[MIS_TKO_LAND_REQ](../advanced_config/parameter_reference.md#MIS_TKO_LAND_REQ) | 设置任务是否_需要_包含起飞和/或降落项。固定翼和垂直起降飞行器默认值均为2，表示任务必须包含降落。 |
+
+## 任务命令
 
 PX4 在任务模式下支持以下 MAVLink 任务命令（部分命令有特殊说明，详见列表后说明）。  
 除非特别注明，其余实现方式均遵循 MAVLink 规范定义。
@@ -206,7 +208,9 @@ PX4 默认遵循从上一个航点到当前目标的直线轨迹（它不会在�
 
 公式为：
 
-$$L_{1_{distance}}=\frac{1}{\pi}L_{1_{damping}}L_{1_{period}}\left \| \vec{v}_{ {xy}_{ground} } \right \|$$## 任务起飞
+$$L_{1_{distance}}=\frac{1}{\pi}L_{1_{damping}}L_{1_{period}}\left \| \vec{v}_{ {xy}_{ground} } \right \|$$
+
+## 任务起飞
 
 使用任务起飞（以及通过任务降落）开始飞行，是推荐的自主飞行操作方式。
 
@@ -309,7 +313,9 @@ $$L_{1_{distance}}=\frac{1}{\pi}L_{1_{damping}}L_{1_{period}}\left \| \vec{v}_{ 
 | 参数 | 描述 |
 | --- | --- |
 | [FW_WING_SPAN](../advanced_config/parameter_reference.md#FW_WING_SPAN) | 机体翼展。 |
-| [FW_WING_HEIGHT](../advanced_config/parameter_reference.md#FW_WING_HEIGHT) | 机翼高度（从起落架底部或机身底部）。 |## 参见
+| [FW_WING_HEIGHT](../advanced_config/parameter_reference.md#FW_WING_HEIGHT) | 机翼高度（从起落架底部或机身底部）。 |
+
+## 参见
 
 - [任务](../flying/missions.md)
   - [包裹投递任务](../flying/package_delivery_mission.md)

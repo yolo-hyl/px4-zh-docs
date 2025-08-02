@@ -266,12 +266,22 @@ python3 decrypt_logs.py ["" | custom_key] [log_file.ulge | log_folder]
 完整的命令选项如下所示：
 
 ```sh
-```# 默认密钥 + 默认文件夹
-python3 decrypt_logs.py# 特定密钥 + 默认文件夹
-python3 decrypt_logs.py path/to/private_key.pem# 特定密钥 + 特定文件
-python3 decrypt_logs.py path/to/private_key.pem path/to/log_file.ulge# 特定密钥 + 特定文件夹
-python3 decrypt_logs.py path/to/private_key.pem path/to/log_folder# 默认密钥 + 特定文件
-python3 decrypt_logs.py "" path/to/log_file.ulge# 默认密钥 + 特定文件夹
+# Default key + default folder
+python3 decrypt_logs.py
+
+# Specific key + default folder
+python3 decrypt_logs.py path/to/private_key.pem
+
+# Specific key + specific file
+python3 decrypt_logs.py path/to/private_key.pem path/to/log_file.ulge
+
+# Specific key + specific folder
+python3 decrypt_logs.py path/to/private_key.pem path/to/log_folder
+
+# Default key + specific file
+python3 decrypt_logs.py "" path/to/log_file.ulge
+
+# Default key + specific folder
 python3 decrypt_logs.py "" path/to/log_folder
 ```
 
@@ -314,7 +324,7 @@ python3 generate_keys.py
 ```
 
 生成的私钥和公钥将按照以下目录结构保存：
-私钥应安全存储，并在需要[解密日志文件](#decrypt-ulogs)时使用。
+私钥应安全存储，并在需要[解密日志文件](#解密 ULogs)时使用。
 
 ```sh
 PX4-Autopilot/
@@ -331,7 +341,7 @@ PX4-Autopilot/
 注意：
 - 脚本不会覆盖目录中的现有密钥
   如果目录中仅包含私钥，将生成新的公钥
-- 公钥将使用默认名称和位置生成（即 `CONFIG_PUBLIC_KEY1` 所期望的格式），私钥则生成在默认位置（即我们用于[解密 ulogs](#decrypt-ulogs)的脚本所期望的位置）
+- 公钥将使用默认名称和位置生成（即 `CONFIG_PUBLIC_KEY1` 所期望的格式），私钥则生成在默认位置（即我们用于[解密 ulogs](#解密 ULogs)的脚本所期望的位置）
 
 ### 手动生成密钥
 
